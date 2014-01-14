@@ -1,0 +1,55 @@
+<header>
+  <h2>Add an Event</h2>
+</header>
+
+<form role="form">
+  <div class="form-group">
+    <label for="event-title">Name your event</label>
+    <input id="event-title" class="form-control" placeholder="Use an awesome title so people will come!" />
+  </div>
+
+  <div class="form-group">
+    <label for="event-description">Describe your event</label>
+    <textarea class="form-control" rows="3" id="event-description" placeholder="Tell people a few more details about your event. What can they expect?"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="event-attendees">How many attendees are you expecting?</label>
+    <select class="form-control" id="event-attendees" name="attendees" tabIndex="3">
+      <option selected value="5">&lt; 10</option>
+      <option value="15">10 - 20</option>
+      <option value="35">20 - 50</option>
+      <option value="75">50 - 100</option>
+      <option value="150">100 - 200</option>
+      <option value="350">200 - 500</option>
+      <option value="500">500 +</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="event-address">Event location</label>
+    <input class="form-control" id="event-address" type="text" placeholder="Enter a location" autocomplete="off"></input>
+  </div>
+
+  <div class="form-group">
+    <label for="event-registration-page">Event Link</label>
+    <input class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page" />
+  </div>
+
+  <div class="form-group">
+    <label for="event-start-date">Event begins</label>
+    <input class="form-control" id="event-start-date" type="date" />
+    <input class="form-control" id="event-start-time" type="time" />
+  </div>
+
+  <div class="form-group">
+    <label for="event-end-date">Event ends</label>
+    <input class="form-control" id="event-end-date" type="date" />
+    <input class="form-control" id="event-end-time" type="time" />
+  </div>
+
+  <div id="image-upload">Upload an image</div>
+  <input type="file" accept="image/*" />
+
+  <button type="submit" class="btn btn-default">Submit your event</button>
+</form>

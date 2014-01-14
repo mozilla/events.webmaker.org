@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="#/add">Add Event</a></li>
+    <li><a href="#/event">View Events</a></li>
+    <li><a href="#/event/23">Event Detail (Example)</a></li>
+  </ul>
+
+  <header>
+    <h1>Events</h1>
+  </header>
+
+  <div ng-view></div>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>
