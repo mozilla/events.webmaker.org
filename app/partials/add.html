@@ -39,24 +39,39 @@
 
   <div class="form-group">
     <label for="event-registration-page">Event Link</label>
-    <input ng-model="eventURL" name="eventURL" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page" />
+    <input ng-model="registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page" />
   </div>
 
   <div class="form-group">
-    <label for="event-start-date">Event begins</label>
-    <input ng-model="startDate" name="startDate" required class="form-control" id="event-start-date" type="date" />
-    <input ng-model="startTime" name="startTime" required class="form-control" id="event-start-time" type="time" />
+    <h3>Event Begins</h3>
+
+    <div class="form-group">
+      <label for="event-start-date">Date</label>
+      <input ng-model="beginDate" name="beginDate" required class="form-control" id="event-start-date" type="date" />
+    </div>
+
+    <div class="form-group">
+      <label for="event-start-time">Time</label>
+      <input ng-model="beginTime" name="beginTime" required class="form-control" id="event-start-time" type="time" />
+    </div>
   </div>
 
   <div class="form-group">
-    <label for="event-end-date">Event ends</label>
-    <input ng-model="endDate" name="endDate" required class="form-control" id="event-end-date" type="date" />
-    <input ng-model="endTime" name="endTime" required class="form-control" id="event-end-time" type="time" />
+    <h3>Event Ends</h3>
+
+    <div class="form-group">
+      <label for="event-end-date">Date</label>
+      <input ng-model="endDate" name="endDate" required class="form-control" id="event-end-date" type="date" />
+    </div>
+    <div class="form-group">
+      <label for="event-end-time">Time</label>
+      <input ng-model="endTime" name="endTime" required class="form-control" id="event-end-time" type="time" />
+    </div>
   </div>
 
   <div class="form-group">
     <button ng-click="addEvent()" type="submit" class="btn btn-default">Submit your event</button>
   </div>
 
-  <div class="alert alert-danger" ng-show="addEventForm.$invalid">Please fill out all required fields!</div>
+  <div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">Please fill out all required fields!</div>
 </form>
