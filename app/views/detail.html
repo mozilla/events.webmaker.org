@@ -2,15 +2,6 @@
   <h1>{{ eventData.title }}</h1>
 </header>
 
-<!-- TODO - Only show for event creator -->
-<div class="row">
-  <div class="col-md-1">
-    <a class="btn btn-primary" href="#/edit/{{ eventID }}">
-      Edit Event
-    </a>
-  </div>
-</div>
-
 <table class="table">
   <tr ng-repeat="(key, val) in eventData">
     <th>{{key}}</th>
@@ -18,3 +9,11 @@
   </tr>
 </table>
 
+<!-- TODO - Only show for event creator -->
+<div class="row">
+  <div class="col-md-1">
+    <a class="btn btn-primary btn-block" href="#/edit/{{ eventID }}">
+      Edit Event
+    </a>
+  </div>
+</div>

@@ -7,6 +7,7 @@ angular.module('myApp.controllers', [])
       $scope.attemptedToSubmit = false;
 
       $scope.addEvent = function() {
+        console.log('add event');
         $scope.attemptedToSubmit = true;
         eventService.save($scope.event, function(data) {
           console.log(data);
@@ -25,6 +26,10 @@ angular.module('myApp.controllers', [])
       }, function (err) {
         console.error(err);
       });
+
+      $scope.saveChanges = function () {
+        console.log('saveChanges');
+      }
     }
   ])
   .controller('eventListController', ['$scope', 'eventService',

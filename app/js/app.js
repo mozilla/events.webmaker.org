@@ -7,9 +7,9 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/add', {templateUrl: 'partials/add.html', controller: 'addEventController'});
-  $routeProvider.when('/event', {templateUrl: 'partials/list.html', controller: 'eventListController'});
-  $routeProvider.when('/event/:id', {templateUrl: 'partials/detail.html', controller: 'eventDetailController'});
-  $routeProvider.when('/edit/:id', {templateUrl: 'partials/add.html', controller: 'eventEditController'});
-  $routeProvider.otherwise({redirectTo: '/event'});
+  $routeProvider.when('/add', {templateUrl: 'views/add.html', controller: 'addEventController'});
+  $routeProvider.when('/events', {templateUrl: 'views/list.html', controller: 'eventListController'});
+  $routeProvider.when('/events/:id', {templateUrl: 'views/detail.html', controller: 'eventDetailController'});
+  $routeProvider.when('/edit/:id', {templateUrl: 'views/edit.html', controller: 'eventEditController'});
+  $routeProvider.otherwise({redirectTo: '/events'});
 }]);
