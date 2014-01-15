@@ -1,4 +1,18 @@
 <header>
   <h2>All Events</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="event in events">
+      <td><a href="#/event/{{event.id}}">{{ event.title }}</a></td>
+      <td>{{ event.startDate }}</td>
+      <td>{{ event.city }}, {{ event.country }}</td>
+    </tr>
+  </table>
 </header>
 

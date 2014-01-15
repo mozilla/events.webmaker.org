@@ -2,3 +2,9 @@
   <h2>Event Detail</h2>
 </header>
 
+<table class="table">
+  <tr ng-repeat="(key, val) in eventData">
+    <th>{{key}}</th>
+    <td>{{val}}</td>
+  </tr>
+</table>
