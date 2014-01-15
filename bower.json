@@ -13,5 +13,8 @@
     "angular-route": "1.2.8",
     "bootstrap": "3.0.3",
     "angular-resource": "1.2.8"
+  },
+  "resolutions": {
+    "angular": "1.2.8"
   }
 }
