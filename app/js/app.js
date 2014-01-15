@@ -1,5 +1,6 @@
 angular.module('myApp', [
   'ngRoute',
+  'ngResource',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
