@@ -18,18 +18,19 @@ angular.module('myApp.controllers', [])
   ])
   .controller('eventListController', ['$scope', 'eventService',
     function($scope, eventService) {
-      console.log(eventService);
       eventService.query(function(data) {
         $scope.events = data;
       });
     }
   ])
-  .controller('eventDetailController', ['$scope', '$http', '$routeParams',
-    function($scope, $http, $routeParams) {
+  .controller('eventDetailController', ['$scope', '$http', '$routeParams', 'eventService',
+    function($scope, $http, $routeParams, eventService) {
       eventService.get({
         id: $routeParams.id,
       }, function(data) {
-        $scope.events = data;
+        $scope.eventData = data;
+      }, function(err) {
+        console.log(err);
       });
     }
   ])
