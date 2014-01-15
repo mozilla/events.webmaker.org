@@ -1,5 +1,5 @@
 <header>
-  <h2>Add an Event</h2>
+  <h1>Add an Event</h1>
 </header>
 
 <form name="addEventForm" role="form" novalidate>
@@ -70,7 +70,10 @@
   </div>
 
   <div class="form-group">
-    <button ng-click="addEvent()" type="submit" class="btn btn-default">Submit your event</button>
+    <button ng-click="addEvent()" type="submit" class="btn btn-lg btn-primary">
+      <span class="glyphicon glyphicon-plus"></span>
+      Create Event
+    </button>
   </div>
 
   <div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">Please fill out all required fields!</div>
