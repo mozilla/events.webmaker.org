@@ -16,6 +16,17 @@ angular.module('myApp.controllers', [])
       }
     }
   ])
+  .controller('eventEditController', ['$scope', '$routeParams', 'eventService',
+    function($scope, $routeParams, eventService) {
+      eventService.get({
+        id: $routeParams.id
+      }, function (data) {
+        $scope.event = data;
+      }, function (err) {
+        console.error(err);
+      });
+    }
+  ])
   .controller('eventListController', ['$scope', 'eventService',
     function($scope, eventService) {
       eventService.query(function(data) {
@@ -29,6 +40,7 @@ angular.module('myApp.controllers', [])
         id: $routeParams.id,
       }, function(data) {
         $scope.eventData = data;
+        $scope.eventID = $routeParams.id;
       }, function(err) {
         console.log(err);
       });
