@@ -10,10 +10,7 @@ angular.module('myApp.directives', [])
   ])
   .directive('eventForm', function () {
     return {
-      restrict: 'A',
-      scope: {
-        title: '@'
-      },
+      restrict: 'E',
       templateUrl: '/views/partials/event-form.html',
       transclude: true
     };
