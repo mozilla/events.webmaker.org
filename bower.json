@@ -1,5 +1,5 @@
 {
-  "name": "Angular Seed",
+  "name": "webmaker-events",
   "version": "0.0.1",
   "ignore": [
     "**/.*",
@@ -13,8 +13,5 @@
     "angular-route": "1.2.8",
     "bootstrap": "3.0.3",
     "angular-resource": "1.2.8"
-  },
-  "resolutions": {
-    "angular": "1.2.8"
   }
 }
