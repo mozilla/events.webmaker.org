@@ -8,11 +8,11 @@ body {
 }
 
 .btn-mobile-block {
-  width: 100%;
-}
-/* TODO: replace with LESS variable, @screen-sm-min */
-@media (min-width: 768px) {
-  .btn-mobile-block {
-    width: auto;
+  display: block;
+
+  @media (min-width: 768px) {
+    .btn-mobile-block {
+      display: inline-block;
+    }
   }
 }
