@@ -1,15 +1,18 @@
 {
   "name": "webmaker-events",
   "version": "0.0.1",
-  "description": "Webmaker Events",
+  "description": "Front end for Webmaker events",
   "main": "app/js/app.js",
   "scripts": {
-    "test": "grunt validate",
-    "postinstall": "bower install"
+    "postinstall": "./node_modules/.bin/bower install"
   },
   "keywords": [],
   "author": "author",
-  "dependencies": {},
+  "dependencies": {
+    "express": "~3.4.8",
+    "bower": "~1.2.8",
+    "habitat": "~1.1.0"
+  },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "0.7.2",
