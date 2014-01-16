@@ -1,4 +1,4 @@
-module.exports = function(env) {
+module.exports = function (env) {
   var express = require('express');
   var app = express();
 
@@ -11,7 +11,7 @@ module.exports = function(env) {
   app.use(express.static('./app'));
 
   // Configuration file
-  app.get('/config.json', function(req, res) {
+  app.get('/config.json', function (req, res) {
     res.json({
       eventsLocation: env.get('eventsLocation') || 'http://localhost:1989'
     });

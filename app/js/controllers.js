@@ -14,7 +14,7 @@ angular.module('myApp.controllers', [])
         }, function (err) {
           console.log(err.data);
         });
-      }
+      };
     }
   ])
   .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService',
@@ -73,7 +73,7 @@ angular.module('myApp.controllers', [])
         }, function (err) {
           console.log(err.data);
         });
-      }
+      };
 
       $scope.deleteEvent = function () {
         if (window.confirm('Are you sure you want to delete your event?')) {
@@ -85,7 +85,7 @@ angular.module('myApp.controllers', [])
             console.log(err.data);
           });
         }
-      }
+      };
     }
   ])
   .controller('eventListController', ['$scope', 'eventService',
@@ -111,6 +111,6 @@ angular.module('myApp.controllers', [])
     function ($scope, $location) {
       $scope.isActive = function (location) {
         return location === $location.path();
-      }
+      };
     }
   ]);

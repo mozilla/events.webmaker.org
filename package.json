@@ -14,10 +14,13 @@
     "habitat": "1.1.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
+    "grunt": "0.4.2",
     "grunt-contrib-jshint": "0.7.2",
     "grunt-jsbeautifier": "0.2.6",
-    "grunt-shell": "0.6.1"
+    "grunt-shell": "0.6.1",
+    "grunt-contrib-less": "0.9.0",
+    "grunt-contrib-watch": "0.5.3",
+    "grunt-shell-spawn": "0.3.0"
   },
   "engines": {
     "node": ">=0.10"

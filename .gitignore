@@ -6,3 +6,4 @@ tmp
 .DS_Store
 .idea
 .env
+app/compiled/
