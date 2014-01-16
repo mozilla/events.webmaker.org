@@ -109,6 +109,7 @@ angular.module('myApp.controllers', [])
   ])
   .controller('navController', ['$scope', '$location',
     function ($scope, $location) {
+      $('.collapse').collapse();
       $scope.isActive = function (location) {
         return location === $location.path();
       };
