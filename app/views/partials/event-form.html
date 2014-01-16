@@ -1,68 +1,106 @@
 <form name="addEventForm" role="form" novalidate>
-  <div class="form-group">
-    <label for="event-title">Name your event</label>
-    <input ng-model="event.title" name="eventName" required id="event-title" class="form-control" placeholder="Use an awesome title so people will come!" />
+
+  <header class="page-header">
+    <h3>Basics</h3>
+  </header>
+
+  <div class="row">
+
+    <div class="col-sm-6">
+
+      <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$dirty && addEventForm.eventName.$invalid}">
+        <label for="event-title">Name your event <span class="text-danger">*</span></label>
+        <input
+          ng-model="event.title"
+          name="eventName"
+          required
+          id="event-title"
+          class="form-control"
+          placeholder="Use an awesome title so people will come!">
+      </div>
+      <div class="alert alert-danger" ng-show="addEventForm.eventName.$dirty && addEventForm.eventName.$error.required">Required!</div>
+
+      <div class="form-group" ng-class="{'has-error': addEventForm.description.$dirty && addEventForm.description.$invalid}">
+        <label for="event-description">Describe your event <span class="text-danger">*</span></label>
+        <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="Tell people a few more details about your event. What can they expect?"></textarea>
+      </div>
+
+      <div class="alert alert-danger" ng-show="addEventForm.description.$dirty && addEventForm.description.$error.required">Required!</div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+      <div class="form-group">
+        <label for="event-registration-page">Event Link</label>
+        <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page" />
+      </div>
+
+      <div class="form-group">
+        <label for="event-attendees">How many attendees are you expecting?</label>
+        <select ng-model="event.attendees" class="form-control" id="event-attendees" name="attendees">
+          <option value="5" selected>Under 10</option>
+          <option value="15">10 - 20</option>
+          <option value="35">20 - 50</option>
+          <option value="75">50 - 100</option>
+          <option value="150">100 - 200</option>
+          <option value="350">200 - 500</option>
+          <option value="6">500 +</option>
+        </select>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="alert alert-danger" ng-show="addEventForm.eventName.$dirty && addEventForm.eventName.$error.required">Required!</div>
+  <header class="page-header">
+    <h3>When and where?</h3>
+  </header>
 
-  <div class="form-group">
-    <label for="event-description">Describe your event</label>
-    <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="Tell people a few more details about your event. What can they expect?"></textarea>
-  </div>
-
-  <div class="alert alert-danger" ng-show="addEventForm.description.$dirty && addEventForm.description.$error.required">Required!</div>
-
-  <div class="form-group">
-    <label for="event-attendees">How many attendees are you expecting?</label>
-    <select ng-model="event.attendees" class="form-control" id="event-attendees" name="attendees">
-      <option value="5" selected>Under 10</option>
-      <option value="15">10 - 20</option>
-      <option value="35">20 - 50</option>
-      <option value="75">50 - 100</option>
-      <option value="150">100 - 200</option>
-      <option value="350">200 - 500</option>
-      <option value="6">500 +</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="event-address">Event location</label>
+  <div class="form-group" ng-class="{'has-error': addEventForm.location.$dirty && addEventForm.location.$invalid}">
+    <label for="event-address">Event location <span class="text-danger">*</span></label>
     <input ng-model="event.location" name="location" required class="form-control" id="event-address" type="text" placeholder="Enter a location" autocomplete="off"></input>
   </div>
 
   <div class="alert alert-danger" ng-show="addEventForm.location.$dirty && addEventForm.location.$error.required">Required!</div>
 
-  <div class="form-group">
-    <label for="event-registration-page">Event Link</label>
-    <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page" />
-  </div>
+  <div class="row">
 
-  <div class="form-group">
-    <h3>Event Begins</h3>
+    <div class="col-sm-6">
 
-    <div class="form-group">
-      <label for="event-start-date">Date</label>
-      <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="date" />
+      <div class="form-group">
+        <h4>Event Begins</h4>
+
+        <div class="form-group">
+          <label for="event-start-date">Date <span class="text-danger">*</span></label>
+          <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="date" />
+        </div>
+
+        <div class="form-group">
+          <label for="event-start-time">Time <span class="text-danger">*</span></label>
+          <input ng-model="event.beginTime" name="beginTime" required class="form-control" id="event-start-time" type="time" />
+        </div>
+      </div>
+
     </div>
 
-    <div class="form-group">
-      <label for="event-start-time">Time</label>
-      <input ng-model="event.beginTime" name="beginTime" required class="form-control" id="event-start-time" type="time" />
-    </div>
-  </div>
+    <div class="col-sm-6">
 
-  <div class="form-group">
-    <h3>Event Ends</h3>
+      <div class="form-group">
+        <h4>Event Ends</h4>
 
-    <div class="form-group">
-      <label for="event-end-date">Date</label>
-      <input ng-model="event.endDate" name="endDate" class="form-control" id="event-end-date" type="date" />
+        <div class="form-group">
+          <label for="event-end-date">Date</label>
+          <input ng-model="event.endDate" name="endDate" class="form-control" id="event-end-date" type="date" />
+        </div>
+        <div class="form-group">
+          <label for="event-end-time">Time</label>
+          <input ng-model="event.endTime" name="endTime" class="form-control" id="event-end-time" type="time" />
+        </div>
+      </div>
+
     </div>
-    <div class="form-group">
-      <label for="event-end-time">Time</label>
-      <input ng-model="event.endTime" name="endTime" class="form-control" id="event-end-time" type="time" />
-    </div>
+
   </div>
 
   <!-- Submit Button -->

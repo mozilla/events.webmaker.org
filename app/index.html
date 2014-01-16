@@ -9,16 +9,33 @@
 </head>
 <body class="container">
 
-  <ul class="nav nav-pills nav-justified" ng-controller="navController">
-    <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
-    <li ng-class="{ active : isActive('/events') }"><a href="#/events">View Events</a></li>
-  </ul>
+  <nav class="navbar navbar-default" ng-controller="navController">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="fa fa-bars fa-lg text-muted"></span>
+      </button>
+      <a class="navbar-brand" href="#">Webmaker Events</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse" collapse="isCollapsed">
+      <ul class="nav navbar-nav">
+        <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
+        <li ng-class="{ active : isActive('/events') }"><a href="#/events">View Events</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
 
   <div ng-view></div>
+
+  <script src="bower_components/jquery/jquery.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>

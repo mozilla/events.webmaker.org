@@ -1,17 +1,15 @@
 <header>
-  <h1>All Events</h1>
-  <table class="table">
+  <h1>Upcoming Events</h1>
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>Title</th>
+        <th class="col-xs-9">Event</th>
         <th>Date</th>
-        <th>Location</th>
       </tr>
     </thead>
     <tr ng-repeat="event in events">
-      <td><a href="#/events/{{event.id}}">{{ event.title }}</a></td>
-      <td>{{ event.startDate }}</td>
-      <td>{{ event.city }}, {{ event.country }}</td>
+      <td><a href="#/events/{{event.id}}">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
+      <td>{{ event.beginDate | date:'MMM dd, yyyy' }}</td>
     </tr>
   </table>
 </header>

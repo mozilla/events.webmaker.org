@@ -1,14 +1,17 @@
 <header>
-  <h1>Edit Event</h1>
+  <h1>Editing {{event.title}}</h1>
 </header>
 
 <event-form>
-  <button ng-click="saveChanges()" type="submit" class="btn btn-lg btn-primary btn-block">
+  <button ng-click="saveChanges()" type="submit" class="btn btn-lg btn-primary btn-mobile-block ">
     Save Changes
   </button>
 </event-form>
 
-<button ng-click="deleteEvent()" type="submit" class="btn btn-danger btn-block">
+<div class="alert alert-danger">
+<strong>Careful!</strong> Once you delete this event, it will be gone forever.
+<button ng-click="deleteEvent()" type="submit" class="btn btn-danger btn-mobile-block">
   Delete Event
 </button>
+</div>
 
