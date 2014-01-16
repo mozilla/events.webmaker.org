@@ -4,13 +4,13 @@
   "description": "Front end for Webmaker events",
   "main": "app/js/app.js",
   "scripts": {
-    "test": "grunt validate",
-    "postinstall": "bower install"
+    "postinstall": "./node_modules/.bin/bower install"
   },
   "keywords": [],
   "author": "author",
   "dependencies": {
-    "express": "~3.4.8"
+    "express": "~3.4.8",
+    "bower": "~1.2.8"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
