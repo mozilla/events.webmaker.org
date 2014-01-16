@@ -9,7 +9,7 @@
     <div class="col-sm-6">
 
       <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$dirty && addEventForm.eventName.$invalid}">
-        <label for="event-title">Name your event</label>
+        <label for="event-title">Name your event <span class="text-danger">*</span></label>
         <input
           ng-model="event.title"
           name="eventName"
@@ -21,7 +21,7 @@
       <div class="alert alert-danger" ng-show="addEventForm.eventName.$dirty && addEventForm.eventName.$error.required">Required!</div>
 
       <div class="form-group" ng-class="{'has-error': addEventForm.description.$dirty && addEventForm.description.$invalid}">
-        <label for="event-description">Describe your event</label>
+        <label for="event-description">Describe your event <span class="text-danger">*</span></label>
         <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="Tell people a few more details about your event. What can they expect?"></textarea>
       </div>
 
@@ -58,7 +58,7 @@
   </header>
 
   <div class="form-group" ng-class="{'has-error': addEventForm.location.$dirty && addEventForm.location.$invalid}">
-    <label for="event-address">Event location</label>
+    <label for="event-address">Event location <span class="text-danger">*</span></label>
     <input ng-model="event.location" name="location" required class="form-control" id="event-address" type="text" placeholder="Enter a location" autocomplete="off"></input>
   </div>
 
@@ -72,12 +72,12 @@
         <h4>Event Begins</h4>
 
         <div class="form-group">
-          <label for="event-start-date">Date</label>
+          <label for="event-start-date">Date <span class="text-danger">*</span></label>
           <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="date" />
         </div>
 
         <div class="form-group">
-          <label for="event-start-time">Time</label>
+          <label for="event-start-time">Time <span class="text-danger">*</span></label>
           <input ng-model="event.beginTime" name="beginTime" required class="form-control" id="event-start-time" type="time" />
         </div>
       </div>
