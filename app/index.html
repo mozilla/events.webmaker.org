@@ -25,11 +25,18 @@
         <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
         <li ng-class="{ active : isActive('/events') }"><a href="#/events">View Events</a></li>
       </ul>
+      <button ng-show="!_user" class="btn btn-info navbar-btn" ng-click="login()">Login</button>
+      <p class="navbar-text" ng-show="_user">
+        Hi, {{_user}}
+      </p>
+      <button class="btn btn-default navbar-btn" ng-show="_user" ng-click="logout()">Logout</button>
+
     </div><!-- /.navbar-collapse -->
   </nav>
 
   <div ng-view></div>
 
+  <script src="https://login.persona.org/include.js"></script>
   <script src="bower_components/jquery/jquery.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>

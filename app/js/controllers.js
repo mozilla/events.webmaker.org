@@ -107,8 +107,17 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('navController', ['$scope', '$location',
-    function ($scope, $location) {
+  .controller('navController', ['$scope', '$location', 'personaService',
+    function ($scope, $location, personaService) {
+
+      $scope.login = function () {
+       navigator.id.request();
+      };
+
+      $scope.logout = function () {
+       navigator.id.logout();
+      };
+
       $scope.isActive = function (location) {
         return location === $location.path();
       };
