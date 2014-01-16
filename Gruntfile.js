@@ -1,14 +1,13 @@
 module.exports = function (grunt) {
 
   grunt.initConfig({
-    connect: {
-      server: {
+    shell: {
+      runServer: {
         options: {
-          base: 'app/',
-          port: 1134,
-          open: true,
-          keepalive: true
-        }
+          stdout: true,
+          stderr: true
+        },
+        command: 'node server/server.js'
       }
     },
     jshint: {
@@ -34,11 +33,11 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-jsbeautifier');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-connect');
 
-  grunt.registerTask('default', ['connect']);
+  grunt.registerTask('default', ['shell:runServer']);
 
   // Clean code before a commit
   grunt.registerTask('clean', ['jsbeautifier:modify', 'jshint']);
