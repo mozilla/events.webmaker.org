@@ -71,6 +71,7 @@ angular.module('myApp.services', ['ngResource'])
 
           deferred.promise.then(function(data) {
             $rootScope._persona.email = data.email;
+            $rootScope._persona.admin = data.admin;
             $window.localStorage.token = data.token;
 
           }, function(err) {
@@ -79,6 +80,7 @@ angular.module('myApp.services', ['ngResource'])
           });
         },
         onlogout: function() {
+          delete $rootScope._persona.admin;
           delete $rootScope._persona.email;
           delete $window.localStorage.token;
           $rootScope.$apply();
