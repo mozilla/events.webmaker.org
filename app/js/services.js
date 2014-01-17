@@ -10,6 +10,23 @@ angular.module('myApp.services', ['ngResource'])
         });
     }
   ])
+  .factory('authInterceptor', function($rootScope, $q, $window) {
+    return {
+      request: function(config) {
+        config.headers = config.headers || {};
+        if ($window.localStorage.token) {
+          config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+        }
+        return config;
+      },
+      response: function(response) {
+        if (response.status === 401) {
+          response.data = 'There was a problem with the authentication token -- maybe you are not signed in?';
+        }
+        return response || $q.when(response);
+      }
+    };
+  })
   .factory('eventService', ['$rootScope', '$resource',
     function($rootScope, $resource) {
       return $resource($rootScope._config.eventsLocation + '/events/:id', null, {
@@ -19,43 +36,55 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
-  .factory('personaService', ['$http', '$q', '$rootScope',
-    function personaService($http, $q, $rootScope) {
+  .factory('personaService', ['$http', '$q', '$rootScope', '$location', '$window',
+    function personaService($http, $q, $rootScope, $location, $window) {
 
       // Set up '_persona' on root scope
       $rootScope._persona = {
         email: '',
-        login: navigator.id.request,
-        logout: navigator.id.logout
+        login: function() {
+          navigator.id.request();
+        },
+        logout: function() {
+          navigator.id.logout();
+        }
       };
 
       navigator.id.watch({
         loggedInUser: null,
         onlogin: function(assertion) {
           var deferred = $q.defer();
+          var audience = $location.protocol() + '://' + $location.host();
+          if ($location.port() && $location.port() !== 80) {
+            audience += (':' + $location.port());
+          }
 
-          $http.post('/persona/verify', {
-            assertion: assertion
-          })
+          $http
+            .post($rootScope._config.eventsLocation + '/auth', {
+              audience: audience,
+              assertion: assertion
+            })
             .then(function(response) {
-              if (response.data.status != 'okay') {
-                deferred.reject(response.data.reason);
+              if (response.status !== 200) {
+                deferred.reject(response.data);
               } else {
-                deferred.resolve(response.data.email);
+                deferred.resolve(response.data);
               }
             });
 
-          deferred.promise.then(function(email) {
-            $rootScope._persona.email = email;
+          deferred.promise.then(function(data) {
+            $rootScope._persona.email = data.email;
+            $window.localStorage.token = data.token;
+
+          }, function(err) {
+            delete $window.localStorage.token;
+            console.log(err);
           });
         },
         onlogout: function() {
-          $http.post('/persona/logout')
-            .then(function(response) {
-              if (response.data.status === 'okay') {
-                $rootScope._persona.email = '';
-              }
-            });
+          delete $rootScope._persona.email;
+          delete $window.localStorage.token;
+          $rootScope.$apply();
         }
       });
 
