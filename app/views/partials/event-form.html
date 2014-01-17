@@ -57,12 +57,12 @@
     <h3>When and where?</h3>
   </header>
 
-  <div class="form-group" ng-class="{'has-error': addEventForm.location.$dirty && addEventForm.location.$invalid}">
-    <label for="event-address">Event location <span class="text-danger">*</span></label>
-    <input ng-model="event.address" name="location" required class="form-control" id="event-address" type="text" placeholder="Enter a location" autocomplete="off"></input>
+  <div class="form-group" ng-class="{'has-error': addEventForm.address.$dirty && addEventForm.address.$invalid}">
+    <label for="address">Event location <span class="text-danger">*</span></label>
+    <input ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter a location" autocomplete="off"></input>
   </div>
 
-  <div class="alert alert-danger" ng-show="addEventForm.location.$dirty && addEventForm.location.$error.required">Required!</div>
+  <div class="alert alert-danger" ng-show="addEventForm.address.$dirty && addEventForm.address.$error.required">Required!</div>
 
   <div class="row">
 

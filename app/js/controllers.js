@@ -39,7 +39,7 @@ angular.module('myApp.controllers', [])
         $scope.event.attendees = data.attendees;
 
         // TEMP : Need to convert back from city/country/lat/long/whatever
-        $scope.event.location = data.address + ', ' + data.city + ', ' + data.country;
+        $scope.event.address = data.address;
 
         if (data.registerLink) {
           $scope.event.registerLink = data.registerLink;

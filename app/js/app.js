@@ -29,11 +29,15 @@ config(['$routeProvider',
       redirectTo: '/events'
     });
   }
-]).
+])
+.config(function($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
+})
+.
 run(['$rootScope',
   function ($rootScope) {
     $rootScope.$on('$locationChangeSuccess', function (event) {
       window.scrollTo(0, 0);
     });
   }
-]);
+])
