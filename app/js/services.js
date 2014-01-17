@@ -54,10 +54,7 @@ angular.module('myApp.services', ['ngResource'])
         loggedInUser: null,
         onlogin: function(assertion) {
           var deferred = $q.defer();
-          var audience = $location.protocol() + '://' + $location.host();
-          if ($location.port() && $location.port() !== 80) {
-            audience += (':' + $location.port());
-          }
+          var audience = window.location.origin;
 
           $http
             .post($rootScope._config.eventsLocation + '/auth', {
