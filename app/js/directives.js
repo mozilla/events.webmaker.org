@@ -14,4 +14,17 @@ angular.module('myApp.directives', [])
       templateUrl: '/views/partials/event-form.html',
       transclude: true
     };
+  })
+  .directive('collapse', function () {
+    // Extend the `collapse` directive to collapse
+    return {
+      restrict: 'A',
+      controller: ['$scope', '$element',
+        function ($scope, $element) {
+          $element.on('click', function (event) {
+            $scope.isCollapsed = !$scope.isCollapsed;
+          });
+        }
+      ]
+    };
   });

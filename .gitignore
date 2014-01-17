@@ -7,3 +7,4 @@ tmp
 .idea
 .env
 app/compiled/
+TODO.txt

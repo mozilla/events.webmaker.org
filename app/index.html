@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" href="compiled/app.min.css"/>
 </head>
-<body class="container">
+<body>
 
   <nav class="navbar navbar-default" ng-controller="navController">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -22,13 +22,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="navbar-collapse" collapse="isCollapsed">
       <ul class="nav navbar-nav">
+        <li ng-class="{ active : isActive('/events') }"><a href="#/events">Upcoming Events</a></li>
         <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
-        <li ng-class="{ active : isActive('/events') }"><a href="#/events">View Events</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
+    </div>
   </nav>
 
-  <div ng-view></div>
+  <div class="container" ng-view></div>
 
   <script src="bower_components/jquery/jquery.js"></script>
 
