@@ -11,11 +11,10 @@ module.exports = function (env) {
     secret: 'awesomepersonasauce'
   }));
 
-
-  // Static
+  // Static files
   app.use(express.static('./app'));
 
-  // Configuration file
+  // Serve up virtual configuration "file"
   app.get('/config.json', function (req, res) {
     res.json({
       eventsLocation: env.get('eventsLocation')

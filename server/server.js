@@ -15,7 +15,7 @@ if(!env.get('audience')) {
 }
 
 if(!env.get('eventsLocation')) {
-  env.set('seventsLocation', 'http://webmaker-events-service.herokuapp.com');
+  env.set('eventsLocation', 'http://webmaker-events-service.herokuapp.com');
 }
 
 // App
