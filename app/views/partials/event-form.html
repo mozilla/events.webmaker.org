@@ -59,7 +59,7 @@
 
   <div class="form-group" ng-class="{'has-error': addEventForm.location.$dirty && addEventForm.location.$invalid}">
     <label for="event-address">Event location <span class="text-danger">*</span></label>
-    <input ng-model="event.location" name="location" required class="form-control" id="event-address" type="text" placeholder="Enter a location" autocomplete="off"></input>
+    <input ng-model="event.address" name="location" required class="form-control" id="event-address" type="text" placeholder="Enter a location" autocomplete="off"></input>
   </div>
 
   <div class="alert alert-danger" ng-show="addEventForm.location.$dirty && addEventForm.location.$error.required">Required!</div>
@@ -102,6 +102,24 @@
     </div>
 
   </div>
+
+  <header class="page-header">
+    <h3>About you</h3>
+  </header>
+
+  <div class="form-group">
+    <label for="email">Administrator's Email</label>
+    <div class="row">
+      <div class="col-sm-6">
+        <input ng-model="event.organizer" name="email" class="form-control" type="email" readonly required>
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-default" ng-click="_persona.login()">Login with a different email</button>
+      </div>
+    </div>
+    <p class="help-block"><span class="fa fa-lock"></span> You must login with this email to edit/access this event.</p>
+  </div>
+
 
   <!-- Submit Button -->
   <div class="form-group" ng-transclude></div>

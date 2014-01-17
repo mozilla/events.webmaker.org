@@ -6,6 +6,11 @@ module.exports = function (env) {
   app.use(express.compress());
   app.use(express.json());
   app.use(express.urlencoded());
+  app.use(express.cookieParser())
+  app.use(express.session({
+    secret: 'awesomepersonasauce'
+  }));
+
 
   // Static
   app.use(express.static('./app'));
@@ -13,8 +18,13 @@ module.exports = function (env) {
   // Configuration file
   app.get('/config.json', function (req, res) {
     res.json({
-      eventsLocation: env.get('eventsLocation') || 'http://localhost:1989'
+      eventsLocation: env.get('eventsLocation')
     });
+  });
+
+  // Authentication
+  require('express-persona')(app, {
+    audience: env.get('audience')
   });
 
   return app;
