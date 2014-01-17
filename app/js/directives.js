@@ -19,10 +19,14 @@ angular.module('myApp.directives', [])
     // Extend the `collapse` directive to collapse
     return {
       restrict: 'A',
-      controller: ['$scope', '$element',
-        function ($scope, $element) {
-          $element.on('click', function (event) {
-            $scope.isCollapsed = !$scope.isCollapsed;
+      controller: ['$rootScope', '$scope', '$element',
+        function ($rootScope, $scope, $element) {
+          // Set to closed on load
+          $scope.isCollapsed = true;
+
+          // Collapse on view change
+          $rootScope.$on('$locationChangeSuccess', function (event) {
+            $scope.isCollapsed = true;
           });
         }
       ]
