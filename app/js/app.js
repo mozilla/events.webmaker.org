@@ -6,7 +6,6 @@ angular.module('myApp', [
   'myApp.services',
   'myApp.directives',
   'myApp.controllers'
-<<<<<<< HEAD
 ]).
 config(['$routeProvider',
   function ($routeProvider) {
