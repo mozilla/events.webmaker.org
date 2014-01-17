@@ -3,24 +3,42 @@
 angular.module('myApp.controllers', [])
   .controller('addEventController', ['$scope', '$location', 'eventService',
     function ($scope, $location, eventService) {
+      // Create ISO date from HTML5 date & time input formats
+      function dateTimeToISO(date, time) {
+        return (new Date(date + ' ' + time)).toISOString();
+      }
 
       $scope.event = {};
+      $scope.attemptedToSubmit = false;
 
       // Keep email up to date
-      $scope.$watch('_persona.email', function() {
+      $scope.$watch('_persona.email', function () {
         $scope.event.organizer = $scope._persona.email;
       });
 
-      $scope.attendees = 5;
-      $scope.attemptedToSubmit = false;
+      $scope.event.attendees = 5; // Set starting value for form
 
       $scope.addEvent = function () {
-        console.log('add event');
         $scope.attemptedToSubmit = true;
-        eventService.save($scope.event, function (data) {
+
+        // Create a serialized event object to avoid modifying $scope
+        // (ISO date will confuse the date picker)
+        var serializedEvent = $scope.event;
+
+        serializedEvent.beginDate = dateTimeToISO($scope.event.beginDate, $scope.event.beginTime);
+
+        if ($scope.event.endDate && $scope.event.endTime) {
+          serializedEvent.endDate = dateTimeToISO($scope.event.endDate, $scope.event.endTime);
+        }
+
+        // Remove DB deprecated values from client event object
+        delete serializedEvent.beginTime;
+        delete serializedEvent.endTime;
+
+        eventService.save(serializedEvent, function (data) {
           $location.path('/events/' + data.id);
         }, function (err) {
-          console.log(err.data);
+          console.error('addEvent save error: ' + err.data);
         });
       };
     }
