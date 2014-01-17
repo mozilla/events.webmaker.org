@@ -1,8 +1,16 @@
 // Controllers ----------------------------------------------------------------
 
 angular.module('myApp.controllers', [])
-  .controller('addEventController', ['$scope', 'eventService',
-    function ($scope, eventService) {
+  .controller('addEventController', ['$scope', '$location', 'eventService',
+    function ($scope, $location, eventService) {
+
+      $scope.event = {};
+
+      // Keep email up to date
+      $scope.$watch('_persona.email', function() {
+        $scope.event.organizer = $scope._persona.email;
+      });
+
       $scope.attendees = 5;
       $scope.attemptedToSubmit = false;
 
@@ -10,7 +18,7 @@ angular.module('myApp.controllers', [])
         console.log('add event');
         $scope.attemptedToSubmit = true;
         eventService.save($scope.event, function (data) {
-          console.log(data);
+          $location.path('/events/' + data.id);
         }, function (err) {
           console.log(err.data);
         });
@@ -109,14 +117,6 @@ angular.module('myApp.controllers', [])
   ])
   .controller('navController', ['$scope', '$location', 'personaService',
     function ($scope, $location, personaService) {
-
-      $scope.login = function () {
-       navigator.id.request();
-      };
-
-      $scope.logout = function () {
-       navigator.id.logout();
-      };
 
       $scope.isActive = function (location) {
         return location === $location.path();

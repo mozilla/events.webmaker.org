@@ -24,6 +24,13 @@ angular.module('myApp.services', ['ngResource'])
   .factory('personaService', ['$http', '$q', '$rootScope',
     function personaService($http, $q, $rootScope) {
 
+      // Set up '_persona' on root scope
+      $rootScope._persona = {
+        email: '',
+        login: navigator.id.request,
+        logout: navigator.id.logout
+      };
+
       navigator.id.watch({
         loggedInUser: null,
         onlogin: function(assertion) {
@@ -41,14 +48,14 @@ angular.module('myApp.services', ['ngResource'])
             });
 
           deferred.promise.then(function(email) {
-            $rootScope._user = email;
+            $rootScope._persona.email = email;
           });
         },
         onlogout: function() {
           $http.post('/persona/logout')
             .then(function(response) {
               if (response.data.status === 'okay') {
-                $rootScope._user = '';
+                $rootScope._persona.email = '';
               }
             });
         }

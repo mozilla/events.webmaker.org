@@ -25,11 +25,11 @@
         <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
         <li ng-class="{ active : isActive('/events') }"><a href="#/events">View Events</a></li>
       </ul>
-      <button ng-show="!_user" class="btn btn-info navbar-btn" ng-click="login()">Login</button>
-      <p class="navbar-text" ng-show="_user">
-        Hi, {{_user}}
+      <button ng-show="!_persona.email" class="btn btn-info navbar-btn" ng-click="persona.login()">Login</button>
+      <p class="navbar-text" ng-show="_persona.email">
+        Hi, {{_persona.email}}
       </p>
-      <button class="btn btn-default navbar-btn" ng-show="_user" ng-click="logout()">Logout</button>
+      <button class="btn btn-default navbar-btn" ng-show="_persona.email" ng-click="persona.logout()">Logout</button>
 
     </div><!-- /.navbar-collapse -->
   </nav>
