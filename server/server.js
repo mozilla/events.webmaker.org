@@ -6,16 +6,12 @@ Habitat.load();
 var env = new Habitat();
 
 // Defaults
-if(!env.get('port')) {
-  env.set('port', 1134);
+if(!env.get('PORT')) {
+  env.set('PORT', 1134);
 }
 
-if(!env.get('audience')) {
-  env.set('audience', 'http://localhost:' + env.get('port'));
-}
-
-if(!env.get('eventsLocation')) {
-  env.set('eventsLocation', 'http://webmaker-events-service.herokuapp.com');
+if(!env.get('EVENTS_LOCATION')) {
+  env.set('EVENTS_LOCATION', 'http://webmaker-events-service.herokuapp.com');
 }
 
 // App
