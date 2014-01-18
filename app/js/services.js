@@ -10,6 +10,10 @@ angular.module('myApp.services', ['ngResource'])
         });
     }
   ])
+  // TODO: More strongly enforced/real dependency system
+  .factory('vendor.moment', function () {
+    return window.moment;
+  })
   .factory('authInterceptor', function($rootScope, $q, $window) {
     return {
       request: function(config) {

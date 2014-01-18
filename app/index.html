@@ -31,14 +31,13 @@
         Hi, {{_persona.email}}
       </p>
       <button class="btn btn-default navbar-btn" ng-show="_persona.email" ng-click="_persona.logout()">Logout</button>
-
-    </div><!-- /.navbar-collapse -->
-
+    </div>
   </nav>
 
   <div class="container" ng-view></div>
 
   <script src="https://login.persona.org/include.js"></script>
+  <script src="bower_components/momentjs/min/moment.min.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>

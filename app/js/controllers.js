@@ -1,8 +1,8 @@
 // Controllers ----------------------------------------------------------------
 
 angular.module('myApp.controllers', [])
-  .controller('addEventController', ['$scope', '$location', 'eventService',
-    function ($scope, $location, eventService) {
+  .controller('addEventController', ['$scope', '$location', 'vendor.moment', 'eventService',
+    function ($scope, $location, moment, eventService) {
       // Create ISO date from HTML5 date & time input formats
       function dateTimeToISO(date, time) {
         return (new Date(date + ' ' + time)).toISOString();
@@ -17,6 +17,8 @@ angular.module('myApp.controllers', [])
       });
 
       $scope.event.attendees = 5; // Set starting value for form
+      $scope.event.beginDate = moment().add('d', 1).format('YYYY-MM-DD'); // Default to today
+      $scope.event.beginTime = '12:00'; // Noon default
 
       $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
