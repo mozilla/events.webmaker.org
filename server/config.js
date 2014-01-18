@@ -21,10 +21,5 @@ module.exports = function (env) {
     });
   });
 
-  // Authentication
-  require('express-persona')(app, {
-    audience: env.get('audience')
-  });
-
   return app;
 };
