@@ -39,7 +39,8 @@
       <div class="form-group">
         <label for="event-attendees">How many attendees are you expecting?</label>
         <select ng-model="event.attendees" class="form-control" id="event-attendees" name="attendees">
-          <option value="5" selected>Under 10</option>
+          <option value="0">I'm not sure</option>
+          <option value="5">Under 10</option>
           <option value="15">10 - 20</option>
           <option value="35">20 - 50</option>
           <option value="75">50 - 100</option>
@@ -114,11 +115,11 @@
         <input ng-model="event.organizer" name="email" class="form-control" type="email" readonly required>
       </div>
       <div class="col-sm-6">
-        <button class="btn btn-default" ng-click="_persona.login()">Login with a different email</button>
+        <button class="btn btn-default" ng-click="_persona.login()">Log in with a different email</button>
       </div>
     </div>
     <p class="help-block">
-      <span class="fa fa-lock"></span> You must login with this email to edit this event.
+      <span class="fa fa-lock"></span> You must log in with this email to edit this event.
     </p>
   </div>
 

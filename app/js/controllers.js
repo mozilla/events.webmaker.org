@@ -10,13 +10,16 @@ angular.module('myApp.controllers', [])
 
       $scope.event = {};
       $scope.attemptedToSubmit = false;
+      $scope.isLoggedIn = false;
 
-      // Keep email up to date
-      $scope.$watch('_persona.email', function () {
+      // Keep email and login status up to date
+      $scope.$watch('_persona.email', function (newValue) {
+        $scope.isLoggedIn = !! newValue;
         $scope.event.organizer = $scope._persona.email;
       });
 
-      $scope.event.attendees = 5; // Set starting value for form
+      // Set default values for form
+      $scope.event.attendees = 0;
       $scope.event.beginDate = moment().add('d', 1).format('YYYY-MM-DD'); // Default to today
       $scope.event.beginTime = '12:00'; // Noon default
 
