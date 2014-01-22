@@ -2,11 +2,11 @@
   <h1>Add an Event</h1>
 </header>
 
-<div class="alert alert-warning" ng-hide="isLoggedIn">
-  You need to <a ng-click="_persona.login()">log in</a> to add an event.
+<div class="alert alert-warning" ng-hide="_user.email">
+  You need to <a ng-click="login()">log in</a> to add an event.
 </div>
 
-<event-form ng-show="isLoggedIn">
+<event-form ng-show="_user.email">
   <button ng-click="addEvent()" type="submit" class="btn btn-lg btn-primary btn-mobile-block">
     Create Event
   </button>

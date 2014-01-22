@@ -10,12 +10,10 @@ angular.module('myApp.controllers', [])
 
       $scope.event = {};
       $scope.attemptedToSubmit = false;
-      $scope.isLoggedIn = false;
 
       // Keep email and login status up to date
-      $scope.$watch('_persona.email', function (newValue) {
-        $scope.isLoggedIn = !! newValue;
-        $scope.event.organizer = $scope._persona.email;
+      $scope.$watch('_user.email', function () {
+        $scope.event.organizer = $scope._user.email;
       });
 
       // Set default values for form
