@@ -45,7 +45,7 @@ angular.module('myApp.services', ['ngResource'])
 
       // Set up '_persona' on root scope
       $rootScope._persona = {
-        email: '',
+        email: $window.localStorage.email,
         login: function () {
           navigator.id.request();
         },
@@ -55,7 +55,7 @@ angular.module('myApp.services', ['ngResource'])
       };
 
       navigator.id.watch({
-        loggedInUser: null,
+        loggedInUser: $rootScope._persona.email || null,
         onlogin: function (assertion) {
           var deferred = $q.defer();
           var audience = window.location.origin;
@@ -79,7 +79,7 @@ angular.module('myApp.services', ['ngResource'])
             $window.localStorage.token = data.token;
 
           }, function (err) {
-            delete $window.localStorage.token;
+            navigator.id.logout();
             console.log(err);
           });
         },
@@ -87,6 +87,7 @@ angular.module('myApp.services', ['ngResource'])
           delete $rootScope._persona.admin;
           delete $rootScope._persona.email;
           delete $window.localStorage.token;
+          delete $window.localStorage.email;
           $rootScope.$apply();
         }
       });
