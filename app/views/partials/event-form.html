@@ -1,3 +1,5 @@
+<div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">Looks like you have some errors...</div>
+
 <form name="addEventForm" role="form" novalidate>
 
   <header class="page-header">
@@ -8,17 +10,17 @@
 
     <div class="col-sm-6">
 
-      <div class="form-group" ng-class="{'has-error': addEventForm.eventName.$dirty && addEventForm.eventName.$invalid}">
+      <div class="form-group" ng-class="{'has-error': addEventForm.title.$dirty && addEventForm.title.$invalid}">
         <label for="event-title">Name your event <span class="text-danger">*</span></label>
         <input
           ng-model="event.title"
-          name="eventName"
+          name="title"
           required
           id="event-title"
           class="form-control"
           placeholder="Use an awesome title so people will come!">
       </div>
-      <div class="alert alert-danger" ng-show="addEventForm.eventName.$dirty && addEventForm.eventName.$error.required">Required!</div>
+      <div class="alert alert-danger" ng-show="addEventForm.eventName.$dirty && addEventForm.title.$error.required">Required!</div>
 
       <div class="form-group" ng-class="{'has-error': addEventForm.description.$dirty && addEventForm.description.$invalid}">
         <label for="event-description">Describe your event <span class="text-danger">*</span></label>
@@ -112,7 +114,7 @@
     <label for="email">Administrator's Email</label>
     <div class="row">
       <div class="col-sm-6">
-        <input ng-model="event.organizer" name="email" class="form-control" type="email" readonly required>
+        <input ng-model="event.organizer" name="organizer" class="form-control" type="email" readonly required>
       </div>
       <div class="col-sm-6">
         <button class="btn btn-default" ng-click="login()">Log in with a different email</button>
@@ -127,5 +129,4 @@
   <!-- Submit Button -->
   <div class="form-group" ng-transclude></div>
 
-  <div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">Please fill out all required fields!</div>
 </form>

@@ -28,7 +28,7 @@
 
       <button ng-cloak ng-show="!_user.email" class="btn btn-primary btn-sm navbar-btn" ng-click="login()">Log In</button>
       <p class="navbar-text" ng-show="_user.email">
-        Hi, <strong>{{_user.email}}</strong>
+        Hi, <strong ng-cloak >{{_user.email}}</strong>
       </p>
 
       <button ng-cloak class="btn btn-primary btn-sm navbar-btn" ng-show="_user.email" ng-click="logout()">Log Out</button>

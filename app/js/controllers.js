@@ -24,6 +24,10 @@ angular.module('myApp.controllers', [])
       $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
 
+        if ($scope.addEventForm.$invalid) {
+          return window.scrollTo(0, 0);
+        }
+
         // Create a serialized event object to avoid modifying $scope
         // (ISO date will confuse the date picker)
         var serializedEvent = $scope.event;
