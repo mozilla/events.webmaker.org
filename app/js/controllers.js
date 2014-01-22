@@ -132,6 +132,7 @@ angular.module('myApp.controllers', [])
         id: $routeParams.id,
       }, function (data) {
         $scope.eventData = data;
+        $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
       }, function (err) {
         console.log(err);

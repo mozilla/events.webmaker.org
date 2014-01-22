@@ -1,13 +1,39 @@
-<header>
-  <!-- TODO - Only show for event creator -->
-  <h1>{{ eventData.title }} <a class="btn btn-primary pull-right" href="#/edit/{{ eventID }}">
-    Edit Event
-  </a></h1>
+<header class="row">
+  <div class="col-xs-12">
+    <h1>{{ eventData.title }}</h1>
+  </div>
 </header>
 
-<table class="table table-bordered">
-  <tr ng-repeat="(key, val) in eventData">
-    <td class="col-md-2 text-muted">{{key}}</td>
-    <td>{{val}}</td>
-  </tr>
-</table>
+<div ng-show="eventData.picture" class="row">
+  <div class="col-xs-12">
+    <img class="img-responsive" src="{{ eventData.picture }}" title="Event Image" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8">
+    <strong>{{ eventData.address }}</strong>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">
+    {{ eventData.friendlyStartDate }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    {{ eventData.description }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    Organized by: <a href="mailto:{{ eventData.organizer }}">{{ eventData.organizerId }}</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <a class="btn btn-primary" href="#/edit/{{ eventID }}">Edit Event</a>
+  </div>
+</div>

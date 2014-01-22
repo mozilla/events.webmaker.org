@@ -12,6 +12,8 @@
   content: @icon;
 }
 
+//  Resets --------------------------------------------------------------------
+
 body {
   padding-bottom: 10px;
 }
@@ -24,6 +26,8 @@ a {
   outline-color: transparent;
   outline-style: none;
 }
+
+//  Bootstrap Overrides -------------------------------------------------------
 
 .row {
   margin-top: 10px;
@@ -38,4 +42,10 @@ a {
       display: inline-block;
     }
   }
+}
+
+//  Angular Helpers -----------------------------------------------------------
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

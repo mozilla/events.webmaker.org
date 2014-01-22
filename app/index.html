@@ -26,12 +26,12 @@
         <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
       </ul>
 
-      <button ng-show="!_persona.email" class="btn btn-primary btn-sm navbar-btn" ng-click="_persona.login()">Log In</button>
-      <p class="navbar-text" ng-show="_persona.email">
+      <button ng-cloak ng-show="!_persona.email" class="btn btn-primary btn-sm navbar-btn" ng-click="_persona.login()">Log In</button>
+      <p ng-cloak class="navbar-text" ng-show="_persona.email">
         Hi, <strong>{{_persona.email}}</strong>
       </p>
 
-      <button class="btn btn-primary btn-sm navbar-btn" ng-show="_persona.email" ng-click="_persona.logout()">Log Out</button>
+      <button ng-cloak class="btn btn-primary btn-sm navbar-btn" ng-show="_persona.email" ng-click="_persona.logout()">Log Out</button>
     </div>
   </nav>
 
