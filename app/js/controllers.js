@@ -1,7 +1,7 @@
 // Controllers ----------------------------------------------------------------
 
 angular.module('myApp.controllers', [])
-  .controller('addEventController', ['$scope', '$location', 'vendor.moment', 'eventService',
+  .controller('addEventController', ['$scope', '$location', 'moment', 'eventService',
     function ($scope, $location, moment, eventService) {
       // Create ISO date from HTML5 date & time input formats
       function dateTimeToISO(date, time) {
