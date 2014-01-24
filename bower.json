@@ -15,6 +15,7 @@
     "angular-resource": "1.2.8",
     "angular-bootstrap": "0.10.0",
     "font-awesome": "4.0.3",
-    "momentjs": "2.5.0"
+    "momentjs": "2.5.0",
+    "chrono": "*"
   }
 }

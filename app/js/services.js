@@ -2,6 +2,7 @@
 
 angular.module('myApp.services', ['ngResource'])
   .constant('moment', window.moment)
+  .constant('chrono', window.chrono)
   .factory('authInterceptor', function ($rootScope, $q, $window) {
     return {
       request: function (config) {
@@ -65,7 +66,6 @@ angular.module('myApp.services', ['ngResource'])
             $rootScope._persona.email = data.email;
             $rootScope._persona.admin = data.admin;
             $window.localStorage.token = data.token;
-
           }, function (err) {
             delete $window.localStorage.token;
             console.log(err);

@@ -47,4 +47,4 @@ run(['$http', '$rootScope',
         $rootScope._config = data;
       });
   }
-])
+]);

@@ -59,8 +59,8 @@
   </header>
 
   <div class="form-group" ng-class="{'has-error': addEventForm.address.$dirty && addEventForm.address.$invalid}">
-    <label for="address">Event location <span class="text-danger">*</span></label>
-    <input ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter a location" autocomplete="off"></input>
+    <label for="form-address">Event location <span class="text-danger">*</span></label>
+    <input id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter a location" autocomplete="off"></input>
   </div>
 
   <div class="alert alert-danger" ng-show="addEventForm.address.$dirty && addEventForm.address.$error.required">Required!</div>
@@ -68,38 +68,26 @@
   <div class="row">
 
     <div class="col-sm-6">
-
       <div class="form-group">
-        <h4>Event Begins</h4>
-
-        <div class="form-group">
-          <label for="event-start-date">Date <span class="text-danger">*</span></label>
-          <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="date" />
-        </div>
-
-        <div class="form-group">
-          <label for="event-start-time">Time <span class="text-danger">*</span></label>
-          <input ng-model="event.beginTime" name="beginTime" required class="form-control" id="event-start-time" type="time" />
-        </div>
+        <label for="event-start-date">Start Date and Time <span class="text-danger">*</span></label>
+        <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm"/>
       </div>
-
     </div>
 
     <div class="col-sm-6">
-
       <div class="form-group">
-        <h4>Event Ends</h4>
-
-        <div class="form-group">
-          <label for="event-end-date">Date</label>
-          <input ng-model="event.endDate" name="endDate" class="form-control" id="event-end-date" type="date" />
-        </div>
-        <div class="form-group">
-          <label for="event-end-time">Time</label>
-          <input ng-model="event.endTime" name="endTime" class="form-control" id="event-end-time" type="time" />
-        </div>
+        <label for="event-duration">How Long? <span class="text-danger">*</span></label>
+        <select ng-model="event.duration" required class="form-control" id="event-duration" name="duration">
+          <option value="unknown">I'm not sure</option>
+          <option value="0.5">Half an hour</option>
+          <option value="1">1 hour</option>
+          <option value="1.5">1.5 hours</option>
+          <option value="2">2 hours</option>
+          <option value="2.5">2.5 hours</option>
+          <option value="3">3 hours</option>
+          <option value="unknown">Over 3 hours</option>
+        </select>
       </div>
-
     </div>
 
   </div>
