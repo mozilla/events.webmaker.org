@@ -57,8 +57,8 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService',
-    function ($scope, $routeParams, $location, eventService) {
+  .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService', 'moment',
+    function ($scope, $routeParams, $location, eventService, moment) {
       eventService.get({
         id: $routeParams.id
       }, function (data) {
@@ -77,24 +77,17 @@ angular.module('myApp.controllers', [])
           $scope.event.registerLink = data.registerLink;
         }
 
-        function zeroPrefix(number) {
-          if (number < 10) {
-            return '0' + number;
-          } else {
-            return number;
-          }
-        }
+        $scope.event.beginDate = moment(data.beginDate).format('MMMM Do YYYY [at] h:mma');
+        $scope.event.duration = 'unknown'; // default to unknown
 
-        var beginDate = new Date(data.beginDate);
-
-        $scope.event.beginDate = beginDate.getFullYear() + '-' + (zeroPrefix(beginDate.getMonth() + 1)) + '-' + zeroPrefix(beginDate.getDate());
-        $scope.event.beginTime = beginDate.getHours() + ':' + beginDate.getMinutes();
-
+        // Parse out duration from end date if it exists
         if (data.endDate) {
-          var endDate = new Date(data.endDate);
+          var endDate = moment(data.endDate);
+          var duration = endDate.diff(data.beginDate, 'minutes') / 60;
 
-          $scope.event.endDate = endDate.getFullYear() + '-' + (zeroPrefix(endDate.getMonth() + 1)) + '-' + zeroPrefix(endDate.getDate());
-          $scope.event.endTime = endDate.getHours() + ':' + endDate.getMinutes();
+          if (duration < 3 && duration > 0) {
+            $scope.event.duration = duration;
+          }
         }
       }, function (err) {
         console.error(err);
@@ -111,7 +104,7 @@ angular.module('myApp.controllers', [])
           console.log('saved ', data);
           $location.path('/events/' + $routeParams.id);
         }, function (err) {
-          console.log(err.data);
+          console.error(err.data);
         });
       };
 
@@ -122,7 +115,7 @@ angular.module('myApp.controllers', [])
           }, $scope.event, function () {
             console.log('deleted');
           }, function (err) {
-            console.log(err.data);
+            console.error(err.data);
           });
         }
       };
@@ -144,7 +137,7 @@ angular.module('myApp.controllers', [])
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
       }, function (err) {
-        console.log(err);
+        console.error(err);
       });
     }
   ])
