@@ -25,6 +25,7 @@ angular.module('myApp.controllers', [])
         $scope.attemptedToSubmit = true;
 
         if ($scope.addEventForm.$invalid) {
+          // prevent form from being sent if there are invalid fields
           return window.scrollTo(0, 0);
         }
 
