@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/gvn/webmaker-events.png)](https://codeclimate.com/github/gvn/webmaker-events)
+
 # Webmaker Events
 
 ## Build Dependencies
