@@ -10,12 +10,10 @@ angular.module('myApp.controllers', [])
 
       $scope.event = {};
       $scope.attemptedToSubmit = false;
-      $scope.isLoggedIn = false;
 
       // Keep email and login status up to date
-      $scope.$watch('_persona.email', function (newValue) {
-        $scope.isLoggedIn = !! newValue;
-        $scope.event.organizer = $scope._persona.email;
+      $scope.$watch('_user.email', function () {
+        $scope.event.organizer = $scope._user.email;
       });
 
       // Set default values for form
@@ -25,6 +23,11 @@ angular.module('myApp.controllers', [])
 
       $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
+
+        if ($scope.addEventForm.$invalid) {
+          // prevent form from being sent if there are invalid fields
+          return window.scrollTo(0, 0);
+        }
 
         // Create a serialized event object to avoid modifying $scope
         // (ISO date will confuse the date picker)

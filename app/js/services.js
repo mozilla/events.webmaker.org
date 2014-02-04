@@ -18,8 +18,8 @@ angular.module('myApp.services', ['ngResource'])
     return {
       request: function (config) {
         config.headers = config.headers || {};
-        if ($window.localStorage.token) {
-          config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+        if ($rootScope._user) {
+          config.headers.Authorization = 'Bearer ' + $rootScope._user.token;
         }
         return config;
       },
@@ -43,15 +43,25 @@ angular.module('myApp.services', ['ngResource'])
   .factory('personaService', ['$http', '$q', '$rootScope', '$location', '$window',
     function personaService($http, $q, $rootScope, $location, $window) {
 
-      // Set up '_persona' on root scope
-      $rootScope._persona = {
-        email: '',
-        login: function () {
-          navigator.id.request();
-        },
-        logout: function () {
-          navigator.id.logout();
+      // Restore user state from local storage.
+      $rootScope._user = $window.localStorage._user ? angular.fromJson($window.localStorage._user) : {};
+
+      // Update local storage on changes to _user object.
+      $rootScope.$watch('_user', function() {
+        if ($rootScope._user) {
+          $window.localStorage._user = angular.toJson($rootScope._user);
+        } else {
+          delete $window.localStorage._user;
         }
+      });
+
+      // Set up login/logout functions
+      $rootScope.login = function () {
+        navigator.id.request();
+      };
+      $rootScope.logout = function () {
+        navigator.id.logout();
+        $rootScope._user = {};
       };
 
       navigator.id.watch({
@@ -74,19 +84,15 @@ angular.module('myApp.services', ['ngResource'])
             });
 
           deferred.promise.then(function (data) {
-            $rootScope._persona.email = data.email;
-            $rootScope._persona.admin = data.admin;
-            $window.localStorage.token = data.token;
+            $rootScope._user = data;
 
           }, function (err) {
-            delete $window.localStorage.token;
+            navigator.id.logout();
             console.log(err);
           });
         },
         onlogout: function () {
-          delete $rootScope._persona.admin;
-          delete $rootScope._persona.email;
-          delete $window.localStorage.token;
+          $rootScope._user = {};
           $rootScope.$apply();
         }
       });
