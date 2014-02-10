@@ -22,6 +22,7 @@ angular.module('myApp.controllers', [])
       $scope.$watch('event.beginDate', function (newValue) {
         if (newValue) {
           $scope.event.parsedNaturalStartDate = chrono.parseDate(newValue);
+          $scope.event.isValidStartDate = moment($scope.event.parsedNaturalStartDate).isValid();
           $scope.event.humanParsedDate = moment($scope.event.parsedNaturalStartDate).format('MMMM Do YYYY [at] h:mma');
         }
       });
@@ -33,7 +34,9 @@ angular.module('myApp.controllers', [])
         var serializedEvent = {};
         angular.copy($scope.event, serializedEvent);
 
-        serializedEvent.beginDate = $scope.event.parsedNaturalStartDate.toISOString();
+        if ($scope.event.beginDate) {
+          serializedEvent.beginDate = $scope.event.parsedNaturalStartDate.toISOString();
+        }
 
         if ($scope.event.duration !== 'unknown') {
           serializedEvent.endDate = moment($scope.event.parsedNaturalStartDate).add('hours', parseFloat($scope.event.duration, 10)).toISOString();
@@ -48,13 +51,17 @@ angular.module('myApp.controllers', [])
 
         console.log(serializedEvent);
 
-        eventService.save(serializedEvent, function (data) {
-          // Switch to detail view on successful creation
-          $location.path('/events/' + data.id);
-        }, function (err) {
-          // TODO : Show error to user
-          console.error('addEvent save error: ' + err.data);
-        });
+        if ($scope.addEventForm.$valid) {
+          eventService.save(serializedEvent, function (data) {
+            // Switch to detail view on successful creation
+            $location.path('/events/' + data.id);
+          }, function (err) {
+            // TODO : Show error to user
+            console.error('addEvent save error: ' + err.data);
+          });
+        } else {
+          console.warn('Form is invalid.');
+        }
       };
     }
   ])
