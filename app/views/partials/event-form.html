@@ -72,6 +72,9 @@
         <label for="event-start-date">Start Date and Time <span class="text-danger">*</span></label>
         <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm"/>
       </div>
+      <div class="add-bottom-margin">
+        <em>{{ event.humanParsedDate }}</em>
+      </div>
     </div>
 
     <div class="col-sm-6">

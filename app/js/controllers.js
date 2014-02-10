@@ -22,6 +22,7 @@ angular.module('myApp.controllers', [])
       $scope.$watch('event.beginDate', function (newValue) {
         if (newValue) {
           $scope.event.parsedNaturalStartDate = chrono.parseDate(newValue);
+          $scope.event.humanParsedDate = moment($scope.event.parsedNaturalStartDate).format('MMMM Do YYYY [at] h:mma');
         }
       });
 
