@@ -30,8 +30,8 @@ angular.module('myApp.controllers', [])
         $scope.attemptedToSubmit = true;
 
         // Create a serialized event object to avoid modifying $scope
-        // Stringify & parse to create a true copy instead of a reference
-        var serializedEvent = JSON.parse(JSON.stringify($scope.event));
+        var serializedEvent = {};
+        angular.copy($scope.event, serializedEvent);
 
         serializedEvent.beginDate = $scope.event.parsedNaturalStartDate.toISOString();
 
