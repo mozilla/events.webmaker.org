@@ -1,16 +1,16 @@
 // Controllers ----------------------------------------------------------------
 
 angular.module('myApp.controllers', [])
-  .controller('addEventController', ['$scope', '$location', 'vendor.moment', 'eventService',
-    function ($scope, $location, moment, eventService) {
-      // Create ISO date from HTML5 date & time input formats
-      function dateTimeToISO(date, time) {
-        return (new Date(date + ' ' + time)).toISOString();
-      }
-
+  .controller('addEventController', ['$scope', '$location', 'moment', 'chrono', 'eventService',
+    function ($scope, $location, moment, chrono, eventService) {
       $scope.event = {};
+      $scope.event.parsedNaturalStartDate = undefined;
       $scope.attemptedToSubmit = false;
       $scope.isLoggedIn = false;
+
+      // Set default values for form
+      $scope.event.attendees = 0; // Unknown amount
+      $scope.event.duration = 1; // 1 hour default
 
       // Keep email and login status up to date
       $scope.$watch('_persona.email', function (newValue) {
@@ -18,38 +18,48 @@ angular.module('myApp.controllers', [])
         $scope.event.organizer = $scope._persona.email;
       });
 
-      // Set default values for form
-      $scope.event.attendees = 0;
-      $scope.event.beginDate = moment().add('d', 1).format('YYYY-MM-DD'); // Default to today
-      $scope.event.beginTime = '12:00'; // Noon default
+      // Continuously translate natural language date to JS Date
+      $scope.$watch('event.beginDate', function (newValue) {
+        if (newValue) {
+          $scope.event.parsedNaturalStartDate = chrono.parseDate(newValue);
+          $scope.event.humanParsedDate = moment($scope.event.parsedNaturalStartDate).format('MMMM Do YYYY [at] h:mma');
+        }
+      });
 
       $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
 
         // Create a serialized event object to avoid modifying $scope
-        // (ISO date will confuse the date picker)
-        var serializedEvent = $scope.event;
+        var serializedEvent = {};
+        angular.copy($scope.event, serializedEvent);
 
-        serializedEvent.beginDate = dateTimeToISO($scope.event.beginDate, $scope.event.beginTime);
+        serializedEvent.beginDate = $scope.event.parsedNaturalStartDate.toISOString();
 
-        if ($scope.event.endDate && $scope.event.endTime) {
-          serializedEvent.endDate = dateTimeToISO($scope.event.endDate, $scope.event.endTime);
+        if ($scope.event.duration !== 'unknown') {
+          serializedEvent.endDate = moment($scope.event.parsedNaturalStartDate).add('hours', parseFloat($scope.event.duration, 10)).toISOString();
+        } else {
+          // Don't send an end date if duration is not specific
+          delete serializedEvent.endDate;
         }
 
-        // Remove DB deprecated values from client event object
-        delete serializedEvent.beginTime;
-        delete serializedEvent.endTime;
+        // Remove nonexistant DB values from client event object
+        delete serializedEvent.duration;
+        delete serializedEvent.parsedNaturalStartDate;
+
+        console.log(serializedEvent);
 
         eventService.save(serializedEvent, function (data) {
+          // Switch to detail view on successful creation
           $location.path('/events/' + data.id);
         }, function (err) {
+          // TODO : Show error to user
           console.error('addEvent save error: ' + err.data);
         });
       };
     }
   ])
-  .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService',
-    function ($scope, $routeParams, $location, eventService) {
+  .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService', 'moment',
+    function ($scope, $routeParams, $location, eventService, moment) {
       eventService.get({
         id: $routeParams.id
       }, function (data) {
@@ -68,24 +78,17 @@ angular.module('myApp.controllers', [])
           $scope.event.registerLink = data.registerLink;
         }
 
-        function zeroPrefix(number) {
-          if (number < 10) {
-            return '0' + number;
-          } else {
-            return number;
-          }
-        }
+        $scope.event.beginDate = moment(data.beginDate).format('MMMM Do YYYY [at] h:mma');
+        $scope.event.duration = 'unknown'; // default to unknown
 
-        var beginDate = new Date(data.beginDate);
-
-        $scope.event.beginDate = beginDate.getFullYear() + '-' + (zeroPrefix(beginDate.getMonth() + 1)) + '-' + zeroPrefix(beginDate.getDate());
-        $scope.event.beginTime = beginDate.getHours() + ':' + beginDate.getMinutes();
-
+        // Parse out duration from end date if it exists
         if (data.endDate) {
-          var endDate = new Date(data.endDate);
+          var endDate = moment(data.endDate);
+          var duration = endDate.diff(data.beginDate, 'minutes') / 60;
 
-          $scope.event.endDate = endDate.getFullYear() + '-' + (zeroPrefix(endDate.getMonth() + 1)) + '-' + zeroPrefix(endDate.getDate());
-          $scope.event.endTime = endDate.getHours() + ':' + endDate.getMinutes();
+          if (duration < 3 && duration > 0) {
+            $scope.event.duration = duration;
+          }
         }
       }, function (err) {
         console.error(err);
@@ -102,7 +105,7 @@ angular.module('myApp.controllers', [])
           console.log('saved ', data);
           $location.path('/events/' + $routeParams.id);
         }, function (err) {
-          console.log(err.data);
+          console.error(err.data);
         });
       };
 
@@ -113,7 +116,7 @@ angular.module('myApp.controllers', [])
           }, $scope.event, function () {
             console.log('deleted');
           }, function (err) {
-            console.log(err.data);
+            console.error(err.data);
           });
         }
       };
@@ -126,8 +129,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('eventDetailController', ['$scope', '$http', '$routeParams', 'eventService',
-    function ($scope, $http, $routeParams, eventService) {
+  .controller('eventDetailController', ['$scope', '$http', '$routeParams', 'eventService', 'moment',
+    function ($scope, $http, $routeParams, eventService, moment) {
       eventService.get({
         id: $routeParams.id,
       }, function (data) {
@@ -135,7 +138,7 @@ angular.module('myApp.controllers', [])
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
       }, function (err) {
-        console.log(err);
+        console.error(err);
       });
     }
   ])

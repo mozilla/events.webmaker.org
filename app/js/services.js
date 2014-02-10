@@ -1,19 +1,8 @@
 // Services -------------------------------------------------------------------
 
 angular.module('myApp.services', ['ngResource'])
-  .run(['$http', '$rootScope',
-    function ($http, $rootScope) {
-      $http
-        .get('/config.json')
-        .success(function (data) {
-          $rootScope._config = data;
-        });
-    }
-  ])
-  .factory('vendor.moment', function () {
-    // TODO: More strongly enforced/real dependency system
-    return window.moment;
-  })
+  .constant('moment', window.moment)
+  .constant('chrono', window.chrono)
   .factory('authInterceptor', function ($rootScope, $q, $window) {
     return {
       request: function (config) {
@@ -77,7 +66,6 @@ angular.module('myApp.services', ['ngResource'])
             $rootScope._persona.email = data.email;
             $rootScope._persona.admin = data.admin;
             $window.localStorage.token = data.token;
-
           }, function (err) {
             delete $window.localStorage.token;
             console.log(err);

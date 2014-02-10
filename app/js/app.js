@@ -29,15 +29,22 @@ config(['$routeProvider',
       redirectTo: '/events'
     });
   }
-])
-.config(function($httpProvider) {
+]).
+config(function ($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
-})
-.
-run(['$rootScope',
-  function ($rootScope) {
+}).
+run(['$http', '$rootScope',
+  function ($http, $rootScope) {
+    // Jump to top of viewport when new views load
     $rootScope.$on('$locationChangeSuccess', function (event) {
       window.scrollTo(0, 0);
     });
+
+    // Load app configuration
+    $http
+      .get('/config.json')
+      .success(function (data) {
+        $rootScope._config = data;
+      });
   }
 ]);
