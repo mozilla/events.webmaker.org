@@ -2,7 +2,8 @@
   "globals": {
     "module": false,
     "angular": false,
-    "console": false
+    "console": false,
+    "google": false
   },
   "bitwise": true,
   "browser": true,
