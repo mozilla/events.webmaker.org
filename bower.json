@@ -16,6 +16,7 @@
     "angular-bootstrap": "0.10.0",
     "font-awesome": "4.0.3",
     "momentjs": "2.5.0",
-    "chrono": "0.1.9"
+    "chrono": "0.1.9",
+    "makerstrap": "0.0.3"
   }
 }
