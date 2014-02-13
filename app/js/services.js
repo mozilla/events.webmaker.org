@@ -3,6 +3,7 @@
 angular.module('myApp.services', ['ngResource'])
   .constant('moment', window.moment)
   .constant('chrono', window.chrono)
+  .constant('showdown', window.Showdown)
   .factory('authInterceptor', function ($rootScope, $q, $window) {
     return {
       request: function (config) {
