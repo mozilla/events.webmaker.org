@@ -31,3 +31,4 @@ To run the service locally:
 
 - **grunt** - Runs a server at [localhost:1134](http://localhost:1134).
 - **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md).
+- **grunt heroku** - For heroku
