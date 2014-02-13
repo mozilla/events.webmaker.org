@@ -59,4 +59,7 @@ module.exports = function (grunt) {
   // Validate code (read only)
   grunt.registerTask('validate', ['jsbeautifier:validate', 'jshint']);
 
+  // Heroku
+  grunt.registerTask('heroku', ['less']);
+
 };
