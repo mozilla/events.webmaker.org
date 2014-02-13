@@ -18,6 +18,7 @@
     "momentjs": "2.5.0",
     "chrono": "0.1.9",
     "showdown": "0.3.1",
-    "makerstrap": "0.0.3"
+    "makerstrap": "0.0.3",
+    "webmaker-auth-client": "0.0.14"
   }
 }
