@@ -4,82 +4,55 @@ angular.module('myApp.services', ['ngResource'])
   .constant('moment', window.moment)
   .constant('chrono', window.chrono)
   .constant('showdown', window.Showdown)
-  .factory('authInterceptor', function ($rootScope, $q, $window) {
-    return {
-      request: function (config) {
-        config.headers = config.headers || {};
-        if ($window.localStorage.token) {
-          config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
-        }
-        return config;
-      },
-      response: function (response) {
-        if (response.status === 401) {
-          response.data = 'There was a problem with the authentication token -- maybe you are not signed in?';
-        }
-        return response || $q.when(response);
-      }
-    };
-  })
   .factory('eventService', ['$rootScope', '$resource',
     function ($rootScope, $resource) {
-      return $resource($rootScope._config.eventsLocation + '/events/:id', null, {
+      return $resource('http://localhost:1981' + '/events/:id', null, {
         update: {
           method: 'PUT'
         }
       });
     }
   ])
-  .factory('personaService', ['$http', '$q', '$rootScope', '$location', '$window',
-    function personaService($http, $q, $rootScope, $location, $window) {
+  .factory('authService', ['$rootScope',
+    function authService($rootScope) {
 
-      // Set up '_persona' on root scope
-      $rootScope._persona = {
-        email: '',
-        login: function () {
-          navigator.id.request();
-        },
-        logout: function () {
-          navigator.id.logout();
-        }
-      };
+      // This is needed to apply scope changes for events that happen in
+      // async callbacks.
+      function apply() {
+        $rootScope.$$phase || $rootScope.$apply();
+      }
 
-      navigator.id.watch({
-        loggedInUser: null,
-        onlogin: function (assertion) {
-          var deferred = $q.defer();
-          var audience = window.location.origin;
-
-          $http
-            .post($rootScope._config.eventsLocation + '/auth', {
-              audience: audience,
-              assertion: assertion
-            })
-            .then(function (response) {
-              if (response.status !== 200) {
-                deferred.reject(response.data);
-              } else {
-                deferred.resolve(response.data);
-              }
-            });
-
-          deferred.promise.then(function (data) {
-            $rootScope._persona.email = data.email;
-            $rootScope._persona.admin = data.admin;
-            $window.localStorage.token = data.token;
-          }, function (err) {
-            delete $window.localStorage.token;
-            console.log(err);
-          });
-        },
-        onlogout: function () {
-          delete $rootScope._persona.admin;
-          delete $rootScope._persona.email;
-          delete $window.localStorage.token;
-          $rootScope.$apply();
-        }
+      var auth = new WebmakerAuthClient({
+        host: 'http://localhost:1981',/*$rootScope.config.eventsLocation*/
+        handleNewUserUI: false
       });
 
-      return {};
+      // Set up login/logout functions
+      $rootScope.login = auth.login;
+      $rootScope.logout = auth.logout;
+
+      // Set up user data
+      $rootScope._user = {};
+
+      auth.on('login', function(user) {
+        $rootScope._user = user;
+        apply();
+
+      });
+
+      auth.on('verify', function(user) {
+        $rootScope._user = user;
+        apply();
+      });
+
+      auth.on('logout', function(why) {
+       $rootScope._user = {};
+      });
+
+      auth.on('error', function(message, xhr) {
+        console.log('error', message, xhr);
+      });
+
+      return auth;
     }
   ]);

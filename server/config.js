@@ -6,10 +6,6 @@ module.exports = function (env) {
   app.use(express.compress());
   app.use(express.json());
   app.use(express.urlencoded());
-  app.use(express.cookieParser())
-  app.use(express.session({
-    secret: 'awesomepersonasauce'
-  }));
 
   // Static files
   app.use(express.static('./app'));

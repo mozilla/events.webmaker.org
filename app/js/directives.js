@@ -15,6 +15,7 @@ angular.module('myApp.directives', [])
       transclude: true
     };
   })
+
   .directive('collapse', function () {
     // Extend the `collapse` directive to collapse
     return {
