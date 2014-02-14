@@ -22,9 +22,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12">
-    {{ eventData.description }}
-  </div>
+  <div ng-bind-html="eventData.description | markdown" class="col-xs-12"></div>
 </div>
 
 <div class="row">
