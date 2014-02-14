@@ -13,18 +13,26 @@ config(['$routeProvider',
       templateUrl: 'views/add.html',
       controller: 'addEventController'
     });
+
     $routeProvider.when('/events', {
       templateUrl: 'views/list.html',
       controller: 'eventListController'
     });
+
     $routeProvider.when('/events/:id', {
       templateUrl: 'views/detail.html',
       controller: 'eventDetailController'
     });
+
     $routeProvider.when('/edit/:id', {
       templateUrl: 'views/edit.html',
       controller: 'eventEditController'
     });
+
+    $routeProvider.when('/', {
+      templateUrl: 'views/home.html'
+    });
+
     $routeProvider.otherwise({
       redirectTo: '/events'
     });
