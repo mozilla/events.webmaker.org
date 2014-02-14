@@ -25,7 +25,14 @@ angular.module('myApp.controllers', [])
         }
       });
 
-      $scope.addEvent = function() {
+      $scope.$on('locationAutocompleted', function (event, data) {
+        $scope.event.latitude = data.latitude;
+        $scope.event.longitude = data.longitude;
+        $scope.event.city = data.city;
+        $scope.event.country = data.country;
+      });
+
+      $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
 
         if ($scope.addEventForm.$invalid) {
@@ -104,7 +111,14 @@ angular.module('myApp.controllers', [])
         console.error(err);
       });
 
-      $scope.saveChanges = function() {
+      $scope.$on('locationAutocompleted', function (event, data) {
+        $scope.event.latitude = data.latitude;
+        $scope.event.longitude = data.longitude;
+        $scope.event.city = data.city;
+        $scope.event.country = data.country;
+      });
+
+      $scope.saveChanges = function () {
         console.log('saveChanges');
 
         $scope.attemptedToSubmit = true;

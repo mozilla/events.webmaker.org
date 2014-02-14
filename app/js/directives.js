@@ -29,13 +29,12 @@ angular.module('myApp.directives', [])
               }
             });
 
-            // Directly attach address info to scope.
-            // TODO: This is kind of gross because it's a 2-way dep.
-            //       Look into firing event or some other non domain-specific method
-            $scope.event.latitude = placeData.geometry.location.lat();
-            $scope.event.longitude = placeData.geometry.location.lng();
-            $scope.event.city = city;
-            $scope.event.country = country;
+            $scope.$emit('locationAutocompleted', {
+              latitude: placeData.geometry.location.lat(),
+              longitude: placeData.geometry.location.lng(),
+              city: city,
+              country: country
+            });
 
             // Force view model to update after autocompletion
             // TODO: This is kind of gross too. What's the "angular way"?
