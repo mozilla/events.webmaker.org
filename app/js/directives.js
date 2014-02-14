@@ -44,6 +44,41 @@ angular.module('myApp.directives', [])
       ]
     };
   })
+  .directive('weListing', function () {
+    return {
+      restrict: 'E',
+      link: function ($scope, $element) {
+        $scope.geoLocationEnabled = false;
+
+        var myLatitude, myLongitude;
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+          myLatitude = position.coords.latitude;
+          myLongitude = position.coords.longitude;
+
+          $scope.geoLocationEnabled = true;
+        });
+
+        function distance(x1, y1, x2, y2) {
+          return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+        }
+
+        $scope.orderByProximity = function (event) {
+          if (event.latitude && event.longitude) {
+            return distance(myLatitude, myLongitude, event.latitude, event.longitude);
+          } else {
+            // If no lat/long are available, assume event is very far away
+            return 999999999;
+          }
+        };
+
+        $scope.orderByDate = function (event) {
+          var date = new Date(event.beginDate);
+          return date.valueOf();
+        };
+      }
+    };
+  })
   .directive('eventForm', function () {
     return {
       restrict: 'E',

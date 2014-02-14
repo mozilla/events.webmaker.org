@@ -3,7 +3,15 @@
 </header>
 
 <div class="row">
-  <div class="col-sm-12">
+  <we-listing class="col-sm-12">
+    <p>Sort by</p>
+
+    <div class="btn-group">
+      <button ng-click="sortOrder = orderByDate" type="button" class="btn btn-default">Upcoming</button>
+      <button ng-click="sortOrder = orderByProximity" ng-show="geoLocationEnabled" type="button" class="btn btn-default">Distance</button>
+      <button ng-click="sortOrder = 'title'" type="button" class="btn btn-default">Event Name</button>
+    </div>
+
     <table class="table table-striped">
       <thead>
         <tr>
@@ -11,10 +19,10 @@
           <th>Date</th>
         </tr>
       </thead>
-      <tr ng-repeat="event in events">
+      <tr ng-repeat="event in events | orderBy: sortOrder">
         <td><a href="#/events/{{event.id}}">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
         <td>{{ event.beginDate | date:'MMM dd, yyyy' }}</td>
       </tr>
     </table>
-  </div>
+  </we-listing>
 </div>
