@@ -1,20 +1,21 @@
 // Services -------------------------------------------------------------------
 
 angular.module('myApp.services', ['ngResource'])
+  .constant('config', window.eventsConfig)
   .constant('moment', window.moment)
   .constant('chrono', window.chrono)
   .constant('showdown', window.Showdown)
-  .factory('eventService', ['$rootScope', '$resource',
-    function ($rootScope, $resource) {
-      return $resource('http://localhost:1981' + '/events/:id', null, {
+  .factory('eventService', ['$rootScope', '$resource', 'config',
+    function ($rootScope, $resource, config) {
+      return $resource(config.eventsLocation + '/events/:id', null, {
         update: {
           method: 'PUT'
         }
       });
     }
   ])
-  .factory('authService', ['$rootScope',
-    function authService($rootScope) {
+  .factory('authService', ['$rootScope', 'config',
+    function authService($rootScope, config) {
 
       // This is needed to apply scope changes for events that happen in
       // async callbacks.
@@ -23,7 +24,7 @@ angular.module('myApp.services', ['ngResource'])
       }
 
       var auth = new WebmakerAuthClient({
-        host: 'http://localhost:1981',/*$rootScope.config.eventsLocation*/
+        host: config.eventsLocation,
         handleNewUserUI: false
       });
 

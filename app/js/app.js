@@ -50,11 +50,5 @@ run(['$http', '$rootScope',
       window.scrollTo(0, 0);
     });
 
-    // Load app configuration
-    $http
-      .get('/config.json')
-      .success(function (data) {
-        $rootScope.config = data;
-      });
   }
 ]);

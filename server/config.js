@@ -11,10 +11,13 @@ module.exports = function (env) {
   app.use(express.static('./app'));
 
   // Serve up virtual configuration "file"
-  app.get('/config.json', function (req, res) {
-    res.json({
+  app.get('/config.js', function (req, res) {
+    var config = {
       eventsLocation: env.get('eventsLocation')
-    });
+    };
+
+    res.setHeader('Content-type', 'text/javascript');
+    res.send('window.eventsConfig = ' + JSON.stringify(config));
   });
 
   return app;
