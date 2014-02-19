@@ -2,24 +2,22 @@
 
 angular.module('myApp.controllers', [])
   .controller('addEventController', ['$scope', '$location', 'moment', 'chrono', 'eventService',
-    function ($scope, $location, moment, chrono, eventService) {
+    function($scope, $location, moment, chrono, eventService) {
       $scope.event = {};
       $scope.event.parsedNaturalStartDate = undefined;
       $scope.attemptedToSubmit = false;
-      $scope.isLoggedIn = false;
 
       // Set default values for form
       $scope.event.attendees = 0; // Unknown amount
       $scope.event.duration = 1; // 1 hour default
 
       // Keep email and login status up to date
-      $scope.$watch('_persona.email', function (newValue) {
-        $scope.isLoggedIn = !! newValue;
-        $scope.event.organizer = $scope._persona.email;
+      $scope.$watch('_user.email', function() {
+        $scope.event.organizer = $scope._user.email;
       });
 
       // Continuously translate natural language date to JS Date
-      $scope.$watch('event.beginDate', function (newValue) {
+      $scope.$watch('event.beginDate', function(newValue) {
         if (newValue) {
           $scope.event.parsedNaturalStartDate = chrono.parseDate(newValue);
           $scope.event.isValidStartDate = moment($scope.event.parsedNaturalStartDate).isValid();
@@ -27,8 +25,13 @@ angular.module('myApp.controllers', [])
         }
       });
 
-      $scope.addEvent = function () {
+      $scope.addEvent = function() {
         $scope.attemptedToSubmit = true;
+
+        if ($scope.addEventForm.$invalid) {
+          // prevent form from being sent if there are invalid fields
+          return window.scrollTo(0, 0);
+        }
 
         // Create a serialized event object to avoid modifying $scope
         var serializedEvent = {};
@@ -52,10 +55,10 @@ angular.module('myApp.controllers', [])
         console.log(serializedEvent);
 
         if ($scope.addEventForm.$valid) {
-          eventService.save(serializedEvent, function (data) {
+          eventService.save(serializedEvent, function(data) {
             // Switch to detail view on successful creation
             $location.path('/events/' + data.id);
-          }, function (err) {
+          }, function(err) {
             // TODO : Show error to user
             console.error('addEvent save error: ' + err.data);
           });
@@ -66,10 +69,10 @@ angular.module('myApp.controllers', [])
     }
   ])
   .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService', 'moment',
-    function ($scope, $routeParams, $location, eventService, moment) {
+    function($scope, $routeParams, $location, eventService, moment) {
       eventService.get({
         id: $routeParams.id
-      }, function (data) {
+      }, function(data) {
 
         // Update all the values in the form with values from DB:
 
@@ -97,32 +100,32 @@ angular.module('myApp.controllers', [])
             $scope.event.duration = duration;
           }
         }
-      }, function (err) {
+      }, function(err) {
         console.error(err);
       });
 
-      $scope.saveChanges = function () {
+      $scope.saveChanges = function() {
         console.log('saveChanges');
 
         $scope.attemptedToSubmit = true;
 
         eventService.update({
           id: $routeParams.id
-        }, $scope.event, function (data) {
+        }, $scope.event, function(data) {
           console.log('saved ', data);
           $location.path('/events/' + $routeParams.id);
-        }, function (err) {
+        }, function(err) {
           console.error(err.data);
         });
       };
 
-      $scope.deleteEvent = function () {
+      $scope.deleteEvent = function() {
         if (window.confirm('Are you sure you want to delete your event?')) {
           eventService.delete({
             id: $routeParams.id
-          }, $scope.event, function () {
+          }, $scope.event, function() {
             console.log('deleted');
-          }, function (err) {
+          }, function(err) {
             console.error(err.data);
           });
         }
@@ -130,30 +133,86 @@ angular.module('myApp.controllers', [])
     }
   ])
   .controller('eventListController', ['$scope', 'eventService',
-    function ($scope, eventService) {
-      eventService.query(function (data) {
+    function($scope, eventService) {
+      eventService.query(function(data) {
         $scope.events = data;
       });
     }
   ])
   .controller('eventDetailController', ['$scope', '$http', '$routeParams', 'eventService', 'moment',
-    function ($scope, $http, $routeParams, eventService, moment) {
+    function($scope, $http, $routeParams, eventService, moment) {
       eventService.get({
         id: $routeParams.id,
-      }, function (data) {
+      }, function(data) {
         $scope.eventData = data;
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
-      }, function (err) {
+      }, function(err) {
         console.error(err);
       });
     }
   ])
-  .controller('navController', ['$scope', '$location', 'personaService',
-    function ($scope, $location, personaService) {
+  .controller('navController', ['$scope', '$location',
+    function($scope, $location) {
 
-      $scope.isActive = function (location) {
+      $scope.isActive = function(location) {
         return location === $location.path();
       };
+    }
+  ])
+  .controller('createUserController', ['$scope', '$http', '$modal', 'authService',
+    function($scope, $http, $modal, authService) {
+
+      authService.on('newuser', function(assertion) {
+        var modalInstance = $modal.open({
+          templateUrl: 'views/partials/create-user-form.html',
+          controller: createUserCtrl,
+          resolve: {
+            assertion: function() {
+              return assertion;
+            }
+          }
+        });
+      });
+
+      var createUserCtrl = function($scope, $modalInstance, authService, assertion) {
+
+        $scope.form = {};
+        $scope.user = {};
+
+        $scope.checkUsername = function() {
+          if (!$scope.form.user.username) {
+            return;
+          }
+          $http
+            .post(authService.urls.checkUsername, {
+              username: $scope.form.user.username.$viewValue
+            })
+            .success(function(username) {
+              $scope.form.user.username.$setValidity('taken', !username.exists);
+            })
+            .error(function(err) {
+              console.log(err);
+              $scope.form.user.username.$setValidity('taken', true);
+            });
+        };
+
+        $scope.createUser = function() {
+          $scope.submit = true;
+          if ($scope.form.user.$valid && $scope.form.agree) {
+            authService.createUser({
+              assertion: assertion,
+              user: $scope.user
+            });
+            $modalInstance.close();
+          }
+        };
+
+        $scope.cancel = function() {
+          $modalInstance.dismiss('cancel');
+        };
+      };
+
+      authService.verify();
     }
   ]);

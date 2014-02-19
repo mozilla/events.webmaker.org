@@ -6,19 +6,18 @@ module.exports = function (env) {
   app.use(express.compress());
   app.use(express.json());
   app.use(express.urlencoded());
-  app.use(express.cookieParser())
-  app.use(express.session({
-    secret: 'awesomepersonasauce'
-  }));
 
   // Static files
   app.use(express.static('./app'));
 
   // Serve up virtual configuration "file"
-  app.get('/config.json', function (req, res) {
-    res.json({
-      eventsLocation: env.get('eventsLocation')
-    });
+  app.get('/config.js', function (req, res) {
+    var config = {
+      eventsLocation: env.get('eventsLocation', 'http://localhost:1989')
+    };
+
+    res.setHeader('Content-type', 'text/javascript');
+    res.send('window.eventsConfig = ' + JSON.stringify(config));
   });
 
   return app;

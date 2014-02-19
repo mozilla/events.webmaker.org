@@ -9,35 +9,45 @@
 </head>
 <body>
 
-  <nav class="container navbar navbar-default" ng-controller="navController">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="fa fa-bars fa-lg text-muted"></span>
-      </button>
-      <a class="navbar-brand" href="#">Webmaker Events</a>
-    </div>
+  <div ng-controller="createUserController"></div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="navbar-collapse" collapse="isCollapsed">
-      <ul class="nav navbar-nav">
-        <li ng-class="{ active : isActive('/events') }"><a href="#/events">Upcoming Events</a></li>
-        <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
-      </ul>
+  <nav class="navbar navbar-default" ng-controller="navController">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="fa fa-bars fa-lg text-muted"></span>
+        </button>
+        <a class="navbar-brand" href="#">Webmaker Events</a>
+      </div>
 
-      <button ng-cloak ng-show="!_persona.email" class="btn btn-primary btn-sm navbar-btn" ng-click="_persona.login()">Log In</button>
-      <p ng-cloak class="navbar-text" ng-show="_persona.email">
-        Hi, <strong>{{_persona.email}}</strong>
-      </p>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="navbar-collapse" collapse="isCollapsed">
+        <ul class="nav navbar-nav">
+          <li ng-class="{ active : isActive('/events') }"><a href="#/events">Upcoming Events</a></li>
+          <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
+        </ul>
 
-      <button ng-cloak class="btn btn-primary btn-sm navbar-btn" ng-show="_persona.email" ng-click="_persona.logout()">Log Out</button>
+        <button ng-cloak ng-show="!_user.email" class="btn btn-primary btn-sm navbar-btn" ng-click="login()">Log In</button>
+        <p class="navbar-text" ng-show="_user.email">
+          Hi, <strong>{{_user.username}}</strong>
+        </p>
+
+        <button ng-cloak class="btn btn-primary btn-sm navbar-btn" ng-show="_user.email" ng-click="logout()">Log Out</button>
+      </div>
+
+
     </div>
   </nav>
 
   <div class="container" ng-view></div>
 
+  <script src="/config.js"></script>
   <script src="https://login.persona.org/include.js"></script>
+  <script src="bower_components/eventEmitter/EventEmitter.js"></script>
+  <script src="bower_components/webmaker-auth-client/webmaker-auth-client.js"></script>
+
   <script src="bower_components/momentjs/min/moment.min.js"></script>
   <script src="bower_components/chrono/chrono.min.js"></script>
   <script src="bower_components/showdown/compressed/showdown.js"></script>
@@ -46,6 +56,7 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
