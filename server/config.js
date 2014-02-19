@@ -13,7 +13,7 @@ module.exports = function (env) {
   // Serve up virtual configuration "file"
   app.get('/config.js', function (req, res) {
     var config = {
-      eventsLocation: env.get('eventsLocation')
+      eventsLocation: env.get('eventsLocation', 'http://localhost:1989')
     };
 
     res.setHeader('Content-type', 'text/javascript');
