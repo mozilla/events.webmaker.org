@@ -2,7 +2,9 @@
   "globals": {
     "module": false,
     "angular": false,
-    "console": false
+    "console": false,
+    "google": false,
+    "WebmakerAuthClient": false
   },
   "bitwise": true,
   "browser": true,
