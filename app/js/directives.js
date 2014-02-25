@@ -57,6 +57,7 @@ angular.module('myApp.directives', [])
           myLongitude = position.coords.longitude;
 
           $scope.geoLocationEnabled = true;
+          $scope.$apply();
         });
 
         function distance(x1, y1, x2, y2) {
