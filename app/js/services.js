@@ -20,7 +20,9 @@ angular.module('myApp.services', ['ngResource'])
       // This is needed to apply scope changes for events that happen in
       // async callbacks.
       function apply() {
-        $rootScope.$$phase || $rootScope.$apply();
+        if (!$rootScope.$$phase) {
+          $rootScope.$apply();
+        }
       }
 
       var auth = new WebmakerAuthClient({
@@ -35,22 +37,22 @@ angular.module('myApp.services', ['ngResource'])
       // Set up user data
       $rootScope._user = {};
 
-      auth.on('login', function(user) {
+      auth.on('login', function (user) {
         $rootScope._user = user;
         apply();
 
       });
 
-      auth.on('verify', function(user) {
+      auth.on('verify', function (user) {
         $rootScope._user = user;
         apply();
       });
 
-      auth.on('logout', function(why) {
-       $rootScope._user = {};
+      auth.on('logout', function (why) {
+        $rootScope._user = {};
       });
 
-      auth.on('error', function(message, xhr) {
+      auth.on('error', function (message, xhr) {
         console.log('error', message, xhr);
       });
 

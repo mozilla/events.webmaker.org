@@ -3,7 +3,8 @@
     "module": false,
     "angular": false,
     "console": false,
-    "google": false
+    "google": false,
+    "WebmakerAuthClient": false
   },
   "bitwise": true,
   "browser": true,

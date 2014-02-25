@@ -52,20 +52,20 @@ angular.module('myApp.directives', [])
     };
   })
 
-  .directive('collapse', function () {
-    // Extend the `collapse` directive to collapse
-    return {
-      restrict: 'A',
-      controller: ['$rootScope', '$scope', '$element',
-        function ($rootScope, $scope, $element) {
-          // Set to closed on load
-          $scope.isCollapsed = true;
+.directive('collapse', function () {
+  // Extend the `collapse` directive to collapse
+  return {
+    restrict: 'A',
+    controller: ['$rootScope', '$scope', '$element',
+      function ($rootScope, $scope, $element) {
+        // Set to closed on load
+        $scope.isCollapsed = true;
 
-          // Collapse on view change
-          $rootScope.$on('$locationChangeSuccess', function (event) {
-            $scope.isCollapsed = true;
-          });
-        }
-      ]
-    };
-  });
+        // Collapse on view change
+        $rootScope.$on('$locationChangeSuccess', function (event) {
+          $scope.isCollapsed = true;
+        });
+      }
+    ]
+  };
+});
