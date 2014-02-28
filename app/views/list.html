@@ -2,19 +2,35 @@
   <h1>Upcoming Events</h1>
 </header>
 
-<div class="row">
-  <div class="col-sm-12">
+  <we-listing>
+    <div class="row">
+      <div class="col-sm-6">
+        <p>Search</p>
+        <input ng-model="eventFilter" type="text" class="form-control">
+      </div>
+
+      <div class="col-sm-6">
+        <p>Sort by</p>
+
+        <div class="btn-group">
+          <button ng-click="sortOrder = orderByDate" type="button" class="btn btn-default">Upcoming</button>
+          <button ng-click="sortOrder = orderByProximity" ng-show="geoLocationEnabled" type="button" class="btn btn-default">Distance</button>
+          <button ng-click="sortOrder = 'title'" type="button" class="btn btn-default">Event Name</button>
+        </div>
+      </div>
+    </div>
+
     <table class="table table-striped">
       <thead>
         <tr>
-          <th class="col-xs-9">Event</th>
+          <th>Event</th>
           <th>Date</th>
         </tr>
       </thead>
-      <tr ng-repeat="event in events">
+      <tr ng-repeat="event in events | orderBy: sortOrder | filter: eventFilter">
         <td><a href="#/events/{{event.id}}">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
         <td>{{ event.beginDate | date:'MMM dd, yyyy' }}</td>
       </tr>
     </table>
-  </div>
-</div>
+  </we-listing>
+
