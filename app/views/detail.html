@@ -1,35 +1,26 @@
-<header class="row">
-  <div class="col-xs-12">
-    <h1>{{ eventData.title }}</h1>
-  </div>
-</header>
+<div class="event-detail">
+  <header class="row">
+    <div class="col-xs-12">
+      <h1>{{ eventData.title }}</h1>
+    </div>
+  </header>
 
-<div ng-show="eventData.picture" class="row">
-  <div class="col-xs-12">
-    <img class="img-responsive" src="{{ eventData.picture }}" title="Event Image" />
-  </div>
-</div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div><h4><i class="fa fa-calendar"></i> {{ eventData.friendlyStartDate }}</h4></div>
 
-<div class="row">
-  <div class="col-xs-12 col-sm-8">
-    <!-- TODO: Link to actual location on google maps -->
-    <strong><a href="https://maps.google.com/" target="_blank">{{ eventData.address }}</a></strong>
+      <!-- TODO: Link to actual location on google maps -->
+      <div><strong><a href="https://maps.google.com/" target="_blank"><i class="fa fa-map-marker"></i> {{ eventData.address }}</a></strong></div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <h5>Organized by <strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a></strong></h5>
+    </div>
   </div>
 
-  <div class="col-xs-12 col-sm-4">
-    {{ eventData.friendlyStartDate }}
+  <div class="row">
+    <div ng-bind-html="eventData.description | markdown" class="col-xs-12"></div>
   </div>
-</div>
-
-<div class="row">
-  <div ng-bind-html="eventData.description | markdown" class="col-xs-12"></div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    Organizer: <a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-xs-12">
