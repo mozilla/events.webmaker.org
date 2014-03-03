@@ -43,13 +43,9 @@ angular.module('myApp.services', ['ngResource'])
 
       });
 
-      auth.on('verify', function (user) {
-        $rootScope._user = user;
-        apply();
-      });
-
       auth.on('logout', function (why) {
         $rootScope._user = {};
+        apply();
       });
 
       auth.on('error', function (message, xhr) {
