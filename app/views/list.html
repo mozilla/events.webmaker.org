@@ -2,34 +2,30 @@
   <h1>Upcoming Events</h1>
 </header>
 
-  <we-listing>
-    <div class="row">
-      <div class="col-sm-6">
-        <p>Search</p>
-        <input ng-model="eventFilter" type="text" class="form-control">
+  <we-listing class="event-list">
+    <div class="row extra-bottom-margin">
+      <div class="col-sm-8">
+        <div class="btn-group">
+          <button ng-class="{'active': sortName === 'date'}" ng-click="sortOrder = orderByDate; sortName = 'date';" type="button" class="btn btn-default">Newest</button>
+          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortOrder = orderByProximity; sortName = 'proximity';" ng-show="geoLocationEnabled" type="button" class="btn btn-default">Closest</button>
+        </div>
       </div>
 
-      <div class="col-sm-6">
-        <p>Sort by</p>
-
-        <div class="btn-group">
-          <button ng-click="sortOrder = orderByDate" type="button" class="btn btn-default">Upcoming</button>
-          <button ng-click="sortOrder = orderByProximity" ng-show="geoLocationEnabled" type="button" class="btn btn-default">Distance</button>
-          <button ng-click="sortOrder = 'title'" type="button" class="btn btn-default">Event Name</button>
+      <div class="col-sm-4 search-block">
+        <div class="col-xs-10 no-padding">
+          <input placeholder="Search events" ng-model="eventFilter" type="text" class="form-control col-sm-4">
         </div>
+        <div class="col-xs-2 mag-glass">
+          <i class="fa fa-search"></i>
+        </div>
+
       </div>
     </div>
 
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Event</th>
-          <th>Date</th>
-        </tr>
-      </thead>
       <tr ng-repeat="event in events | orderBy: sortOrder | filter: eventFilter">
-        <td><a href="#/events/{{event.id}}">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
-        <td>{{ event.beginDate | date:'MMM dd, yyyy' }}</td>
+        <td>{{ event.beginDate | date:'MMM d' }}</td>
+        <td><a href="#/events/{{event.id}}" class="event-title">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
       </tr>
     </table>
   </we-listing>
