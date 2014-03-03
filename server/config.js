@@ -13,7 +13,9 @@ module.exports = function (env) {
   // Serve up virtual configuration "file"
   app.get('/config.js', function (req, res) {
     var config = {
-      eventsLocation: env.get('eventsLocation', 'http://localhost:1989')
+      eventsLocation: env.get('eventsLocation') || 'http://localhost:1989',
+      accountSettingsUrl: env.get('accountSettingsUrl') || 'https://login.webmaker.org/account',
+      myMakesUrl: env.get('myMakesUrl') || 'https://webmaker.org/me'
     };
 
     res.setHeader('Content-type', 'text/javascript');

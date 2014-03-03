@@ -27,14 +27,19 @@
         <ul class="nav navbar-nav">
           <li ng-class="{ active : isActive('/events') }"><a href="#/events">Upcoming Events</a></li>
           <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
+          <li class="dropdown" ng-cloak ng-show="_user.email">
+            <a class="dropdown-toggle">
+              <img class="avatar" ng-src="{{_user.avatar}}"> Hi, <strong>{{_user.username}}</strong>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="{{myMakesUrl}}" target="_blank"><span class="fa fa-th-large"></span> My Makes</a></li>
+              <li><a href="{{accountSettingsUrl}}" target="_blank"><span class="fa fa-cog"></span> Settings</a></li>
+              <li><a ng-click="logout()"><span class="fa fa-sign-out"></span> Log Out</a></li>
+            </ul>
+          </li>
         </ul>
 
         <button ng-cloak ng-show="!_user.email" class="btn btn-primary btn-sm navbar-btn" ng-click="login()">Log In</button>
-        <p class="navbar-text" ng-cloak ng-show="_user.email">
-          Hi, <strong>{{_user.username}}</strong>
-        </p>
-
-        <button ng-cloak class="btn btn-primary btn-sm navbar-btn" ng-show="_user.email" ng-click="logout()">Log Out</button>
       </div>
 
 

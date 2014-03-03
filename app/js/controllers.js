@@ -166,12 +166,16 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('navController', ['$scope', '$location',
-    function ($scope, $location) {
+  .controller('navController', ['$scope', '$location', 'config',
+    function ($scope, $location, config) {
 
       $scope.isActive = function (location) {
         return location === $location.path();
       };
+
+      $scope.accountSettingsUrl = config.accountSettingsUrl;
+      $scope.myMakesUrl = config.myMakesUrl;
+
     }
   ])
   .controller('createUserController', ['$scope', '$http', '$modal', 'authService',
