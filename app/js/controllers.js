@@ -110,12 +110,10 @@ angular.module('myApp.controllers', [])
 
         var eventData = eventFormatter($scope.addEventForm, $scope.event);
 
-        console.log(eventData);
         if (eventData) {
           eventService.update({
             id: $routeParams.id
           }, eventData, function (data) {
-            console.log('saved ', data);
             $location.path('/events/' + $routeParams.id);
           }, function (err) {
             console.error(err.data);
@@ -129,7 +127,7 @@ angular.module('myApp.controllers', [])
           eventService.delete({
             id: $routeParams.id
           }, $scope.event, function () {
-            console.log('deleted');
+            $location.path('/events');
           }, function (err) {
             console.error(err.data);
           });
