@@ -72,7 +72,6 @@ angular.module('myApp.controllers', [])
           $scope.event.registerLink = data.registerLink;
         }
 
-
         $scope.event.beginDate = moment(data.beginDate).format('MMMM Do YYYY [at] h:mma');
         $scope.event.duration = 'unknown'; // default to unknown
 

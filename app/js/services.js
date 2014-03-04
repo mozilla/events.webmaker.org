@@ -6,7 +6,7 @@ angular.module('myApp.services', ['ngResource'])
   .constant('chrono', window.chrono)
   .constant('showdown', window.Showdown)
   .factory('eventService', ['$rootScope', '$resource', 'config',
-    function($rootScope, $resource, config) {
+    function ($rootScope, $resource, config) {
       return $resource(config.eventsLocation + '/events/:id', null, {
         update: {
           method: 'PUT'
@@ -15,9 +15,9 @@ angular.module('myApp.services', ['ngResource'])
     }
   ])
   .factory('eventFormatter', ['moment', 'chrono',
-    function(moment, chrono) {
+    function (moment, chrono) {
 
-      return function(form, eventData) {
+      return function (form, eventData) {
         if (!form || !eventData) {
           return console.warn('You must provide a form instance and event data on a $scope');
         }
@@ -74,18 +74,18 @@ angular.module('myApp.services', ['ngResource'])
       // Set up user data
       $rootScope._user = {};
 
-      auth.on('login', function(user) {
+      auth.on('login', function (user) {
         $rootScope._user = user;
         apply();
 
       });
 
-      auth.on('logout', function(why) {
+      auth.on('logout', function (why) {
         $rootScope._user = {};
         apply();
       });
 
-      auth.on('error', function(message, xhr) {
+      auth.on('error', function (message, xhr) {
         console.log('error', message, xhr);
       });
 
