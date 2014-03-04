@@ -3,11 +3,11 @@
 </header>
 
   <we-listing class="event-list">
-    <div class="row extra-bottom-margin">
+    <div class="row add-bottom-margin">
       <div class="col-sm-8">
-        <div class="btn-group">
+        <div class="btn-group" ng-show="geoLocationEnabled">
           <button ng-class="{'active': sortName === 'date'}" ng-click="sortOrder = orderByDate; sortName = 'date';" type="button" class="btn btn-default">Newest</button>
-          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortOrder = orderByProximity; sortName = 'proximity';" ng-show="geoLocationEnabled" type="button" class="btn btn-default">Closest</button>
+          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortOrder = orderByProximity; sortName = 'proximity';" type="button" class="btn btn-default">Closest</button>
         </div>
       </div>
 
@@ -16,7 +16,7 @@
           <input placeholder="Search events" ng-model="eventFilter" type="text" class="form-control col-sm-4">
         </div>
         <div class="col-xs-2 mag-glass">
-          <i class="fa fa-search"></i>
+          <span class="fa fa-search"></span>
         </div>
 
       </div>
