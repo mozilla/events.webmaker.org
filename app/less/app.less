@@ -5,6 +5,8 @@
 @import "../bower_components/font-awesome/less/font-awesome";
 @fa-font-path: "/bower_components/font-awesome/fonts";
 
+@import "views/event-list";
+
 .fa(@icon) {
   font-family: FontAwesome;
   font-style: normal;
@@ -31,13 +33,26 @@ a {
   outline-style: none;
 }
 
+h1 {
+  font-weight: 100;
+}
+
 //  Utility -------------------------------------------------------------------
 
 .add-bottom-margin {
   margin-bottom: 20px;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 //  Bootstrap Overrides -------------------------------------------------------
+
+.page-header {
+  border: 0;
+  margin-bottom: 40px;
+}
 
 .row {
   margin-top: 10px;
@@ -51,6 +66,13 @@ a {
     .btn-mobile-block {
       display: inline-block;
     }
+  }
+}
+
+.btn-group {
+  .btn:active, .btn:hover, .btn.active {
+    background-color: @brand-primary;
+    color: @white;
   }
 }
 

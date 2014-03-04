@@ -49,6 +49,7 @@ angular.module('myApp.directives', [])
       restrict: 'E',
       link: function ($scope, $element) {
         $scope.geoLocationEnabled = false;
+        $scope.sortName = 'date';
 
         var myLatitude, myLongitude;
 
