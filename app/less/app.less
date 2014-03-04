@@ -62,10 +62,8 @@ h1 {
 .btn-mobile-block {
   display: block;
 
-  @media (min-width: 768px) {
-    .btn-mobile-block {
-      display: inline-block;
-    }
+  @media (min-width: @grid-float-breakpoint) {
+    display: inline-block;
   }
 }
 
