@@ -6,12 +6,49 @@ angular.module('myApp.services', ['ngResource'])
   .constant('chrono', window.chrono)
   .constant('showdown', window.Showdown)
   .factory('eventService', ['$rootScope', '$resource', 'config',
-    function ($rootScope, $resource, config) {
+    function($rootScope, $resource, config) {
       return $resource(config.eventsLocation + '/events/:id', null, {
         update: {
           method: 'PUT'
         }
       });
+    }
+  ])
+  .factory('eventFormatter', ['moment', 'chrono',
+    function(moment, chrono) {
+
+      return function(form, eventData) {
+        if (!form || !eventData) {
+          return console.warn('You must provide a form instance and event data on a $scope');
+        }
+
+        if (form.$invalid) {
+          // prevent form from being sent if there are invalid fields
+          console.warn('Form is invalid.');
+          return window.scrollTo(0, 0);
+        }
+
+        // Create a serialized event object to avoid modifying $scope
+        var serializedEvent = angular.copy(eventData);
+
+        if (eventData.beginDate) {
+          serializedEvent.beginDate = eventData.parsedNaturalStartDate.toISOString();
+        }
+
+        if (eventData.duration !== 'unknown') {
+          serializedEvent.endDate = moment(eventData.parsedNaturalStartDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
+        } else {
+          // Don't send an end date if duration is not specific
+          delete serializedEvent.endDate;
+        }
+
+        // Remove nonexistant DB values from client event object
+        delete serializedEvent.duration;
+        delete serializedEvent.parsedNaturalStartDate;
+
+        return serializedEvent;
+
+      };
     }
   ])
   .factory('authService', ['$rootScope', 'config',
@@ -37,18 +74,18 @@ angular.module('myApp.services', ['ngResource'])
       // Set up user data
       $rootScope._user = {};
 
-      auth.on('login', function (user) {
+      auth.on('login', function(user) {
         $rootScope._user = user;
         apply();
 
       });
 
-      auth.on('logout', function (why) {
+      auth.on('logout', function(why) {
         $rootScope._user = {};
         apply();
       });
 
-      auth.on('error', function (message, xhr) {
+      auth.on('error', function(message, xhr) {
         console.log('error', message, xhr);
       });
 
