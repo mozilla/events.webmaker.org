@@ -27,6 +27,21 @@ To run the service locally:
 2. `cd` into the `webmaker-events-service` directory
 3. Run `node server.js`
 
+### Configuration
+
+To pass configuration to the server, `cp .env-dist .env` or create a `.env` file in the root directory.
+
+This app takes four configuration parameters, all of which are optional.
+
+`PORT` - Where to run the server
+
+`EVENTS_LOCATION` - The URL of the events service
+
+`ACCOUNT_SETTINGS_URL` - The the URL for account settings pages on Webmaker Login, e.g. http://localhost:3000/account
+
+`MY_MAKES_URL` = The URL for the my makes page on Webmaker e.g. http://localhost:7777/me
+
+
 ## Grunt Tasks
 
 - **grunt** - Runs a server at [localhost:1134](http://localhost:1134).
