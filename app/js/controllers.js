@@ -1,8 +1,8 @@
 // Controllers ----------------------------------------------------------------
 
 angular.module('myApp.controllers', [])
-  .controller('addEventController', ['$scope', '$location', 'moment', 'chrono', 'eventService',
-    function ($scope, $location, moment, chrono, eventService) {
+  .controller('addEventController', ['$scope', '$location', 'moment', 'chrono', 'eventService', 'eventFormatter',
+    function ($scope, $location, moment, chrono, eventService, eventFormatter) {
       $scope.event = {};
       $scope.event.parsedNaturalStartDate = undefined;
       $scope.attemptedToSubmit = false;
@@ -35,34 +35,10 @@ angular.module('myApp.controllers', [])
       $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
 
-        if ($scope.addEventForm.$invalid) {
-          // prevent form from being sent if there are invalid fields
-          return window.scrollTo(0, 0);
-        }
+        var eventData = eventFormatter($scope.addEventForm, $scope.event);
 
-        // Create a serialized event object to avoid modifying $scope
-        var serializedEvent = {};
-        angular.copy($scope.event, serializedEvent);
-
-        if ($scope.event.beginDate) {
-          serializedEvent.beginDate = $scope.event.parsedNaturalStartDate.toISOString();
-        }
-
-        if ($scope.event.duration !== 'unknown') {
-          serializedEvent.endDate = moment($scope.event.parsedNaturalStartDate).add('hours', parseFloat($scope.event.duration, 10)).toISOString();
-        } else {
-          // Don't send an end date if duration is not specific
-          delete serializedEvent.endDate;
-        }
-
-        // Remove nonexistant DB values from client event object
-        delete serializedEvent.duration;
-        delete serializedEvent.parsedNaturalStartDate;
-
-        console.log(serializedEvent);
-
-        if ($scope.addEventForm.$valid) {
-          eventService.save(serializedEvent, function (data) {
+        if (eventData) {
+          eventService.save(eventData, function (data) {
             // Switch to detail view on successful creation
             $location.path('/events/' + data.id);
           }, function (err) {
@@ -75,8 +51,8 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService', 'moment',
-    function ($scope, $routeParams, $location, eventService, moment) {
+  .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService', 'chrono', 'moment', 'eventFormatter',
+    function ($scope, $routeParams, $location, eventService, chrono, moment, eventFormatter) {
       eventService.get({
         id: $routeParams.id
       }, function (data) {
@@ -87,6 +63,7 @@ angular.module('myApp.controllers', [])
         $scope.event.title = data.title;
         $scope.event.description = data.description;
         $scope.event.attendees = data.attendees;
+        $scope.event.organizer = data.organizer;
 
         // TEMP : Need to convert back from city/country/lat/long/whatever
         $scope.event.address = data.address;
@@ -111,6 +88,15 @@ angular.module('myApp.controllers', [])
         console.error(err);
       });
 
+      // Continuously translate natural language date to JS Date
+      $scope.$watch('event.beginDate', function (newValue) {
+        if (newValue) {
+          $scope.event.parsedNaturalStartDate = chrono.parseDate(newValue);
+          $scope.event.isValidStartDate = moment($scope.event.parsedNaturalStartDate).isValid();
+          $scope.event.humanParsedDate = moment($scope.event.parsedNaturalStartDate).format('MMMM Do YYYY [at] h:mma');
+        }
+      });
+
       $scope.$on('locationAutocompleted', function (event, data) {
         $scope.event.latitude = data.latitude;
         $scope.event.longitude = data.longitude;
@@ -119,18 +105,21 @@ angular.module('myApp.controllers', [])
       });
 
       $scope.saveChanges = function () {
-        console.log('saveChanges');
 
         $scope.attemptedToSubmit = true;
 
-        eventService.update({
-          id: $routeParams.id
-        }, $scope.event, function (data) {
-          console.log('saved ', data);
-          $location.path('/events/' + $routeParams.id);
-        }, function (err) {
-          console.error(err.data);
-        });
+        var eventData = eventFormatter($scope.addEventForm, $scope.event);
+
+        if (eventData) {
+          eventService.update({
+            id: $routeParams.id
+          }, eventData, function (data) {
+            $location.path('/events/' + $routeParams.id);
+          }, function (err) {
+            console.error(err.data);
+          });
+        }
+
       };
 
       $scope.deleteEvent = function () {
@@ -138,7 +127,7 @@ angular.module('myApp.controllers', [])
           eventService.delete({
             id: $routeParams.id
           }, $scope.event, function () {
-            console.log('deleted');
+            $location.path('/events');
           }, function (err) {
             console.error(err.data);
           });

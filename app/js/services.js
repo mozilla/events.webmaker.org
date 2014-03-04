@@ -14,6 +14,45 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
+  .factory('eventFormatter', ['moment', 'chrono',
+    function (moment, chrono) {
+
+      return function (form, eventData) {
+        if (!form || !eventData) {
+          console.warn('You must provide a form instance and event data on a $scope');
+          return;
+        }
+
+        if (form.$invalid) {
+          // prevent form from being sent if there are invalid fields
+          console.warn('Form is invalid.');
+          window.scrollTo(0, 0);
+          return;
+        }
+
+        // Create a serialized event object to avoid modifying $scope
+        var serializedEvent = angular.copy(eventData);
+
+        if (eventData.beginDate) {
+          serializedEvent.beginDate = eventData.parsedNaturalStartDate.toISOString();
+        }
+
+        if (eventData.duration !== 'unknown') {
+          serializedEvent.endDate = moment(eventData.parsedNaturalStartDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
+        } else {
+          // Don't send an end date if duration is not specific
+          delete serializedEvent.endDate;
+        }
+
+        // Remove nonexistant DB values from client event object
+        delete serializedEvent.duration;
+        delete serializedEvent.parsedNaturalStartDate;
+
+        return serializedEvent;
+
+      };
+    }
+  ])
   .factory('authService', ['$rootScope', 'config',
     function authService($rootScope, config) {
 

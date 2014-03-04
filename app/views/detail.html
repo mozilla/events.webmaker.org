@@ -33,6 +33,6 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <a class="btn btn-primary" href="#/edit/{{ eventID }}">Edit Event</a>
+    <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-primary" href="#/edit/{{ eventID }}">Edit Event</a>
   </div>
 </div>
