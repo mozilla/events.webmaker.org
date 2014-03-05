@@ -19,13 +19,15 @@ angular.module('myApp.services', ['ngResource'])
 
       return function (form, eventData) {
         if (!form || !eventData) {
-          return console.warn('You must provide a form instance and event data on a $scope');
+          console.warn('You must provide a form instance and event data on a $scope');
+          return;
         }
 
         if (form.$invalid) {
           // prevent form from being sent if there are invalid fields
           console.warn('Form is invalid.');
-          return window.scrollTo(0, 0);
+          window.scrollTo(0, 0);
+          return;
         }
 
         // Create a serialized event object to avoid modifying $scope
