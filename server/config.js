@@ -7,17 +7,23 @@ module.exports = function (env) {
   app.use(express.json());
   app.use(express.urlencoded());
 
+  var config = {
+    version: require('../package').version,
+    eventsLocation: env.get('eventsLocation') || 'http://localhost:1989',
+    accountSettingsUrl: env.get('accountSettingsUrl') || 'https://login.webmaker.org/account',
+    myMakesUrl: env.get('myMakesUrl') || 'https://webmaker.org/me'
+  };
+
   // Static files
   app.use(express.static('./app'));
 
+  // Healthcheck
+  app.get('/healthcheck', function (req, res) {
+    res.send(config);
+  });
+
   // Serve up virtual configuration "file"
   app.get('/config.js', function (req, res) {
-    var config = {
-      eventsLocation: env.get('eventsLocation') || 'http://localhost:1989',
-      accountSettingsUrl: env.get('accountSettingsUrl') || 'https://login.webmaker.org/account',
-      myMakesUrl: env.get('myMakesUrl') || 'https://webmaker.org/me'
-    };
-
     res.setHeader('Content-type', 'text/javascript');
     res.send('window.eventsConfig = ' + JSON.stringify(config));
   });
