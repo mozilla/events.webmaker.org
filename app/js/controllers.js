@@ -1,6 +1,13 @@
 // Controllers ----------------------------------------------------------------
 
 angular.module('myApp.controllers', [])
+  .controller('homeController', ['$scope', '$timeout', 'eventService',
+    function ($scope, $timeout, eventService) {
+      eventService.query(function (data) {
+        $scope.events = data.splice(0, 4);
+      });
+    }
+  ])
   .controller('addEventController', ['$scope', '$location', 'moment', 'chrono', 'eventService', 'eventFormatter',
     function ($scope, $location, moment, chrono, eventService, eventFormatter) {
       $scope.event = {};

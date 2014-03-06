@@ -1,12 +1,68 @@
-<div class="container">
-  <header class="page-header">
-    <h1>Webmaker Events</h1>
-  </header>
-
+<div class="container home-section">
   <div class="row">
-    <div class="col-sm-12">
-      <p>Welcome to Webmaker Events.</p>
-      <p>(Add super fun imagery here.)</p>
+    <div class="col-md-7 col-sm-12">
+      <h1 class="home">Join Webmakers in hosting events around the world.</h1>
+      <p>
+        <a href="/#events" class="btn-home btn btn-lg btn-primary btn-mobile-block"><span class="fa fa-search"></span> Find an event</a>
+        <a href="/#add" class="btn-home btn btn-lg btn-primary btn-mobile-block"><span class="fa fa-plus"></span> Add an Event</a>
+      </p>
+    </div>
+    <div class="col-md-5 hidden-sm hidden-xs">
+      <div class="viz-container">
+        <div>
+          <div class="viz viz-people">
+            <span class="viz-number">14,986</span>
+            <span class="viz-label"><span class="fa fa-group"></span> People</span>
+          </div>
+        </div>
+        <div>
+          <div class="viz viz-events">
+            <span class="viz-number">8,729</span>
+            <span class="viz-label"><span class="fa fa-map-marker"></span> Events</span>
+          </div>
+          <div class="viz viz-cities">
+            <span class="viz-number">125</span>
+            <span class="viz-label"><span class="fa fa-map-marker"></span> Cities</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+
+<div class="home-image hidden-xs">
+  <div class="container">
+   <a href="http://www.flickr.com/photos/flore_frmoz/10714446776" class="home-caption" target="_blank"><span class="fa fa-camera"></span> Flore Florumundo</a>
+  </div>
+</div>
+
+<div class="container home-section">
+  <h2 class="home">
+    Upcoming events
+    <span class="small pull-right">
+      <a href="/#events">All events <span class="fa fa-angle-right"></span></a>
+    </span>
+  </h2>
+
+  <ul class="listing-home list-unstyled">
+    <li ng-repeat="event in events">
+      <a href="#/events/{{event.id}}">
+        <div class="circle-date">
+          <span>{{event.beginDate | date:'MMM d'}}</span>
+        </div>
+        <div class="title">{{event.title}} <small>({{event.address}})</small></div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<footer class="home home-section">
+  <div class="container">
+    <img class="shirt" src="/img/shirt.png">
+    <div>
+      <h3>Did you know you can request Webmaker gear for your event?</h3>
+      <p>Get more tips in <a href="#">event guides</a></p>
+    </div>
+  </div>
+</footer>

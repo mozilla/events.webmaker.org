@@ -19,6 +19,11 @@
     "showdown": "0.3.1",
     "makerstrap": "0.1.0",
     "webmaker-auth-client": "0.0.23",
-    "jquery": "2.1.0"
+    "jquery": "2.1.0",
+    "angular-animate": "1.2.14",
+    "animate.css": "3.1.0"
+  },
+  "resolutions": {
+    "angular": "1.2.14"
   }
 }

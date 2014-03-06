@@ -1,6 +1,7 @@
 angular.module('myApp', [
   'ngRoute',
   'ngResource',
+  'ngAnimate',
   'ui.bootstrap',
   'myApp.filters',
   'myApp.services',
@@ -35,7 +36,8 @@ config(['$routeProvider',
     });
 
     $routeProvider.when('/', {
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/home.html',
+      controller: 'homeController'
     });
 
     $routeProvider.otherwise({

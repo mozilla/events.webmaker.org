@@ -1,0 +1,272 @@
+
+/*********************************************************
+* Common
+*/
+
+// Sections
+@media (min-width: @screen-sm) {
+  .home-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+/*********************************************************
+* Top section
+*/
+
+h1.home {
+  margin-bottom: 0.8em;
+  @media (min-width: @screen-sm) {
+    font-size: 50px;
+  }
+}
+
+h2.home {
+  font-size: 20px;
+  margin-bottom: 30px;
+  line-height: 12px;
+  @media (min-width: @screen-sm) {
+    font-size: 32px;
+  }
+  .fa {
+    margin-left: 0.1em;
+  }
+}
+
+// Big buttons at the top
+.btn-home {
+  font-weight: 200;
+  padding: 15px 18px;
+  margin-bottom: 5px;
+  a {
+    vertical-align: baseline;
+  }
+  .fa {
+    margin-right: 0.3em;
+  }
+}
+
+/*********************************************************
+* Visualization
+*/
+
+.viz-container {
+  position: relative;
+  .flex-display;
+  float: right;
+  div:first-child {
+    .flex-display;
+    .align-items(center);
+  }
+}
+.viz {
+  position: relative;
+  display: inline-block;
+  padding: 25px 35px 30px;
+  color: white;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  border: 5px solid #E0ECF2;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 12px;
+    background: #E0ECF2;
+    top: 50%;
+    margin-top: -6px;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+    right: 0;
+  }
+
+  &.viz-people {
+    background: #FB114E;
+  }
+  &.viz-events {
+    background: #1DADE2;
+  }
+  &.viz-cities {
+    background: #FDB12A;
+  }
+}
+
+.viz-number {
+  display: block;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.viz-label {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+
+// Animate
+.viz {
+  .animated;
+}
+.viz-people {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  .slideInDown;
+}
+.viz-events {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+  .slideInDown;
+}
+.viz-cities {
+  .slideInDown;
+}
+
+
+/*********************************************************
+* Center image
+*/
+
+.home-image {
+  background: transparent url(../img/front-page.jpg) top center no-repeat;
+  background-size: cover;
+  height: 450px;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url(../img/front-page-2x.jpg);
+  }
+
+  .container {
+    position: relative;
+    height: 100%;
+  }
+}
+
+.home-caption {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  color: white;
+  text-shadow: 0 0 2px #046590;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  &:hover {
+    color: white;
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
+/*********************************************************
+*  Listings
+*/
+
+.listing-home {
+  li {
+    border-top: 1px solid #DDD;
+    .clearfix;
+    @media (min-width: @screen-sm) {
+      font-weight: 200;
+      font-size: 24px;
+    }
+
+    > a {
+      .flex-display;
+      .align-items(center);
+      padding: 10px;
+    }
+
+    &:first-child .circle-date {
+      background-color: #F25456;
+    }
+    &:nth-child(2) .circle-date {
+      background-color: @brand-primary;
+    }
+    &:nth-child(3) .circle-date {
+      background-color: #FC1152;
+    }
+    &:nth-child(4) .circle-date {
+      background-color: #1EBAD4;
+    }
+
+  }
+
+  li:nth-child(odd) {
+    background: #F9F9F9;
+  }
+  li:hover {
+    background: darken(#F9F9F9, 3%);
+  }
+  .circle-date {
+    .flex-display(inline-flex);
+    .align-items(center);
+
+    border-radius: 50%;
+    height: 70px;
+    min-width: 70px;
+    font-size: 12px;
+    margin-right: 10px;
+    font-weight: normal;
+
+    @media (min-width: @screen-sm) {
+      font-weight: 200;
+      height: 88px;
+      min-width: 88px;
+      font-size: 16px;
+      margin-right: @grid-gutter-width;
+    }
+
+    color: white;
+    text-transform: uppercase;
+
+    > span {
+      text-align: center;
+      .flex-grow(1);
+    }
+  }
+  .title {
+    .flex-grow(0);
+    small {
+      color: #666;
+      font-size: 15px;
+    }
+  }
+}
+
+/*********************************************************
+* Footer
+*/
+
+footer.home {
+  margin-bottom: 0;
+  background: @brand-secondary;
+  color: white;
+  padding: 30px 0;
+  font-weight: 200;
+  font-size: 16px;
+
+  .container {
+    .flex-display;
+    .align-items(center);
+  }
+  img {
+    min-width: 50px;
+    width: 92px;
+    margin-right: 15px;
+  }
+}
+
+footer.home:hover .shirt {
+  .animated;
+  .swing;
+}
