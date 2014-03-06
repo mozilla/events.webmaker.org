@@ -1,29 +1,34 @@
 <div class="event-detail">
   <header class="row">
+    <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#/edit/{{ eventID }}"><span class="fa fa-pencil"></span></a>
+
     <div class="col-xs-12">
       <h1>{{ eventData.title }}</h1>
     </div>
   </header>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      <div><h4><i class="fa fa-calendar"></i> {{ eventData.friendlyStartDate }}</h4></div>
-
-      <!-- TODO: Link to actual location on google maps -->
-      <div><strong><a href="https://maps.google.com/" target="_blank"><i class="fa fa-map-marker"></i> {{ eventData.address }}</a></strong></div>
+  <div class="row meta-header">
+    <div class="col-xs-12 col-sm-6">
+      <div class="icon-left">
+        <span class="fa fa-calendar-o"></span>
+        <h4>{{ eventData.friendlyStartDate }}</h4>
+      </div>
     </div>
 
+    <div class="col-xs-12 col-sm-6">
+      <div class="icon-left">
+        <span class="fa fa-map-marker"></span>
+        <h4>{{ eventData.address }} <a href="https://maps.google.com/" target="_blank">(map)</a></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-xs-12 col-sm-4">
-      <h5>Organized by <strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a></strong></h5>
+      <a class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
+      <h5>Organized by <br/><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a></strong></h5>
     </div>
-  </div>
 
-  <div class="row">
-    <div ng-bind-html="eventData.description | markdown" class="col-xs-12"></div>
-  </div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-primary" href="#/edit/{{ eventID }}">Edit Event</a>
+    <div class="col-xs-12 col-sm-8" ng-bind-html="eventData.description | markdown"></div>
   </div>
 </div>
