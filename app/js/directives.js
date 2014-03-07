@@ -8,16 +8,16 @@ angular.module('myApp.directives', [])
       };
     }
   ])
-  // Prevent default on all elements that have ngClick defined
-  .directive('ngClick', function() {
+  .directive('ngClick', function () {
+    // Prevent default on all elements that have ngClick defined
     return {
       restrict: 'A',
-      link: function(scope, el, attrs) {
-        el.on('click', function(e){
+      link: function (scope, el, attrs) {
+        el.on('click', function (e) {
           e.preventDefault();
         });
       }
-   };
+    };
   })
   .directive('autocompleteLocation', function () {
     return {
