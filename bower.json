@@ -11,14 +11,13 @@
   "dependencies": {
     "angular": "1.2.8",
     "angular-route": "1.2.8",
-    "bootstrap": "3.0.3",
     "angular-resource": "1.2.8",
     "angular-bootstrap": "0.10.0",
     "font-awesome": "4.0.3",
     "momentjs": "2.5.0",
     "chrono": "0.1.9",
     "showdown": "0.3.1",
-    "makerstrap": "0.0.3",
+    "makerstrap": "0.1.0",
     "webmaker-auth-client": "0.0.23",
     "jquery": "2.1.0"
   }
