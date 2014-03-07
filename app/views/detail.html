@@ -1,34 +1,37 @@
 <div class="event-detail">
-  <header class="row">
-    <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#/edit/{{ eventID }}"><span class="fa fa-pencil"></span></a>
-
-    <div class="col-xs-12">
+  <div class="container-wrapper">
+    <header class="container">
+      <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#/edit/{{ eventID }}"><span class="fa fa-pencil"></span></a>
       <h1>{{ eventData.title }}</h1>
-    </div>
-  </header>
+    </header>
+  </div>
 
   <div class="row meta-header">
-    <div class="col-xs-12 col-sm-6">
-      <div class="icon-left">
-        <span class="fa fa-calendar-o"></span>
-        <h4>{{ eventData.friendlyStartDate }}</h4>
+    <div class="container">
+      <div class="col-xs-12 col-sm-6">
+        <div class="icon-left">
+          <span class="fa fa-calendar-o"></span>
+          <h4>{{ eventData.friendlyStartDate }}</h4>
+        </div>
       </div>
-    </div>
 
-    <div class="col-xs-12 col-sm-6">
-      <div class="icon-left">
-        <span class="fa fa-map-marker"></span>
-        <h4>{{ eventData.address }} <a href="https://maps.google.com/" target="_blank">(map)</a></h4>
+      <div class="col-xs-12 col-sm-6">
+        <div class="icon-left">
+          <span class="fa fa-map-marker"></span>
+          <h4>{{ eventData.address }} <a href="https://maps.google.com/" target="_blank">(map)</a></h4>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 add-bottom-margin">
-      <a class="btn btn-primary btn-lg btn-mb-block add-bottom-margin" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
-      <h5>Organized by <br/><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a></strong></h5>
-    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 add-bottom-margin">
+        <a class="btn btn-primary btn-lg btn-mb-block add-bottom-margin" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
+        <h5>Organized by <br/><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a></strong></h5>
+      </div>
 
-    <div class="col-xs-12 col-sm-8" ng-bind-html="eventData.description | markdown"></div>
+      <div class="col-xs-12 col-sm-8" ng-bind-html="eventData.description | markdown"></div>
+    </div>
   </div>
 </div>
