@@ -1,13 +1,15 @@
-<header class="page-header">
-  <h1>Add an Event</h1>
-</header>
+<div class="container">
+  <header class="page-header">
+    <h1>Add an Event</h1>
+  </header>
 
-<div class="alert alert-warning" ng-hide="_user.email">
-  You need to <a ng-click="login()">log in</a> to add an event.
+  <div class="alert alert-warning" ng-hide="_user.email">
+    You need to <a ng-click="login()">log in</a> to add an event.
+  </div>
+
+  <event-form ng-show="_user.email">
+    <a ng-click="addEvent()" class="btn btn-lg btn-primary btn-mobile-block">
+      Create Event
+    </a>
+  </event-form>
 </div>
-
-<event-form ng-show="_user.email">
-  <a href="#" ng-click="addEvent()" class="btn btn-lg btn-primary btn-mobile-block">
-    Create Event
-  </a>
-</event-form>

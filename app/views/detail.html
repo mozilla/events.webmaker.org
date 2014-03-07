@@ -1,38 +1,37 @@
-<header class="row">
-  <div class="col-xs-12">
-    <h1>{{ eventData.title }}</h1>
-  </div>
-</header>
-
-<div ng-show="eventData.picture" class="row">
-  <div class="col-xs-12">
-    <img class="img-responsive" src="{{ eventData.picture }}" title="Event Image" />
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12 col-sm-8">
-    <!-- TODO: Link to actual location on google maps -->
-    <strong><a href="https://maps.google.com/" target="_blank">{{ eventData.address }}</a></strong>
+<div class="event-detail">
+  <div class="container-wrapper">
+    <header class="container">
+      <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#/edit/{{ eventID }}"><span class="fa fa-pencil"></span></a>
+      <h1>{{ eventData.title }}</h1>
+    </header>
   </div>
 
-  <div class="col-xs-12 col-sm-4">
-    {{ eventData.friendlyStartDate }}
+  <div class="row meta-header">
+    <div class="container">
+      <div class="col-xs-12 col-sm-6">
+        <div class="icon-left">
+          <span class="fa fa-calendar-o"></span>
+          <h4>{{ eventData.friendlyStartDate }}</h4>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="icon-left">
+          <span class="fa fa-map-marker"></span>
+          <h4>{{ eventData.address }} <a href="https://maps.google.com/" target="_blank">(map)</a></h4>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div ng-bind-html="eventData.description | markdown" class="col-xs-12"></div>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 add-bottom-margin">
+        <a class="btn btn-primary btn-lg btn-mb-block add-bottom-margin" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
+        <h5>Organized by <br/><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a></strong></h5>
+      </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    Organizer: <a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-primary" href="#/edit/{{ eventID }}">Edit Event</a>
+      <div class="col-xs-12 col-sm-8" ng-bind-html="eventData.description | markdown"></div>
+    </div>
   </div>
 </div>

@@ -6,6 +6,7 @@
 @fa-font-path: "/bower_components/font-awesome/fonts";
 
 @import "views/event-list";
+@import "views/event-detail";
 
 .fa(@icon) {
   font-family: FontAwesome;
@@ -28,6 +29,10 @@ a {
   cursor: pointer;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 *:focus {
   outline-color: transparent;
   outline-style: none;
@@ -35,6 +40,10 @@ a {
 
 h1 {
   font-weight: 100;
+}
+
+p {
+  line-height: 1.7;
 }
 
 //  Utility -------------------------------------------------------------------

@@ -1,0 +1,81 @@
+.event-detail {
+  .container-wrapper {
+    background-color: #fe4545;
+  }
+
+  header {
+    color: @white;
+    padding-top: 4em;
+    padding-bottom: 4em;
+    margin-top: -20px;
+    margin-bottom: 0;
+    position: relative;
+
+    .container {
+      position: relative;
+    }
+
+    a {
+      display: inline-block;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 1.3em;
+    }
+
+    h1 {
+      margin-top: 10px;
+    }
+  }
+
+  .icon-left {
+    overflow: hidden;
+
+    .fa {
+      margin: 10px 0;
+      display: inline-block;
+      float: left;
+      font-size: 18px;
+      width: 10%;
+      text-align: center;
+      padding-top: 2px;
+      padding-right: 3%;
+      color: @grey;
+
+      @media (min-width: @screen-sm-min) {
+        padding-right: 0;
+      }
+    }
+
+    h4 {
+      float: left;
+      width: 90%;
+      font-weight: 300;
+    }
+  }
+
+  .meta-header {
+    background-color: #e2eaf0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @media (min-width: @screen-sm-min) {
+      margin-bottom: 4em;
+    }
+
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+
+    h4 {
+      line-height: 1.33em;
+    }
+  }
+
+  h5 {
+    line-height: 1.66em;
+  }
+
+  .button-group a {
+    margin-bottom: 0.5em;
+  }
+}

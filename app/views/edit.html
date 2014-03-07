@@ -1,17 +1,18 @@
-<header>
-  <h1>Editing Event</h1>
-</header>
+<div class="container">
+  <header>
+    <h1>Editing Event</h1>
+  </header>
 
-<event-form>
-  <a ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block ">
-    Save Changes
-  </a>
-</event-form>
+  <event-form>
+    <a ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block ">
+      Save Changes
+    </a>
+  </event-form>
 
-<div class="alert alert-danger">
-  <p><strong>Careful!</strong> Once you delete this event, it will be gone forever.</p>
-  <a href="#" ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block">
-    Delete Event
-  </a>
+  <div class="alert alert-danger">
+    <p><strong>Careful!</strong> Once you delete this event, it will be gone forever.</p>
+    <a ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block">
+      Delete Event
+    </a>
+  </div>
 </div>
-
