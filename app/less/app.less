@@ -93,6 +93,47 @@ h1, h2, h3, h4 {
   padding: 0;
 }
 
+.visible-mobile-inline {
+  display: inline;
+  @media (min-width: @grid-float-breakpoint) {
+    display: none;
+  }
+}
+//  Navbar Header
+
+.navbar.navbar-no-header-xs {
+  @media (max-width: @grid-float-breakpoint) {
+    border: none;
+    min-height: 0;
+    .navbar-header {
+      display: none;
+    }
+  }
+}
+
+.navbar-webmaker {
+  margin-bottom: 0;
+
+  .webmaker-logo {
+    display: inline-block;
+    padding: 2px 10px;
+  }
+
+  @media (min-width: @screen-lg-min) {
+    padding: 12px 0;
+    height: 90px;
+
+    .webmaker-logo {
+      padding: 0;
+    }
+
+    .navbar-nav {
+      margin-top: 6px;
+    }
+
+  }
+}
+
 //  Angular Helpers -----------------------------------------------------------
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
