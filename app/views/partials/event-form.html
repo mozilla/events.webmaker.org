@@ -3,7 +3,7 @@
 <form name="addEventForm" role="form" novalidate>
 
   <header class="page-header">
-    <h3>Basics</h3>
+    <h3>Tell us about your event</h3>
   </header>
 
   <div class="row">
@@ -67,7 +67,7 @@
 
   <div class="form-group" ng-class="{'has-error': addEventForm.address.$dirty && addEventForm.address.$invalid}">
     <label for="form-address">Event location <span class="text-danger">*</span></label>
-    <input autocomplete-location id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter a location" autocomplete="off"></input>
+    <input autocomplete-location id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter a venue and/or address" autocomplete="off"></input>
   </div>
 
   <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.address.$invalid">Required!</div>
@@ -76,7 +76,7 @@
 
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="event-start-date">Start Date and Time <span class="text-danger">*</span></label>
+        <label for="event-start-date">Start date and time <span class="text-danger">*</span></label>
         <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm"/>
       </div>
       <div class="add-bottom-margin">
@@ -88,7 +88,7 @@
 
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="event-duration">How Long? <span class="text-danger">*</span></label>
+        <label for="event-duration">How long? <span class="text-danger">*</span></label>
         <select ng-model="event.duration" required class="form-control" id="event-duration" name="duration">
           <option value="unknown">I'm not sure</option>
           <option value="0.5">Half an hour</option>
@@ -105,22 +105,19 @@
 
   </div>
 
-  <header class="page-header">
-    <h3>About you</h3>
-  </header>
-
-  <div class="form-group">
-    <label for="email">Administrator's Email</label>
+  <div class="form-group add-bottom-margin">
+    <label for="email">Event organizer's email</label>
     <div class="row">
       <div class="col-sm-6">
         <input ng-model="event.organizer" name="organizer" class="form-control" type="email" readonly required>
       </div>
       <div class="col-sm-6">
-        <a href="#" class="btn btn-default" ng-click="login()">Log in with a different email</a>
+
       </div>
     </div>
     <p class="help-block">
-      <span class="fa fa-lock"></span> You must log in with this email to edit this event.
+      <p><span class="fa fa-lock"></span> You'll need to log in with this email to make changes to this event.</p>
+      <a href="#" class="btn btn-sm btn-default btn-secondary" ng-click="login()">Log in with a different email</a>
     </p>
   </div>
 
