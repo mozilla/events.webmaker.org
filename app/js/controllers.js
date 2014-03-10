@@ -151,6 +151,7 @@ angular.module('myApp.controllers', [])
   ])
   .controller('eventDetailController', ['$scope', '$http', '$routeParams', 'eventService', 'moment',
     function ($scope, $http, $routeParams, eventService, moment) {
+
       eventService.get({
         id: $routeParams.id,
       }, function (data) {

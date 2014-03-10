@@ -18,7 +18,7 @@
       <div class="col-xs-12 col-sm-6">
         <div class="icon-left">
           <span class="fa fa-map-marker"></span>
-          <h4>{{ eventData.address }} <a href="https://maps.google.com/?q={{ eventData.address | uriEncode }}" target="_blank">(map)</a></h4>
+          <h4>{{ eventData.address }} <a href="https://maps.google.com/?q={{ eventData.address | uriEncode }}" target="_blank">({{ '_map_' | i18n }})</a></h4>
         </div>
       </div>
     </div>
@@ -27,11 +27,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 add-bottom-margin">
-        <a class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
+        <a class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">{{ '_attend_this_event_' | i18n }}</a>
         <div class="organized-by">
           <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
           <div>
-            <p>Organized by<br><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizerId || eventData.organizer }}</a></strong></p>
+            <p>{{ '_organized_by_' | i18n }}<br><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizerId || eventData.organizer }}</a></strong></p>
             </p>
           </div>
         </div>

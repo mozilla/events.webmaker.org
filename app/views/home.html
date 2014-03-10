@@ -1,10 +1,10 @@
 <div class="container home-section">
   <div class="row">
     <div class="col-md-7 col-sm-12">
-      <h1 class="home">Join Webmakers in hosting events around the world.</h1>
+      <h1 class="home">{{ '_join_webmakers_home_' | i18n }}</h1>
       <p>
-        <a href="/#events" class="btn-home btn btn-lg btn-primary btn-mobile-block"><span class="fa fa-search"></span> Find an event</a>
-        <a href="/#add" class="btn-home btn btn-lg btn-primary btn-mobile-block"><span class="fa fa-plus"></span> Add an Event</a>
+        <a href="/#events" class="btn-home btn btn-lg btn-primary btn-mobile-block"><span class="fa fa-search"></span> {{ '_find_an_event_' | i18n }}</a>
+        <a href="/#add" class="btn-home btn btn-lg btn-primary btn-mobile-block"><span class="fa fa-plus"></span> {{ '_add_an_event_' | i18n }}</a>
       </p>
     </div>
     <div class="col-md-5 hidden-sm hidden-xs">
@@ -12,21 +12,20 @@
         <div>
           <div class="viz viz-people">
             <span class="viz-number">14,986</span>
-            <span class="viz-label"><span class="fa fa-group"></span> People</span>
+            <span class="viz-label"><span class="fa fa-group"></span> {{ '_people_' | i18n }}</span>
           </div>
         </div>
         <div>
           <div class="viz viz-events">
             <span class="viz-number">8,729</span>
-            <span class="viz-label"><span class="fa fa-map-marker"></span> Events</span>
+            <span class="viz-label"><span class="fa fa-map-marker"></span> {{ '_events_' | i18n }}</span>
           </div>
           <div class="viz viz-cities">
             <span class="viz-number">125</span>
-            <span class="viz-label"><span class="fa fa-map-marker"></span> Cities</span>
+            <span class="viz-label"><span class="fa fa-map-marker"></span> {{ '_cities_' | i18n }}</span>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -39,9 +38,9 @@
 
 <div class="container home-section">
   <h2 class="home">
-    Upcoming events
+    {{ '_upcoming_events_' | i18n }}
     <span class="small pull-right">
-      <a href="/#events">All events <span class="fa fa-angle-right"></span></a>
+      <a href="/#events">{{ '_all_events_' | i18n }} <span class="fa fa-angle-right"></span></a>
     </span>
   </h2>
 
@@ -61,8 +60,8 @@
   <div class="container">
     <img class="shirt" src="/img/shirt.png">
     <div>
-      <h3>Did you know you can request Webmaker gear for your event?</h3>
-      <p>Get more tips in <a href="https://webmaker.org/event-guides">event guides</a></p>
+      <h3>{{ '_gear_for_your_event_' | i18n }}</h3>
+      <p ng-bind-html="'_get_more_tips_' | i18n"></p>
     </div>
   </div>
 </footer>

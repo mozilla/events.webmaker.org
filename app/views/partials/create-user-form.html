@@ -1,35 +1,35 @@
 <div class="modal-header">
   <button ng-click="cancel()" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h3 class="modal-title" >Welcome to Webmaker!</h3>
+  <h3 class="modal-title" >{{ '_welcome_to_webmaker_' | i18n }}</h3>
 </div>
 <div class="modal-body">
   <form class="form" name="form.user" novalidate>
     <div class="form-group" ng-class="{'has-error': (submit || form.user.username.$dirty) && form.user.username.$invalid }">
       <div class="row">
         <div class="col-sm-6">
-          <label>Choose a username</label>
+          <label>{{ '_choose_a_username_' | i18n }}</label>
         </div>
         <div class="col-sm-6">
           <input ng-model="user.username" name="username" autocomplete="off" class="form-control" ng-change="checkUsername()" required>
-          <span class="help-block" ng-show="form.user.username.$error.taken">Sorry that username is taken</span>
-          <span class="help-block" ng-show="(submit || form.user.username.$dirty) && form.user.username.$error.required">You must choose a username</span>
+          <span class="help-block" ng-show="form.user.username.$error.taken">{{ '_username_taken_' | i18n }}</span>
+          <span class="help-block" ng-show="(submit || form.user.username.$dirty) && form.user.username.$error.required">{{ '_you_must_choose_username_' | i18n }}</span>
         </div>
       </div>
     </div>
     <div class="checkbox">
       <label>
-        <input ng-model="user.mailingList" name="mailingList" type="checkbox"> Send me email updates about Mozilla Webmaker and other projects
+        <input ng-model="user.mailingList" name="mailingList" type="checkbox"> {{ '_send_me_an_email_' | i18n }}
       </label>
     </div>
     <div class="checkbox" ng-class="{'has-error': submit && !form.agree }">
       <label>
-        <input ng-model="form.agree" name="agree" type="checkbox"> I agree to your <a href="https://webmaker.org/en_US/terms">terms</a> and <a href="https://webmaker.org/en_US/privacy">conditions</a>
-        <span class="help-block" ng-show="submit && !form.agree">You must agree to our terms and conditions</span>
+        <input ng-model="form.agree" name="agree" type="checkbox"><span bind-unsafe-html="'_agree_to_terms_and_conditions_' | i18n"></span>
+        <span class="help-block" ng-show="submit && !form.agree">{{ '_must_agree_to_terms_and_conditions_' | i18n }}</span>
       </label>
     </div>
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
-  <button ng-click="createUser()" class="create-user btn btn-primary" type="button">Create Account</button>
+  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">{{ '_cancel_' | i18n }}</button>
+  <button ng-click="createUser()" class="create-user btn btn-primary" type="button">{{ '_create_account_' | i18n }}</button>
 </div>
