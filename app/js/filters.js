@@ -1,6 +1,12 @@
 // Filters --------------------------------------------------------------------
 
 angular.module('myApp.filters', [])
+  .filter('uriEncode',
+    function () {
+      return function (text) {
+        return encodeURIComponent(text);
+      };
+    })
   .filter('markdown', ['showdown', '$sce',
     function (showdown, $sce) {
       return function (text) {
