@@ -28,7 +28,13 @@
     <div class="row">
       <div class="col-xs-12 col-sm-4 add-bottom-margin">
         <a class="btn btn-primary btn-lg btn-mb-block add-bottom-margin" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
-        <h5>Organized by <br/><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizer }}</a></strong></h5>
+        <div class="organized-by">
+          <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
+          <div>
+            <p>Organized by<br><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizerId || eventData.organizer }}</a></strong></p>
+            </p>
+          </div>
+        </div>
       </div>
 
       <div class="col-xs-12 col-sm-8" ng-bind-html="eventData.description | markdown"></div>
