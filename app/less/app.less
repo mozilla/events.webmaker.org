@@ -5,8 +5,14 @@
 @import "../bower_components/font-awesome/less/font-awesome";
 @fa-font-path: "/bower_components/font-awesome/fonts";
 
+// Animations
+@import (less) "../bower_components/animate.css/animate.css";
+
+@import "mixins";
+
 @import "views/event-list";
 @import "views/event-detail";
+@import "views/home";
 
 .fa(@icon) {
   font-family: FontAwesome;
@@ -20,10 +26,6 @@
 @border-radius-base: 0;
 
 //  Resets --------------------------------------------------------------------
-
-body {
-  padding-bottom: 10px;
-}
 
 a {
   cursor: pointer;
@@ -58,6 +60,10 @@ p {
 
 //  Bootstrap Overrides -------------------------------------------------------
 
+h1, h2, h3, h4 {
+  font-weight: 200;
+}
+
 .page-header {
   border: 0;
   margin-bottom: 40px;
@@ -89,3 +95,7 @@ p {
   display: none !important;
 }
 
+.view-animate.ng-enter {
+  .animated;
+  .fadeIn;
+}
