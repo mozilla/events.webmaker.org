@@ -4,6 +4,29 @@ angular.module('myApp.services', ['ngResource'])
   .constant('config', window.eventsConfig)
   .constant('chrono', window.chrono)
   .constant('showdown', window.Showdown)
+  .factory('loadGoogleMaps', ['$window',
+    function($window) {
+
+      function initialize (callback) {
+        $window.onInit = callback;
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&' +
+            'callback=onInit';
+        document.body.appendChild(script);
+      }
+
+      return {
+        ready: function (callback) {
+          if ($window.google) {
+            callback();
+          } else {
+            initialize(callback);
+          }
+        }
+      };
+   }
+  ])
   .factory('eventService', ['$rootScope', '$resource', 'config',
     function ($rootScope, $resource, config) {
       return $resource(config.eventsLocation + '/events/:id', null, {

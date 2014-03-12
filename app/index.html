@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{lang}}" dir="{{direction}}" ng-app="myApp">
+<html lang="{{lang}}" dir="{{direction}}" ng-app="myApp" ng-csp>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
@@ -67,7 +67,6 @@
   <div class="view-animate" role="main" ng-view></div>
 
   <script src="config.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
   <script src="https://login.persona.org/include.js"></script>
   <script src="bower_components/eventEmitter/EventEmitter.js"></script>
   <script src="bower_components/webmaker-auth-client/webmaker-auth-client.js"></script>

@@ -24,35 +24,39 @@ angular.module('myApp.directives', [])
   .directive('autocompleteLocation', function () {
     return {
       restrict: 'A',
-      controller: ['$element', '$scope',
-        function ($element, $scope) {
-          var autocomplete = new google.maps.places.Autocomplete($element[0], {});
+      controller: ['$element', '$scope', 'loadGoogleMaps',
+        function ($element, $scope, loadGoogleMaps) {
 
-          autocomplete.addListener('place_changed', function () {
-            var placeData = autocomplete.getPlace();
+          loadGoogleMaps.ready(function() {
+            var autocomplete = new google.maps.places.Autocomplete($element[0], {});
 
-            var city;
-            var country;
+            autocomplete.addListener('place_changed', function () {
+              var placeData = autocomplete.getPlace();
 
-            placeData.address_components.forEach(function (component) {
-              if (component.types[0] === 'locality') {
-                city = component.long_name;
-              } else if (component.types[0] === 'country') {
-                country = component.long_name;
-              }
+              var city;
+              var country;
+
+              placeData.address_components.forEach(function (component) {
+                if (component.types[0] === 'locality') {
+                  city = component.long_name;
+                } else if (component.types[0] === 'country') {
+                  country = component.long_name;
+                }
+              });
+
+              $scope.$emit('locationAutocompleted', {
+                latitude: placeData.geometry.location.lat(),
+                longitude: placeData.geometry.location.lng(),
+                city: city,
+                country: country
+              });
+
+              // Force view model to update after autocompletion
+              // TODO: This is kind of gross too. What's the "angular way"?
+              $element.trigger('input');
             });
-
-            $scope.$emit('locationAutocompleted', {
-              latitude: placeData.geometry.location.lat(),
-              longitude: placeData.geometry.location.lng(),
-              city: city,
-              country: country
-            });
-
-            // Force view model to update after autocompletion
-            // TODO: This is kind of gross too. What's the "angular way"?
-            $element.trigger('input');
           });
+
         }
       ]
     };
