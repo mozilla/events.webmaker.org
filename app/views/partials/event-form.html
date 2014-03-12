@@ -29,12 +29,22 @@
       </div>
 
       <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.description.$invalid">Required!</div>
+
+      <div class="form-group">
+        <div class="form-group">
+          <label for="event-registration-page">Event Link</label>
+          <p class="help-block">If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.</p>
+          <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page" />
+        </div>
+
+        <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid">Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong></div>
+      </div>
     </div>
 
     <div class="col-sm-6">
 
       <div class="form-group">
-        <label for="event-attendees">How many attendees are you expecting? <span class="text-danger">*</span></label>
+        <label for="event-attendees">How many attendees are you expecting?</label>
         <select ng-model="event.attendees" class="form-control" id="event-attendees" name="attendees">
           <option value="0">I'm not sure</option>
           <option value="5">Under 10</option>
@@ -47,14 +57,32 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <div class="form-group">
-          <label for="event-registration-page">Event Link</label>
-          <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page." />
-          <p><small>If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.</small></p>
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="event-attendees">Skill level</label>
+            <select ng-model="event.skillLevel" class="form-control" id="skill-level" name="skillLevel">
+              <option value="">Any skill level</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
         </div>
 
-        <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid">Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong></div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="event-attendees">Age group</label>
+            <select ng-model="event.ageGroup" class="form-control" id="age-group" name="ageGroup">
+              <option value="">Any age group</option>
+              <option value="kids">Kids</option>
+              <option value="youth">Youth</option>
+              <option value="adults">Adults</option>
+            </select>
+          </div>
+        </div>
+
       </div>
 
     </div>
