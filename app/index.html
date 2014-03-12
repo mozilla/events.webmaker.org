@@ -11,39 +11,58 @@
 
   <div ng-controller="createUserController"></div>
 
-  <nav class="navbar navbar-default" ng-controller="navController">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="fa fa-bars fa-lg text-muted"></span>
-        </button>
-        <a class="navbar-brand" href="#">Webmaker Events</a>
-      </div>
+  <div ng-controller="navController">
+    <nav class="navbar navbar-default navbar-webmaker">
+      <div class="container">
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="navbar-collapse" collapse="isCollapsed">
-        <ul class="nav navbar-nav">
-          <li ng-class="{ active : isActive('/events') }"><a href="#/events">Upcoming Events</a></li>
-          <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
-          <li class="dropdown" ng-cloak ng-show="_user.email">
-            <a class="navbar-user-info dropdown-toggle">
-              <img class="user-info-avatar" ng-src="{{_user.avatar}}"> Hi, <strong>{{_user.username}}</strong> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="{{myMakesUrl}}" target="_blank"><span class="fa fa-th-large"></span> My Makes</a></li>
-              <li><a href="{{accountSettingsUrl}}" target="_blank"><span class="fa fa-cog"></span> Settings</a></li>
-              <li class="divider"></li>
-              <li><a ng-click="logout()"><span class="fa fa-sign-out"></span> Log Out</a></li>
-            </ul>
-          </li>
-        </ul>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars fa-lg"></span>
+          </button>
+          <a href="https://webmaker.org" class="logo webmaker-logo"><img src="https://webmaker.org/img/logo.png"></a>
+        </div>
 
-        <button ng-cloak ng-show="!_user.email" class="btn btn-primary btn-sm navbar-btn" ng-click="login()">Log In</button>
+        <div class="navbar-collapse" collapse="isCollapsed">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" ng-cloak ng-show="_user.email">
+              <a class="navbar-user-info dropdown-toggle">
+                <img class="user-info-avatar" ng-src="{{_user.avatar}}"> Hi, <strong>{{_user.username}}</strong> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{{myMakesUrl}}" target="_blank"><span class="fa fa-th-large"></span> My Makes</a></li>
+                <li><a href="{{accountSettingsUrl}}" target="_blank"><span class="fa fa-cog"></span> Settings</a></li>
+                <li class="divider"></li>
+                <li><a ng-click="logout()"><span class="fa fa-sign-out"></span> Log Out</a></li>
+              </ul>
+            </li>
+            <li>
+              <button ng-cloak ng-show="!_user.email" class="btn btn-primary btn-sm navbar-btn" ng-click="login()">Log In</button>
+            </li>
+          </ul>
+        </div>
+
       </div>
-    </div>
-  </nav>
+    </nav>
+
+    <nav class="navbar navbar-inverse navbar-no-header-xs">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="https://webmaker.org" tooltip="Back to Webmaker" tooltip-placement="bottom">
+            <span class="fa fa-reply"></span>
+          </a>
+        </div>
+        <div class="navbar-collapse" collapse="isCollapsed">
+          <ul class="nav navbar-nav">
+            <li ng-class="{ active : isActive('/') }"><a href="#">Events</a></li>
+            <li ng-class="{ active : isActive('/events') }"><a href="#/events">Upcoming Events</a></li>
+            <li ng-class="{ active : isActive('/add') }"><a href="#/add">Add Event</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </div>
 
   <div class="view-animate" role="main" ng-view></div>
 
