@@ -14,8 +14,8 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
-  .factory('eventFormatter', ['moment', 'chrono',
-    function (moment, chrono) {
+  .factory('eventFormatter', ['$rootScope', 'moment', 'chrono',
+    function ($rootScope, moment, chrono) {
 
       return function (form, eventData) {
         if (!form || !eventData) {
@@ -36,6 +36,10 @@ angular.module('myApp.services', ['ngResource'])
         if (eventData.beginDate) {
           serializedEvent.beginDate = eventData.parsedNaturalStartDate.toISOString();
         }
+
+        // Add user info
+        serializedEvent.organizer = $rootScope._user.email;
+        serializedEvent.organizerId = $rootScope._user.username;
 
         if (eventData.duration !== 'unknown') {
           serializedEvent.endDate = moment(eventData.parsedNaturalStartDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
