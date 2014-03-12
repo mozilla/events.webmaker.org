@@ -18,14 +18,14 @@
           required
           id="event-title"
           class="form-control"
-          placeholder="Use an awesome title so people will come!">
+          placeholder="A great name encourages attendance.">
       </div>
 
       <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.eventName.$invalid">Required!</div>
 
       <div class="form-group" ng-class="{'has-error': addEventForm.description.$dirty && addEventForm.description.$invalid}">
         <label for="event-description">Describe your event <span class="text-danger">*</span></label>
-        <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="Tell people a few more details about your event. What can they expect?"></textarea>
+        <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="What can people expect when they attend your event?"></textarea>
       </div>
 
       <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.description.$invalid">Required!</div>
@@ -34,17 +34,7 @@
     <div class="col-sm-6">
 
       <div class="form-group">
-        <div class="form-group">
-          <label for="event-registration-page">Event Link</label>
-          <p><small>If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.</small></p>
-          <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page" />
-        </div>
-
-        <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid">Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong></div>
-      </div>
-
-      <div class="form-group">
-        <label for="event-attendees">How many attendees are you expecting?</label>
+        <label for="event-attendees">How many attendees are you expecting? <span class="text-danger">*</span></label>
         <select ng-model="event.attendees" class="form-control" id="event-attendees" name="attendees">
           <option value="0">I'm not sure</option>
           <option value="5">Under 10</option>
@@ -57,6 +47,16 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <div class="form-group">
+          <label for="event-registration-page">Event Link</label>
+          <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page." />
+          <p><small>If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.</small></p>
+        </div>
+
+        <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid">Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong></div>
+      </div>
+
     </div>
 
   </div>
@@ -67,17 +67,17 @@
 
   <div class="form-group" ng-class="{'has-error': addEventForm.address.$dirty && addEventForm.address.$invalid}">
     <label for="form-address">Event location <span class="text-danger">*</span></label>
-    <input autocomplete-location id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter a location" autocomplete="off"></input>
+    <input autocomplete-location id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter an address." autocomplete="off"></input>
   </div>
 
   <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.address.$invalid">Required!</div>
 
-  <div class="row">
+  <div class="row add-bottom-margin">
 
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="event-start-date">Start Date and Time <span class="text-danger">*</span></label>
-        <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm"/>
+        <label for="event-start-date">Start date and time <span class="text-danger">*</span></label>
+        <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm."/>
       </div>
       <div class="add-bottom-margin">
         <em ng-show="event.isValidStartDate">{{ event.humanParsedDate }}</em>
@@ -88,7 +88,7 @@
 
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="event-duration">How Long? <span class="text-danger">*</span></label>
+        <label for="event-duration">How long? <span class="text-danger">*</span></label>
         <select ng-model="event.duration" required class="form-control" id="event-duration" name="duration">
           <option value="unknown">I'm not sure</option>
           <option value="0.5">Half an hour</option>
@@ -105,22 +105,18 @@
 
   </div>
 
-  <header class="page-header">
-    <h3>About you</h3>
-  </header>
-
-  <div class="form-group">
-    <label for="email">Administrator's Email</label>
+  <div class="form-group add-double-bottom-margin">
+    <label for="email">Event organizer's email</label>
     <div class="row">
       <div class="col-sm-6">
         <input ng-model="event.organizer" name="organizer" class="form-control" type="email" readonly required>
       </div>
       <div class="col-sm-6">
-        <a href="#" class="btn btn-default" ng-click="login()">Log in with a different email</a>
+
       </div>
     </div>
     <p class="help-block">
-      <span class="fa fa-lock"></span> You must log in with this email to edit this event.
+      <span class="fa fa-lock"></span> You'll need to log in with this email to make changes to this event. <a href="#" ng-click="login()">Use a different email.</a>
     </p>
   </div>
 
