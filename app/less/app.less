@@ -14,6 +14,8 @@
 @import "views/event-detail";
 @import "views/home";
 
+@import "components/angle-list";
+
 .fa(@icon) {
   font-family: FontAwesome;
   font-style: normal;
@@ -81,6 +83,10 @@ h1, h2, h3, h4 {
   }
 }
 
+.btn-block {
+  display: block;
+}
+
 .btn-group {
   .btn:active, .btn:hover, .btn.active {
     background-color: @brand-primary;
@@ -108,8 +114,10 @@ h1, h2, h3, h4 {
     display: none;
   }
 }
-//  Navbar Header
 
+//  Chrome --------------------------------------------------------------------
+
+//  Navbar Header
 .navbar.navbar-no-header-xs {
   @media (max-width: @grid-float-breakpoint) {
     border: none;
