@@ -10,7 +10,6 @@ angular.module('localization', ['ngSanitize'])
 .factory('localize', ['$http', '$rootScope', 'config',
   function ($http, $rootScope, config) {
     var localize = {
-      language: '',
       // Object to hold the localized resource string entries
       dictionary: {},
       // location of the resource file
@@ -30,12 +29,7 @@ angular.module('localization', ['ngSanitize'])
 
       // builds the url for locating the resource file
       buildUrl: function () {
-        if(config.supported_languages.indexOf(config.lang) > 0) {
-          localize.language = config.lang;
-        } else {
-          localize.language = config.defaultLang;
-        }
-        return '/strings/' + localize.language;
+        return '/strings/' + config.lang;
       },
 
       // loads the language resource file from the server
@@ -61,10 +55,12 @@ angular.module('localization', ['ngSanitize'])
 
       // checks the dictionary for a localized resource string
       getLocalizedString: function (value) {
-        if (localize.dictionary.hasOwnProperty(value)) {
-          return localize.dictionary[value].message;
-        } else {
-          return 'unkown key: "' + value + '"';
+        if (localize.resourceFileLoaded) {
+          if (localize.dictionary.hasOwnProperty(value)) {
+            return localize.dictionary[value].message;
+          } else {
+            return 'unkown key: "' + value + '"';
+          }
         }
       }
     };
