@@ -27,13 +27,18 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 add-bottom-margin">
-        <a class="btn btn-primary btn-lg btn-mb-block add-bottom-margin" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
+        <a class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">Attend this event</a>
         <div class="organized-by">
           <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
           <div>
             <p>Organized by<br><strong><a href="mailto:{{ eventData.organizer }}">{{ eventData.organizerId || eventData.organizer }}</a></strong></p>
             </p>
           </div>
+        </div>
+        <div>
+          <p class="add-bottom-margin">Who is this for?</p>
+          <h4><span class="fa fa-star fa-fw text-muted"></span> <a>{{ eventData.skillLevel || 'Any skill level' }}</a></h4>
+          <h4><span class="fa fa-male fa-fw text-muted"></span> <a>{{ eventData.ageGroup || 'Any age group' }}</a></h4>
         </div>
       </div>
 
