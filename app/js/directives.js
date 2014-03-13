@@ -13,9 +13,11 @@ angular.module('myApp.directives', [])
     return {
       restrict: 'A',
       link: function (scope, el, attrs) {
-        el.on('click', function (e) {
-          e.preventDefault();
-        });
+        if (attrs.href === '#') {
+          el.on('click', function (e) {
+            e.preventDefault();
+          });
+        }
       }
     };
   })

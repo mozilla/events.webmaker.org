@@ -2,7 +2,6 @@
 
 angular.module('myApp.services', ['ngResource'])
   .constant('config', window.eventsConfig)
-  .constant('moment', window.moment)
   .constant('chrono', window.chrono)
   .constant('showdown', window.Showdown)
   .factory('eventService', ['$rootScope', '$resource', 'config',
@@ -57,6 +56,13 @@ angular.module('myApp.services', ['ngResource'])
       };
     }
   ])
+  .factory('moment', [ '$window', 'config',
+      function ($window,  config) {
+        var moment = $window.moment;
+        moment.lang(config.lang);
+        return moment;
+      }
+    ])
   .factory('authService', ['$rootScope', 'config',
     function authService($rootScope, config) {
 
@@ -79,6 +85,14 @@ angular.module('myApp.services', ['ngResource'])
 
       // Set up user data
       $rootScope._user = {};
+
+      // Set locale information
+      if(config.supported_languages.indexOf(config.lang) > 0) {
+        $rootScope.lang = config.lang;
+      } else {
+        $rootScope.lang = config.defaultLang;
+      }
+      $rootScope.direction = config.direction;
 
       auth.on('login', function (user) {
         $rootScope._user = user;

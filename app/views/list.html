@@ -1,20 +1,20 @@
 <div class="container">
   <header class="page-header">
-    <h1>Upcoming Events</h1>
+    <h1>{{ '_upcoming_events_' | i18n }}</h1>
   </header>
 
   <we-listing class="event-list">
     <div class="row add-bottom-margin">
       <div class="col-sm-8">
         <div class="btn-group" ng-show="geoLocationEnabled">
-          <button ng-class="{'active': sortName === 'date'}" ng-click="sortOrder = orderByDate; sortName = 'date';" type="button" class="btn btn-default">Newest</button>
-          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortOrder = orderByProximity; sortName = 'proximity';" type="button" class="btn btn-default">Closest</button>
+          <button ng-class="{'active': sortName === 'date'}" ng-click="sortOrder = orderByDate; sortName = 'date';" type="button" class="btn btn-default">{{ '_newest_' | i18n }}</button>
+          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortOrder = orderByProximity; sortName = 'proximity';" type="button" class="btn btn-default">{{ '_closest_' | i18n }}</button>
         </div>
       </div>
 
       <div class="col-sm-4 search-block">
         <div class="col-xs-10 no-padding">
-          <input placeholder="Search events" ng-model="eventFilter" type="text" class="form-control col-sm-4">
+          <input placeholder="{{ '_search_events_' | i18n }}" ng-model="eventFilter" type="text" class="form-control col-sm-4">
         </div>
         <div class="col-xs-2 mag-glass">
           <span class="fa fa-search"></span>

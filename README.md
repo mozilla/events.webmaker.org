@@ -47,3 +47,40 @@ This app takes four configuration parameters, all of which are optional.
 - **grunt** - Runs a server at [localhost:1134](http://localhost:1134).
 - **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md).
 - **grunt heroku** - For heroku
+
+### Localization
+
+Some of the code was taken from [Angularjs LocalizationServer](https://github.com/lavinjj/angularjs-localizationservice/) by Jim Lavin.
+
+All strings are included and can be found in [locale/<en_US>/translation.json](/locale/en_US/events2.json).
+
+The format is slightly different than how we do it in Webmaker apps and this is the format:
+
+``` json
+"_string_name_": {
+  "message": "Some value here",
+  "description": "Description here can be useful for Transifex since translator can see this."
+},
+"_create_account_": {
+  "message": "Create Account",
+  "description": "Create and account button"
+},
+"_back_to_webmaker_": {
+  "message": "Back to Webmaker",
+  "description": "Button to go back to Webmaker.org site"
+}
+```
+
+To localize string in template file you have three options:
+
+1. `{{ '_some_key_name_' | i18n }}`
+  This will check the translation file and look for that specific key name and return the message. If key name not found it will return **unkown key: "_some_key_name_"**.
+
+2. `<span ng-bind-html="'_some_key_name' | i18n"></span>`
+
+  This method is useful when you have some markup.
+
+3. `<span bind-unsafe-html"'_some_key_name' | i18n"></span>`
+
+  This method is useful when you have some variable inside your string for instance: "My name is {{name}}."
+

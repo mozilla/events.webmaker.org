@@ -3,6 +3,7 @@ angular.module('myApp', [
   'ngResource',
   'ngAnimate',
   'ui.bootstrap',
+  'localization',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',

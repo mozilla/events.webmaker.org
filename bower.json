@@ -12,6 +12,7 @@
     "angular": "1.2.8",
     "angular-route": "1.2.8",
     "angular-resource": "1.2.8",
+    "angular-sanitize": "1.2.14",
     "angular-bootstrap": "0.10.0",
     "font-awesome": "4.0.3",
     "momentjs": "2.5.0",

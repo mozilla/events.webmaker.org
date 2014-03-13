@@ -1,11 +1,22 @@
 module.exports = function (env) {
   var express = require('express');
+  var i18n = require('webmaker-i18n');
+  var path = require('path');
   var app = express();
+  var defaultLang = 'en-US';
 
   app.use(express.logger('dev'));
   app.use(express.compress());
   app.use(express.json());
   app.use(express.urlencoded());
+
+  // Setup locales with i18n
+  app.use( i18n.middleware({
+    supported_languages: env.get('SUPPORTED_LANGS') || [default_langLang],
+    default_lang: defaultLang,
+    mappings: require('webmaker-locale-mapping'),
+    translation_directory: path.resolve(__dirname, '../locale')
+  }));
 
   var config = {
     version: require('../package').version,
@@ -29,9 +40,16 @@ module.exports = function (env) {
 
   // Serve up virtual configuration "file"
   app.get('/config.js', function (req, res) {
+    config.lang = req.localeInfo.lang;
+    config.direction = req.localeInfo.direction;
+    config.defaultLang = defaultLang;
+    config.supported_languages = i18n.getSupportLanguages();
     res.setHeader('Content-type', 'text/javascript');
     res.send('window.eventsConfig = ' + JSON.stringify(config));
   });
+
+ // Localized Strings
+ app.get('/strings/:lang?', i18n.stringsRoute('en-US'));
 
   return app;
 };

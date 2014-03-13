@@ -1,9 +1,9 @@
-<div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">Looks like you have some errors...</div>
+<div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">{{ '_some_errors_' | i18n }}</div>
 
 <form name="addEventForm" role="form" novalidate>
 
   <header class="page-header">
-    <h3>Basics</h3>
+    <h3>{{ '_basics_' | i18n }}</h3>
   </header>
 
   <div class="row">
@@ -11,33 +11,33 @@
     <div class="col-sm-6">
 
       <div class="form-group" ng-class="{'has-error': addEventForm.title.$dirty && addEventForm.title.$invalid}">
-        <label for="event-title">Name your event <span class="text-danger">*</span></label>
+        <label for="event-title">{{ '_name_your_event_' | i18n }} <span class="text-danger">*</span></label>
         <input
           ng-model="event.title"
           name="title"
           required
           id="event-title"
           class="form-control"
-          placeholder="A great name encourages attendance.">
+          placeholder="{{ '_great_title_name_' | i18n }}">
       </div>
 
-      <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.eventName.$invalid">Required!</div>
+      <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.eventName.$invalid">{{ '_required_' | i18n }}</div>
 
       <div class="form-group" ng-class="{'has-error': addEventForm.description.$dirty && addEventForm.description.$invalid}">
-        <label for="event-description">Describe your event <span class="text-danger">*</span></label>
-        <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="What can people expect when they attend your event?"></textarea>
+        <label for="event-description">{{ '_describe_your_event_' | i18n }} <span class="text-danger">*</span></label>
+        <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="{{ '_describe_placeholder_' | i18n }}"></textarea>
       </div>
 
-      <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.description.$invalid">Required!</div>
+      <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.description.$invalid">{{ '_required_' | i18n }}</div>
     </div>
 
     <div class="col-sm-6">
 
       <div class="form-group">
-        <label for="event-attendees">How many attendees are you expecting? <span class="text-danger">*</span></label>
+        <label for="event-attendees">{{ '_event_attendees_' | i18n }} <span class="text-danger">*</span></label>
         <select ng-model="event.attendees" class="form-control" id="event-attendees" name="attendees">
-          <option value="0">I'm not sure</option>
-          <option value="5">Under 10</option>
+          <option value="0">{{ '_i_am_not_sure_' | i18n }}</option>
+          <option value="5">{{ '_under_ten_' | i18n }}</option>
           <option value="15">10 - 20</option>
           <option value="35">20 - 50</option>
           <option value="75">50 - 100</option>
@@ -75,12 +75,12 @@
 
       <div class="form-group">
         <div class="form-group">
-          <label for="event-registration-page">Event Link</label>
+          <label for="event-registration-page">{{ '_event_link_' | i18n }}</label>
           <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page." />
-          <p><small>If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.</small></p>
+          <p><small>{{ '_event_link_explain_' | i18n }}</small></p>
         </div>
 
-        <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid">Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong></div>
+        <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid" ng-bind-html="'_link_event_error_message_' | i18n "></div>
       </div>
 
     </div>
@@ -88,43 +88,43 @@
   </div>
 
   <header class="page-header">
-    <h3>When and where?</h3>
+    <h3>{{ '_when_where_' | i18n }}</h3>
   </header>
 
   <div class="form-group" ng-class="{'has-error': addEventForm.address.$dirty && addEventForm.address.$invalid}">
-    <label for="form-address">Event location <span class="text-danger">*</span></label>
-    <input autocomplete-location id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="Enter an address." autocomplete="off"></input>
+    <label for="form-address">{{ '_event_location_' | i18n }} <span class="text-danger">*</span></label>
+    <input autocomplete-location id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="{{ '_enter_an_address_' | i18n }}" autocomplete="off"></input>
   </div>
 
-  <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.address.$invalid">Required!</div>
+  <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.address.$invalid">{{ '_required_' | i18n }}</div>
 
   <div class="row add-bottom-margin">
 
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="event-start-date">Start date and time <span class="text-danger">*</span></label>
+        <label for="event-start-date">{{ '_start_date_and_time_' | i18n }} <span class="text-danger">*</span></label>
         <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm."/>
       </div>
       <div class="add-bottom-margin">
         <em ng-show="event.isValidStartDate">{{ event.humanParsedDate }}</em>
-        <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.beginDate.$invalid">Required!</div>
-        <div class="alert alert-danger" ng-show="attemptedToSubmit && !event.isValidStartDate">Invalid date format!</div>
+        <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.beginDate.$invalid">{{ '_required_' | i18n }}</div>
+        <div class="alert alert-danger" ng-show="attemptedToSubmit && !event.isValidStartDate">{{ '_invalid_date_format_' | i18n }}</div>
       </div>
     </div>
 
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="event-duration">How long? <span class="text-danger">*</span></label>
+        <label for="event-duration">{{ '_how_long_' | i18n }} <span class="text-danger">*</span></label>
         <select ng-model="event.duration" required class="form-control" id="event-duration" name="duration">
-          <option value="unknown">I'm not sure</option>
-          <option value="0.5">Half an hour</option>
-          <option value="1">1 hour</option>
-          <option value="1.5">1.5 hours</option>
-          <option value="2">2 hours</option>
-          <option value="2.5">2.5 hours</option>
-          <option value="3">3 hours</option>
+          <option value="unknown">{{ '_i_am_not_sure_' | i18n }}</option>
+          <option value="0.5">{{ '_half_an_hour_' | i18n }}</option>
+          <option value="1">{{ '_one_hour_' | i18n }}</option>
+          <option value="1.5">{{ '_one_and_half_hour_' | i18n }}</option>
+          <option value="2">{{ '_two_hours_' | i18n }}</option>
+          <option value="2.5">{{ '_two_and_half_hours_' | i18n }}</option>
+          <option value="3">{{ '_three_hours_' | i18n }}</option>
           <!-- TODO: Maybe reveal a new end date + time input if someone selects over 3 hrs -->
-          <option value="unknown">Over 3 hours</option>
+          <option value="unknown">{{ '_over_three_hours_' | i18n }}</option>
         </select>
       </div>
     </div>
@@ -132,7 +132,7 @@
   </div>
 
   <div class="form-group add-double-bottom-margin">
-    <label for="email">Event organizer's email</label>
+    <label for="email">{{ '_event_organizer_email_' | i18n }}</label>
     <div class="row">
       <div class="col-sm-6">
         <input ng-model="event.organizer" name="organizer" class="form-control" type="email" readonly required>
@@ -142,7 +142,7 @@
       </div>
     </div>
     <p class="help-block">
-      <span class="fa fa-lock"></span> You'll need to log in with this email to make changes to this event. <a href="#" ng-click="login()">Use a different email.</a>
+      <span class="fa fa-lock"></span> <span ng-click="login()" ng-bind-html="'_login_with_different_email_' | i18n"></span>
     </p>
   </div>
 
