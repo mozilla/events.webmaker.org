@@ -47,6 +47,32 @@
         </select>
       </div>
 
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="event-attendees">Skill level</label>
+            <select ng-model="event.skillLevel" class="form-control" id="skill-level" name="skillLevel">
+              <option value="">Any skill level</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="event-attendees">Age group</label>
+            <select ng-model="event.ageGroup" class="form-control" id="age-group" name="ageGroup">
+              <option value="">Any age group</option>
+              <option value="kids">Kids</option>
+              <option value="youth">Youth</option>
+              <option value="adults">Adults</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group">
         <div class="form-group">
           <label for="event-registration-page">Event Link</label>
