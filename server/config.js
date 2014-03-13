@@ -12,7 +12,7 @@ module.exports = function (env) {
 
   // Setup locales with i18n
   app.use( i18n.middleware({
-    supported_languages: env.get('SUPPORTED_LANGS') || [default_langLang],
+    supported_languages: env.get('SUPPORTED_LANGS') || [defaultLang],
     default_lang: defaultLang,
     mappings: require('webmaker-locale-mapping'),
     translation_directory: path.resolve(__dirname, '../locale')
