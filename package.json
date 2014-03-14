@@ -4,7 +4,7 @@
   "description": "Front end for Webmaker events",
   "main": "app/js/app.js",
   "scripts": {
-    "postinstall": "bower install; grunt heroku"
+    "postinstall": "bower install; grunt build"
   },
   "keywords": [],
   "author": "author",
