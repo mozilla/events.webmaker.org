@@ -57,7 +57,7 @@ angular.module('localization', ['ngSanitize'])
       getLocalizedString: function (value) {
         if (localize.resourceFileLoaded) {
           if (localize.dictionary.hasOwnProperty(value)) {
-            return localize.dictionary[value].message;
+            return localize.dictionary[value];
           } else {
             return 'unkown key: "' + value + '"';
           }
