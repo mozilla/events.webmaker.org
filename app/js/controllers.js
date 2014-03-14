@@ -170,6 +170,7 @@ angular.module('myApp.controllers', [])
         return location === $location.path();
       };
 
+      $scope.webmakerUrl = config.webmakerUrl;
       $scope.accountSettingsUrl = config.accountSettingsUrl;
       $scope.myMakesUrl = config.myMakesUrl;
 
