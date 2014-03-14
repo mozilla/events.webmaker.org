@@ -22,15 +22,16 @@ module.exports = function (env) {
     version: require('../package').version,
     eventsLocation: env.get('eventsLocation') || 'http://localhost:1989',
     accountSettingsUrl: env.get('accountSettingsUrl') || 'https://login.webmaker.org/account',
-    myMakesUrl: env.get('myMakesUrl') || 'https://webmaker.org/me'
+    myMakesUrl: env.get('myMakesUrl') || 'https://webmaker.org/me',
+    webmakerUrl: env.get('WEBMAKER_URL') || 'https://webmaker.org'
   };
 
   var healthcheck = {
     version: require('../package').version,
     http: 'okay'
   };
-
   // Static files
+
   app.use(express.static('./app'));
 
   // Healthcheck
