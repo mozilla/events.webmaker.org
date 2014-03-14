@@ -290,5 +290,197 @@
   "_back_to_webmaker_": {
     "message": "Back to Webmaker",
     "description": "Button to go back to Webmaker.org site"
+  },
+  "_make_with_others_": {
+    "message": "Want to make the web with others?",
+    "description": "Header"
+  },
+  "_eg_lead_": {
+    "message": "We've got guides to help you plan. What are you in the mood to try?",
+    "description": "Lead paragraph"
+  },
+  "_kitchen_party_": {
+    "message": "Kitchen Party",
+    "description": "Kitchen Party"
+  },
+  "_spend_an_hour_": {
+    "message": "Spend an hour on a rainy day",
+    "description": "Spend an hour on a rainy day"
+  },
+  "_hang_out_": {
+    "message": "Hang out as a family on the computer",
+    "description": "Hang out as a family on the computer"
+  },
+  "_learn_to_hack_": {
+    "message": "Learn to hack with a friend",
+    "description": "Learn to hack with a friend"
+  },
+  "_make_cool_": {
+    "message": "Make cool things on the web",
+    "description": "Make cool things on the web"
+  },
+  "_start_planning_": {
+    "message": "Start Planning",
+    "description": "Start Planning"
+  },
+  "_eg_plan1_": {
+    "message": "1-5 friends or family members",
+    "description": "1-5 friends or family members"
+  },
+  "_eg_plan2_": {
+    "message": "15 minutes - 1 hour, No preparation needed",
+    "description": "15 minutes - 1 hour, No preparation needed"
+  },
+  "_eg_plan3_": {
+    "message": "At home, in a cafe or at the library",
+    "description": "At home, in a cafe or at the library"
+  },
+  "_kp_guide_btn_": {
+    "message": "Kitchen Party Planning Guide",
+    "description": "Kitchen Party Planning Guide"
+  },
+  "_eg_hack_": {
+    "message": "Hack Jam",
+    "description": "Hack Jam"
+  },
+  "_eg_hj_1_": {
+    "message": "Team up people with different skill-sets to explore an interesting challenge",
+    "description": "Team up people with different skill-sets to explore an interesting challenge"
+  },
+  "_eg_hj_2_": {
+    "message": "Collaboratively build something new or improve something that already exists",
+    "description": "Collaboratively build something new or improve something that already exists"
+  },
+  "_eg_hj_3_": {
+    "message": "Learn and teach new hacking skills",
+    "description": "Learn and teach new hacking skills"
+  },
+  "_eg_sp_1_": {
+    "message": "10 - 50 participants",
+    "description": "10 - 50 participants"
+  },
+  "_eg_sp_2_": {
+    "message": "4 hours or longer, 2 weeks of preparation needed",
+    "description": "4 hours or longer, 2 weeks of preparation needed"
+  },
+  "_eg_sp_3_": {
+    "message": "At a school, library or flexible space",
+    "description": "At a school, library or flexible space"
+  },
+  "_eg_hj_plan_": {
+    "message": "Hack Jam Planning Guide",
+    "description": "Hack Jam Planning Guide"
+  },
+  "_eg_hivepop_": {
+    "message": "Hive Pop-Up",
+    "description": "Hive Pop-Up"
+  },
+  "_eg_hpu1_": {
+    "message": "Bring together local organizations in a science fair setting",
+    "description": "Bring together local organizations in a science fair setting"
+  },
+  "_eg_hpu2_": {
+    "message": "Demonstrate cool web ideas",
+    "description": "Demonstrate cool web ideas"
+  },
+  "_eg_hpu3_": {
+    "message": "Provide fun hands-on activities",
+    "description": "Provide fun hands-on activities"
+  },
+  "_eg_hpu4_": {
+    "message": "Introduce your community to hacking",
+    "description": "Introduce your community to hacking"
+  },
+  "_eg_hpusp1_": {
+    "message": "2-10 participating organizations",
+    "description": "2-10 participating organizations"
+  },
+  "_eg_hpusp2_": {
+    "message": "4 hours or longer, 2-4 weeks of preparation needed",
+    "description": "4 hours or longer, 2-4 weeks of preparation needed"
+  },
+  "_eg_hpusp3_": {
+    "message": "In an open space like a community center, library or school",
+    "description": "In an open space like a community center, library or school"
+  },
+  "_eg_hpu_pg_": {
+    "message": "Hive Pop-Up Planning Guide",
+    "description": "Hive Pop-Up Planning Guide"
+  },
+  "_eg_peh_": {
+    "message": "Planning an event? Let us help!",
+    "description": "Planning an event? Let us help!"
+  },
+  "_eg_overviewintro_": {
+    "message": "This section provides an overview of important links and to-dos for your event. Don't forget to order <strong>free</strong> Webmaker gear for your party.",
+    "description": "Section intro"
+  },
+  "_eg_overviewpo_": {
+    "message": "Overview for Party Organizers",
+    "description": "Overview for Party Organizers"
+  },
+  "_eg_start_here_": {
+    "message": "Start here",
+    "description": "Start here"
+  },
+  "_eg_beginbyread_": {
+    "message": "Begin by reading our <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/Get_involved\">Get Involved wiki</a>.",
+    "description": "Read the wiki"
+  },
+  "_eg_addmap_": {
+    "message": "Add your event to the map",
+    "description": "Add your event to the map"
+  },
+  "_eg_emap_": {
+    "message": "Add your event to our global <a target=\"_blank\" href=\"/en-US/events\">event map</a>.",
+    "description": "Add event to the map link"
+  },
+  "_eg_ordergear_": {
+    "message": "Order gear",
+    "description": "Order gear"
+  },
+  "_eg_placeorder_": {
+    "message": "Place your gear <a target=\"_blank\" href=\"https://intlstore.mozilla.org/makerparty/\">order</a> to receive t-shirts, stickers and banners.",
+    "description": "Place order link"
+  },
+  "_eg_sharemake_": {
+    "message": "Share what you make",
+    "description": "Share what you make"
+  },
+  "_eg_sharemore_": {
+    "message": "During your event, ask participants to share what they make using <a href=\"https://mozteach.makes.org/thimble/what-i-made-maker-party\">this template</a>.",
+    "description": "Share more info"
+  },
+  "_eg_tp_": {
+    "message": "Take photos",
+    "description": "Take photos"
+  },
+  "_eg_sharepics_": {
+    "message": "We love photos! Share pictures of your event by <a href=\"mailto:makerparty@mozilla.org\">emailing us</a>.",
+    "description": "Share pictures via email"
+  },
+  "_eg_rb_": {
+    "message": "Report back",
+    "description": "Report back"
+  },
+  "_eg_tellhow_": {
+    "message": "Tell us how your event went by remixing this <a target=\"_blank\" href=\"https://mozteach.makes.org/thimble/maker-party-report\">report-back template</a>.",
+    "description": "Tell us more"
+  },
+  "_eg_faq_": {
+    "message": "FAQ",
+    "description": "FAQ"
+  },
+  "_eg_haveq_": {
+    "message": "Have questions? Check <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/FAQs\">here</a> first.",
+    "description": "Have questions?"
+  },
+  "_eg_cu_": {
+    "message": "Contact Us",
+    "description": "Contact Us"
+  },
+  "_eg_mailus_": {
+    "message": "Still have questions? Email us at <a target=\"_blank\" href=\"mailto:makerparty@mozilla.org\">makerparty@mozilla.org</a>",
+    "description": "Contact with more questions"
   }
 }
