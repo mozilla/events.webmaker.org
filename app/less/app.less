@@ -13,6 +13,9 @@
 @import "views/event-list";
 @import "views/event-detail";
 @import "views/home";
+@import "views/event-guides";
+
+@import "components/angle-list";
 
 .fa(@icon) {
   font-family: FontAwesome;
@@ -65,7 +68,7 @@ h1, h2, h3, h4 {
 
 .page-header {
   border: 0;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .row {
@@ -81,6 +84,10 @@ h1, h2, h3, h4 {
   }
 }
 
+.btn-block {
+  display: block;
+}
+
 .btn-group {
   .btn:active, .btn:hover, .btn.active {
     background-color: @brand-primary;
@@ -88,14 +95,26 @@ h1, h2, h3, h4 {
   }
 }
 
+.lead {
+  margin-bottom: 0;
+}
+
 //  Utility -------------------------------------------------------------------
 
 .add-bottom-margin {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
+  @media (min-width: @grid-float-breakpoint) {
+    margin-bottom: 20px;
+  }
 }
 
 .add-double-bottom-margin {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+
+  @media (min-width: @grid-float-breakpoint) {
+    margin-bottom: 40px;
+  }
 }
 
 .no-padding {
@@ -108,8 +127,29 @@ h1, h2, h3, h4 {
     display: none;
   }
 }
-//  Navbar Header
 
+.brand-primary {
+  color: @brand-primary;
+}
+
+.with-icon {
+  line-height: 2em;
+
+  span {
+    position: relative;
+    top: 0.133em;
+  }
+
+  img {
+    width: 1.5em;
+    vertical-align: middle;
+    margin-right: 0.2em;
+  }
+}
+
+//  Chrome --------------------------------------------------------------------
+
+//  Navbar Header
 .navbar.navbar-no-header-xs {
   @media (max-width: @grid-float-breakpoint) {
     border: none;
