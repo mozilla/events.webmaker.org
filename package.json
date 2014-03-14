@@ -21,7 +21,7 @@
     "grunt-shell-spawn": "0.3.0",
     "grunt-cli": "0.1.13",
     "webmaker-auth": "0.0.8",
-    "webmaker-i18n": "https://github.com/mozilla/node-webmaker-i18n/archive/v0.3.11.tar.gz",
+    "webmaker-i18n": "https://github.com/mozilla/node-webmaker-i18n/archive/v0.3.12.tar.gz",
     "webmaker-locale-mapping": "latest"
   },
   "engines": {
