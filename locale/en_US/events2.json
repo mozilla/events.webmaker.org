@@ -482,5 +482,9 @@
   "_eg_mailus_": {
     "message": "Still have questions? Email us at <a target=\"_blank\" href=\"mailto:makerparty@mozilla.org\">makerparty@mozilla.org</a>",
     "description": "Contact with more questions"
+  },
+  "_event_guides_": {
+    "message": "Event Guides",
+    "description": "Event Guides primary nav"
   }
 }
