@@ -37,8 +37,7 @@ config(['$routeProvider',
     });
 
     $routeProvider.when('/event-guides', {
-      templateUrl: 'views/event-guides.html'//,
-      //controller: 'addEventController'
+      templateUrl: 'views/event-guides.html'
     });
 
     $routeProvider.when('/', {
