@@ -5,13 +5,25 @@ module.exports = function (grunt) {
       development: {
         files: {
           'app/compiled/app.min.css': 'app/less/app.less'
+        },
+        options: {
+          sourceMap: true
+        }
+      },
+      production: {
+        files: {
+          'app/compiled/app.min.css': 'app/less/app.less'
         }
       }
     },
     watch: {
       less: {
-        files: ['app/less/**/*.less'],
+        files: ['app/less/**/*.less', 'bower.json'],
         tasks: ['less:development']
+      },
+      server: {
+        files: ['server/**/*', 'package.json'],
+        tasks: ['shell:runServer']
       }
     },
     shell: {
@@ -51,7 +63,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['less', 'shell:runServer', 'watch']);
+  grunt.registerTask('default', ['less:development', 'shell:runServer', 'watch']);
 
   // Clean code before a commit
   grunt.registerTask('clean', ['jsbeautifier:modify', 'jshint']);
@@ -60,6 +72,6 @@ module.exports = function (grunt) {
   grunt.registerTask('validate', ['jsbeautifier:validate', 'jshint']);
 
   // Heroku
-  grunt.registerTask('heroku', ['less']);
+  grunt.registerTask('build', ['less:production']);
 
 };
