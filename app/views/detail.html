@@ -27,7 +27,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 add-bottom-margin">
-        <a class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">{{ '_attend_this_event_' | i18n }}</a>
+        <a ng-show="eventData.registerLink" class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">{{ '_attend_this_event_' | i18n }}</a>
         <div class="organized-by">
           <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
           <div>
