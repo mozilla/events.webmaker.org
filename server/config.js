@@ -5,6 +5,7 @@ module.exports = function (env) {
   var app = express();
   var defaultLang = 'en-US';
 
+  app.use(require('prerender-node'));
   app.use(express.logger('dev'));
   app.use(express.compress());
   app.use(express.json());

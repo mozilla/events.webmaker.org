@@ -26,7 +26,7 @@
     <table class="table table-striped">
       <tr ng-repeat="event in events | orderBy: sortOrder | filter: eventFilter">
         <td>{{ event.beginDate | date:'MMM d' }}</td>
-        <td><a href="#/events/{{event.id}}" class="event-title">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
+        <td><a href="#!/events/{{event.id}}" class="event-title">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
       </tr>
     </table>
   </we-listing>
