@@ -27,7 +27,7 @@ angular.module('myApp.directives', [])
       controller: ['$element', '$scope', 'loadGoogleMaps',
         function ($element, $scope, loadGoogleMaps) {
 
-          loadGoogleMaps.ready(function() {
+          loadGoogleMaps.ready(function () {
             var autocomplete = new google.maps.places.Autocomplete($element[0], {});
 
             autocomplete.addListener('place_changed', function () {
