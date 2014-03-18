@@ -1,4 +1,8 @@
 {
+  "_admin_": {
+    "message": "admin",
+    "description": "Label for admin users"
+  },
   "_webmaker_events_": {
     "message": "Webmaker Events",
     "description": "Header h1"

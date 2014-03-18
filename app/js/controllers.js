@@ -8,8 +8,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('addEventController', ['$scope', '$location', 'moment', 'chrono', 'eventService', 'eventFormatter',
-    function ($scope, $location, moment, chrono, eventService, eventFormatter) {
+  .controller('addEventController', ['$scope', '$location', '$rootScope', 'moment', 'chrono', 'eventService', 'eventFormatter',
+    function ($scope, $location, $rootScope, moment, chrono, eventService, eventFormatter) {
       $scope.event = {};
       $scope.event.parsedNaturalStartDate = undefined;
       $scope.attemptedToSubmit = false;
@@ -42,6 +42,10 @@ angular.module('myApp.controllers', [])
       $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
 
+        // Add user info
+        $scope.event.organizer = $rootScope._user.email;
+        $scope.event.organizerId = $rootScope._user.username;
+
         var eventData = eventFormatter($scope.addEventForm, $scope.event);
 
         if (eventData) {
@@ -71,6 +75,7 @@ angular.module('myApp.controllers', [])
         $scope.event.description = data.description;
         $scope.event.attendees = data.attendees;
         $scope.event.organizer = data.organizer;
+        $scope.event.organizerId = data.organizerId;
         $scope.event.ageGroup = data.ageGroup || '';
         $scope.event.skillLevel = data.skillLevel || '';
 
