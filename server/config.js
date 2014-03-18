@@ -6,6 +6,7 @@ module.exports = function (env) {
   var defaultLang = 'en-US';
   var csp = require('./csp');
 
+  app.use(require('prerender-node'));
   app.use(express.logger('dev'));
   app.use(express.compress());
   app.use(express.json());

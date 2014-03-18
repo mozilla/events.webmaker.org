@@ -14,8 +14,10 @@ config(['$httpProvider',
     $httpProvider.defaults.withCredentials = true;
   }
 ]).
-config(['$routeProvider',
-  function ($routeProvider) {
+config(['$routeProvider', '$locationProvider',
+  function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix('!');
+
     $routeProvider.when('/add', {
       templateUrl: 'views/add.html',
       controller: 'addEventController'

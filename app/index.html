@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{lang}}" dir="{{direction}}" ng-app="myApp" ng-csp>
 <head>
+  <meta name="fragment" content="!">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <title ng-bind="'_webmaker_events_' | i18n"></title>
@@ -53,10 +54,10 @@
         </div>
         <div class="navbar-collapse" collapse="isCollapsed">
           <ul class="nav navbar-nav">
-            <li ng-class="{ active : isActive('/') }"><a href="#" ng-cloak>{{ '_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/events') }"><a href="#/events" ng-cloak>{{ '_upcoming_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/add') }"><a href="#/add" ng-cloak>{{ '_add_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/event-guides') }"><a href="#/event-guides" ng-cloak>{{ '_event_guides_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/') }"><a href="#!" ng-cloak>{{ '_events_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/events') }"><a href="#!/events" ng-cloak>{{ '_upcoming_events_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/add') }"><a href="#!/add" ng-cloak>{{ '_add_events_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/event-guides') }"><a href="#!/event-guides" ng-cloak>{{ '_event_guides_' | i18n }}</a></li>
           </ul>
         </div>
 
