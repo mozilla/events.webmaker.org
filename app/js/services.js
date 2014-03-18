@@ -5,14 +5,14 @@ angular.module('myApp.services', ['ngResource'])
   .constant('chrono', window.chrono)
   .constant('showdown', window.Showdown)
   .factory('loadGoogleMaps', ['$window',
-    function($window) {
+    function ($window) {
 
-      function initialize (callback) {
+      function initialize(callback) {
         $window.onInit = callback;
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&' +
-            'callback=onInit';
+          'callback=onInit';
         document.body.appendChild(script);
       }
 
@@ -25,7 +25,7 @@ angular.module('myApp.services', ['ngResource'])
           }
         }
       };
-   }
+    }
   ])
   .factory('eventService', ['$rootScope', '$resource', 'config',
     function ($rootScope, $resource, config) {
@@ -79,13 +79,13 @@ angular.module('myApp.services', ['ngResource'])
       };
     }
   ])
-  .factory('moment', [ '$window', 'config',
-      function ($window,  config) {
-        var moment = $window.moment;
-        moment.lang(config.lang);
-        return moment;
-      }
-    ])
+  .factory('moment', ['$window', 'config',
+    function ($window, config) {
+      var moment = $window.moment;
+      moment.lang(config.lang);
+      return moment;
+    }
+  ])
   .factory('authService', ['$rootScope', 'config',
     function authService($rootScope, config) {
 
@@ -110,7 +110,7 @@ angular.module('myApp.services', ['ngResource'])
       $rootScope._user = {};
 
       // Set locale information
-      if(config.supported_languages.indexOf(config.lang) > 0) {
+      if (config.supported_languages.indexOf(config.lang) > 0) {
         $rootScope.lang = config.lang;
       } else {
         $rootScope.lang = config.defaultLang;

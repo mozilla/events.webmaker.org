@@ -1,12 +1,4 @@
 {
-  "_Welcome_home_page_": {
-    "message": "Welcome to Webmaker Events.",
-    "description": "Home page greeting text"
-  },
-  "_Sub_home_page_": {
-    "message": "(Add super fun imagery here.)",
-    "description": "Sub message in home page"
-  },
   "_webmaker_events_": {
     "message": "Webmaker Events",
     "description": "Header h1"
@@ -111,10 +103,6 @@
     "message": "You need to <a>log in</a> to add an event.",
     "description": "Banner alert info tell user to login before they can add an event"
   },
-  "_create_event_": {
-    "message": "Create Event",
-    "description": "Create event button"
-  },
   "_attend_this_event_": {
     "message": "Attend this event",
     "description": "Button to join the event"
@@ -162,10 +150,6 @@
   "_event_link_explain_": {
     "message": "If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.",
     "description": "Explain about Event Link"
-  },
-  "_link_to_registration_": {
-    "message": "Link to registration page",
-    "description": "Link to registration page placeholder"
   },
   "_link_event_error_message_": {
     "message": "Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong>",
@@ -235,10 +219,6 @@
     "message": "Over 3 hours",
     "description": "Length of the event field option"
   },
-  "_about_you_": {
-    "message": "About you",
-    "description": "About you section"
-  },
   "_event_organizer_email_": {
     "message": "Event organizer's email",
     "description": "Event organizer's email field"
@@ -246,10 +226,6 @@
   "_login_with_different_email_": {
     "message": "Log in with a different email",
     "description": "Button for changing email"
-  },
-  "_must_login_with_this_email_to_edit_": {
-    "message": "You'll need to log in with this email to make changes to this event. <a href=\"#\">Use a different email.</a>",
-    "description": "Description about editing event"
   },
   "_welcome_to_webmaker_": {
     "message": "Welcome to Webmaker!",
@@ -486,5 +462,61 @@
   "_event_guides_": {
     "message": "Event Guides",
     "description": "Event Guides primary nav"
+  },
+  "_level_": {
+    "message": "Level",
+    "description": "{{SkillLevel}} Level. This is partial string."
+  },
+  "_any_skill_": {
+    "message": "Any skill",
+    "description": "Any skill Level. Partial string."
+  },
+  "_any_age_group_": {
+    "message": "Any age group",
+    "description": "Type of event Any age group"
+  },
+  "_who_is_this_for_": {
+    "message": "Who is this for?",
+    "description": "Title for type of event."
+  },
+  "_skill_level_": {
+    "message": "Skill level",
+    "description": " Skill level for the event."
+  },
+  "_any_skill_level_": {
+    "message": "Any skill level",
+    "description": "Option for any skill level event."
+  },
+  "_beginner_": {
+    "message": "Beginner",
+    "description": "Option for any skill level event."
+  },
+  "_intermediate_": {
+    "message": "Intermediate",
+    "description": "Option for intermediate level event."
+  },
+  "_advanced_": {
+    "message": "Advanced",
+    "description": "Option for advanced level event."
+  },
+  "_age_group_": {
+    "message": "Age group",
+    "description": "Age group for event"
+  },
+  "_any_age_group_": {
+    "message": "Any age group",
+    "description": "Option for any age group event"
+  },
+  "_kids_": {
+    "message": "Kids",
+    "description": "Option for kids age group event"
+  },
+  "_youth_": {
+    "message": "Youth",
+    "description": "Option for youth age group event"
+  },
+  "_adults_": {
+    "message": "Adults",
+    "description": "Option for adults age group event"
   }
 }

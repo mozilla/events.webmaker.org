@@ -42,11 +42,19 @@ module.exports = function (grunt) {
           config: '.jsbeautifyrc'
         }
       }
+    },
+    angular_i18n_finder: {
+      files: ['app/index.html', 'app/views/*.html', 'app/views/**/*.html'],
+      options: {
+        pathToJSON: ['locale/en_US/*.json'],
+        ignoreKeys: []
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-shell-spawn');
+  grunt.loadNpmTasks('grunt-angular-i18n-finder');
   grunt.loadNpmTasks('grunt-jsbeautifier');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -54,7 +62,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['less', 'shell:runServer', 'watch']);
 
   // Clean code before a commit
-  grunt.registerTask('clean', ['jsbeautifier:modify', 'jshint']);
+  grunt.registerTask('clean', ['jsbeautifier:modify', 'jshint', 'angular_i18n_finder']);
 
   // Validate code (read only)
   grunt.registerTask('validate', ['jsbeautifier:validate', 'jshint']);

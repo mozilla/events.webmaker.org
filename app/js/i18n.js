@@ -1,5 +1,3 @@
-'use strict';
-
 /*
  * Part of this code is taken from AngularJS Localization Service by Jim Lavin
  */
@@ -105,7 +103,7 @@ angular.module('localization', ['ngSanitize'])
             }
             // insert the text into the element
             elm.text(tag);
-          };
+          }
         }
       },
 
@@ -123,29 +121,29 @@ angular.module('localization', ['ngSanitize'])
     return i18nDirective;
   }
 ])
-.directive('bindUnsafeHtml', ['$compile',
-  function ($compile) {
-    return function (scope, element, attrs) {
-      scope.$watch(
-        function (scope) {
-          // watch the 'bindUnsafeHtml' expression for changes
-          return scope.$eval(attrs.bindUnsafeHtml);
-        },
-        function (value) {
-          // when the 'bindUnsafeHtml' expression changes
-          // assign it into the current DOM
-          element.html(value);
+  .directive('bindUnsafeHtml', ['$compile',
+    function ($compile) {
+      return function (scope, element, attrs) {
+        scope.$watch(
+          function (scope) {
+            // watch the 'bindUnsafeHtml' expression for changes
+            return scope.$eval(attrs.bindUnsafeHtml);
+          },
+          function (value) {
+            // when the 'bindUnsafeHtml' expression changes
+            // assign it into the current DOM
+            element.html(value);
 
-          // compile the new DOM and link it to the current
-          // scope.
-          // NOTE: we only compile .childNodes so that
-          // we don't get into infinite loop compiling ourselves
-          $compile(element.contents())(scope);
-        }
-      );
-    };
-  }
-])
+            // compile the new DOM and link it to the current
+            // scope.
+            // NOTE: we only compile .childNodes so that
+            // we don't get into infinite loop compiling ourselves
+            $compile(element.contents())(scope);
+          }
+        );
+      };
+    }
+  ])
 // translation directive that can handle dynamic strings
 // updates the attribute value of the attached element
 // usage <span i18n-attr="TOKEN|ATTRIBUTE" ></span>
