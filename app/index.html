@@ -11,8 +11,8 @@
 <body>
 
   <div ng-controller="createUserController"></div>
-
   <div ng-controller="navController">
+
     <nav class="navbar navbar-default navbar-webmaker">
       <div class="container">
 
@@ -28,7 +28,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" ng-cloak ng-show="_user.email">
               <a class="navbar-user-info dropdown-toggle">
-                <img class="user-info-avatar" ng-src="{{_user.avatar}}"> {{ '_hi_' | i18n }} <strong>{{_user.username}}</strong> <span class="caret"></span>
+                <img class="user-info-avatar" ng-src="{{_user.avatar}}"> {{ '_hi_' | i18n }} <strong>{{_user.username}}</strong> <span class="label label-primary" ng-show="_user.isAdmin">{{ '_admin_' | i18n }}</span> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="{{myMakesUrl}}" target="_blank"><span class="fa fa-th-large"></span> {{ '_my_makes_' | i18n }}</a></li>

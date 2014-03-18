@@ -59,10 +59,6 @@ angular.module('myApp.services', ['ngResource'])
           serializedEvent.beginDate = eventData.parsedNaturalStartDate.toISOString();
         }
 
-        // Add user info
-        serializedEvent.organizer = $rootScope._user.email;
-        serializedEvent.organizerId = $rootScope._user.username;
-
         if (eventData.duration !== 'unknown') {
           serializedEvent.endDate = moment(eventData.parsedNaturalStartDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
         } else {
