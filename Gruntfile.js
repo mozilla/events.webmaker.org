@@ -7,7 +7,9 @@ module.exports = function (grunt) {
           'app/compiled/app.min.css': 'app/less/app.less'
         },
         options: {
-          sourceMap: true
+          sourceMap: true,
+          sourceMapBasepath: 'app',
+          sourceMapRootpath: '/'
         }
       },
       production: {
