@@ -8,8 +8,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('addEventController', ['$scope', '$location', 'moment', 'chrono', 'eventService', 'eventFormatter',
-    function ($scope, $location, moment, chrono, eventService, eventFormatter) {
+  .controller('addEventController', ['$scope', '$location', '$rootScope', 'moment', 'chrono', 'eventService', 'eventFormatter',
+    function ($scope, $location, $rootScope, moment, chrono, eventService, eventFormatter) {
       $scope.event = {};
       $scope.event.parsedNaturalStartDate = undefined;
       $scope.attemptedToSubmit = false;
