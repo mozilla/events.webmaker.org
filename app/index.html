@@ -13,7 +13,12 @@
   <title ng-bind="'_webmaker_events_' | i18n"></title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700">
-  <link rel="stylesheet" href="compiled/app.min.css">
+  <style>
+    html, body {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" ng-href="compiled/app.min.{{direction}}.css">
 </head>
 <body>
 
