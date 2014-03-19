@@ -84,7 +84,7 @@
     "description": "Footer message"
   },
   "_get_more_tips_": {
-    "message": "Get more tips in <a href=\"#\">event guides</a>",
+    "message": "Get more tips in <a href=\"#!/event-guides\">event guides</a>",
     "description": "Get more tips message"
   },
   "_editing_event_": {
