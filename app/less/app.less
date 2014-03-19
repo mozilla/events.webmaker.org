@@ -31,6 +31,10 @@
 
 //  Resets --------------------------------------------------------------------
 
+html, body {
+  display: block;
+}
+
 a {
   cursor: pointer;
 }
@@ -185,6 +189,29 @@ h1, h2, h3, h4 {
 
 .text-title-case {
   text-transform: capitalize;
+}
+
+html[dir="rtl"] {
+  .fa.fa-reply {
+     -webkit-transform: scaleX(-1);
+     -moz-transform: scaleX(-1);
+     transform: scaleX(-1);
+  }
+
+  .fa.fa-angle-right {
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  ul.angle-list {
+    li {
+      h3:before {
+        font-family: FontAwesome;
+        content: @fa-var-angle-left;
+      }
+    }
+  }
 }
 
 //  Angular Helpers -----------------------------------------------------------
