@@ -37,8 +37,8 @@
         </div>
         <div>
           <p>{{ '_who_is_this_for_' | i18n }}</p>
-          <h4 class="text-title-case"><span class="fa fa-star fa-fw text-muted"></span> {{ eventData.skillLevel || '_any_skill_' | i18n }} {{ '_level_' | i18n }}</h4>
-          <h4 class="text-title-case"><span class="fa fa-male fa-fw text-muted"></span> {{ eventData.ageGroup || '_any_age_group_' | i18n }}</h4>
+          <h4 class="text-title-case"><span class="fa fa-star fa-fw text-muted"></span> {{ transformToLocalizationKeyStyle( eventData.skillLevel ) || '_any_skill_' | i18n }} {{ '_level_' | i18n }}</h4>
+          <h4 class="text-title-case"><span class="fa fa-male fa-fw text-muted"></span> {{ transformToLocalizationKeyStyle( eventData.ageGroup ) || '_any_age_group_' | i18n }}</h4>
         </div>
       </div>
 

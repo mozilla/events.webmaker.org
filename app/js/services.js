@@ -112,7 +112,7 @@ angular.module('myApp.services', ['ngResource'])
         $rootScope.lang = config.defaultLang;
       }
       $rootScope.direction = config.direction;
-      $rootScope.arrowDir = config.direction === 'rtl' ? "left" : "right"
+      $rootScope.arrowDir = config.direction === 'rtl' ? 'left' : 'right';
 
       auth.on('login', function (user) {
         $rootScope._user = user;

@@ -7,6 +7,22 @@ angular.module('localization', ['ngSanitize'])
 // managing the translation dictionary
 .factory('localize', ['$http', '$rootScope', 'config',
   function ($http, $rootScope, config) {
+
+    // Utility method to transform thisStyle to _this_style_
+    $rootScope.transformToLocalizationKeyStyle = function (stringToFormat) {
+      function camelToUnderscoreCase(str) {
+        return str.replace(/\W+/g, '_')
+          .replace(/([a-z\d])([A-Z])/g, '$1_$2')
+          .toLowerCase();
+      }
+
+      if (stringToFormat) {
+        return '_' + camelToUnderscoreCase(stringToFormat) + '_';
+      } else {
+        return false;
+      }
+    };
+
     var localize = {
       // Object to hold the localized resource string entries
       dictionary: {},
@@ -57,7 +73,7 @@ angular.module('localization', ['ngSanitize'])
           if (localize.dictionary.hasOwnProperty(value)) {
             return localize.dictionary[value];
           } else {
-            return 'unkown key: "' + value + '"';
+            return 'unknown key: "' + value + '"';
           }
         }
       }
