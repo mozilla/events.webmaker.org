@@ -8,3 +8,5 @@ tmp
 .env
 app/compiled/
 TODO.txt
+newrelic.js
+newrelic_agent.log
