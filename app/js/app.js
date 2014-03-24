@@ -59,5 +59,12 @@ run(['$http', '$rootScope',
       window.scrollTo(0, 0);
     });
 
+    // Forward old non-hash-bang URLS to hash-bang equivalents
+    // eg:
+    //  #/events -> #!/events
+    //  #events -> #!/events
+    if (window.location.hash.match(/^#[\/a-zA-Z]/)) {
+      window.location.hash = window.location.hash.replace('#', '#!');
+    }
   }
 ]);
