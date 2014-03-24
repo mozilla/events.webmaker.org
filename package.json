@@ -26,7 +26,8 @@
     "webmaker-auth": "0.0.8",
     "webmaker-i18n": "https://github.com/mozilla/node-webmaker-i18n/archive/v0.3.12.tar.gz",
     "webmaker-locale-mapping": "latest",
-    "prerender-node": "0.1.18"
+    "prerender-node": "0.1.18",
+    "newrelic": "1.4.0"
   },
   "engines": {
     "node": ">=0.10"

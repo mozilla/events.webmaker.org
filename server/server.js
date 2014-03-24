@@ -1,3 +1,7 @@
+if (process.env.NEW_RELIC_ENABLED) {
+  require('newrelic');
+}
+
 var Habitat = require('habitat');
 
 Habitat.load();
