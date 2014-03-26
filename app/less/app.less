@@ -170,6 +170,13 @@ h1, h2, h3, h4 {
   .webmaker-logo {
     display: inline-block;
     padding: 2px 10px;
+    margin-top: 8px;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    .webmaker-logo {
+      margin-top: 5px;
+    }
   }
 
   @media (min-width: @screen-lg-min) {
@@ -177,6 +184,7 @@ h1, h2, h3, h4 {
     height: 90px;
 
     .webmaker-logo {
+      margin-top: 0;
       padding: 0;
     }
 
