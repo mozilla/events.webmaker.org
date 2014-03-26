@@ -33,20 +33,21 @@
             <span class="sr-only">{{ '_toggle_navigation_' | i18n }}</span>
             <span class="fa fa-bars fa-lg"></span>
           </button>
-          <a href="{{webmakerUrl}}/{{lang}}" class="logo webmaker-logo"><img src="https://webmaker.org/img/logo.png"></a>
+          <a href="{{webmakerUrl}}/{{lang}}" class="logo webmaker-logo"><img src="https://webmaker.org/img/logo.png"><span class="sr-only">{{ '_go_to_wm_' | i18n }}</span></a>
         </div>
 
         <div class="navbar-collapse" collapse="isCollapsed">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" ng-cloak ng-show="_user.email">
-              <a class="navbar-user-info dropdown-toggle">
+              <a href="#" class="navbar-user-info dropdown-toggle">
+                <span class="sr-only">{{ '_user_links_drop_' | i18n }}</span>
                 <img class="user-info-avatar" ng-src="{{_user.avatar}}"> {{ '_hi_' | i18n }} <strong>{{_user.username}}</strong> <span class="label label-primary" ng-show="_user.isAdmin">{{ '_admin_' | i18n }}</span> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="{{myMakesUrl}}" target="_blank"><span class="fa fa-th-large"></span> {{ '_my_makes_' | i18n }}</a></li>
                 <li><a href="{{accountSettingsUrl}}" target="_blank"><span class="fa fa-cog"></span> {{ '_settings_' | i18n }}</a></li>
                 <li class="divider"></li>
-                <li><a ng-click="logout()"><span class="fa fa-sign-out"></span> {{ '_log_out_' | i18n }}</a></li>
+                <li><a href="#" ng-click="logout()"><span class="fa fa-sign-out"></span> {{ '_log_out_' | i18n }}</a></li>
               </ul>
             </li>
             <li>
@@ -61,7 +62,7 @@
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="{{webmakerUrl}}/{{lang}}" tooltip="{{ '_back_to_webmaker_' | i18n }}" tooltip-placement="bottom">
-            <span class="fa fa-reply"></span>
+            <span class="fa fa-reply"></span><span class="sr-only">{{ '_go_to_wm_' | i18n }}</span>
           </a>
         </div>
         <div class="navbar-collapse" collapse="isCollapsed">

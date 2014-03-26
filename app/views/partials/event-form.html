@@ -50,7 +50,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="event-attendees">{{ '_skill_level_' | i18n }}</label>
+            <label for="skill-level">{{ '_skill_level_' | i18n }}</label>
             <select ng-model="event.skillLevel" class="form-control" id="skill-level" name="skillLevel">
               <option value="">{{ '_any_skill_level_' | i18n }}</option>
               <option value="beginner">{{ '_beginner_' | i18n }}</option>
@@ -62,7 +62,7 @@
 
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="event-attendees">{{ '_age_group_' | i18n }}</label>
+            <label for="age-group">{{ '_age_group_' | i18n }}</label>
             <select ng-model="event.ageGroup" class="form-control" id="age-group" name="ageGroup">
               <option value="">{{ '_any_age_group_' | i18n }}</option>
               <option value="kids">{{ '_kids_' | i18n }}</option>
@@ -132,17 +132,17 @@
   </div>
 
   <div class="form-group add-double-bottom-margin">
-    <label for="email">{{ '_event_organizer_email_' | i18n }}</label>
+    <label for="organizer-email">{{ '_event_organizer_email_' | i18n }}</label>
     <div class="row">
       <div class="col-sm-6">
-        <input ng-model="event.organizer" name="organizer" class="form-control" type="email" readonly required>
+        <input id="organizer-email" ng-model="event.organizer" name="organizer" class="form-control" type="email" readonly required>
       </div>
       <div class="col-sm-6">
 
       </div>
     </div>
     <p class="help-block">
-      <span class="fa fa-lock"></span> <span ng-click="login()" ng-bind-html="'_login_with_different_email_' | i18n"></span>
+      <span class="fa fa-lock"></span> <a href="#" ng-click="login()" ng-bind-html="'_login_with_different_email_' | i18n"></a>
     </p>
   </div>
 

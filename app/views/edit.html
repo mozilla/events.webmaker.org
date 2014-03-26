@@ -4,14 +4,14 @@
   </header>
 
   <event-form>
-    <a ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block ">
+    <a href="#" ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block ">
       {{ '_save_changes_' | i18n }}
     </a>
   </event-form>
 
   <div class="alert alert-danger">
     <p ng-bind-html="'_careful_delete_message_' | i18n"></p>
-    <a ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block">
+    <a href="#" ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block">
       {{ '_delete_event_' | i18n }}
     </a>
   </div>

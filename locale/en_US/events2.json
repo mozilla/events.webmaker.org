@@ -104,7 +104,7 @@
     "description": "Delete event button"
   },
   "_need_to_login_": {
-    "message": "You need to <a>log in</a> to add an event.",
+    "message": "You need to <a href=\"#\">log in</a> to add an event.",
     "description": "Banner alert info tell user to login before they can add an event"
   },
   "_attend_this_event_": {
@@ -514,5 +514,37 @@
   "_adults_": {
     "message": "Adults",
     "description": "Option for adults age group event"
+  },
+  "_go_to_wm_": {
+    "message": "Go to webmaker.org",
+    "description": "Extended link description for screen readers"
+  },
+  "_user_links_drop_": {
+    "message": "User links dropdown",
+    "description": "Extended link description for screen readers"
+  },
+  "_edit_event_": {
+    "message": "Edit Event",
+    "description": "Extended link description for screen readers"
+  },
+  "_link_to_map_": {
+    "message": "Link to Google map of this event's location",
+    "description": "Extended link description for screen readers"
+  },
+  "_link_to_profile_": {
+    "message": "Link to event organizer's profile page. Organizer's username is: ",
+    "description": "Extended link description for screen readers"
+  },
+  "_photo_credit_": {
+    "message": "Link to photo provider's Flickr page. Photo taken by:",
+    "description": "Extended link description for screen readers"
+  },
+  "_sort_by_": {
+    "message": "Sort event list by:",
+    "description": "Extended link description for screen readers"
+  },
+  "_find_event_": {
+    "message": "Find event",
+    "description": "Extended link description for screen readers"
   }
 }
