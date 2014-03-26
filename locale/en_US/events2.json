@@ -407,14 +407,6 @@
     "message": "Begin by reading our <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/Get_involved\">Get Involved wiki</a>.",
     "description": "Read the wiki"
   },
-  "_eg_addmap_": {
-    "message": "Add your event to the map",
-    "description": "Add your event to the map"
-  },
-  "_eg_emap_": {
-    "message": "Add your event to our global <a target=\"_blank\" href=\"/en-US/events\">event map</a>.",
-    "description": "Add event to the map link"
-  },
   "_eg_ordergear_": {
     "message": "Order gear",
     "description": "Order gear"
