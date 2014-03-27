@@ -162,9 +162,15 @@ angular.module('myApp.controllers', [])
       eventService.get({
         id: $routeParams.id,
       }, function (data) {
+
         $scope.eventData = data;
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
+
+        // TODO: Eventually competency IDs will be added during event creation.
+        // Right now random IDs are created as a hook for varying detail view header colors.
+        $scope.eventData.competencyID = Math.floor(Math.random() * 16);
+
       }, function (err) {
         console.error(err);
       });
