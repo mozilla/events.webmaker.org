@@ -18,7 +18,7 @@
     "momentjs": "2.5.0",
     "chrono": "0.1.9",
     "showdown": "0.3.1",
-    "makerstrap": "0.1.1",
+    "makerstrap": "https://github.com/mozilla/makerstrap.git#de0d761dc070d0df22f8e6a19d92d8cbdeedb734",
     "webmaker-auth-client": "0.0.25",
     "jquery": "2.1.0",
     "angular-animate": "1.2.14",

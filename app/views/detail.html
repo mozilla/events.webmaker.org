@@ -1,5 +1,5 @@
 <div class="event-detail">
-  <div class="container-wrapper">
+  <div class="container-wrapper color-{{ eventData.competencyID }}">
     <header class="container">
       <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#!/edit/{{ eventID }}"><span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span></a>
       <h1>{{ eventData.title }}</h1>
