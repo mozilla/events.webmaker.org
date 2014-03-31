@@ -546,5 +546,13 @@
   "_find_event_": {
     "message": "Find event",
     "description": "Extended link description for screen readers"
+  },
+  "_event_found_": {
+    "message": "event found",
+    "description": "Single search result found"
+  },
+  "_events_found_": {
+    "message": "events found",
+    "description": "Number of search results found"
   }
 }

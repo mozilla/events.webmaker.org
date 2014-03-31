@@ -20,7 +20,14 @@
         <div class="col-xs-2 mag-glass">
           <span class="fa fa-search"></span>
         </div>
+      </div>
+    </div>
 
+    <div class="row" ng-show="eventFilter">
+      <div class="col-xs-12">
+        {{ (events|filter: eventFilter).length }}
+        <span ng-show="(events|filter: eventFilter).length === 1"> {{ '_event_found_' | i18n }}</span>
+        <span ng-show="(events|filter: eventFilter).length > 1 || (events|filter: eventFilter).length === 0"> {{ '_events_found_' | i18n }}</span>
       </div>
     </div>
 
