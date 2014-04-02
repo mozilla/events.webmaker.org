@@ -42,6 +42,11 @@ config(['$routeProvider', '$locationProvider',
       templateUrl: 'views/event-guides.html'
     });
 
+    $routeProvider.when('/user/:id', {
+      templateUrl: 'views/user.html',
+      controller: 'userController'
+    });
+
     $routeProvider.when('/', {
       templateUrl: 'views/home.html',
       controller: 'homeController'

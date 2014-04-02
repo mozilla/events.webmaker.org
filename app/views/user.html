@@ -1,0 +1,22 @@
+<div class="multicolor-header color-3">
+  <header class="container">
+    <h1>{{ username }}</h1>
+  </header>
+</div>
+
+<div class="container">
+  <h3 class="add-bottom-margin">{{ '_events_created_' | i18n }}</h3>
+
+  <table class="table table-striped">
+    <tr ng-repeat="event in events | orderBy: sortOrder | filter: eventFilter">
+      <td>{{ event.beginDate | date:'MMM d' }}</td>
+      <td><a href="#!/events/{{event.id}}" class="event-title">{{ event.title }}</a></td>
+      <td><strong>{{ event.attendees }}</strong> {{ '_attendees_' | i18n }}</td>
+      <td>
+        <a ng-show="_user.email === event.organizer || _user.isAdmin" href="#!/edit/{{ event.id }}">
+          <span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -3,8 +3,21 @@
 angular.module('myApp.controllers', [])
   .controller('homeController', ['$scope', '$timeout', 'eventService',
     function ($scope, $timeout, eventService) {
-      eventService.query(function (data) {
+      eventService.query({
+        after: (new Date()).toISOString()
+      }, function (data) {
         $scope.events = data.splice(0, 4);
+      });
+    }
+  ])
+  .controller('userController', ['$scope', '$routeParams', 'eventService',
+    function ($scope, $routeParams, eventService) {
+      $scope.username = $routeParams.id;
+
+      eventService.query({
+        organizerId: $scope.username
+      }, function (data) {
+        $scope.events = data;
       });
     }
   ])
@@ -151,7 +164,9 @@ angular.module('myApp.controllers', [])
   ])
   .controller('eventListController', ['$scope', 'eventService',
     function ($scope, eventService) {
-      eventService.query(function (data) {
+      eventService.query({
+        after: (new Date()).toISOString()
+      }, function (data) {
         $scope.events = data;
       });
     }
