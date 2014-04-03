@@ -554,5 +554,21 @@
   "_events_found_": {
     "message": "events found",
     "description": "Number of search results found"
+  },
+  "_events_created_": {
+    "message": "Events Created",
+    "description": "Events created header on user view"
+  },
+  "_attendees_": {
+    "message": "Attendees",
+    "description": "Attendees next to head count"
+  },
+  "_my_events_": {
+    "message": "My Events",
+    "description": "My Events nav link"
+  },
+  "_events_single_word_": {
+    "message": "Events",
+    "description": "Single word: Events"
   }
 }

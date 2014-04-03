@@ -1,5 +1,5 @@
 <div class="event-detail">
-  <div class="container-wrapper color-{{ eventData.competencyID }}">
+  <div class="multicolor-header color-{{ eventData.competencyID }}">
     <header class="container">
       <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#!/edit/{{ eventID }}"><span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span></a>
       <h1>{{ eventData.title }}</h1>
@@ -31,10 +31,16 @@
       <div class="col-xs-12 col-sm-4 add-bottom-margin">
         <a ng-show="eventData.registerLink" class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">{{ '_attend_this_event_' | i18n }}</a>
         <div class="organized-by">
-          <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
+          <a href="#!/user/{{ eventData.organizerId }}">
+            <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
+          </a>
+
           <div>
-            <p>{{ '_organized_by_' | i18n }}<br><strong><a href="https://{{ eventData.organizerId }}.makes.org" target="_blank"><span class="sr-only">{{ '_link_to_profile_' | i18n }}</span>{{ eventData.organizerId || eventData.organizer }}</a></strong></p>
-            </p>
+            {{ '_organized_by_' | i18n }}<br>
+            <a href="#!/user/{{ eventData.organizerId }}">
+              <span class="sr-only">{{ '_link_to_profile_' | i18n }}</span>
+              <strong>{{ eventData.organizerId || eventData.organizer }}</strong>
+            </a>
           </div>
         </div>
         <div>
