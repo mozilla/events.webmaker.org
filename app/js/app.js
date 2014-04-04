@@ -9,11 +9,6 @@ angular.module('myApp', [
   'myApp.directives',
   'myApp.controllers'
 ]).
-config(['$httpProvider',
-  function ($httpProvider) {
-    $httpProvider.defaults.withCredentials = true;
-  }
-]).
 config(['$routeProvider', '$locationProvider',
   function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
