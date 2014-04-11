@@ -33,8 +33,17 @@ angular.module('myApp.services', ['ngResource'])
         organizerId: '@organizerId',
         after: '@after'
       }, {
+        save: {
+          method: 'POST',
+          withCredentials: true
+        },
+        'delete': {
+          method: 'DELETE',
+          withCredentials: true
+        },
         update: {
-          method: 'PUT'
+          method: 'PUT',
+          withCredentials: true
         }
       });
     }
