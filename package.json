@@ -25,7 +25,7 @@
     "habitat": "1.1.0",
     "hood": "0.2.1",
     "webmaker-auth": "0.0.8",
-    "webmaker-download-locales": "0.1.0",
+    "webmaker-download-locales": "0.1.2",
     "webmaker-i18n": "https://github.com/mozilla/node-webmaker-i18n/archive/v0.3.12.tar.gz",
     "webmaker-locale-mapping": "latest",
     "prerender-node": "0.1.18",
