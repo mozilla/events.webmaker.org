@@ -5,6 +5,7 @@ module.exports = function (env) {
   var app = express();
   var defaultLang = 'en-US';
   var csp = require('./csp');
+  var wts = require('webmaker-translation-stats');
 
   app.use(require('prerender-node'));
   app.use(express.logger('dev'));
@@ -37,7 +38,14 @@ module.exports = function (env) {
   };
 
   app.get('/healthcheck', function (req, res) {
-    res.json(healthcheck);
+    wts(i18n.getSupportLanguages(), path.join(__dirname, '../locale'), function(err, data) {
+      if(err) {
+        healthcheck.locales = err.toString();
+      } else {
+        healthcheck.locales = data;
+      }
+      res.json(healthcheck);
+    });
   });
 
   // Serve up virtual configuration "file"

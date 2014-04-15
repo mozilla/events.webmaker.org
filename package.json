@@ -28,6 +28,7 @@
     "webmaker-download-locales": "0.1.2",
     "webmaker-i18n": "https://github.com/mozilla/node-webmaker-i18n/archive/v0.3.12.tar.gz",
     "webmaker-locale-mapping": "latest",
+    "webmaker-translation-stats": "0.0.1",
     "prerender-node": "0.1.18",
     "newrelic": "1.4.0"
   },
