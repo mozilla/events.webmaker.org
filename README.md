@@ -41,6 +41,10 @@ This app takes four configuration parameters, all of which are optional.
 
 `MY_MAKES_URL` = The URL for the my makes page on Webmaker e.g. http://localhost:7777/me
 
+`GA_ACCOUNT` = The Google Analytics property e.g. UA-XXXXX-X
+
+`GA_DOMAIN` = The domain for the your Google Analytics property
+
 
 ## Grunt Tasks
 

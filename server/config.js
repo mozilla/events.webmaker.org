@@ -46,7 +46,9 @@ module.exports = function (env) {
     eventsLocation: env.get('eventsLocation') || 'http://localhost:1989',
     accountSettingsUrl: env.get('accountSettingsUrl') || 'https://login.webmaker.org/account',
     myMakesUrl: env.get('myMakesUrl') || 'https://webmaker.org/me',
-    webmakerUrl: env.get('WEBMAKER_URL') || 'https://webmaker.org'
+    webmakerUrl: env.get('WEBMAKER_URL') || 'https://webmaker.org',
+    ga_account: env.get('GA_ACCOUNT') || 'UA-XXXXX-X',
+    ga_domain: env.get('GA_DOMAIN') || 'example.com'
   };
 
   app.get('/config.js', function (req, res) {

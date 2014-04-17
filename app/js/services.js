@@ -126,6 +126,9 @@ angular.module('myApp.services', ['ngResource'])
       $rootScope.direction = config.direction;
       $rootScope.arrowDir = config.direction === 'rtl' ? 'left' : 'right';
 
+      $rootScope.ga_account = config.ga_account;
+      $rootScope.ga_domain = config.ga_domain;
+
       auth.on('login', function (user) {
         $rootScope._user = user;
         apply();
