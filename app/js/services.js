@@ -31,7 +31,8 @@ angular.module('myApp.services', ['ngResource'])
     function ($rootScope, $resource, config) {
       return $resource(config.eventsLocation + '/events/:id', {
         organizerId: '@organizerId',
-        after: '@after'
+        after: '@after',
+        limit: '@limit'
       }, {
         save: {
           method: 'POST',
@@ -128,6 +129,8 @@ angular.module('myApp.services', ['ngResource'])
 
       $rootScope.ga_account = config.ga_account;
       $rootScope.ga_domain = config.ga_domain;
+
+      $rootScope.eventsLocation = config.eventsLocation;
 
       auth.on('login', function (user) {
         $rootScope._user = user;

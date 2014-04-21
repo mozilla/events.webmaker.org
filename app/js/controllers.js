@@ -165,7 +165,8 @@ angular.module('myApp.controllers', [])
   .controller('eventListController', ['$scope', 'eventService',
     function ($scope, eventService) {
       eventService.query({
-        after: (new Date()).toISOString()
+        after: (new Date()).toISOString(),
+        limit: 30
       }, function (data) {
         $scope.events = data;
       });
