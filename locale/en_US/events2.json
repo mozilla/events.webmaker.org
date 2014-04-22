@@ -570,5 +570,9 @@
   "_events_single_word_": {
     "message": "Events",
     "description": "Single word: Events"
+  },
+  "_fetch_all_": {
+    "message": "Events CSV",
+    "decription": "Fetch all events data for admins"
   }
 }
