@@ -163,10 +163,6 @@
     "message": "How many attendees are you expecting?",
     "description": "Event attendees field"
   },
-  "_i_am_not_sure_": {
-    "message": "I'm not sure",
-    "description": "Option for not sure about attendees"
-  },
   "_under_ten_": {
     "message": "Under 10",
     "description": "Option for under 10 attendees"

@@ -28,7 +28,7 @@ angular.module('myApp.controllers', [])
       $scope.attemptedToSubmit = false;
 
       // Set default values for form
-      $scope.event.attendees = 0; // Unknown amount
+      $scope.event.attendees = 5; // Under 10 by default
       $scope.event.duration = 1; // 1 hour default
 
       // Keep email and login status up to date
@@ -86,7 +86,7 @@ angular.module('myApp.controllers', [])
         $scope.event = {};
         $scope.event.title = data.title;
         $scope.event.description = data.description;
-        $scope.event.attendees = data.attendees;
+        $scope.event.attendees = data.attendees || 5;
         $scope.event.organizer = data.organizer;
         $scope.event.organizerId = data.organizerId;
         $scope.event.ageGroup = data.ageGroup || '';
