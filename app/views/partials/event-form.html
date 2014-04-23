@@ -12,13 +12,7 @@
 
       <div class="form-group" ng-class="{'has-error': addEventForm.title.$dirty && addEventForm.title.$invalid}">
         <label for="event-title">{{ '_name_your_event_' | i18n }} <span class="text-danger">*</span></label>
-        <input
-          ng-model="event.title"
-          name="title"
-          required
-          id="event-title"
-          class="form-control"
-          placeholder="{{ '_great_title_name_' | i18n }}">
+        <input ng-model="event.title" name="title" required id="event-title" class="form-control" placeholder="{{ '_great_title_name_' | i18n }}">
       </div>
 
       <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.eventName.$invalid">{{ '_required_' | i18n }}</div>
@@ -102,7 +96,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label for="event-start-date">{{ '_start_date_and_time_' | i18n }} <span class="text-danger">*</span></label>
-        <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm."/>
+        <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm." />
       </div>
       <div class="add-bottom-margin">
         <em ng-show="event.isValidStartDate">{{ event.humanParsedDate }}</em>
@@ -131,20 +125,30 @@
   </div>
 
   <div class="form-group add-double-bottom-margin">
-    <label for="organizer-email">{{ '_event_organizer_email_' | i18n }}</label>
+
     <div class="row">
       <div class="col-sm-6">
-        <input id="organizer-email" ng-model="event.organizer" name="organizer" class="form-control" type="email" readonly required>
-      </div>
-      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="organizer-email">{{ '_event_organizer_email_' | i18n }}</label>
+          <input we-readonly="!_user.isAdmin" id="organizer-email" ng-model="event.organizer" name="organizer" class="form-control" type="email" required>
+        </div>
 
+        <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.organizer.$invalid">{{ '_required_' | i18n }}</div>
+      </div>
+
+      <div class="col-sm-6" ng-show="_user.isAdmin">
+        <div class="form-group">
+          <label for="organizer-email">{{ '_event_organizer_username_' | i18n }}</label>
+          <input id="organizer-id" ng-model="event.organizerId" name="organizerId" class="form-control" type="text" required>
+        </div>
+
+        <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.organizerId.$invalid">{{ '_required_' | i18n }}</div>
       </div>
     </div>
-    <p class="help-block">
+    <p class="help-block" ng-hide="_user.isAdmin">
       <span class="fa fa-lock"></span> <a href="#" ng-click="login()" ng-bind-html="'_login_with_different_email_' | i18n"></a>
     </p>
   </div>
-
 
   <!-- Submit Button -->
   <div class="form-group" ng-transclude></div>
