@@ -61,6 +61,20 @@ angular.module('myApp.directives', [])
       ]
     };
   })
+  .directive('weReadonly', function () {
+    return {
+      restrict: 'A',
+      link: function ($scope, $element, attrs) {
+        $scope.$watch(attrs.weReadonly, function (value) {
+          if (value) {
+            $element.attr('readonly', true);
+          } else {
+            $element.removeAttr('readonly');
+          }
+        });
+      }
+    };
+  })
   .directive('weListing', function () {
     return {
       restrict: 'E',

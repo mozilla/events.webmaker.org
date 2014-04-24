@@ -570,5 +570,13 @@
   "_fetch_all_": {
     "message": "Events CSV",
     "decription": "Fetch all events data for admins"
+  },
+  "_i_am_not_sure_": {
+    "message": "I'm not sure",
+    "description": "Option for not sure about duration"
+  },
+  "_event_organizer_username_": {
+    "message": "Event organizer's username",
+    "description": "Label for form input"
   }
 }
