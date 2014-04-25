@@ -47,18 +47,19 @@ module.exports = function (grunt) {
     jshint: {
       all: ['Gruntfile.js', 'app/js/**/*.js'],
       options: {
+        ignores: ['app/js/lib/**/*.js'],
         jshintrc: '.jshintrc'
       }
     },
     jsbeautifier: {
       modify: {
-        src: ['Gruntfile.js', 'app/js/**/*.js'],
+        src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
         options: {
           config: '.jsbeautifyrc'
         }
       },
       validate: {
-        src: ['Gruntfile.js', 'app/js/**/*.js'],
+        src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
         options: {
           mode: 'VERIFY_ONLY',
           config: '.jsbeautifyrc'
