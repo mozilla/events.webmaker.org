@@ -1,7 +1,8 @@
 <div class="event-detail">
   <div class="multicolor-header color-{{ eventData.competencyID }}">
     <header class="container">
-      <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#!/edit/{{ eventID }}"><span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span></a>
+      <a ng-show="_user.email === eventData.organizer || _user.isAdmin" class="btn btn-secondary" href="#!/edit/{{ eventID }}"><span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span>
+      </a>
       <h1>{{ eventData.title }}</h1>
     </header>
   </div>
@@ -36,18 +37,25 @@
           </a>
 
           <div>
-            {{ '_organized_by_' | i18n }}<br>
+            {{ '_organized_by_' | i18n }}
+            <br>
             <a href="#!/user/{{ eventData.organizerId }}">
               <span class="sr-only">{{ '_link_to_profile_' | i18n }}</span>
               <strong>{{ eventData.organizerId || eventData.organizer }}</strong>
             </a>
           </div>
         </div>
-        <div>
+        <div class="add-bottom-margin">
           <p>{{ '_who_is_this_for_' | i18n }}</p>
           <h4 class="text-title-case"><span class="fa fa-star fa-fw text-muted"></span> {{ transformToLocalizationKeyStyle( eventData.skillLevel ) || '_any_skill_' | i18n }} {{ '_level_' | i18n }}</h4>
           <h4 class="text-title-case"><span class="fa fa-male fa-fw text-muted"></span> {{ transformToLocalizationKeyStyle( eventData.ageGroup ) || '_any_age_group_' | i18n }}</h4>
         </div>
+
+        <div class="label-group">
+          <span ng-repeat="tag in eventData.tags" class="label label-info">{{ tag }}</span>
+        </div>
+
+
       </div>
 
       <div class="col-xs-12 col-sm-8 event-detail-description" ng-bind-html="eventData.description | markdown"></div>

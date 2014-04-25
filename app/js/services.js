@@ -34,6 +34,10 @@ angular.module('myApp.services', ['ngResource'])
         after: '@after',
         limit: '@limit'
       }, {
+        get: {
+          method: 'GET',
+          withCredentials: true
+        },
         save: {
           method: 'POST',
           withCredentials: true

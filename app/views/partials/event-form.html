@@ -136,7 +136,7 @@
         <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.organizer.$invalid">{{ '_required_' | i18n }}</div>
       </div>
 
-      <div class="col-sm-6" ng-show="_user.isAdmin">
+      <div class="col-sm-6" ng-if="_user.isAdmin">
         <div class="form-group">
           <label for="organizer-email">{{ '_event_organizer_username_' | i18n }}</label>
           <input id="organizer-id" ng-model="event.organizerId" name="organizerId" class="form-control" type="text" required>
@@ -149,6 +149,18 @@
       <span class="fa fa-lock"></span> <a href="#" ng-click="login()" ng-bind-html="'_login_with_different_email_' | i18n"></a>
     </p>
   </div>
+
+
+
+
+  <br>
+  <strong>Tags</strong><br><br>
+  <input id="event-tags" ng-model="event.tags" name="tags" class="form-control" type="text" placeholder="e.g. security, javascript, csp">
+  <br><br>
+
+
+
+
 
   <!-- Submit Button -->
   <div class="form-group" ng-transclude></div>
