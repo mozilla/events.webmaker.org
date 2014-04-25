@@ -590,5 +590,9 @@
   "_404_": {
     "message": "Page not found.",
     "description": "404 error"
+  },
+  "_Language_Preference_": {
+    "message": "Language Preference",
+    "description": "Language preference in signup"
   }
 }

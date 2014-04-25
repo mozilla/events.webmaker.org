@@ -6,13 +6,22 @@ module.exports = function (env) {
   var defaultLang = 'en-US';
   var csp = require('./csp');
   var wts = require('webmaker-translation-stats');
+  var WebmakerAuth = require('webmaker-auth');
+
+  var auth = new WebmakerAuth({
+    loginURL: env.get('LOGIN_URL'),
+    secretKey: env.get('SESSION_SECRET'),
+    forceSSL: env.get('FORCE_SSL'),
+    domain: env.get('COOKIE_DOMAIN')
+  });
 
   app.use(require('prerender-node'));
   app.use(express.logger('dev'));
   app.use(express.compress());
   app.use(express.json());
   app.use(express.urlencoded());
-
+  app.use(auth.cookieParser());
+  app.use(auth.cookieSession());
 
   // Setup locales with i18n
   app.use( i18n.middleware({
@@ -48,6 +57,13 @@ module.exports = function (env) {
     });
   });
 
+  // Login
+  app.post('/verify', auth.handlers.verify);
+  app.post('/authenticate', auth.handlers.authenticate);
+  app.post('/create', auth.handlers.create);
+  app.post('/logout', auth.handlers.logout);
+  app.post('/check-username', auth.handlers.exists);
+
   // Serve up virtual configuration "file"
   var config = {
     version: require('../package').version,
@@ -63,6 +79,7 @@ module.exports = function (env) {
     config.lang = req.localeInfo.lang;
     config.direction = req.localeInfo.direction;
     config.defaultLang = defaultLang;
+    config.langmap = i18n.getAllLocaleCodes();
     config.supported_languages = i18n.getSupportLanguages();
     res.setHeader('Content-type', 'text/javascript');
     res.send('window.eventsConfig = ' + JSON.stringify(config));

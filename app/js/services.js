@@ -107,7 +107,6 @@ angular.module('myApp.services', ['ngResource'])
       }
 
       var auth = new WebmakerAuthClient({
-        host: config.eventsLocation,
         handleNewUserUI: false
       });
 

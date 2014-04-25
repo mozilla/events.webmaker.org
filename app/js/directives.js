@@ -75,6 +75,24 @@ angular.module('myApp.directives', [])
       }
     };
   })
+  .directive('selectize', function (config) {
+    return {
+      restrict: 'A',
+      link: function ($scope, $element) {
+        var options = [];
+        for (var i = 0; i <= config.supported_languages.length; i++) {
+          var title = config.langmap[config.supported_languages[i]] ? config.langmap[config.supported_languages[i]].nativeName : "unknown";
+          options.push({
+            id: config.supported_languages[i],
+            title: title
+          });
+        };
+        $element.selectize({options: options, labelField: 'title', valueField: 'id'});
+        var selectize = $element[0].selectize;
+        selectize.setValue(config.lang);
+      }
+    };
+  })
   .directive('weListing', function () {
     return {
       restrict: 'E',

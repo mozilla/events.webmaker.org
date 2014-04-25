@@ -229,10 +229,13 @@ angular.module('myApp.controllers', [])
         });
       });
 
-      var createUserCtrl = function ($scope, $modalInstance, authService, assertion) {
+      var createUserCtrl = function ($scope, $modalInstance, authService, assertion, config) {
 
         $scope.form = {};
         $scope.user = {};
+        $scope.supported_languages = config.supported_languages;
+        $scope.currentLang = config.lang;
+        $scope.langmap = config.langmap;
 
         $scope.checkUsername = function () {
           if (!$scope.form.user.username) {
