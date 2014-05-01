@@ -578,5 +578,17 @@
   "_event_organizer_username_": {
     "message": "Event organizer's username",
     "description": "Label for form input"
+  },
+  "_oh_snap_": {
+    "message": "Oh, snap! A wild",
+    "description": "Error header first part"
+  },
+  "_appears_": {
+    "message": "appears!",
+    "description": "end of error message header"
+  },
+  "_404_": {
+    "message": "Page not found.",
+    "description": "404 error"
   }
 }

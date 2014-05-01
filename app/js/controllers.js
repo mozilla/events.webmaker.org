@@ -189,6 +189,10 @@ angular.module('myApp.controllers', [])
 
       }, function (err) {
         console.error(err);
+
+        if (err.status === 404) {
+          document.location.hash = '#!/errors/404';
+        }
       });
     }
   ])
@@ -203,6 +207,11 @@ angular.module('myApp.controllers', [])
       $scope.accountSettingsUrl = config.accountSettingsUrl;
       $scope.myMakesUrl = config.myMakesUrl;
 
+    }
+  ])
+  .controller('errorController', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
+      $scope.errorCode = $routeParams.code;
     }
   ])
   .controller('createUserController', ['$scope', '$http', '$modal', 'authService',

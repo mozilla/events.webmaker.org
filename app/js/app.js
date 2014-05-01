@@ -42,13 +42,18 @@ config(['$routeProvider', '$locationProvider',
       controller: 'userController'
     });
 
+    $routeProvider.when('/error/:code', {
+      templateUrl: 'views/error.html',
+      controller: 'errorController'
+    });
+
     $routeProvider.when('/', {
       templateUrl: 'views/home.html',
       controller: 'homeController'
     });
 
     $routeProvider.otherwise({
-      redirectTo: '/events'
+      redirectTo: '/error/404'
     });
   }
 ]).
