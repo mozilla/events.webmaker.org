@@ -27,6 +27,8 @@
         <span class="help-block" ng-show="submit && !form.agree">{{ '_must_agree_to_terms_and_conditions_' | i18n }}</span>
       </label>
     </div>
+    <label>{{ '_Language_Preference_' | i18n }}</label>
+    <select ng-model="user.prefLocale" selectize></select>
   </form>
 </div>
 <div class="modal-footer">
