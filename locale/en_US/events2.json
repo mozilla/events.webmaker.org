@@ -407,9 +407,9 @@
     "message": "Order gear",
     "description": "Order gear"
   },
-  "_eg_placeorder_": {
-    "message": "Place your gear <a target=\"_blank\" href=\"https://intlstore.mozilla.org/makerparty/\">order</a> to receive t-shirts, stickers and banners.",
-    "description": "Place order link"
+  "_eg_placeorderdisabled_": {
+    "message": "We're in the process of getting gear ready for Maker Party 2014. Check back soon!",
+    "description": "Gear orders are not available now"
   },
   "_eg_sharemake_": {
     "message": "Share what you make",
