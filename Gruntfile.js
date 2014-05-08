@@ -71,9 +71,19 @@ module.exports = function (grunt) {
         pathToJSON: ['locale/en_US/*.json'],
         ignoreKeys: []
       }
+    },
+    throttle: {
+      default: {
+        remote_port: 1981,
+        local_port: 1891,
+        upstream: 10 * 1024,
+        downstream: 50 * 1024,
+        keepalive: true
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-throttle');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-shell-spawn');
   grunt.loadNpmTasks('grunt-angular-i18n-finder');

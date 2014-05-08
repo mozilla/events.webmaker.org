@@ -13,6 +13,7 @@
     "bower": "1.2.8",
     "express": "3.4.8",
     "grunt": "0.4.2",
+    "grunt-throttle": "0.2.0",
     "grunt-cli": "0.1.13",
     "grunt-contrib-jshint": "0.7.2",
     "grunt-contrib-less": "0.10.0",
