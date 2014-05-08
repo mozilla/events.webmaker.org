@@ -594,5 +594,13 @@
   "_Language_Preference_": {
     "message": "Language Preference",
     "description": "Language preference in signup"
+  },
+  "_tags_label_": {
+    "message": "Tags",
+    "description": "Label for Tags in event form"
+  },
+  "_tags_example_": {
+    "message": "e.g. security, javascript, csp",
+    "description": "Examples of comma separated tags"
   }
 }
