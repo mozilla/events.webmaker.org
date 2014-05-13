@@ -3,7 +3,6 @@
 angular.module('myApp.services', ['ngResource'])
   .constant('config', window.eventsConfig)
   .constant('chrono', window.chrono)
-  .constant('showdown', window.Showdown)
   .factory('loadGoogleMaps', ['$window',
     function ($window) {
 
@@ -89,7 +88,7 @@ angular.module('myApp.services', ['ngResource'])
 
         // Convert CSV tags to array of Strings
 
-        if (serializedEvent.tags) {
+        if (serializedEvent.tags && typeof serializedEvent.tags === 'string') {
           var tagArray = serializedEvent.tags.split(',');
 
           tagArray.forEach(function (tag, index) {
