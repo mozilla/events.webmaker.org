@@ -2,6 +2,7 @@ angular.module('myApp', [
   'ngRoute',
   'ngResource',
   'ngAnimate',
+  'ngSanitize',
   'ui.bootstrap',
   'localization',
   'myApp.filters',

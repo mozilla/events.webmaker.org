@@ -17,7 +17,6 @@
     "font-awesome": "4.0.3",
     "momentjs": "2.5.0",
     "chrono": "0.1.9",
-    "showdown": "0.3.1",
     "selectize": "0.9.0",
     "makerstrap": "https://github.com/mozilla/makerstrap.git#de0d761dc070d0df22f8e6a19d92d8cbdeedb734",
     "webmaker-auth-client": "0.0.29",

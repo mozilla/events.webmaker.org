@@ -173,12 +173,13 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('eventDetailController', ['$scope', '$http', '$routeParams', 'eventService', 'moment',
-    function ($scope, $http, $routeParams, eventService, moment) {
-
+  .controller('eventDetailController', ['$scope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment',
+    function ($scope, $http, $routeParams, $sanitize, eventService, moment) {
       eventService.get({
         id: $routeParams.id,
       }, function (data) {
+
+        data.description = $sanitize(data.description);
 
         $scope.eventData = data;
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
