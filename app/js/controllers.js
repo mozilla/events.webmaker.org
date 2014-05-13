@@ -91,6 +91,7 @@ angular.module('myApp.controllers', [])
         $scope.event.organizerId = data.organizerId;
         $scope.event.ageGroup = data.ageGroup || '';
         $scope.event.skillLevel = data.skillLevel || '';
+        $scope.event.tags = data.tags;
 
         // TEMP : Need to convert back from city/country/lat/long/whatever
         $scope.event.address = data.address;

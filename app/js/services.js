@@ -34,6 +34,10 @@ angular.module('myApp.services', ['ngResource'])
         after: '@after',
         limit: '@limit'
       }, {
+        get: {
+          method: 'GET',
+          withCredentials: true
+        },
         save: {
           method: 'POST',
           withCredentials: true
@@ -83,8 +87,21 @@ angular.module('myApp.services', ['ngResource'])
         delete serializedEvent.duration;
         delete serializedEvent.parsedNaturalStartDate;
 
-        return serializedEvent;
+        // Convert CSV tags to array of Strings
 
+        if (serializedEvent.tags) {
+          var tagArray = serializedEvent.tags.split(',');
+
+          tagArray.forEach(function (tag, index) {
+            tagArray[index] = tag.trim();
+          });
+
+          serializedEvent.tags = tagArray;
+        } else {
+          serializedEvent.tags = [];
+        }
+
+        return serializedEvent;
       };
     }
   ])
