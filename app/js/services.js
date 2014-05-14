@@ -82,6 +82,10 @@ angular.module('myApp.services', ['ngResource'])
           delete serializedEvent.endDate;
         }
 
+        if (typeof serializedEvent.registerLink === 'string' && serializedEvent.registerLink.trim() === '') {
+          delete serializedEvent.registerLink;
+        }
+
         // Remove nonexistant DB values from client event object
         delete serializedEvent.duration;
         delete serializedEvent.parsedNaturalStartDate;
