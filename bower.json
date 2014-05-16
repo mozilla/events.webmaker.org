@@ -19,7 +19,7 @@
     "chrono": "0.1.9",
     "selectize": "0.9.0",
     "makerstrap": "https://github.com/mozilla/makerstrap.git#de0d761dc070d0df22f8e6a19d92d8cbdeedb734",
-    "webmaker-auth-client": "0.0.29",
+    "webmaker-auth-client": "0.1.0",
     "jquery": "2.1.0",
     "angular-animate": "1.2.14",
     "animate.css": "3.1.0"
