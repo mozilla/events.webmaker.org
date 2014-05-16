@@ -30,7 +30,7 @@
     "webmaker-locale-mapping": "latest",
     "webmaker-translation-stats": "0.0.1",
     "prerender-node": "0.1.18",
-    "newrelic": "1.4.0"
+    "newrelic": "1.5.5"
   },
   "engines": {
     "node": ">=0.10"
