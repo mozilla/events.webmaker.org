@@ -138,17 +138,72 @@ h2.home {
 */
 
 .home-image {
-  background: transparent url(../img/front-page.jpg) top center no-repeat;
-  background-size: cover;
-  height: 450px;
+  background: #ffe600 url('../img/mp-banner/bg_tile.png') top center repeat;
 
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url(../img/front-page-2x.jpg);
+  @media (min-width: @screen-sm) {
+    @media (-webkit-max-device-pixel-ratio: 1.49), (max-resolution: 143.9dpi) {
+      background: url('../img/mp-banner/illustration_left.png') top left no-repeat,
+                  url('../img/mp-banner/illustration_right.png') top right no-repeat,
+                  #ffe600 url('../img/mp-banner/bg_tile.png') top center repeat;
+      background-size: auto 100%, auto 100%, auto auto;
+    }
+
+
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+      background: url('../img/mp-banner/illustration_left@x2.png') top left no-repeat,
+                  url('../img/mp-banner/illustration_right@x2.png') top right no-repeat,
+                  #ffe600 url('../img/mp-banner/bg_tile@x2.png') top center repeat;
+      background-size: auto 100%, auto 100%, auto auto;
+    }
+
+    padding-left: 200px;
+    padding-right: 200px;
   }
 
-  .container {
-    position: relative;
-    height: 100%;
+  padding: 25px 10px;
+  color: #005c51;
+  text-align: center;
+
+  .subtitle {
+    @media (min-width: @screen-sm) {
+      font-size: 20px;
+    }
+
+    font-weight: 100;
+    margin-bottom: 20px;
+  }
+
+  header {
+    .maker-party-logo {
+      @media (-webkit-max-device-pixel-ratio: 1.49), (max-resolution: 143.9dpi) {
+        background: url('../img/mp-banner/mp_logo.png');
+        background-size: 168px 206px;
+      }
+
+      @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+        background: url('../img/mp-banner/mp_logo@x2.png');
+        background-size: 168px 206px;
+      }
+
+      width: 168px;
+      height: 206px;
+      margin: auto;
+    }
+
+    h1 {
+      @media (min-width: @screen-sm) {
+        font-size: 50px;
+      }
+    }
+  }
+
+  .mp-button {
+    background: #00b0b7;
+    color: #ffe600;
+    padding: 5px 20px;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 18px;
   }
 }
 
