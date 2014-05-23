@@ -268,6 +268,7 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.cancel = function () {
+          authService.analytics.webmakerNewUserCancelled();
           $modalInstance.dismiss('cancel');
         };
       };
