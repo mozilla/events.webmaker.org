@@ -3,6 +3,7 @@
 angular.module('myApp.services', ['ngResource'])
   .constant('config', window.eventsConfig)
   .constant('chrono', window.chrono)
+  .constant('analytics', window.analytics)
   .factory('loadGoogleMaps', ['$window',
     function ($window) {
 
