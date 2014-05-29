@@ -11,3 +11,4 @@ TODO.txt
 npm-debug.log
 locale/
 !locale/en_US/*
+comps/
