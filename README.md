@@ -31,7 +31,7 @@ To run the service locally:
 
 To pass configuration to the server, `cp .env-dist .env` or create a `.env` file in the root directory.
 
-This app takes four configuration parameters, all of which are optional.
+This app takes a number of configuration parameters, all of which are optional.
 
 `PORT` - Where to run the server
 
@@ -45,6 +45,11 @@ This app takes four configuration parameters, all of which are optional.
 
 `GA_DOMAIN` = The domain for the your Google Analytics property
 
+`HSTS_DISABLED` = 'false'/'true'  -- To disable HSTS set to 'true' (if you are not forcing SSL, you should keep this set to true)
+
+`DISABLE_XFO_HEADERS_DENY` = 'false'/'true'  -- To disable x-frame-options headers being set to deny, set this to 'true'
+
+`IEXSS_PROTECTION_DISABLED` = 'false'/'true'   -- To disable IEXSS protection headers, set this to 'true'
 
 ## Grunt Tasks
 
