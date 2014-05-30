@@ -7,6 +7,7 @@ module.exports = function (env) {
   var csp = require('./csp');
   var wts = require('webmaker-translation-stats');
   var WebmakerAuth = require('webmaker-auth');
+  var helmet = require('helmet');
 
   var auth = new WebmakerAuth({
     loginURL: env.get('LOGIN_URL'),
@@ -14,6 +15,17 @@ module.exports = function (env) {
     forceSSL: env.get('FORCE_SSL'),
     domain: env.get('COOKIE_DOMAIN')
   });
+
+  // Check for helmet security options
+  if (process.env.HSTS_DISABLED != 'true') {
+    app.use(helmet.hsts());
+  }
+  if (process.env.DISABLE_XFO_HEADERS_DENY != 'true') {
+    app.use(helmet.xframe('deny'));
+  }
+  if (process.env.IEXSS_PROTECTION_DISABLED != 'true') {
+    app.use(helmet.iexss());
+  }
 
   app.use(require('prerender-node'));
   app.use(express.logger('dev'));

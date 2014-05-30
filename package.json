@@ -23,6 +23,7 @@
     "grunt-shell-spawn": "0.3.0",
     "grunt-angular-i18n-finder": "0.0.3",
     "habitat": "1.1.0",
+    "helmet": "0.2.1",
     "hood": "0.2.1",
     "webmaker-auth": "0.0.12",
     "webmaker-download-locales": "0.1.2",
