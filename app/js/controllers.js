@@ -21,8 +21,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('addEventController', ['$scope', '$location', '$rootScope', 'moment', 'chrono', 'eventService', 'eventFormatter',
-    function ($scope, $location, $rootScope, moment, chrono, eventService, eventFormatter) {
+  .controller('addEventController', ['$scope', '$location', '$rootScope', 'moment', 'chrono', 'eventService', 'eventFormatter', 'analytics',
+    function ($scope, $location, $rootScope, moment, chrono, eventService, eventFormatter, analytics) {
       $scope.event = {};
       $scope.event.parsedNaturalStartDate = undefined;
       $scope.attemptedToSubmit = false;
@@ -65,6 +65,8 @@ angular.module('myApp.controllers', [])
           eventService.save(eventData, function (data) {
             // Switch to detail view on successful creation
             $location.path('/events/' + data.id);
+
+            analytics.event('Add Event');
           }, function (err) {
             // TODO : Show error to user
             console.error('addEvent save error: ' + err.data);
