@@ -52,7 +52,7 @@
   </h2>
 
   <ul class="listing-home list-unstyled">
-    <li ng-repeat="event in events">
+    <li ng-repeat="event in events | limitTo: 4">
       <a href="#!/events/{{event.id}}">
         <div class="circle-date">
           <span>{{event.beginDate | date:'MMM d'}}</span>

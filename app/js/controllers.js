@@ -4,9 +4,11 @@ angular.module('myApp.controllers', [])
   .controller('homeController', ['$scope', '$timeout', 'eventService',
     function ($scope, $timeout, eventService) {
       eventService.query({
-        after: (new Date()).toISOString()
+        after: (new Date()).toISOString(),
+        limit: 20,
+        dedupe: true
       }, function (data) {
-        $scope.events = data.splice(0, 4);
+        $scope.events = data;
       });
     }
   ])
