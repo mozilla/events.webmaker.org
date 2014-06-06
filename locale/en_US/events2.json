@@ -500,12 +500,12 @@
     "description": "Option for any age group event"
   },
   "_kids_": {
-    "message": "Kids",
-    "description": "Option for kids age group event"
+    "message": "Children",
+    "description": "Option for children age group event"
   },
   "_youth_": {
-    "message": "Youth",
-    "description": "Option for youth age group event"
+    "message": "Teenagers",
+    "description": "Option for teenage age group event"
   },
   "_adults_": {
     "message": "Adults",
