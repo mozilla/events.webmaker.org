@@ -32,7 +32,8 @@ angular.module('myApp.services', ['ngResource'])
       return $resource(config.eventsLocation + '/events/:id', {
         organizerId: '@organizerId',
         after: '@after',
-        limit: '@limit'
+        limit: '@limit',
+        dedupe: '@dedupe'
       }, {
         get: {
           method: 'GET',
