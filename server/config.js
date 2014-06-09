@@ -5,6 +5,7 @@ module.exports = function (env) {
   var app = express();
   var defaultLang = 'en-US';
   var csp = require('./csp');
+  var messina = require('messina')('webmaker-events-2-' + env.get('NODE_ENV'));
   var wts = require('webmaker-translation-stats');
   var WebmakerAuth = require('webmaker-auth');
 
@@ -16,7 +17,12 @@ module.exports = function (env) {
   });
 
   app.use(require('prerender-node'));
-  app.use(express.logger('dev'));
+  if (env.get('ENABLE_GELF_LOGS')) {
+    messina.patchConsole();
+    app.use(messina.middleware());
+  } else {
+    app.use(express.logger('dev'));
+  }
   app.use(express.compress());
   app.use(express.json());
   app.use(express.urlencoded());
