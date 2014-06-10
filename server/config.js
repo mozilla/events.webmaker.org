@@ -18,7 +18,7 @@ module.exports = function (env) {
 
   app.use(require('prerender-node'));
   if (env.get('ENABLE_GELF_LOGS')) {
-    messina.patchConsole();
+    messina.init();
     app.use(messina.middleware());
   } else {
     app.use(express.logger('dev'));
