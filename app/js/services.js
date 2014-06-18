@@ -54,6 +54,34 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
+  .factory('rsvpService', ['$resource', 'config',
+    function ($resource, config) {
+      return $resource(config.eventsLocation + '/rsvp', {
+        userid: '@userid',
+        eventid: '@eventid',
+      }, {
+        save: {
+          method: 'POST',
+          withCredentials: true
+        },
+        'delete': {
+          method: 'DELETE',
+          withCredentials: true
+        }
+      });
+    }
+  ])
+  .factory('attendeeInfoService', ['$resource', 'config',
+    function ($resource, config) {
+      return $resource(config.eventsLocation + '/rsvp/user/:userid', {}, {
+        get: {
+          isArray: true,
+          method: 'GET',
+          withCredentials: true
+        }
+      });
+    }
+  ])
   .factory('eventFormatter', ['$rootScope', 'moment', 'chrono',
     function ($rootScope, moment, chrono) {
 

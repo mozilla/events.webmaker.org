@@ -142,7 +142,7 @@ angular.module('myApp.directives', [])
       require: 'ngModel',
       link: function (scope, el, attrs, ctrl) {
         var usernameRegex = /^[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\-]{1,20}$/;
-        ctrl.$parsers.unshift(function(viewValue) {
+        ctrl.$parsers.unshift(function (viewValue) {
           if (!viewValue || usernameRegex.test(viewValue)) {
             ctrl.$setValidity('username', true);
             return viewValue;
@@ -152,6 +152,84 @@ angular.module('myApp.directives', [])
           }
         });
       }
+    };
+  })
+  .directive('weRsvp', function () {
+    // Markup schema: <we-rsvp event-id="" user-id="" />
+
+    return {
+      restrict: 'E',
+      templateUrl: '/views/partials/rsvp.html',
+      transclude: true,
+      scope: {
+        eventId: '=',
+        userId: '='
+      },
+      controller: ['$rootScope', '$scope', '$element', 'rsvpService', 'attendeeInfoService',
+        function ($rootScope, $scope, $element, rsvpService, attendeeInfoService) {
+          $scope.isRSVPd = false;
+          $scope.errorHappened = false;
+
+          $scope.$watch('userId', function (value) {
+            if (value) {
+              attendeeInfoService.get({
+                userid: $scope.userId
+              }, function (attendanceData) {
+                var currentEventInfo;
+
+                for (var i = 0, ii = attendanceData.length; i < ii; i++) {
+                  if (attendanceData[i].eventID === $scope.eventId) {
+                    currentEventInfo = attendanceData[i];
+                    break;
+                  }
+                }
+
+                if (currentEventInfo && typeof currentEventInfo.didRSVP === 'boolean') {
+                  $scope.isRSVPd = currentEventInfo.didRSVP;
+                  $scope.hasRSVPd = true;
+                }
+              }, function fail() {
+                console.error('Failed to fetch attendance data for user ' + $scope.userId);
+              });
+            }
+          });
+
+          var messageTimer;
+
+          $scope.login = $rootScope.login;
+
+          $scope.rsvp = function (isAttending) {
+            $scope.isRSVPd = isAttending;
+            $scope.hasRSVPd = true;
+            $scope.statusJustChanged = true;
+            $scope.errorHappened = false;
+
+            if (isAttending) {
+              rsvpService.save({
+                userid: $scope.userId,
+                eventid: $scope.eventId
+              }, function () {}, function fail() {
+                $scope.errorHappened = true;
+              });
+            } else {
+              rsvpService.delete({
+                userid: $scope.userId,
+                eventid: $scope.eventId
+              }, function () {}, function fail() {
+                $scope.errorHappened = true;
+              });
+            }
+
+            clearTimeout(messageTimer);
+
+            messageTimer = setTimeout(function () {
+              $scope.statusJustChanged = false;
+              $scope.$apply();
+            }, 2000);
+          };
+
+        }
+      ]
     };
   })
   .directive('collapse', function () {

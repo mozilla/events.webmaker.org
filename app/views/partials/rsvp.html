@@ -1,0 +1,26 @@
+<button ng-hide="hasRSVPd && userId" ng-disabled="!userId" ng-click="rsvp(true)" class="btn btn-primary btn-lg">{{ '_RSVP_' | i18n }}</button>
+
+<div ng-if="!userId" class="alert alert-info">{{ '_youneedto_' | i18n }}
+  <button class="link" ng-click="login()">{{ '_lowercaselogin_' | i18n }}</button> {{ '_beforeyoucan_' | i18n }}
+</div>
+
+<div ng-show="userId">
+  <div ng-show="hasRSVPd && !confirmRSVP" class="rsvpStatus">
+    <span ng-show="isRSVPd">{{ '_yes_im_going_' | i18n }}</span>
+    <span ng-show="!isRSVPd">{{ '_nonotgoing_' | i18n }}</span>
+  </div>
+
+  <div ng-show="confirmRSVP" class="prompt">
+    <p>{{ '_areugoing_' | i18n }}</p>
+    <button ng-click="rsvp(true); confirmRSVP = false;">{{ '_Yes_' | i18n }}</button>
+    <button ng-click="rsvp(false); confirmRSVP = false;">{{ '_No_' | i18n }}</button>
+  </div>
+
+  <div ng-show="statusJustChanged && !confirmRSVP && isRSVPd" class="alert alert-info">{{ '_awesome_seeya_' | i18n }}</div>
+  <div ng-show="statusJustChanged && !confirmRSVP && !isRSVPd" class="alert alert-info">{{ '_okay_thanks_' | i18n }}</div>
+  <div ng-show="errorHappened" class="alert alert-danger">{{ '_rsvp_fail_' | i18n }}</div>
+
+  <div ng-show="hasRSVPd && !confirmRSVP" class="edit" ng-click="confirmRSVP = true">
+    <i class="fa fa-pencil"></i> <button class="link">{{ '_Edit_' | i18n }}</button> {{ '_your_RSVP_' | i18n }}
+  </div>
+</div>

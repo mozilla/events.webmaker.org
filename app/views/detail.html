@@ -30,16 +30,18 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 add-bottom-margin">
-        <a ng-show="eventData.registerLink" class="btn btn-primary btn-lg btn-mb-block" href="{{ eventData.registerLink }}" target="_blank">{{ '_attend_this_event_' | i18n }}</a>
+
+        <we-rsvp event-id="eventData.id" user-id="_user.id"></we-rsvp>
+
         <div class="organized-by">
-          <a href="#!/user/{{ eventData.organizerId }}">
+          <a href="{{ webmakerUrl }}/user/{{ eventData.organizerId }}" target="_blank">
             <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
           </a>
 
           <div>
             {{ '_organized_by_' | i18n }}
             <br>
-            <a href="#!/user/{{ eventData.organizerId }}">
+            <a href="{{ webmakerUrl }}/user/{{ eventData.organizerId }}" target="_blank">
               <span class="sr-only">{{ '_link_to_profile_' | i18n }}</span>
               <strong>{{ eventData.organizerId || eventData.organizer }}</strong>
             </a>
