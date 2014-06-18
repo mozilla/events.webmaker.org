@@ -136,28 +136,38 @@ angular.module('myApp.directives', [])
       }
     };
   })
-  .directive('eventForm', function () {
+  .directive('usernameInput', function () {
     return {
-      restrict: 'E',
-      templateUrl: '/views/partials/event-form.html',
-      transclude: true
-    };
-  })
-
-.directive('collapse', function () {
-  // Extend the `collapse` directive to collapse
-  return {
-    restrict: 'A',
-    controller: ['$rootScope', '$scope', '$element',
-      function ($rootScope, $scope, $element) {
-        // Set to closed on load
-        $scope.isCollapsed = true;
-
-        // Collapse on view change
-        $rootScope.$on('$locationChangeSuccess', function (event) {
-          $scope.isCollapsed = true;
+      restrict: 'A',
+      require: 'ngModel',
+      link: function (scope, el, attrs, ctrl) {
+        var usernameRegex = /^[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\-]{1,20}$/;
+        ctrl.$parsers.unshift(function(viewValue) {
+          if (!viewValue || usernameRegex.test(viewValue)) {
+            ctrl.$setValidity('username', true);
+            return viewValue;
+          } else {
+            ctrl.$setValidity('username', false);
+            return undefined;
+          }
         });
       }
-    ]
-  };
-});
+    };
+  })
+  .directive('collapse', function () {
+    // Extend the `collapse` directive to collapse
+    return {
+      restrict: 'A',
+      controller: ['$rootScope', '$scope', '$element',
+        function ($rootScope, $scope, $element) {
+          // Set to closed on load
+          $scope.isCollapsed = true;
+
+          // Collapse on view change
+          $rootScope.$on('$locationChangeSuccess', function (event) {
+            $scope.isCollapsed = true;
+          });
+        }
+      ]
+    };
+  });

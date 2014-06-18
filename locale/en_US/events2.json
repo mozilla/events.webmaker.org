@@ -223,9 +223,9 @@
     "message": "Event organizer's email",
     "description": "Event organizer's email field"
   },
-  "_login_with_different_email_": {
-    "message": "Log in with a different email",
-    "description": "Button for changing email"
+  "_login_with_different_account_": {
+    "message": "Log in with a different account",
+    "description": "Button for changing account"
   },
   "_welcome_to_webmaker_": {
     "message": "Welcome to Webmaker!",
@@ -630,5 +630,9 @@
   "People who can edit this event": {
     "message": "People who can edit this event",
     "description": "Event details page"
+  },
+  "_Who_": {
+    "message": "Who",
+    "description": "Section title for add event"
   }
 }

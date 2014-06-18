@@ -23,15 +23,93 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('addEventController', ['$scope', '$location', '$rootScope', 'moment', 'chrono', 'eventService', 'eventFormatter', 'analytics',
-    function ($scope, $location, $rootScope, moment, chrono, eventService, eventFormatter, analytics) {
-      $scope.event = {};
-      $scope.event.parsedNaturalStartDate = undefined;
-      $scope.attemptedToSubmit = false;
+  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'analytics',
+    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, analytics) {
 
-      // Set default values for form
-      $scope.event.attendees = 5; // Under 10 by default
-      $scope.event.duration = 1; // 1 hour default
+      $scope.event = {};
+
+      // Update or add?
+      if ($routeParams.id) {
+        $scope.isUpdate = true;
+      } else {
+        $scope.isAdd = true;
+      }
+
+      if ($scope.isUpdate) {
+        eventService.get({
+          id: $routeParams.id
+        }, function (data) {
+          // Update all the values in the form with values from DB:
+          $scope.event.title = data.title;
+          $scope.event.description = data.description;
+          $scope.event.attendees = data.attendees || 5;
+          $scope.event.organizer = data.organizer;
+          $scope.event.organizerId = data.organizerId;
+          $scope.event.ageGroup = data.ageGroup || '';
+          $scope.event.skillLevel = data.skillLevel || '';
+          $scope.event.tags = data.tags;
+          $scope.event.mentorRequests = data.mentorRequests || [];
+          $scope.event.mentors = data.mentors || [];
+          $scope.event.coorganizers = data.coorganizers || [];
+
+          // TEMP : Need to convert back from city/country/lat/long/whatever
+          $scope.event.address = data.address;
+
+          if (data.registerLink) {
+            $scope.event.registerLink = data.registerLink;
+          }
+
+          $scope.event.beginDate = moment(data.beginDate).format('MMMM Do YYYY [at] h:mma');
+          $scope.event.duration = 'unknown'; // default to unknown
+
+          // Parse out duration from end date if it exists
+          if (data.endDate) {
+            var endDate = moment(data.endDate);
+            var duration = endDate.diff(data.beginDate, 'minutes') / 60;
+
+            if (duration < 3 && duration > 0) {
+              $scope.event.duration = duration;
+            }
+          }
+
+        }, function (err) {
+          console.error(err);
+        });
+      } else {
+        // Add event
+
+        $scope.event.organizer = $rootScope._user.email;
+        $scope.event.organizerId = $rootScope._user.username;
+
+        $scope.event.coorganizers = [];
+        $scope.event.mentorRequests = [];
+        $scope.event.mentors = [];
+
+        // Set default values for form
+        $scope.event.attendees = 5; // Under 10 by default
+        $scope.event.duration = 1; // 1 hour default
+
+        $scope.event.parsedNaturalStartDate = undefined;
+        // $scope.attemptedToSubmit = false;
+      }
+
+      $scope.addUser = function (input, type) {
+        var user = {};
+        if (type === 'coorganizer') {
+          user.username = input;
+        } else {
+          user.email = input;
+        }
+        $scope.event[type + 's'].push(user);
+        $scope[type + 'Input'] = '';
+      };
+
+      $scope.removeUser = function (user, type) {
+        var index = $scope.event[type + 's'].indexOf(user);
+        if (index > -1) {
+          $scope.event[type + 's'].splice(index, 1);
+        }
+      };
 
       // Keep email and login status up to date
       $scope.$watch('_user.email', function () {
@@ -57,11 +135,13 @@ angular.module('myApp.controllers', [])
       $scope.addEvent = function () {
         $scope.attemptedToSubmit = true;
 
-        // Add user info
-        $scope.event.organizer = $rootScope._user.email;
-        $scope.event.organizerId = $rootScope._user.username;
-
         var eventData = eventFormatter($scope.addEventForm, $scope.event);
+
+        // Only admins can change the primary organizer on behalf of other people
+        if (!$rootScope._user.isAdmin) {
+          $scope.event.organizer = $rootScope._user.email;
+          $scope.event.organizerId = $rootScope._user.username;
+        }
 
         if (eventData) {
           eventService.save(eventData, function (data) {
@@ -77,64 +157,6 @@ angular.module('myApp.controllers', [])
           console.warn('Form is invalid.');
         }
       };
-    }
-  ])
-  .controller('eventEditController', ['$scope', '$routeParams', '$location', 'eventService', 'chrono', 'moment', 'eventFormatter',
-    function ($scope, $routeParams, $location, eventService, chrono, moment, eventFormatter) {
-      eventService.get({
-        id: $routeParams.id
-      }, function (data) {
-
-        // Update all the values in the form with values from DB:
-
-        $scope.event = {};
-        $scope.event.title = data.title;
-        $scope.event.description = data.description;
-        $scope.event.attendees = data.attendees || 5;
-        $scope.event.organizer = data.organizer;
-        $scope.event.organizerId = data.organizerId;
-        $scope.event.ageGroup = data.ageGroup || '';
-        $scope.event.skillLevel = data.skillLevel || '';
-        $scope.event.tags = data.tags;
-
-        // TEMP : Need to convert back from city/country/lat/long/whatever
-        $scope.event.address = data.address;
-
-        if (data.registerLink) {
-          $scope.event.registerLink = data.registerLink;
-        }
-
-        $scope.event.beginDate = moment(data.beginDate).format('MMMM Do YYYY [at] h:mma');
-        $scope.event.duration = 'unknown'; // default to unknown
-
-        // Parse out duration from end date if it exists
-        if (data.endDate) {
-          var endDate = moment(data.endDate);
-          var duration = endDate.diff(data.beginDate, 'minutes') / 60;
-
-          if (duration < 3 && duration > 0) {
-            $scope.event.duration = duration;
-          }
-        }
-      }, function (err) {
-        console.error(err);
-      });
-
-      // Continuously translate natural language date to JS Date
-      $scope.$watch('event.beginDate', function (newValue) {
-        if (newValue) {
-          $scope.event.parsedNaturalStartDate = chrono.parseDate(newValue);
-          $scope.event.isValidStartDate = moment($scope.event.parsedNaturalStartDate).isValid();
-          $scope.event.humanParsedDate = moment($scope.event.parsedNaturalStartDate).format('MMMM Do YYYY [at] h:mma');
-        }
-      });
-
-      $scope.$on('locationAutocompleted', function (event, data) {
-        $scope.event.latitude = data.latitude;
-        $scope.event.longitude = data.longitude;
-        $scope.event.city = data.city;
-        $scope.event.country = data.country;
-      });
 
       $scope.saveChanges = function () {
 

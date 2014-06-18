@@ -15,8 +15,8 @@ config(['$routeProvider', '$locationProvider',
     $locationProvider.hashPrefix('!');
 
     $routeProvider.when('/add', {
-      templateUrl: 'views/add.html',
-      controller: 'addEventController'
+      templateUrl: 'views/add-update.html',
+      controller: 'addUpdateController'
     });
 
     $routeProvider.when('/events', {
@@ -30,8 +30,8 @@ config(['$routeProvider', '$locationProvider',
     });
 
     $routeProvider.when('/edit/:id', {
-      templateUrl: 'views/edit.html',
-      controller: 'eventEditController'
+      templateUrl: 'views/add-update.html',
+      controller: 'addUpdateController'
     });
 
     $routeProvider.when('/event-guides', {

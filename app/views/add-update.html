@@ -1,0 +1,279 @@
+<div class="container">
+  <header class="page-header">
+    <h1 ng-if="isAdd">{{ '_add_an_event_' | i18n }}</h1>
+    <h1 ng-if="isUpdate">{{ '_editing_event_' | i18n }}</h1>
+  </header>
+
+  <div class="alert alert-info" ng-hide="_user.email" data-ng-click="login()" ng-bind-html="'_need_to_login_' | i18n "></div>
+
+  <div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">{{ '_some_errors_' | i18n }}</div>
+
+  <form name="addEventForm" role="form" novalidate ng-show="_user.username">
+
+    <header class="page-header">
+      <h3>{{ '_basics_' | i18n }}</h3>
+    </header>
+
+    <div class="row">
+
+      <div class="col-sm-6">
+
+        <div class="form-group" ng-class="{'has-error': addEventForm.title.$dirty && addEventForm.title.$invalid}">
+          <label for="event-title">{{ '_name_your_event_' | i18n }} <span class="text-danger">*</span></label>
+          <input ng-model="event.title" name="title" required id="event-title" class="form-control" placeholder="{{ '_great_title_name_' | i18n }}">
+        </div>
+
+        <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.title.$invalid">{{ '_required_' | i18n }}</div>
+
+        <div class="form-group" ng-class="{'has-error': addEventForm.description.$dirty && addEventForm.description.$invalid}">
+          <label for="event-description">{{ '_describe_your_event_' | i18n }} <span class="text-danger">*</span></label>
+          <textarea ng-model="event.description" name="description" required class="form-control" rows="3" id="event-description" placeholder="{{ '_describe_placeholder_' | i18n }}"></textarea>
+        </div>
+
+        <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.description.$invalid">{{ '_required_' | i18n }}</div>
+      </div>
+
+      <div class="col-sm-6">
+
+        <div class="form-group">
+          <label for="event-attendees">{{ '_event_attendees_' | i18n }} <span class="text-danger">*</span></label>
+          <select ng-model="event.attendees" class="form-control" id="event-attendees" name="attendees">
+            <option value="5">{{ '_under_ten_' | i18n }}</option>
+            <option value="15">10 - 20</option>
+            <option value="35">20 - 50</option>
+            <option value="75">50 - 100</option>
+            <option value="150">100 - 200</option>
+            <option value="350">200 - 500</option>
+            <option value="500">500 +</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="skill-level">{{ '_skill_level_' | i18n }}</label>
+              <select ng-model="event.skillLevel" class="form-control" id="skill-level" name="skillLevel">
+                <option value="">{{ '_any_skill_level_' | i18n }}</option>
+                <option value="beginner">{{ '_beginner_' | i18n }}</option>
+                <option value="intermediate">{{ '_intermediate_' | i18n }}</option>
+                <option value="advanced">{{ '_advanced_' | i18n }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="age-group">{{ '_age_group_' | i18n }}</label>
+              <select ng-model="event.ageGroup" class="form-control" id="age-group" name="ageGroup">
+                <option value="">{{ '_any_age_group_' | i18n }}</option>
+                <option value="kids">{{ '_kids_' | i18n }}</option>
+                <option value="youth">{{ '_youth_' | i18n }}</option>
+                <option value="adults">{{ '_adults_' | i18n }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group">
+            <label for="event-registration-page">{{ '_event_link_' | i18n }}</label>
+            <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page." />
+            <p><small>{{ '_event_link_explain_' | i18n }}</small></p>
+          </div>
+
+          <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid" ng-bind-html="'_link_event_error_message_' | i18n "></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <header class="page-header">
+      <h3>{{ '_when_where_' | i18n }}</h3>
+    </header>
+
+    <div class="form-group" ng-class="{'has-error': addEventForm.address.$dirty && addEventForm.address.$invalid}">
+      <label for="form-address">{{ '_event_location_' | i18n }} <span class="text-danger">*</span></label>
+      <input autocomplete-location id="form-address" ng-model="event.address" name="address" required class="form-control" type="text" placeholder="{{ '_enter_an_address_' | i18n }}" autocomplete="off"></input>
+    </div>
+
+    <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.address.$invalid">{{ '_required_' | i18n }}</div>
+
+    <div class="row">
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="event-start-date">{{ '_start_date_and_time_' | i18n }} <span class="text-danger">*</span></label>
+          <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm." />
+        </div>
+        <div class="add-bottom-margin">
+          <em ng-show="event.isValidStartDate">{{ event.humanParsedDate }}</em>
+          <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.beginDate.$invalid">{{ '_required_' | i18n }}</div>
+          <div class="alert alert-danger" ng-show="attemptedToSubmit && !event.isValidStartDate">{{ '_invalid_date_format_' | i18n }}</div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="event-duration">{{ '_how_long_' | i18n }} <span class="text-danger">*</span></label>
+          <select ng-model="event.duration" required class="form-control" id="event-duration" name="duration">
+            <option value="unknown">{{ '_i_am_not_sure_' | i18n }}</option>
+            <option value="0.5">{{ '_half_an_hour_' | i18n }}</option>
+            <option value="1">{{ '_one_hour_' | i18n }}</option>
+            <option value="1.5">{{ '_one_and_half_hour_' | i18n }}</option>
+            <option value="2">{{ '_two_hours_' | i18n }}</option>
+            <option value="2.5">{{ '_two_and_half_hours_' | i18n }}</option>
+            <option value="3">{{ '_three_hours_' | i18n }}</option>
+            <!-- TODO: Maybe reveal a new end date + time input if someone selects over 3 hrs -->
+            <option value="unknown">{{ '_over_three_hours_' | i18n }}</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row add-bottom-margin">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="event-tags">{{ '_tags_label_' | i18n }}</label>
+          <input id="event-tags" ng-model="event.tags" name="tags" class="form-control" type="text" placeholder="{{ '_tags_example_' | i18n }}">
+        </div>
+      </div>
+    </div>
+
+    <header class="page-header">
+      <h3>{{ '_Who_' | i18n }}</h3>
+    </header>
+
+    <div class="form-group add-double-bottom-margin" ng-if="_user.isAdmin">
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="event_organizer_id">Primary organizer username</label>
+          <input name="event_organizer_id" ng-model="event.organizerId" class="form-control"></input>
+        </div>
+        <div class="col-sm-6">
+          <label for="event_organizer">Primary organizer email</label>
+          <input name="event_organizer" ng-model="event.organizer" class="form-control"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group add-double-bottom-margin">
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group add-bottom-margin">
+            <label for="organizer-email">Co-organizers</label>
+            <div class="input-group">
+              <input ng-model="coorganizerInput" type="text" name="coorganizer_email_input" username-input class="form-control" placeholder="Add co-organizers by username">
+              <span class="input-group-btn">
+                <button
+                  ng-click="addUser(coorganizerInput, 'coorganizer')"
+                  ng-disabled="!coorganizerInput || addEventForm.coorganizer_email_input.$invalid"
+                  class="btn btn-success" type="button">
+                  <span class="fa fa-plus"></span><span class="sr-only">Add</span>
+                </button>
+              </span>
+            </div>
+            <p ng-show="addEventForm.coorganizer_email_input.$invalid"
+              class="help-block alert alert-info">
+              You must add coorganizers by <strong>username</strong>.
+            </p>
+            <p class="help-block"><strong>Co-organizers can help you edit your event page</strong>, including making changes to the date, time and location.</p>
+          </div>
+
+          <table class="table table-middle table-striped">
+            <tbody>
+              <tr ng-show="!_user.isAdmin">
+                <td>{{ _user.username }}</td>
+                <td class="text-right">
+                <small ng-show="!_user.isAdmin">
+                  <span class="fa fa-lock"></span> <a href="#" ng-click="login()" ng-bind-html="'_login_with_different_account_' | i18n"></a>
+                </small>
+                </td>
+              </tr>
+              <tr ng-repeat="organizer in event.coorganizers">
+                <td>{{ organizer.username || organizer.email }}</td>
+                <td class="text-right">
+                  <button class="btn btn-link" ng-click="removeUser(organizer, 'coorganizer')">
+                    <span class="sr-only">Delete</span><span class="fa fa-times"></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group add-bottom-margin">
+            <label for="mentor_request_input">Mentors</label>
+            <div class="input-group">
+              <input ng-model="MentorRequestInput" type="email" class="form-control" placeholder="Add mentors by email" name="mentor_request_input">
+              <span class="input-group-btn">
+                <button
+                  ng-click="addUser(MentorRequestInput, 'mentorRequest')"
+                  ng-disabled="!MentorRequestInput || addEventForm.mentor_request_input.$invalid"
+                  class="btn btn-success" type="button">
+                  <span class="fa fa-plus"></span><span class="sr-only">Add</span>
+                </button>
+              </span>
+            </div>
+            <p ng-show="addEventForm.mentor_request_input.$invalid"
+              class="help-block alert alert-info">
+              You must add mentors by <strong>email</strong>.
+            </p>
+            <p class="help-block">These could be <strong>other speakers, co-presenters or mentors</strong>. They'll be highlighted as guests of honor on your events page once they confirm by email.</p>
+          </div>
+
+          <table class="table table-middle table-striped">
+            <tbody>
+              <tr ng-repeat="mentor in event.mentorRequests | orderBy:-username">
+                <td>{{ mentor.username || mentor.email }}</td>
+                <td class="text-right">
+                  <button class="btn btn-link" ng-click="removeUser(mentor, 'mentorRequest')">
+                    <span class="sr-only">Delete</span><span class="fa fa-times"></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4 ng-if="event.mentors.length">Confirmed mentors</h4>
+          <table class="table table-middle table-striped" ng-if="event.mentors.length">
+            <tbody>
+              <tr ng-repeat="mentor in event.mentors | orderBy:-username">
+                <td >{{ mentor.username}}</td>
+                <td class="text-right">
+                  <button class="btn btn-link" ng-click="removeUser(mentor, 'mentor')">
+                    <span class="sr-only">Delete</span><span class="fa fa-times"></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+      <a ng-if="isAdd" href="#" ng-click="addEvent()" class="btn btn-lg btn-primary btn-mobile-block">
+        {{ '_add_events_' | i18n }}
+      </a>
+      <a ng-if="isUpdate" href="#" ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block ">
+        {{ '_save_changes_' | i18n }}
+      </a>
+    </div>
+
+  </form>
+
+  <div ng-if="isUpdate" class="alert alert-danger">
+    <p ng-bind-html="'_careful_delete_message_' | i18n"></p>
+    <a href="#" ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block">
+      {{ '_delete_event_' | i18n }}
+    </a>
+  </div>
+
+</div>
+
