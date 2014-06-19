@@ -16,7 +16,7 @@
     "angular-bootstrap": "0.10.0",
     "font-awesome": "4.0.3",
     "momentjs": "2.5.0",
-    "chrono": "0.1.9",
+    "chrono": "https://github.com/wanasit/chrono.git#b088959a17fc8c5af481f875d6c9bde728b73466",
     "selectize": "0.9.0",
     "makerstrap": "https://github.com/mozilla/makerstrap.git#de0d761dc070d0df22f8e6a19d92d8cbdeedb734",
     "webmaker-auth-client": "0.1.5",
