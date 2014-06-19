@@ -29,7 +29,8 @@ angular.module('myApp.services', ['ngResource'])
   ])
   .factory('eventService', ['$rootScope', '$resource', 'config',
     function ($rootScope, $resource, config) {
-      return $resource(config.eventsLocation + '/events/:id', {
+      return $resource(config.eventsLocation + '/:url/:id', {
+        url: 'events',
         organizerId: '@organizerId',
         after: '@after',
         limit: '@limit',

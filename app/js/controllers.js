@@ -278,4 +278,57 @@ angular.module('myApp.controllers', [])
 
       authService.verify();
     }
+  ])
+  .controller('confirmController', ['$scope', '$routeParams', '$http', 'eventService', 'config',
+    function ($scope, $routeParams, $http, eventService, config) {
+      var token = $routeParams.token;
+      var eventId = $routeParams.eventId;
+      var confirmYes = $routeParams.confirmation === 'yes';
+
+      $scope.event = {};
+      $scope.isValid = false;
+      $scope.confirmYes = confirmYes;
+
+      $scope.sendConfirmation = function (confirmation) {
+        // eventService.save({
+        //   url: 'confirm',
+        //   id: 'mentor',
+        //   token: token
+        // }, {
+        //   confirmation: confirmation
+        // }, function (mentor) {
+        //   console.log(mentor);
+        // }, function (err) {
+        //   console.log(err);
+        // });
+        $http.post({
+          url: config.eventsLocation + '/confirm/mentor/' + token,
+          data: { confirmation: confirmation },
+          headers: {
+            withCredentials: true
+          }
+        })
+        .success(function (mentor) {
+          console.log(mentor);
+        })
+        .error(function (err) {
+          console.log(err);
+        });
+      };
+
+      // Get event
+      eventService.get({
+        id: eventId
+      }, function (event) {
+        event.mentorRequests.forEach(function (request) {
+          if (request.token === token) {
+            $scope.isValid = true;
+            $scope.event = event;
+          }
+        });
+      }, function (err) {
+        console.log(err);
+      });
+
+    }
   ]);

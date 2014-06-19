@@ -1,11 +1,46 @@
 <div class="container">
-  <header>
-    <h1>Hi {{ _user.username }}, you've been asked to be a mentor for {{ event.name }}</h1>
-    
-    <h3>Would you really like to confirm your mentorship at this event?</h3>
-    <p>
-      <button class="btn btn-success">Yes</button>
-      <button class="btn btn-success">Sign in as another user</button>
+  <div ng-hide="isValid" class="alert alert-info">
+    Sorry, this does not appear to be a valid token. Did you get here by mistake?
+  </div>
+  <div ng-hide="_user.username" class="alert alert-info">
+    Please <a href="#" ng-click="login()">login</a> to confirm your attendance.
+  </div>
+  <header ng-show="_user.username && isValid">
+    <h1 class="add-double-bottom-margin">Hi {{ _user.username }}, you've been asked to mentor at  <strong>{{ event.title }}</strong>.</h1>
+
+    <h3 class="add-bottom-margin">
+      <span ng-if="confirmYes">Are you sure you want to confirm you can mentor at this event?</span>
+      <span ng-if="!confirmYes">Are you sure you want to <strong>decline</strong> mentoring at this event?</span>
+    </h3>
+    <p class="add-double-bottom-margin">
+      <button ng-click="sendConfirmation('yes')"
+        class="btn btn-lg btn-default" ng-class="{'btn-success': confirmYes}">
+        <span class="fa fa-check"></span> I can mentor
+      </button>
+      <button ng-click="sendConfirmation()"
+        class="btn btn-lg btn-default" ng-class="{'btn-danger': !confirmYes}">
+        <span ng-if="!confirmYes" class="fa fa-times"></span> I can't mentor
+      </button>
+      <button ng-click="login()" class="btn btn-lg btn-default">Sign in as another user</button>
     </p>
+
+    <table class="table add-double-bottom-margin table-bordered">
+      <tr>
+        <th>Location</th>
+        <td>{{ event.address }}</td>
+      </tr>
+      <tr>
+        <th>Date</th>
+        <td>{{ event.beginDate | date:'EEEE, MMMM d, y h:mm a' }}</td>
+      </tr>
+      <tr>
+        <th>Organizer</th>
+        <td>{{ event.organizerId }}</td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td>{{ event.description  }}</td>
+      </tr>
+    </table>
   </header>
 </div>

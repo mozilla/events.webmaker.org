@@ -43,6 +43,11 @@ config(['$routeProvider', '$locationProvider',
       controller: 'userController'
     });
 
+    $routeProvider.when('/confirm/:type/:token', {
+      templateUrl: 'views/confirm.html',
+      controller: 'confirmController'
+    });
+
     $routeProvider.when('/error/:code', {
       templateUrl: 'views/error.html',
       controller: 'errorController'
