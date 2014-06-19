@@ -1,0 +1,56 @@
+<div class="container">
+  <div ng-hide="isValid" class="alert alert-info">
+    {{ 'valid_token_error' | i18n }}
+  </div>
+  <div ng-hide="_user.username" class="alert alert-info"
+    bind-unsafe-html="'please_login_confirm_mentor' | i18n">
+  </div>
+  <div ng-show="isConfirmSuccessfull">
+    <h2 ng-if="isConfirmSuccessfull === 'confirm-yes'">{{ 'Thanks for confirming' | i18n }}</h2>
+    <h2 ng-if="isConfirmSuccessfull === 'confirm-no'">{{ 'Thanks for letting us know' | i18n }}</h2>
+    <p ng-if="isConfirmSuccessfull === 'confirm-yes'"
+      bind-unsafe-html="'visit_event_home_page' | i18n">
+    </p>
+    <p ng-if="isConfirmSuccessfull === 'confirm-no'"
+      bind-unsafe-html="'edit_confirmation' | i18n">
+    </p>
+  </div>
+  <header ng-show="_user.username && isValid && !isConfirmSuccessfull">
+    <h1 class="add-double-bottom-margin"
+      bind-unsafe-html="'hi_mentor' | i18n"></h1>
+    <h3 class="add-bottom-margin">
+      <span ng-if="!confirmNo">{{ 'Are you sure you want to confirm you can mentor at this event?' | i18n }}</span>
+      <span ng-if="confirmNo">{{ 'Are you sure you want to decline mentoring at this event?' | i18n }}</span>
+    </h3>
+    <p class="add-double-bottom-margin">
+      <button ng-click="sendConfirmation('yes')"
+        class="btn btn-lg btn-default" ng-class="{'btn-success': !confirmNo}">
+        <span class="fa fa-check"></span> {{ 'I can mentor' | i18n }}
+      </button>
+      <button ng-click="sendConfirmation('no')"
+        class="btn btn-lg btn-default" ng-class="{'btn-danger': confirmNo}">
+        <span ng-if="confirmNo" class="fa fa-times"></span> {{ "I can't mentor" | i18n }}
+      </button>
+      <button ng-click="login()" class="btn btn-lg btn-default">{{ 'Sign in as another user' | i18n }}</button>
+    </p>
+
+    <table class="table add-double-bottom-margin table-bordered">
+      <tr>
+        <th>{{ '_event_location_' | i18n }}</th>
+        <td>{{ event.address }}</td>
+      </tr>
+      <tr>
+        <th>{{ '_start_date_and_time_' | i18n }}</th>
+        <td>{{ event.beginDate | date:'EEEE, MMMM d, y h:mm a' }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'Organizer' | i18n }}</th>
+        <td>{{ event.organizerId }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'Description' | i18n }}</th>
+        <td>{{ event.description  }}</td>
+      </tr>
+    </table>
+  </header>
+</div>

@@ -634,5 +634,61 @@
   "_Who_": {
     "message": "Who",
     "description": "Section title for add event"
+  },
+  "valid_token_error": {
+    "message": "Sorry, this does not appear to be a valid token. Did you get here by mistake?",
+    "description": "Tokens for validating mentors"
+  },
+  "please_login_confirm_mentor": {
+    "message": "Please <a href=\"#\" ng-click=\"login()\">login</a> to confirm your attendance.",
+    "description": "Confirm page"
+  },
+  "Thanks for confirming": {
+    "message": "Thanks for confirming",
+    "description": "Thanks for confirming you will be a mentor"
+  },
+  "Thanks for letting us know": {
+    "message": "Thanks for letting us know",
+    "description": "Thanks for letting us know you will not be attending"
+  },
+  "visit_event_home_page": {
+    "message": "<a href=\"#!/events/{{ event.id }}\">Click here</a> if you want to visit the event home page.",
+    "description": ""
+  },
+  "edit_confirmation": {
+    "message": "<a href=\"#\" ng-click=\"reset()\"><span class=\"fa fa-pencil\"></span> Edit</a> your confirmation.",
+    "description": "Edit your confirmation as a mentor"
+  },
+  "hi_mentor": {
+    "message": "Hi {{ _user.username }}, you've been asked to mentor at  <strong>{{ event.title }}</strong>.</h1>",
+    "description": ""
+  },
+  "Are you sure you want to confirm you can mentor at this event?": {
+    "message": "Are you sure you want to confirm you can mentor at this event?",
+    "description": ""
+  },
+  "Are you sure you want to decline mentoring at this event?": {
+    "message": "Are you sure you want to decline mentoring at this event?",
+    "description": ""
+  },
+  "I can mentor": {
+    "message": "I can mentor",
+    "description": ""
+  },
+  "I can't mentor": {
+    "message": "I can't mentor",
+    "description": ""
+  },
+  "Sign in as another user": {
+    "message": "Sign in as another user",
+    "description": ""
+  },
+  "Organizer": {
+    "message": "Organizer",
+    "description": ""
+  },
+  "Description": {
+    "message": "Description",
+    "description": ""
   }
 }
