@@ -290,17 +290,6 @@ angular.module('myApp.controllers', [])
       $scope.confirmYes = confirmYes;
 
       $scope.sendConfirmation = function (confirmation) {
-        // eventService.save({
-        //   url: 'confirm',
-        //   id: 'mentor',
-        //   token: token
-        // }, {
-        //   confirmation: confirmation
-        // }, function (mentor) {
-        //   console.log(mentor);
-        // }, function (err) {
-        //   console.log(err);
-        // });
         $http.post({
           url: config.eventsLocation + '/confirm/mentor/' + token,
           data: { confirmation: confirmation },
