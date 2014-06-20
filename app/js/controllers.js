@@ -290,20 +290,23 @@ angular.module('myApp.controllers', [])
       $scope.confirmNo = confirmNo;
 
       $scope.sendConfirmation = function (confirmation) {
-        $http.post({
+        $http({
+          method: 'POST',
           url: config.eventsLocation + '/confirm/mentor/' + token,
           data: { confirmation: confirmation },
-          headers: {
-            withCredentials: true
-          }
+          withCredentials: true
         })
         .success(function (mentor) {
-          console.log(mentor);
+          $scope.isConfirmSuccessfull = 'confirm-' + confirmation;
         })
         .error(function (err) {
           console.log(err);
         });
       };
+
+      $scope.reset = function() {
+        delete $scope.isConfirmSuccessfull;
+      }
 
       // Get event
       eventService.get({
