@@ -283,11 +283,11 @@ angular.module('myApp.controllers', [])
     function ($scope, $routeParams, $http, eventService, config) {
       var token = $routeParams.token;
       var eventId = $routeParams.eventId;
-      var confirmYes = $routeParams.confirmation === 'yes';
+      var confirmNo = $routeParams.confirmation === 'no';
 
       $scope.event = {};
       $scope.isValid = false;
-      $scope.confirmYes = confirmYes;
+      $scope.confirmNo = confirmNo;
 
       $scope.sendConfirmation = function (confirmation) {
         $http.post({

@@ -9,17 +9,17 @@
     <h1 class="add-double-bottom-margin">Hi {{ _user.username }}, you've been asked to mentor at  <strong>{{ event.title }}</strong>.</h1>
 
     <h3 class="add-bottom-margin">
-      <span ng-if="confirmYes">Are you sure you want to confirm you can mentor at this event?</span>
-      <span ng-if="!confirmYes">Are you sure you want to <strong>decline</strong> mentoring at this event?</span>
+      <span ng-if="!confirmNo">Are you sure you want to confirm you can mentor at this event?</span>
+      <span ng-if="confirmNo">Are you sure you want to <strong>decline</strong> mentoring at this event?</span>
     </h3>
     <p class="add-double-bottom-margin">
       <button ng-click="sendConfirmation('yes')"
-        class="btn btn-lg btn-default" ng-class="{'btn-success': confirmYes}">
+        class="btn btn-lg btn-default" ng-class="{'btn-success': !confirmNo}">
         <span class="fa fa-check"></span> I can mentor
       </button>
       <button ng-click="sendConfirmation()"
-        class="btn btn-lg btn-default" ng-class="{'btn-danger': !confirmYes}">
-        <span ng-if="!confirmYes" class="fa fa-times"></span> I can't mentor
+        class="btn btn-lg btn-default" ng-class="{'btn-danger': confirmNo}">
+        <span ng-if="confirmNo" class="fa fa-times"></span> I can't mentor
       </button>
       <button ng-click="login()" class="btn btn-lg btn-default">Sign in as another user</button>
     </p>
