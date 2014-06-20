@@ -317,20 +317,22 @@ angular.module('myApp.controllers', [])
         $http({
           method: 'POST',
           url: config.eventsLocation + '/confirm/mentor/' + token,
-          data: { confirmation: confirmation },
+          data: {
+            confirmation: confirmation
+          },
           withCredentials: true
         })
-        .success(function (mentor) {
-          $scope.isConfirmSuccessfull = 'confirm-' + confirmation;
-        })
-        .error(function (err) {
-          console.log(err);
-        });
+          .success(function (mentor) {
+            $scope.isConfirmSuccessfull = 'confirm-' + confirmation;
+          })
+          .error(function (err) {
+            console.log(err);
+          });
       };
 
-      $scope.reset = function() {
+      $scope.reset = function () {
         delete $scope.isConfirmSuccessfull;
-      }
+      };
 
       // Get event
       eventService.get({

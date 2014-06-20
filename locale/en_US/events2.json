@@ -690,5 +690,61 @@
   "Description": {
     "message": "Description",
     "description": ""
+  },
+  "_yes_im_going_": {
+    "message": "Yes, I'm going",
+    "description": "RSVP Yes"
+  },
+  "_RSVP_": {
+    "message": "RSVP",
+    "description": "RSVP"
+  },
+  "_youneedto_": {
+    "message": "You need to",
+    "description": "You need to"
+  },
+  "_lowercaselogin_": {
+    "message": "log in",
+    "description": "log in lowercase"
+  },
+  "_beforeyoucan_": {
+    "message": "before you can RSVP.",
+    "description": "before you can RSVP."
+  },
+  "_nonotgoing_": {
+    "message": "No, I'm not going",
+    "description": "No, I'm not going (RSVP)"
+  },
+  "_areugoing_": {
+    "message": "Are you going?",
+    "description": "Are you going?"
+  },
+  "_Yes_": {
+    "message": "Yes",
+    "description": "Yes (initial cap)"
+  },
+  "_No_": {
+    "message": "No",
+    "description": "No (initial cap)"
+  },
+  "_awesome_seeya_": {
+    "message": "Awesome, see you there!",
+    "description": "Awesome, see you there!"
+  },
+  "_okay_thanks_": {
+    "message": "Okay, thanks for letting us know.",
+    "description": "Okay, thanks for letting us know."
+  },
+  "_rsvp_fail_": {
+    "message": "The RSVP didn't go through. Try again later?",
+    "description": "RSVP Error"
+  },
+  "_Edit_": {
+    "message": "Edit",
+    "description": "Edit (initial cap)"
+  },
+  "_your_RSVP_": {
+    "message": "your RSVP",
+    "description": "your RSVP"
   }
 }

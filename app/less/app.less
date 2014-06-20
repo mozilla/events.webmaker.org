@@ -18,6 +18,9 @@
 
 @import "components/angle-list";
 @import "components/multicolor-header";
+@import "components/rsvp";
+@import "components/prompt";
+
 @import "../bower_components/selectize/dist/less/selectize";
 
 .fa(@icon) {
@@ -122,6 +125,19 @@ h1, h2, h3, h4 {
 .table.table-middle > tbody > tr > td {
   vertical-align: middle;
 }
+
+button.link {
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  color: @brand-info;
+
+  &:hover {
+    color: #177ba5;
+  }
+}
+
 //  Utility -------------------------------------------------------------------
 
 .add-bottom-margin {
