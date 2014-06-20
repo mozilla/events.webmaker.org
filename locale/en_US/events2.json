@@ -618,5 +618,17 @@
   "_mp_button_": {
     "message": "Learn More",
     "description": "Maker party CTA button text"
+  },
+  "Mentors": {
+    "message": "Mentors",
+    "description": "Title for details page section"
+  },
+  "Details": {
+    "message": "Details",
+    "description": "Title for details page section"
+  },
+  "People who can edit this event": {
+    "message": "People who can edit this event",
+    "description": "Event details page"
   }
 }

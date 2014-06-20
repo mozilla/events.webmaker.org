@@ -176,11 +176,13 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('eventDetailController', ['$scope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment',
-    function ($scope, $http, $routeParams, $sanitize, eventService, moment) {
+  .controller('eventDetailController', ['$scope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config',
+    function ($scope, $http, $routeParams, $sanitize, eventService, moment, config) {
       eventService.get({
         id: $routeParams.id,
       }, function (data) {
+
+        $scope.webmakerUrl = config.webmakerUrl;
 
         data.description = $sanitize(data.description);
 
