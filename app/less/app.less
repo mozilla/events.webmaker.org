@@ -22,8 +22,6 @@
 @import "components/rsvp";
 @import "components/prompt";
 
-@import "../bower_components/selectize/dist/less/selectize";
-
 .fa(@icon) {
   font-family: FontAwesome;
   font-style: normal;
@@ -79,12 +77,6 @@ h1, h2, h3, h4 {
 }
 
 // Match Webmaker
-@navbar-height: 60px;
-@navbar-inverse-link-color: #FFF;
-.navbar {
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-}
 
 .page-header {
   border: 0;
@@ -137,6 +129,10 @@ button.link {
   &:hover {
     color: #177ba5;
   }
+}
+
+.navbar-last-item {
+  margin-right: 0;
 }
 
 //  Utility -------------------------------------------------------------------
