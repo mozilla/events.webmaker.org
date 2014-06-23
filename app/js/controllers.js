@@ -210,8 +210,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('eventDetailController', ['$scope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config',
-    function ($scope, $http, $routeParams, $sanitize, eventService, moment, config) {
+  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config',
+    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config) {
       eventService.get({
         id: $routeParams.id,
       }, function (data) {
@@ -227,6 +227,12 @@ angular.module('myApp.controllers', [])
         // TODO: Eventually competency IDs will be added during event creation.
         // Right now random IDs are created as a hook for varying detail view header colors.
         $scope.eventData.competencyID = Math.floor(Math.random() * 16);
+
+        $scope.isCoorganizer = function() {
+          return $scope.eventData.coorganizers.some(function(c) {
+            c.userId === $rootScope._user.id;
+          });
+        };
 
       }, function (err) {
         console.error(err);

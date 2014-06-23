@@ -189,10 +189,11 @@
           <table class="table table-middle table-striped">
             <tbody>
               <tr ng-show="!_user.isAdmin">
-                <td>{{ _user.username }}</td>
+                <td>{{ event.organizerId }}</td>
                 <td class="text-right">
                 <small ng-show="!_user.isAdmin">
-                  <span class="fa fa-lock"></span> <a href="#" ng-click="login()" ng-bind-html="'_login_with_different_account_' | i18n"></a>
+                  <span class="fa fa-lock"></span>
+                  Organizer
                 </small>
                 </td>
               </tr>
