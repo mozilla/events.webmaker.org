@@ -82,6 +82,17 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
+  .factory('usernameService', ['$resource', 'config',
+    function ($resource, config) {
+      return $resource('/check-username', {
+        username: "@username"
+      }, {
+        post: {
+          method: 'POST'
+        }
+      });
+    }
+  ])
   .factory('eventFormatter', ['$rootScope', 'moment', 'chrono',
     function ($rootScope, moment, chrono) {
 

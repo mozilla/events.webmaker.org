@@ -179,6 +179,10 @@
               class="help-block alert alert-info">
               You must add coorganizers by <strong>username</strong>.
             </p>
+            <p ng-show="addEventForm.coorganizer_email_input.$error.invalidUsername"
+              class="help-block alert alert-info">
+              We can't find a Webmaker with that username!
+            </p>
             <p class="help-block"><strong>Co-organizers can help you edit your event page</strong>, including making changes to the date, time and location.</p>
           </div>
 

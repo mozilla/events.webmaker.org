@@ -23,8 +23,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'analytics',
-    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, analytics) {
+  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'usernameService', 'analytics',
+    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, usernameService, analytics) {
 
       $scope.event = {};
 
@@ -96,12 +96,24 @@ angular.module('myApp.controllers', [])
       $scope.addUser = function (input, type) {
         var user = {};
         if (type === 'coorganizer') {
-          user.username = input;
+          usernameService.post({
+            username: input
+          }, function (data) {
+            if ( data.exists ) {
+              user.username = input;
+              $scope.event.coorganizers.push(user);
+              $scope.coorganizerInput = '';
+              console.log( $scope );
+              $scope.addEventForm.coorganizer_email_input.$error.invalidUsername = false;
+            } else {
+              $scope.addEventForm.coorganizer_email_input.$error.invalidUsername = true;
+            }
+          });
         } else {
           user.email = input;
+          $scope.event.mentors.push(user);
+          $scope.mentorInput = '';
         }
-        $scope.event[type + 's'].push(user);
-        $scope[type + 'Input'] = '';
       };
 
       $scope.removeUser = function (user, type) {
