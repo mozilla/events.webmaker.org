@@ -1,0 +1,12 @@
+<div ng-show="rsvpList">
+  <h3 class="add-bottom-margin">{{ '_Attending_' | i18n }}</h3>
+  <div class="rsvp-list">
+    <div ng-repeat="attendee in rsvpList" class="clearfix">
+      <a href="{{ webmakerUrl }}/user/{{ attendee.username }}" target="_blank">
+        <img class="avatar img-round" ng-src="{{ attendee.avatar }}">
+        <span class="username">{{ attendee.username }}</span>
+      </a>
+    </div>
+  </div>
+  <p ng-show="overflowCount">+ {{ overflowCount }} {{ '_more_' | i18n }}</p>
+</div>
