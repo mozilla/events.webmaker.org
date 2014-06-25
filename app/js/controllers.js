@@ -96,6 +96,7 @@ angular.module('myApp.controllers', [])
 
       $scope.addUser = function (input, type) {
         var user = {};
+        input = input.toLowerCase();
         if (type === 'coorganizer') {
           usernameService.post({
             username: input
