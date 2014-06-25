@@ -31,6 +31,14 @@
         </div>
 
         <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.description.$invalid">{{ '_required_' | i18n }}</div>
+
+        <div class="form-group">
+          <label for="event-registration-page">{{ '_event_link_' | i18n }}</label>
+          <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page." />
+          <p><small>{{ '_event_link_explain_' | i18n }}</small></p>
+        </div>
+
+        <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid" ng-bind-html="'_link_event_error_message_' | i18n "></div>
       </div>
 
       <div class="col-sm-6">
@@ -75,13 +83,13 @@
         </div>
 
         <div class="form-group">
-          <div class="form-group">
-            <label for="event-registration-page">{{ '_event_link_' | i18n }}</label>
-            <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page." />
-            <p><small>{{ '_event_link_explain_' | i18n }}</small></p>
+          <label>{{ '_show_a_public_' | i18n }}</label>
+          <div class="checkbox">
+            <label>
+              <input ng-model="event.areAttendeesPublic" type="checkbox" />
+              <small>{{ '_explain_publicbox_' | i18n }}</small>
+            </label>
           </div>
-
-          <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid" ng-bind-html="'_link_event_error_message_' | i18n "></div>
         </div>
 
       </div>
