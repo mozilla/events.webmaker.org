@@ -226,6 +226,16 @@ angular.module('myApp.controllers', [])
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
 
+        // Split up mentors into 4 so we can do proper rows
+        $scope.eventData.mentorsIn4 = [];
+        $scope.eventData.mentors.forEach(function (mentor, i) {
+          if (i % 4 === 0) {
+            $scope.eventData.mentorsIn4.push(new Array());
+          }
+          var index = Math.floor(i / 4);
+          $scope.eventData.mentorsIn4[index].push(mentor);
+        });
+
         // TODO: Eventually competency IDs will be added during event creation.
         // Right now random IDs are created as a hook for varying detail view header colors.
         $scope.eventData.competencyID = Math.floor(Math.random() * 16);

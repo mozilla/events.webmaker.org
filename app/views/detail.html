@@ -29,7 +29,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-4 add-bottom-margin">
+      <div class="col-xs-12 col-sm-3 add-bottom-margin">
 
         <we-rsvp event-id="eventData.id" user-id="_user.id"></we-rsvp>
 
@@ -67,18 +67,21 @@
 
       </div>
 
-      <div class="col-xs-12 col-sm-8 event-detail-description">
-        <h2 ng-if="eventData.mentors.length" class="page-header">{{ 'Mentors' | i18n }}</h3>
-        <div ng-if="eventData.mentors.length" class="row">
-          <div class="col-sm-3 text-center mentor-thumbnail" ng-repeat="mentor in eventData.mentors">
-            <img class="img-round" ng-src="{{ mentor.avatar + '&s=200' }}" alt="{{ mentor.username }}">
-            <p class="lead">
-              <a href="{{ webmakerUrl + '/user/' + mentor.username }}">{{ mentor.username }}</a>
-            </p>
+      <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+        <div ng-if="eventData.mentors.length">
+          <h2 class="page-header">{{ 'Mentors' | i18n }}</h2>
+          <div ng-repeat="mentorGroup in eventData.mentorsIn4" class="row">
+            <div class="col-sm-3 text-center mentor-thumbnail add-double-bottom-margin" ng-repeat="mentor in mentorGroup">
+              <a href="{{ webmakerUrl + '/user/' + mentor.username }}">
+                <img class="img-round" ng-src="{{ mentor.avatar + '&s=200' }}" alt="{{ mentor.username }}">
+                <p class="mentor-username">{{ mentor.username }}</p>
+                <p class="mentor-bio">{{ mentor.bio }}</p>
+              </a>
+            </div>
           </div>
         </div>
         <h2 class="page-header">{{ 'Details' | i18n }}</h3>
-        <p ng-bind-html="eventData.description"></p>
+        <p class="event-detail-description" ng-bind-html="eventData.description"></p>
       </div>
     </div>
   </div>
