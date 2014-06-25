@@ -112,7 +112,7 @@ angular.module('myApp.controllers', [])
           });
         } else {
           user.email = input;
-          $scope.event.mentors.push(user);
+          $scope.event.mentorRequests.push(user);
           $scope.mentorInput = '';
         }
       };
