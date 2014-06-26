@@ -241,7 +241,7 @@ angular.module('myApp.controllers', [])
 
         $scope.isCoorganizer = function() {
           return $scope.eventData.coorganizers.some(function(c) {
-            c.userId === $rootScope._user.id;
+            return c.userId === $rootScope._user.id;
           });
         };
 
