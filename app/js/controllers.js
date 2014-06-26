@@ -215,9 +215,8 @@ angular.module('myApp.controllers', [])
   .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config',
     function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config) {
       eventService.get({
-        id: $routeParams.id,
+        id: $routeParams.id
       }, function (data) {
-
         $scope.webmakerUrl = config.webmakerUrl;
 
         data.description = $sanitize(data.description);
@@ -245,6 +244,10 @@ angular.module('myApp.controllers', [])
             c.userId === $rootScope._user.id;
           });
         };
+
+        $scope.$on('rsvpChange', function (event, data) {
+          $scope.$broadcast('rsvpChanged', data);
+        });
 
       }, function (err) {
         console.error(err);

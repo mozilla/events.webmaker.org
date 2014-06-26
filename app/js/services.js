@@ -93,6 +93,17 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
+  .factory('rsvpListService', ['$resource', 'config',
+    function ($resource, config) {
+      return $resource(config.eventsLocation + '/rsvp/event/:eventid', {}, {
+        get: {
+          isArray: true,
+          method: 'GET',
+          withCredentials: true
+        }
+      });
+    }
+  ])
   .factory('eventFormatter', ['$rootScope', 'moment', 'chrono',
     function ($rootScope, moment, chrono) {
 

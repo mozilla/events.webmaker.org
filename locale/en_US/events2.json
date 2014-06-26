@@ -754,5 +754,13 @@
   "_explain_publicbox_": {
     "message": "By checking this box you allow anyone to see the usernames and avatars of people who attend your event.",
     "description": "Explanation of public attendee checkbox"
+  },
+  "_Attending_": {
+    "message": "Attending",
+    "description": "Attending (initial cap)"
+  },
+  "_more_": {
+    "message": "more",
+    "description": "more (initial lower cap)"
   }
 }

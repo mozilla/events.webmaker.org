@@ -208,14 +208,18 @@ angular.module('myApp.directives', [])
               rsvpService.save({
                 userid: $scope.userId,
                 eventid: $scope.eventId
-              }, function () {}, function fail() {
+              }, function () {
+                $scope.$emit('rsvpChange');
+              }, function fail() {
                 $scope.errorHappened = true;
               });
             } else {
               rsvpService.delete({
                 userid: $scope.userId,
                 eventid: $scope.eventId
-              }, function () {}, function fail() {
+              }, function () {
+                $scope.$emit('rsvpChange');
+              }, function fail() {
                 $scope.errorHappened = true;
               });
             }
@@ -230,6 +234,50 @@ angular.module('myApp.directives', [])
 
         }
       ]
+    };
+  })
+  .directive('weRsvpList', function () {
+    return {
+      scope: {},
+      controller: ['$scope', '$element', '$routeParams', 'rsvpListService',
+        function ($scope, $element, $routeParams, rsvpListService) {
+          function buildRSVPList() {
+            rsvpListService.get({
+              eventid: $routeParams.id
+            }, function (data) {
+              var rsvpdYes = [],
+                attendeesToShow = 10;
+
+              // Filter out people who aren't coming
+              data.forEach(function (attendee, index) {
+                if (attendee.didRSVP) {
+                  rsvpdYes.push(attendee);
+                }
+              });
+
+              if (rsvpdYes.length > attendeesToShow) {
+                $scope.overflowCount = rsvpdYes.length - attendeesToShow;
+                rsvpdYes = rsvpdYes.slice(0, attendeesToShow);
+              } else {
+                $scope.overflowCount = 0;
+              }
+
+              $scope.rsvpList = rsvpdYes;
+            });
+          }
+
+          buildRSVPList();
+
+          // Update RSVP list when needed
+          $scope.$on('rsvpChanged', function (event, data) {
+            buildRSVPList();
+          });
+
+        }
+      ],
+      restrict: 'E',
+      templateUrl: '/views/partials/rsvp-list.html',
+      transclude: true
     };
   })
   .directive('collapse', function () {
