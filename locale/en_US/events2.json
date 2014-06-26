@@ -762,5 +762,13 @@
   "_more_": {
     "message": "more",
     "description": "more (initial lower cap)"
+  },
+  "_coorganizer_": {
+    "message": "co-organizer",
+    "description": "Label for a co-organizer of events"
+  },
+  "_mentor_": {
+    "message": "mentor",
+    "description": "Label for a mentor at an event"
   }
 }

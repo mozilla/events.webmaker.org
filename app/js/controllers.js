@@ -12,12 +12,29 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('userController', ['$scope', '$routeParams', 'eventService',
-    function ($scope, $routeParams, eventService) {
+  .controller('userController', ['$scope', '$rootScope', '$routeParams', 'eventService',
+    function ($scope, $rootScope, $routeParams, eventService) {
       $scope.username = $routeParams.id;
 
+      $scope.isCoorganizer = function(event) {
+        return event.coorganizers.some(function(c) {
+          return c.userId === $rootScope._user.id;
+        });
+      };
+
+      $scope.isMentor = function(event) {
+        return event.mentors.some(function(m) {
+          return m.userId === $rootScope._user.id;
+        });
+      };
+
+      $scope.isOrganizer = function(event) {
+        return event.organizerId === $rootScope._user.username;
+      };
+
       eventService.query({
-        organizerId: $scope.username
+        organizerId: $scope.username,
+        userId: $rootScope._user.id
       }, function (data) {
         $scope.events = data;
       });

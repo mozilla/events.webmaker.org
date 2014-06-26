@@ -31,6 +31,7 @@ angular.module('myApp.services', ['ngResource'])
     function ($rootScope, $resource, config) {
       return $resource(config.eventsLocation + '/events/:id', {
         organizerId: '@organizerId',
+        userId: '@userId',
         after: '@after',
         limit: '@limit',
         dedupe: '@dedupe'

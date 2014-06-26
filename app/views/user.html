@@ -13,7 +13,11 @@
       <td><a href="#!/events/{{event.id}}" class="event-title">{{ event.title }}</a></td>
       <td><strong>{{ event.attendees }}</strong> {{ '_attendees_' | i18n }}</td>
       <td>
-        <a ng-show="_user.email === event.organizer || _user.isAdmin" href="#!/edit/{{ event.id }}">
+        <span class="label label-primary" ng-show="isCoorganizer(event)">{{ '_coorganizer_' | i18n }}</span>
+        <span class="label label-primary" ng-show="isMentor(event)">{{ '_mentor_' | i18n }}</span>
+      </td>
+      <td>
+        <a ng-show="isOrganizer(event) || isCoorganizer(event)" href="#!/edit/{{ event.id }}">
           <span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span>
         </a>
       </td>
