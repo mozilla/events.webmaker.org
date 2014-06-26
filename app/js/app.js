@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngSanitize',
   'ui.bootstrap',
   'localization',
+  'begriffs.paginate-anything',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',

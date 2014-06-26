@@ -3,9 +3,8 @@
 angular.module('myApp.controllers', [])
   .controller('homeController', ['$scope', '$timeout', 'eventService',
     function ($scope, $timeout, eventService) {
-      eventService.query({
+      eventService({'Range': '0-9'}).query({
         after: (new Date()).toISOString(),
-        limit: 20,
         dedupe: true
       }, function (data) {
         $scope.events = data;
@@ -32,7 +31,7 @@ angular.module('myApp.controllers', [])
         return event.organizerId === $rootScope._user.username;
       };
 
-      eventService.query({
+      eventService().query({
         organizerId: $scope.username,
         userId: $rootScope._user.id
       }, function (data) {
@@ -53,7 +52,7 @@ angular.module('myApp.controllers', [])
       }
 
       if ($scope.isUpdate) {
-        eventService.get({
+        eventService().get({
           id: $routeParams.id
         }, function (data) {
           // Update all the values in the form with values from DB:
@@ -175,7 +174,7 @@ angular.module('myApp.controllers', [])
         }
 
         if (eventData) {
-          eventService.save(eventData, function (data) {
+          eventService().save(eventData, function (data) {
             // Switch to detail view on successful creation
             $location.path('/events/' + data.id);
 
@@ -196,7 +195,7 @@ angular.module('myApp.controllers', [])
         var eventData = eventFormatter($scope.addEventForm, $scope.event);
 
         if (eventData) {
-          eventService.update({
+          eventService().update({
             id: $routeParams.id
           }, eventData, function (data) {
             $location.path('/events/' + $routeParams.id);
@@ -209,7 +208,7 @@ angular.module('myApp.controllers', [])
 
       $scope.deleteEvent = function () {
         if (window.confirm('Are you sure you want to delete your event?')) {
-          eventService.delete({
+          eventService().delete({
             id: $routeParams.id
           }, $scope.event, function () {
             $location.path('/events');
@@ -220,18 +219,12 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('eventListController', ['$scope', 'eventService',
-    function ($scope, eventService) {
-      eventService.query({
-        after: (new Date()).toISOString()
-      }, function (data) {
-        $scope.events = data;
-      });
-    }
+  .controller('eventListController', ['$scope',
+    function ($scope) {}
   ])
   .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config',
     function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config) {
-      eventService.get({
+      eventService().get({
         id: $routeParams.id
       }, function (data) {
         $scope.webmakerUrl = config.webmakerUrl;
@@ -385,7 +378,7 @@ angular.module('myApp.controllers', [])
       };
 
       // Get event
-      eventService.get({
+      eventService().get({
         id: eventId
       }, function (event) {
         event.mentorRequests.forEach(function (request) {

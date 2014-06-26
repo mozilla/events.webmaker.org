@@ -23,7 +23,8 @@
     "jquery": "2.1.0",
     "angular-animate": "1.2.14",
     "animate.css": "3.1.0",
-    "webmaker-analytics": "0.1.0"
+    "webmaker-analytics": "0.1.0",
+    "angular-paginate-anything": "2.1.0"
   },
   "resolutions": {
     "angular": "1.2.14",
