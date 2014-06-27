@@ -3,7 +3,9 @@
 angular.module('myApp.controllers', [])
   .controller('homeController', ['$scope', '$timeout', 'eventService',
     function ($scope, $timeout, eventService) {
-      eventService({'Range': '0-9'}).query({
+      eventService({
+        'Range': '0-9'
+      }).query({
         after: (new Date()).toISOString(),
         dedupe: true
       }, function (data) {
@@ -15,19 +17,19 @@ angular.module('myApp.controllers', [])
     function ($scope, $rootScope, $routeParams, eventService) {
       $scope.username = $routeParams.id;
 
-      $scope.isCoorganizer = function(event) {
-        return event.coorganizers.some(function(c) {
+      $scope.isCoorganizer = function (event) {
+        return event.coorganizers.some(function (c) {
           return c.userId === $rootScope._user.id;
         });
       };
 
-      $scope.isMentor = function(event) {
-        return event.mentors.some(function(m) {
+      $scope.isMentor = function (event) {
+        return event.mentors.some(function (m) {
           return m.userId === $rootScope._user.id;
         });
       };
 
-      $scope.isOrganizer = function(event) {
+      $scope.isOrganizer = function (event) {
         return event.organizerId === $rootScope._user.username;
       };
 
@@ -117,11 +119,11 @@ angular.module('myApp.controllers', [])
           usernameService.post({
             username: input
           }, function (data) {
-            if ( data.exists ) {
+            if (data.exists) {
               user.username = input;
               $scope.event.coorganizers.push(user);
               $scope.coorganizerInput = '';
-              console.log( $scope );
+              console.log($scope);
               $scope.addEventForm.coorganizer_email_input.$error.invalidUsername = false;
             } else {
               $scope.addEventForm.coorganizer_email_input.$error.invalidUsername = true;
@@ -239,7 +241,7 @@ angular.module('myApp.controllers', [])
         $scope.eventData.mentorsIn4 = [];
         $scope.eventData.mentors.forEach(function (mentor, i) {
           if (i % 4 === 0) {
-            $scope.eventData.mentorsIn4.push(new Array());
+            $scope.eventData.mentorsIn4.push([]);
           }
           var index = Math.floor(i / 4);
           $scope.eventData.mentorsIn4[index].push(mentor);
@@ -249,8 +251,8 @@ angular.module('myApp.controllers', [])
         // Right now random IDs are created as a hook for varying detail view header colors.
         $scope.eventData.competencyID = Math.floor(Math.random() * 16);
 
-        $scope.isCoorganizer = function() {
-          return $scope.eventData.coorganizers.some(function(c) {
+        $scope.isCoorganizer = function () {
+          return $scope.eventData.coorganizers.some(function (c) {
             return c.userId === $rootScope._user.id;
           });
         };
@@ -397,7 +399,7 @@ angular.module('myApp.controllers', [])
     function ($scope, $routeParams, eventService) {
       $scope.tagName = $routeParams.id;
 
-      eventService.query({
+      eventService().query({
         after: (new Date()).toISOString(),
         tag: $routeParams.id
       }, function (data) {

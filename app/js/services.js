@@ -60,7 +60,7 @@ angular.module('myApp.services', ['ngResource'])
             withCredentials: true
           }
         });
-      }
+      };
     }
   ])
   .factory('rsvpService', ['$resource', 'config',
@@ -94,7 +94,7 @@ angular.module('myApp.services', ['ngResource'])
   .factory('usernameService', ['$resource', 'config',
     function ($resource, config) {
       return $resource('/check-username', {
-        username: "@username"
+        username: '@username'
       }, {
         post: {
           method: 'POST'

@@ -23,15 +23,15 @@ angular.module('myApp.directives', [])
   })
   .directive('ngEnter', function () {
     return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.ngEnter);
-                });
+      element.bind('keydown keypress', function (event) {
+        if (event.which === 13) {
+          scope.$apply(function () {
+            scope.$eval(attrs.ngEnter);
+          });
 
-                event.preventDefault();
-            }
-        });
+          event.preventDefault();
+        }
+      });
     };
   })
   .directive('autocompleteLocation', function () {
@@ -132,7 +132,7 @@ angular.module('myApp.directives', [])
           }
 
           $scope.serviceURL = url;
-        }
+        };
       }
     };
   })
