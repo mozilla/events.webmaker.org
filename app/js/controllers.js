@@ -399,4 +399,16 @@ angular.module('myApp.controllers', [])
       });
 
     }
+  ])
+  .controller('tagListController', ['$scope', '$routeParams', 'eventService',
+    function ($scope, $routeParams, eventService) {
+      $scope.tagName = $routeParams.id;
+
+      eventService.query({
+        after: (new Date()).toISOString(),
+        tag: $routeParams.id
+      }, function (data) {
+        $scope.events = data;
+      });
+    }
   ]);

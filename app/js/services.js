@@ -34,7 +34,8 @@ angular.module('myApp.services', ['ngResource'])
         userId: '@userId',
         after: '@after',
         limit: '@limit',
-        dedupe: '@dedupe'
+        dedupe: '@dedupe',
+        tag: '@tag'
       }, {
         get: {
           method: 'GET',
