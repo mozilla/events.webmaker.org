@@ -24,6 +24,11 @@ config(['$routeProvider', '$locationProvider',
       controller: 'eventListController'
     });
 
+    $routeProvider.when('/events/tag/:id', {
+      templateUrl: 'views/tag-list.html',
+      controller: 'tagListController'
+    });
+
     $routeProvider.when('/events/:id', {
       templateUrl: 'views/detail.html',
       controller: 'eventDetailController'

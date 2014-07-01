@@ -64,7 +64,7 @@
         <we-rsvp-list class="add-bottom-margin" ng-if="eventData.areAttendeesPublic"></we-rsvp-list>
 
         <div class="label-group">
-          <span ng-repeat="tag in eventData.tags" class="label label-info">{{ tag }}</span>
+          <a ng-repeat="tag in eventData.tags" href="#!/events/tag/{{ tag }}"><span class="label label-info">{{ tag }}</span></a>
         </div>
 
       </div>
