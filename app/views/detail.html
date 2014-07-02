@@ -61,7 +61,7 @@
           <h4 class="text-title-case"><span class="fa fa-male fa-fw text-muted"></span> {{ transformToLocalizationKeyStyle( eventData.ageGroup ) || '_any_age_group_' | i18n }}</h4>
         </div>
 
-        <we-rsvp-list class="add-bottom-margin" ng-if="eventData.areAttendeesPublic"></we-rsvp-list>
+        <we-rsvp-list show-header="true" attendees-to-show="10" class="add-bottom-margin" ng-if="eventData.areAttendeesPublic"></we-rsvp-list>
 
         <div class="label-group">
           <a ng-repeat="tag in eventData.tags" href="#!/events/tag/{{ tag }}"><span class="label label-info">{{ tag }}</span></a>
