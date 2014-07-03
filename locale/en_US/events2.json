@@ -275,9 +275,9 @@
     "message": "We've got guides to help you plan. What are you in the mood to try?",
     "description": "Lead paragraph"
   },
-  "_kitchen_party_": {
-    "message": "Kitchen Party",
-    "description": "Kitchen Party"
+  "_small_event_": {
+    "message": "Small Event",
+    "description": "Small Event"
   },
   "_spend_an_hour_": {
     "message": "Spend an hour on a rainy day",
@@ -311,23 +311,23 @@
     "message": "At home, in a cafe or at the library",
     "description": "At home, in a cafe or at the library"
   },
-  "_kp_guide_btn_": {
-    "message": "Kitchen Party Planning Guide",
-    "description": "Kitchen Party Planning Guide"
+  "_small_event_guide_btn_": {
+    "message": "Small Event Planning Guide",
+    "description": "Small Event Planning Guide"
   },
-  "_eg_hack_": {
-    "message": "Hack Jam",
-    "description": "Hack Jam"
+  "_eg_medium_event_": {
+    "message": "Medium Sized Event",
+    "description": "Medium Sized Event"
   },
-  "_eg_hj_1_": {
+  "_eg_medium_event_1_": {
     "message": "Team up people with different skill-sets to explore an interesting challenge",
     "description": "Team up people with different skill-sets to explore an interesting challenge"
   },
-  "_eg_hj_2_": {
+  "_eg_medium_event_2_": {
     "message": "Collaboratively build something new or improve something that already exists",
     "description": "Collaboratively build something new or improve something that already exists"
   },
-  "_eg_hj_3_": {
+  "_eg_medium_event_3_": {
     "message": "Learn and teach new hacking skills",
     "description": "Learn and teach new hacking skills"
   },
@@ -343,45 +343,45 @@
     "message": "At a school, library or flexible space",
     "description": "At a school, library or flexible space"
   },
-  "_eg_hj_plan_": {
-    "message": "Hack Jam Planning Guide",
-    "description": "Hack Jam Planning Guide"
+  "eg_medium_event__plan_": {
+    "message": "Medium Event Planning Guide",
+    "description": "Medium Event Planning Guide"
   },
-  "_eg_hivepop_": {
-    "message": "Hive Pop-Up",
-    "description": "Hive Pop-Up"
+  "_eg_large_event_": {
+    "message": "Large Sized Event",
+    "description": "Large Sized Event"
   },
-  "_eg_hpu1_": {
+  "_eg_large_event_1_": {
     "message": "Bring together local organizations in a science fair setting",
     "description": "Bring together local organizations in a science fair setting"
   },
-  "_eg_hpu2_": {
+  "_eg_large_event_2_": {
     "message": "Demonstrate cool web ideas",
     "description": "Demonstrate cool web ideas"
   },
-  "_eg_hpu3_": {
+  "_eg_large_event_3_": {
     "message": "Provide fun hands-on activities",
     "description": "Provide fun hands-on activities"
   },
-  "_eg_hpu4_": {
+  "_eg_large_event_4_": {
     "message": "Introduce your community to hacking",
     "description": "Introduce your community to hacking"
   },
-  "_eg_hpusp1_": {
+  "_eg_large_event_sp1_": {
     "message": "2-10 participating organizations",
     "description": "2-10 participating organizations"
   },
-  "_eg_hpusp2_": {
+  "_eg_large_event_sp2_": {
     "message": "4 hours or longer, 2-4 weeks of preparation needed",
     "description": "4 hours or longer, 2-4 weeks of preparation needed"
   },
-  "_eg_hpusp3_": {
+  "_eg_large_event_sp3_": {
     "message": "In an open space like a community center, library or school",
     "description": "In an open space like a community center, library or school"
   },
-  "_eg_hpu_pg_": {
-    "message": "Hive Pop-Up Planning Guide",
-    "description": "Hive Pop-Up Planning Guide"
+  "_eg_large_event_pg_": {
+    "message": "Large Event Planning Guide",
+    "description": "Large Event Planning Guide"
   },
   "_eg_peh_": {
     "message": "Planning an event? Let us help!",
@@ -440,7 +440,7 @@
     "description": "FAQ"
   },
   "_eg_haveq_": {
-    "message": "Have questions? Check <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/FAQs\">here</a> first.",
+    "message": "Have questions? Check <a target=\"_blank\" href=\"https://party.webmaker.org/resources\">here</a> first.",
     "description": "Have questions?"
   },
   "_eg_cu_": {
