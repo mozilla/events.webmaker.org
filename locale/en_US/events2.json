@@ -1,770 +1,790 @@
 {
-"_two_and_half_hours_": {
-		"message": "2.5 hours",
-		"description": "Length of the event field option"
-},
-"_search_events_": {
-		"message": "Search Events",
-		"description": "Placeholder with Search Events text"
-},
-"_events_single_word_": {
-		"message": "Events",
-		"description": "Single word: Events"
-},
-"_event_organizer_username_": {
-		"message": "Event organizer's username",
-		"description": "Label for form input"
-},
-"_cancel_": {
-		"message": "Cancel",
-		"description": "Cancel button"
-},
-"_get_more_tips_": {
-		"message": "Get more tips in <a href=\"#!/event-guides\">event guides</a>",
-		"description": "Get more tips message"
-},
-"I can't mentor": {
-		"message": "I can't mentor",
-		"description": ""
-},
-"_eg_hivepop_": {
-		"message": "Large Sized Event",
-		"description": "Hive Pop-Up"
-},
-"_describe_placeholder_": {
-		"message": "What can people expect when they attend your event?",
-		"description": "Placeholder field for event's description"
-},
-"_eg_cu_": {
-		"message": "Contact Us",
-		"description": "Contact Us"
-},
-"_Language_Preference_": {
-		"message": "Language Preference",
-		"description": "Language preference in signup"
-},
-"_admin_": {
-		"message": "admin",
-		"description": "Label for admin users"
-},
-"_advanced_": {
-		"message": "Advanced",
-		"description": "Option for advanced level event."
-},
-"_intermediate_": {
-		"message": "Intermediate",
-		"description": "Option for intermediate level event."
-},
-"_eg_sharemake_": {
-		"message": "Share what you make",
-		"description": "Share what you make"
-},
-"_maker_party_header_": {
-		"message": "Maker Party",
-		"description": "Maker Party"
-},
-"_user_links_drop_": {
-		"message": "User links dropdown",
-		"description": "Extended link description for screen readers"
-},
-"_small_event_": {
-		"message": "Small Sized Event",
-		"description": "Small Sized Event"
-},
-"_start_date_and_time_": {
-		"message": "Start Date and Time",
-		"description": "Field for start date and time for the event"
-},
-"_start_planning_": {
-		"message": "Start Planning",
-		"description": "Start Planning"
-},
-"_eg_haveq_": {
-		"message": "Have questions? Check <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/FAQs\">here</a> first.",
-		"description": "Have questions?"
-},
-"_any_skill_": {
-		"message": "Any skill",
-		"description": "Any skill Level. Partial string."
-},
-"_log_out_": {
-		"message": "Log Out",
-		"description": "Log Out menu option in navbar dropdown"
-},
-"_you_must_choose_username_": {
-		"message": "You must choose a username",
-		"description": "Error message must choose username"
-},
-"_hang_out_": {
-		"message": "Hang out as a family on the computer",
-		"description": "Hang out as a family on the computer"
-},
-"_one_hour_": {
-		"message": "1 hour",
-		"description": "Length of the event field option"
-},
-"_required_": {
-		"message": "Required!",
-		"description": "Warning message when missing a required field"
-},
-"please_login_confirm_mentor": {
-		"message": "Please <a href=\"#\" ng-click=\"login()\">login</a> to confirm your attendance.",
-		"description": "Confirm page"
-},
-"_go_to_wm_": {
-		"message": "Go to webmaker.org",
-		"description": "Extended link description for screen readers"
-},
-"_event_location_": {
-		"message": "Event location",
-		"description": "Location field for new event"
-},
-"_learn_to_hack_": {
-		"message": "Learn to hack with a friend",
-		"description": "Learn to hack with a friend"
-},
-"visit_event_home_page": {
-		"message": "<a href=\"#!/events/{{ event.id }}\">Click here</a> if you want to visit the event home page.",
-		"description": ""
-},
-"_when_where_": {
-		"message": "When and where?",
-		"description": "Where and Where field for new event"
-},
-"Details": {
-		"message": "Details",
-		"description": "Title for details page section"
-},
-"_attendees_": {
-		"message": "Attendees",
-		"description": "Attendees next to head count"
-},
-"_eg_start_here_": {
-		"message": "Start here",
-		"description": "Start here"
-},
-"_delete_event_": {
-		"message": "Delete Event",
-		"description": "Delete event button"
-},
-"_toggle_navigation_": {
-		"message": "Toggle navigation",
-		"description": "Toggle navigation message in navbar for mobile"
-},
-"_eg_sp_1_": {
-		"message": "10 - 50 participants",
-		"description": "10 - 50 participants"
-},
-"_your_RSVP_": {
-		"message": "your RSVP",
-		"description": "your RSVP"
-},
-"_tags_example_": {
-		"message": "e.g. security, javascript, csp",
-		"description": "Examples of comma separated tags"
-},
-"_careful_delete_message_": {
-		"message": "<strong>Careful!</strong> Once you delete this event, it will be gone forever.",
-		"description": "A banner to warn user before deleting an event."
-},
-"_event_organizer_email_": {
-		"message": "Event organizer's email",
-		"description": "Event organizer's email field"
-},
-"_Yes_": {
-		"message": "Yes",
-		"description": "Yes (initial cap)"
-},
-"_eg_hpu2_": {
-		"message": "Demonstrate cool web ideas",
-		"description": "Demonstrate cool web ideas"
-},
-"Thanks for letting us know": {
-		"message": "Thanks for letting us know",
-		"description": "Thanks for letting us know you will not be attending"
-},
-"_eg_beginbyread_": {
-		"message": "Begin by reading our <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/Get_involved\">Get Involved wiki</a>.",
-		"description": "Read the wiki"
-},
-"Are you sure you want to decline mentoring at this event?": {
-		"message": "Are you sure you want to decline mentoring at this event?",
-		"description": ""
-},
-"_need_to_login_": {
-		"message": "You need to <a href=\"#\">log in</a> to add an event.",
-		"description": "Banner alert info tell user to login before they can add an event"
-},
-"_any_skill_level_": {
-		"message": "Any skill level",
-		"description": "Option for any skill level event."
-},
-"_No_": {
-		"message": "No",
-		"description": "No (initial cap)"
-},
-"_newest_": {
-		"message": "Newest",
-		"description": "Button in list page act as filter"
-},
-"_explain_publicbox_": {
-		"message": "By checking this box you allow anyone to see the usernames and avatars of people who attend your event.",
-		"description": "Explanation of public attendee checkbox"
-},
-"_how_long_": {
-		"message": "How Long?",
-		"description": "Length of the event field"
-},
-"_send_me_an_email_": {
-		"message": "Send me email updates about Mozilla Webmaker and other projects",
-		"description": "Option choose to subscribe"
-},
-"_event_link_": {
-		"message": "Event Link",
-		"description": "Event link field"
-},
-"_events_": {
-		"message": "Events Home",
-		"description": "Banner on homepage"
-},
-"_eg_hpusp3_": {
-		"message": "In an open space like a community center, library or school",
-		"description": "In an open space like a community center, library or school"
-},
-"_event_found_": {
-		"message": "event found",
-		"description": "Single search result found"
-},
-"_eg_large_event_pg_": {
-		"message": "Large Event Planning Guide",
-		"description": "Large Event Planning Guide"
-},
-"_events_created_": {
-		"message": "Events Created",
-		"description": "Events created header on user view"
-},
-"_nonotgoing_": {
-		"message": "No, I'm not going",
-		"description": "No, I'm not going (RSVP)"
-},
-"_make_cool_": {
-		"message": "Make cool things on the web",
-		"description": "Make cool things on the web"
-},
-"_Who_": {
-		"message": "Who",
-		"description": "Section title for add event"
-},
-"_eg_large_event_sp1_": {
-		"message": "2-10 participating organizations",
-		"description": "2-10 participating organizations"
-},
-"Mentors": {
-		"message": "Mentors",
-		"description": "Title for details page section"
-},
-"_oh_snap_": {
-		"message": "Oh, snap! A wild",
-		"description": "Error header first part"
-},
-"_level_": {
-		"message": "Level",
-		"description": "{{SkillLevel}} Level. This is partial string."
-},
-"_eg_large_event_3_": {
-		"message": "Provide fun hands-on activities",
-		"description": "Provide fun hands-on activities"
-},
-"_eg_large_event_4_": {
-		"message": "Introduce your community to Web Literacy",
-		"description": "Introduce your community to hacking"
-},
-"_map_": {
-		"message": "map",
-		"description": "Link to map"
-},
-"_welcome_to_webmaker_": {
-		"message": "Welcome to Webmaker!",
-		"description": "Welcome message in user create form"
-},
-"_yes_im_going_": {
-		"message": "Yes, I'm going",
-		"description": "RSVP Yes"
-},
-"_eg_large_event_1_": {
-		"message": "Bring together local organizations in a science fair setting",
-		"description": "Bring together local organizations in a science fair setting"
-},
-"_photo_credit_": {
-		"message": "Link to photo provider's Flickr page. Photo taken by:",
-		"description": "Extended link description for screen readers"
-},
-"_youth_": {
-		"message": "Teenagers",
-		"description": "Option for teenage age group event"
-},
-"_mp_subtitle_": {
-		"message": "From July 15 to September 15, 2014, host a Maker Party event to celebrate teaching, learning and making on the web.",
-		"description": "Maker party CTA subtitle"
-},
-"_eg_plan3_": {
-		"message": "At home, in a cafe or at the library",
-		"description": "At home, in a cafe or at the library"
-},
-"_eg_peh_": {
-		"message": "Planning an event? Let us help!",
-		"description": "Planning an event? Let us help!"
-},
-"_edit_event_": {
-		"message": "Edit Event",
-		"description": "Extended link description for screen readers"
-},
-"_username_taken_": {
-		"message": "Sorry that username is taken",
-		"description": "Error message username taken"
-},
-"_some_errors_": {
-		"message": "Looks like you have some errors...",
-		"description": "Error message on add event page"
-},
-"_organized_by_": {
-		"message": "Organized by",
-		"description": "Button to join the event"
-},
-"_eg_tellhow_": {
-		"message": "Tell us how your event went by remixing this <a target=\"_blank\" href=\"https://mozteach.makes.org/thimble/maker-party-report\">report-back template</a>.",
-		"description": "Tell us more"
-},
-"_over_three_hours_": {
-		"message": "Over 3 hours",
-		"description": "Length of the event field option"
-},
-"_Edit_": {
-		"message": "Edit",
-		"description": "Edit (initial cap)"
-},
-"_throw_event_": {
-		"message": "Throw an event!",
-		"description": "Maker party CTA header"
-},
-"_tags_label_": {
-		"message": "Tags",
-		"description": "Label for Tags in event form"
-},
-"_back_to_webmaker_": {
-		"message": "Back to Webmaker",
-		"description": "Button to go back to Webmaker.org site"
-},
-"Are you sure you want to confirm you can mentor at this event?": {
-		"message": "Are you sure you want to confirm you can mentor at this event?",
-		"description": ""
-},
-"_eg_overviewintro_": {
-		"message": "This section provides an overview of important links and to-dos for your event. Don't forget to order <strong>free</strong> Webmaker gear for your party.",
-		"description": "Section intro"
-},
-"_under_ten_": {
-		"message": "Under 10",
-		"description": "Option for under 10 attendees"
-},
-"_two_hours_": {
-		"message": "2 hours",
-		"description": "Length of the event field option"
-},
-"_eg_placeorderdisabled_": {
-		"message": "We're in the process of getting gear ready for Maker Party 2014. Check back soon!",
-		"description": "Gear orders are not available now"
-},
-"_one_and_half_hour_": {
-		"message": "1.5 hours",
-		"description": "Length of the event field option"
-},
-"_spend_an_hour_": {
-		"message": "Spend an hour on a rainy day",
-		"description": "Spend an hour on a rainy day"
-},
-"_eg_hj_1_": {
-		"message": "Team up people with different skill-sets to explore an interesting challenge",
-		"description": "Team up people with different skill-sets to explore an interesting challenge"
-},
-"_awesome_seeya_": {
-		"message": "Awesome, see you there!",
-		"description": "Awesome, see you there!"
-},
-"_who_is_this_for_": {
-		"message": "Who is this for?",
-		"description": "Title for type of event."
-},
-"_eg_ordergear_": {
-		"message": "Order gear",
-		"description": "Order gear"
-},
-"_eg_hpusp2_": {
-		"message": "4 hours or longer, 2-4 weeks of preparation needed",
-		"description": "4 hours or longer, 2-4 weeks of preparation needed"
-},
-"_rsvp_fail_": {
-		"message": "The RSVP didn't go through. Try again later?",
-		"description": "RSVP Error"
-},
-"_beginner_": {
-		"message": "Beginner",
-		"description": "Option for any skill level event."
-},
-"_add_an_event_": {
-		"message": "Add an event",
-		"description": "Button to add an event"
-},
-"_eg_sp_3_": {
-		"message": "At a school, library or flexible space",
-		"description": "At a school, library or flexible space"
-},
-"_fetch_all_": {
-		"message": "Events CSV",
-		"description": ""
-},
-"hi_mentor": {
-		"message": "Hi {{ _user.username }}, you've been asked to mentor at  <strong>{{ event.title }}</strong>.</h1>",
-		"description": ""
-},
-"_agree_to_terms_and_conditions_": {
-		"message": "I agree to your <a href=\"https://webmaker.org/{{lang}}/terms\">terms</a> and <a href=\"https://webmaker.org/{{lang}}/privacy\">conditions</a>",
-		"description": "Agree to terms and condition message"
-},
-"_editing_event_": {
-		"message": "Editing Event",
-		"description": "Editing event page"
-},
-"_any_age_group_": {
-		"message": "Any age group",
-		"description": "Option for any age group event"
-},
-"_all_events_": {
-		"message": "All events",
-		"description": "All events link"
-},
-"_my_makes_": {
-		"message": "My Makes",
-		"description": "My makes menu option in navbar dropdown"
-},
-"Organizer": {
-		"message": "Organizer",
-		"description": ""
-},
-"_appears_": {
-		"message": "appears!",
-		"description": "end of error message header"
-},
-"_beforeyoucan_": {
-		"message": "before you can RSVP.",
-		"description": "before you can RSVP."
-},
-"_closest_": {
-		"message": "Closest",
-		"description": "Button in list page act as filter"
-},
-"_eg_faq_": {
-		"message": "FAQ",
-		"description": "FAQ"
-},
-"_eg_medium_event_3_": {
-		"message": "Learn and teach new hacking skills",
-		"description": "Learn and teach new hacking skills"
-},
-"_webmaker_events_": {
-		"message": "Webmaker Events",
-		"description": "Header h1"
-},
-"_eg_medium_event_plan_": {
-		"message": "Medium Sized Event Planning Guide",
-		"description": "Hack Jam Planning Guide"
-},
-"_i_am_not_sure_": {
-		"message": "I'm not sure",
-		"description": "Option for not sure about duration"
-},
-"_great_title_name_": {
-		"message": "A great name encourages attendance.",
-		"description": "Title field in add new event"
-},
-"_areugoing_": {
-		"message": "Are you going?",
-		"description": "Are you going?"
-},
-"_event_attendees_": {
-		"message": "How many attendees are you expecting?",
-		"description": "Event attendees field"
-},
-"Sign in as another user": {
-		"message": "Sign in as another user",
-		"description": ""
-},
-"_three_hours_": {
-		"message": "3 hours",
-		"description": "Length of the event field option"
-},
-"_eg_overviewpo_": {
-		"message": "Overview for Party Organizers",
-		"description": "Overview for Party Organizers"
-},
-"_404_": {
-		"message": "Page not found.",
-		"description": "404 error"
-},
-"_basics_": {
-		"message": "Basics",
-		"description": "Title of the page"
-},
-"_eg_plan1_": {
-		"message": "1-5 friends or family members",
-		"description": "1-5 friends or family members"
-},
-"_eg_plan2_": {
-		"message": "15 minutes - 1 hour, No preparation needed",
-		"description": "15 minutes - 1 hour, No preparation needed"
-},
-"_must_agree_to_terms_and_conditions_": {
-		"message": "You must agree to our terms and conditions",
-		"description": "Error must agree to terms and conditions"
-},
-"_eg_sharepics_": {
-		"message": "We love photos! Share pictures of your event by <a href=\"mailto:makerparty@mozilla.org\">emailing us</a>.",
-		"description": "Share pictures via email"
-},
-"_link_to_map_": {
-		"message": "Link to Google map of this event's location",
-		"description": "Extended link description for screen readers"
-},
-"_upcoming_events_": {
-		"message": "Upcoming Events",
-		"description": "Upcoming Events message"
-},
-"_cities_": {
-		"message": "Cities",
-		"description": "Banner on homepage"
-},
-"_okay_thanks_": {
-		"message": "Okay, thanks for letting us know.",
-		"description": "Okay, thanks for letting us know."
-},
-"_find_event_": {
-		"message": "Find event",
-		"description": "Extended link description for screen readers"
-},
-"_choose_a_username_": {
-		"message": "Choose a username",
-		"description": "Username field in create form"
-},
-"_attend_this_event_": {
-		"message": "Attend this event",
-		"description": "Button to join the event"
-},
-"_login_with_different_account_": {
-		"message": "Log in with a different account",
-		"description": "Button for changing account"
-},
-"Thanks for confirming": {
-		"message": "Thanks for confirming",
-		"description": "Thanks for confirming you will be a mentor"
-},
-"People who can edit this event": {
-		"message": "People who can edit this event",
-		"description": "Event details page"
-},
-"_invalid_date_format_": {
-		"message": "Invalid date format!",
-		"description": "Warning message for invalid date format"
-},
-"edit_confirmation": {
-		"message": "<a href=\"#\" ng-click=\"reset()\"><span class=\"fa fa-pencil\"></span> Edit</a> your confirmation.",
-		"description": "Edit your confirmation as a mentor"
-},
-"_make_with_others_": {
-		"message": "Want to make the web with others?",
-		"description": "Header"
-},
-"_log_in_": {
-		"message": "Log In",
-		"description": "Login button message"
-},
-"_eg_medium_": {
-		"message": "Medium Sized Event",
-		"description": "Medium Sized Event"
-},
-"_eg_rb_": {
-		"message": "Report back",
-		"description": "Report back"
-},
-"_mentor_": {
-		"message": "mentor",
-		"description": "Label for a mentor at an event"
-},
-"_hi_": {
-		"message": "Hi,",
-		"description": "Hi, {{name}} message on navbar"
-},
-"_add_events_": {
-		"message": "Add Event",
-		"description": "Message add events in navbar"
-},
-"_settings_": {
-		"message": "Settings",
-		"description": "Settings menu option in navbar dropdown"
-},
-"_eg_lead_": {
-		"message": "We've got guides to help you plan. What are you in the mood to try?",
-		"description": "Lead paragraph"
-},
-"_show_a_public_": {
-		"message": "Show attendees publicly?",
-		"description": "Label for Show attendees publicly"
-},
-"_link_event_error_message_": {
-		"message": "Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong>",
-		"description": "Error message when providing wrong URL to event page"
-},
-"Description": {
-		"message": "Description",
-		"description": ""
-},
-"_eg_medium_event_2_": {
-		"message": "Collaboratively build something new or improve something that already exists",
-		"description": "Collaboratively build something new or improve something that already exists"
-},
-"_mp_button_": {
-		"message": "Learn More",
-		"description": "Maker party CTA button text"
-},
-"_eg_sharemore_": {
-		"message": "During your event, ask participants to share what they make using <a href=\"https://mozteach.makes.org/thimble/what-i-made-maker-party\">this template</a>.",
-		"description": "Share more info"
-},
-"_more_": {
-		"message": "more",
-		"description": "more (initial lower cap)"
-},
-"_event_link_explain_": {
-		"message": "If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.",
-		"description": "Explain about Event Link"
-},
-"_find_an_event_": {
-		"message": "Find an event",
-		"description": "Button to find an event"
-},
-"_age_group_": {
-		"message": "Age group",
-		"description": "Age group for event"
-},
-"_small_event_guide_btn_": {
-		"message": "Small Event Planning Guide",
-		"description": "Small Event Planning Guide"
-},
-"_save_changes_": {
-		"message": "Save Changes",
-		"description": "Save Changes button"
-},
-"_join_webmakers_home_": {
-		"message": "Join Webmakers in hosting events around the world.",
-		"description": "Heading message CTA"
-},
-"_skill_level_": {
-		"message": "Skill level",
-		"description": " Skill level for the event."
-},
-"_eg_sp_2_": {
-		"message": "4 hours or longer, 2 weeks of preparation needed",
-		"description": "4 hours or longer, 2 weeks of preparation needed"
-},
-"_events_found_": {
-		"message": "events found",
-		"description": "Number of search results found"
-},
-"_half_an_hour_": {
-		"message": "Half an hour",
-		"description": "Length of the event field option"
-},
-"_gear_for_your_event_": {
-		"message": "Did you know you can request Webmaker gear for your event?",
-		"description": "Footer message"
-},
-"valid_token_error": {
-		"message": "Sorry, this does not appear to be a valid token. Did you get here by mistake?",
-		"description": "Tokens for validating mentors"
-},
-"_Attending_": {
-		"message": "Attending",
-		"description": "Attending (initial cap)"
-},
-"_coorganizer_": {
-		"message": "co-organizer",
-		"description": "Label for a co-organizer of events"
-},
-"_youneedto_": {
-		"message": "You need to",
-		"description": "You need to"
-},
-"_my_events_": {
-		"message": "My Events",
-		"description": "My Events nav link"
-},
-"_adults_": {
-		"message": "Adults",
-		"description": "Option for adults age group event"
-},
-"_describe_your_event_": {
-		"message": "Describe your event",
-		"description": "Describe field for event's description"
-},
-"_RSVP_": {
-		"message": "RSVP",
-		"description": "RSVP"
-},
-"_event_guides_": {
-		"message": "Event Guides",
-		"description": "Event Guides primary nav"
-},
-"I can mentor": {
-		"message": "I can mentor",
-		"description": ""
-},
-"_create_account_": {
-		"message": "Create Account",
-		"description": "Create and account button"
-},
-"_sort_by_": {
-		"message": "Sort event list by:",
-		"description": "Extended link description for screen readers"
-},
-"_eg_mailus_": {
-		"message": "Still have questions? Email us at <a target=\"_blank\" href=\"mailto:makerparty@mozilla.org\">makerparty@mozilla.org</a>",
-		"description": "Contact with more questions"
-},
-"_kids_": {
-		"message": "Children",
-		"description": "Option for children age group event"
-},
-"_eg_tp_": {
-		"message": "Take photos",
-		"description": "Take photos"
-},
-"_name_your_event_": {
-		"message": "Name your event",
-		"description": "Name field in add new event"
-},
-"_link_to_profile_": {
-		"message": "Link to event organizer's profile page. Organizer's username is: ",
-		"description": "Extended link description for screen readers"
-},
-"_people_": {
-		"message": "People",
-		"description": "Banner on homepage"
-},
-"_lowercaselogin_": {
-		"message": "log in",
-		"description": "log in lowercase"
-},
-"_enter_an_address_": {
-		"message": "Enter an address",
-		"description": "Placeholder for entering address for the event"
-}
+  "_admin_": {
+    "message": "admin",
+    "description": "Label for admin users"
+  },
+  "_webmaker_events_": {
+    "message": "Webmaker Events",
+    "description": "Header h1"
+  },
+  "_upcoming_events_": {
+    "message": "Upcoming Events",
+    "description": "Upcoming Events message"
+  },
+  "_add_events_": {
+    "message": "Add Event",
+    "description": "Message add events in navbar"
+  },
+  "_log_in_": {
+    "message": "Log In",
+    "description": "Login button message"
+  },
+  "_hi_": {
+    "message": "Hi,",
+    "description": "Hi, {{name}} message on navbar"
+  },
+  "_my_makes_": {
+    "message": "My Makes",
+    "description": "My makes menu option in navbar dropdown"
+  },
+  "_settings_": {
+    "message": "Settings",
+    "description": "Settings menu option in navbar dropdown"
+  },
+  "_log_out_": {
+    "message": "Log Out",
+    "description": "Log Out menu option in navbar dropdown"
+  },
+  "_toggle_navigation_": {
+    "message": "Toggle navigation",
+    "description": "Toggle navigation message in navbar for mobile"
+  },
+  "_newest_": {
+    "message": "Newest",
+    "description": "Button in list page act as filter"
+  },
+  "_closest_": {
+    "message": "Closest",
+    "description": "Button in list page act as filter"
+  },
+  "_search_events_": {
+    "message": "Search Events",
+    "description": "Placeholder with Search Events text"
+  },
+  "_join_webmakers_home_": {
+    "message": "Join Webmakers in hosting events around the world.",
+    "description": "Heading message CTA"
+  },
+  "_find_an_event_": {
+    "message": "Find an event",
+    "description": "Button to find an event"
+  },
+  "_add_an_event_": {
+    "message": "Add an event",
+    "description": "Button to add an event"
+  },
+  "_people_": {
+    "message": "People",
+    "description": "Banner on homepage"
+  },
+  "_events_": {
+    "message": "Events Home",
+    "description": "Banner on homepage"
+  },
+  "_cities_": {
+    "message": "Cities",
+    "description": "Banner on homepage"
+  },
+  "_all_events_": {
+    "message": "All events",
+    "description": "All events link"
+  },
+  "_gear_for_your_event_": {
+    "message": "Did you know you can request Webmaker gear for your event?",
+    "description": "Footer message"
+  },
+  "_get_more_tips_": {
+    "message": "Get more tips in <a href=\"#!/event-guides\">event guides</a>",
+    "description": "Get more tips message"
+  },
+  "_editing_event_": {
+    "message": "Editing Event",
+    "description": "Editing event page"
+  },
+  "_save_changes_": {
+    "message": "Save Changes",
+    "description": "Save Changes button"
+  },
+  "_careful_delete_message_": {
+    "message": "<strong>Careful!</strong> Once you delete this event, it will be gone forever.",
+    "description": "A banner to warn user before deleting an event."
+  },
+  "_delete_event_": {
+    "message": "Delete Event",
+    "description": "Delete event button"
+  },
+  "_need_to_login_": {
+    "message": "You need to <a href=\"#\">log in</a> to add an event.",
+    "description": "Banner alert info tell user to login before they can add an event"
+  },
+  "_attend_this_event_": {
+    "message": "Attend this event",
+    "description": "Button to join the event"
+  },
+  "_organized_by_": {
+    "message": "Organized by",
+    "description": "Button to join the event"
+  },
+  "_map_": {
+    "message": "map",
+    "description": "Link to map"
+  },
+  "_basics_": {
+    "message": "Basics",
+    "description": "Title of the page"
+  },
+  "_some_errors_": {
+    "message": "Looks like you have some errors...",
+    "description": "Error message on add event page"
+  },
+  "_name_your_event_": {
+    "message": "Name your event",
+    "description": "Name field in add new event"
+  },
+  "_great_title_name_": {
+    "message": "A great name encourages attendance.",
+    "description": "Title field in add new event"
+  },
+  "_required_": {
+    "message": "Required!",
+    "description": "Warning message when missing a required field"
+  },
+  "_describe_your_event_": {
+    "message": "Describe your event",
+    "description": "Describe field for event's description"
+  },
+  "_describe_placeholder_": {
+    "message": "What can people expect when they attend your event?",
+    "description": "Placeholder field for event's description"
+  },
+  "_event_link_": {
+    "message": "Event Link",
+    "description": "Event link field"
+  },
+  "_event_link_explain_": {
+    "message": "If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.",
+    "description": "Explain about Event Link"
+  },
+  "_link_event_error_message_": {
+    "message": "Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong>",
+    "description": "Error message when providing wrong URL to event page"
+  },
+  "_event_attendees_": {
+    "message": "How many attendees are you expecting?",
+    "description": "Event attendees field"
+  },
+  "_under_ten_": {
+    "message": "Under 10",
+    "description": "Option for under 10 attendees"
+  },
+  "_when_where_": {
+    "message": "When and where?",
+    "description": "Where and Where field for new event"
+  },
+  "_event_location_": {
+    "message": "Event location",
+    "description": "Location field for new event"
+  },
+  "_enter_an_address_": {
+    "message": "Enter an address",
+    "description": "Placeholder for entering address for the event"
+  },
+  "_start_date_and_time_": {
+    "message": "Start Date and Time",
+    "description": "Field for start date and time for the event"
+  },
+  "_invalid_date_format_": {
+    "message": "Invalid date format!",
+    "description": "Warning message for invalid date format"
+  },
+  "_how_long_": {
+    "message": "How Long?",
+    "description": "Length of the event field"
+  },
+  "_half_an_hour_": {
+    "message": "Half an hour",
+    "description": "Length of the event field option"
+  },
+  "_one_hour_": {
+    "message": "1 hour",
+    "description": "Length of the event field option"
+  },
+  "_one_and_half_hour_": {
+    "message": "1.5 hours",
+    "description": "Length of the event field option"
+  },
+  "_two_hours_": {
+    "message": "2 hours",
+    "description": "Length of the event field option"
+  },
+  "_two_and_half_hours_": {
+    "message": "2.5 hours",
+    "description": "Length of the event field option"
+  },
+  "_three_hours_": {
+    "message": "3 hours",
+    "description": "Length of the event field option"
+  },
+  "_over_three_hours_": {
+    "message": "Over 3 hours",
+    "description": "Length of the event field option"
+  },
+  "_event_organizer_email_": {
+    "message": "Event organizer's email",
+    "description": "Event organizer's email field"
+  },
+  "_login_with_different_account_": {
+    "message": "Log in with a different account",
+    "description": "Button for changing account"
+  },
+  "_welcome_to_webmaker_": {
+    "message": "Welcome to Webmaker!",
+    "description": "Welcome message in user create form"
+  },
+  "_choose_a_username_": {
+    "message": "Choose a username",
+    "description": "Username field in create form"
+  },
+  "_username_taken_": {
+    "message": "Sorry that username is taken",
+    "description": "Error message username taken"
+  },
+  "_you_must_choose_username_": {
+    "message": "You must choose a username",
+    "description": "Error message must choose username"
+  },
+  "_send_me_an_email_": {
+    "message": "Send me email updates about Mozilla Webmaker and other projects",
+    "description": "Option choose to subscribe"
+  },
+  "_agree_to_terms_and_conditions_": {
+    "message": "I agree to your <a href=\"https://webmaker.org/{{lang}}/terms\">terms</a> and <a href=\"https://webmaker.org/{{lang}}/privacy\">conditions</a>",
+    "description": "Agree to terms and condition message"
+  },
+  "_must_agree_to_terms_and_conditions_": {
+    "message": "You must agree to our terms and conditions",
+    "description": "Error must agree to terms and conditions"
+  },
+  "_cancel_": {
+    "message": "Cancel",
+    "description": "Cancel button"
+  },
+  "_create_account_": {
+    "message": "Create Account",
+    "description": "Create and account button"
+  },
+  "_back_to_webmaker_": {
+    "message": "Back to Webmaker",
+    "description": "Button to go back to Webmaker.org site"
+  },
+  "_make_with_others_": {
+    "message": "Want to make the web with others?",
+    "description": "Header"
+  },
+  "_eg_lead_": {
+    "message": "We've got guides to help you plan. What are you in the mood to try?",
+    "description": "Lead paragraph"
+  },
+  "_kitchen_party_": {
+    "message": "Kitchen Party",
+    "description": "Kitchen Party"
+  },
+  "_spend_an_hour_": {
+    "message": "Spend an hour on a rainy day",
+    "description": "Spend an hour on a rainy day"
+  },
+  "_hang_out_": {
+    "message": "Hang out as a family on the computer",
+    "description": "Hang out as a family on the computer"
+  },
+  "_learn_to_hack_": {
+    "message": "Learn to hack with a friend",
+    "description": "Learn to hack with a friend"
+  },
+  "_make_cool_": {
+    "message": "Make cool things on the web",
+    "description": "Make cool things on the web"
+  },
+  "_start_planning_": {
+    "message": "Start Planning",
+    "description": "Start Planning"
+  },
+  "_eg_plan1_": {
+    "message": "1-5 friends or family members",
+    "description": "1-5 friends or family members"
+  },
+  "_eg_plan2_": {
+    "message": "15 minutes - 1 hour, No preparation needed",
+    "description": "15 minutes - 1 hour, No preparation needed"
+  },
+  "_eg_plan3_": {
+    "message": "At home, in a cafe or at the library",
+    "description": "At home, in a cafe or at the library"
+  },
+  "_kp_guide_btn_": {
+    "message": "Kitchen Party Planning Guide",
+    "description": "Kitchen Party Planning Guide"
+  },
+  "_eg_hack_": {
+    "message": "Hack Jam",
+    "description": "Hack Jam"
+  },
+  "_eg_hj_1_": {
+    "message": "Team up people with different skill-sets to explore an interesting challenge",
+    "description": "Team up people with different skill-sets to explore an interesting challenge"
+  },
+  "_eg_hj_2_": {
+    "message": "Collaboratively build something new or improve something that already exists",
+    "description": "Collaboratively build something new or improve something that already exists"
+  },
+  "_eg_hj_3_": {
+    "message": "Learn and teach new hacking skills",
+    "description": "Learn and teach new hacking skills"
+  },
+  "_eg_sp_1_": {
+    "message": "10 - 50 participants",
+    "description": "10 - 50 participants"
+  },
+  "_eg_sp_2_": {
+    "message": "4 hours or longer, 2 weeks of preparation needed",
+    "description": "4 hours or longer, 2 weeks of preparation needed"
+  },
+  "_eg_sp_3_": {
+    "message": "At a school, library or flexible space",
+    "description": "At a school, library or flexible space"
+  },
+  "_eg_hj_plan_": {
+    "message": "Hack Jam Planning Guide",
+    "description": "Hack Jam Planning Guide"
+  },
+  "_eg_hivepop_": {
+    "message": "Hive Pop-Up",
+    "description": "Hive Pop-Up"
+  },
+  "_eg_hpu1_": {
+    "message": "Bring together local organizations in a science fair setting",
+    "description": "Bring together local organizations in a science fair setting"
+  },
+  "_eg_hpu2_": {
+    "message": "Demonstrate cool web ideas",
+    "description": "Demonstrate cool web ideas"
+  },
+  "_eg_hpu3_": {
+    "message": "Provide fun hands-on activities",
+    "description": "Provide fun hands-on activities"
+  },
+  "_eg_hpu4_": {
+    "message": "Introduce your community to hacking",
+    "description": "Introduce your community to hacking"
+  },
+  "_eg_hpusp1_": {
+    "message": "2-10 participating organizations",
+    "description": "2-10 participating organizations"
+  },
+  "_eg_hpusp2_": {
+    "message": "4 hours or longer, 2-4 weeks of preparation needed",
+    "description": "4 hours or longer, 2-4 weeks of preparation needed"
+  },
+  "_eg_hpusp3_": {
+    "message": "In an open space like a community center, library or school",
+    "description": "In an open space like a community center, library or school"
+  },
+  "_eg_hpu_pg_": {
+    "message": "Hive Pop-Up Planning Guide",
+    "description": "Hive Pop-Up Planning Guide"
+  },
+  "_eg_peh_": {
+    "message": "Planning an event? Let us help!",
+    "description": "Planning an event? Let us help!"
+  },
+  "_eg_overviewintro_": {
+    "message": "This section provides an overview of important links and to-dos for your event. Don't forget to order <strong>free</strong> Webmaker gear for your party.",
+    "description": "Section intro"
+  },
+  "_eg_overviewpo_": {
+    "message": "Overview for Party Organizers",
+    "description": "Overview for Party Organizers"
+  },
+  "_eg_start_here_": {
+    "message": "Start here",
+    "description": "Start here"
+  },
+  "_eg_beginbyread_": {
+    "message": "Begin by reading our <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/Get_involved\">Get Involved wiki</a>.",
+    "description": "Read the wiki"
+  },
+  "_eg_ordergear_": {
+    "message": "Order gear",
+    "description": "Order gear"
+  },
+  "_eg_placeorderdisabled_": {
+    "message": "We're in the process of getting gear ready for Maker Party 2014. Check back soon!",
+    "description": "Gear orders are not available now"
+  },
+  "_eg_sharemake_": {
+    "message": "Share what you make",
+    "description": "Share what you make"
+  },
+  "_eg_sharemore_": {
+    "message": "During your event, ask participants to share what they make using <a href=\"https://mozteach.makes.org/thimble/what-i-made-maker-party\">this template</a>.",
+    "description": "Share more info"
+  },
+  "_eg_tp_": {
+    "message": "Take photos",
+    "description": "Take photos"
+  },
+  "_eg_sharepics_": {
+    "message": "We love photos! Share pictures of your event by <a href=\"mailto:makerparty@mozilla.org\">emailing us</a>.",
+    "description": "Share pictures via email"
+  },
+  "_eg_rb_": {
+    "message": "Report back",
+    "description": "Report back"
+  },
+  "_eg_tellhow_": {
+    "message": "Tell us how your event went by remixing this <a target=\"_blank\" href=\"https://mozteach.makes.org/thimble/maker-party-report\">report-back template</a>.",
+    "description": "Tell us more"
+  },
+  "_eg_faq_": {
+    "message": "FAQ",
+    "description": "FAQ"
+  },
+  "_eg_haveq_": {
+    "message": "Have questions? Check <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/FAQs\">here</a> first.",
+    "description": "Have questions?"
+  },
+  "_eg_cu_": {
+    "message": "Contact Us",
+    "description": "Contact Us"
+  },
+  "_eg_mailus_": {
+    "message": "Still have questions? Email us at <a target=\"_blank\" href=\"mailto:makerparty@mozilla.org\">makerparty@mozilla.org</a>",
+    "description": "Contact with more questions"
+  },
+  "_event_guides_": {
+    "message": "Event Guides",
+    "description": "Event Guides primary nav"
+  },
+  "_level_": {
+    "message": "Level",
+    "description": "{{SkillLevel}} Level. This is partial string."
+  },
+  "_any_skill_": {
+    "message": "Any skill",
+    "description": "Any skill Level. Partial string."
+  },
+  "_any_age_group_": {
+    "message": "Any age group",
+    "description": "Type of event Any age group"
+  },
+  "_who_is_this_for_": {
+    "message": "Who is this for?",
+    "description": "Title for type of event."
+  },
+  "_skill_level_": {
+    "message": "Skill level",
+    "description": " Skill level for the event."
+  },
+  "_any_skill_level_": {
+    "message": "Any skill level",
+    "description": "Option for any skill level event."
+  },
+  "_beginner_": {
+    "message": "Beginner",
+    "description": "Option for any skill level event."
+  },
+  "_intermediate_": {
+    "message": "Intermediate",
+    "description": "Option for intermediate level event."
+  },
+  "_advanced_": {
+    "message": "Advanced",
+    "description": "Option for advanced level event."
+  },
+  "_age_group_": {
+    "message": "Age group",
+    "description": "Age group for event"
+  },
+  "_any_age_group_": {
+    "message": "Any age group",
+    "description": "Option for any age group event"
+  },
+  "_kids_": {
+    "message": "Children",
+    "description": "Option for children age group event"
+  },
+  "_youth_": {
+    "message": "Teenagers",
+    "description": "Option for teenage age group event"
+  },
+  "_adults_": {
+    "message": "Adults",
+    "description": "Option for adults age group event"
+  },
+  "_go_to_wm_": {
+    "message": "Go to webmaker.org",
+    "description": "Extended link description for screen readers"
+  },
+  "_user_links_drop_": {
+    "message": "User links dropdown",
+    "description": "Extended link description for screen readers"
+  },
+  "_edit_event_": {
+    "message": "Edit Event",
+    "description": "Extended link description for screen readers"
+  },
+  "_link_to_map_": {
+    "message": "Link to Google map of this event's location",
+    "description": "Extended link description for screen readers"
+  },
+  "_link_to_profile_": {
+    "message": "Link to event organizer's profile page. Organizer's username is: ",
+    "description": "Extended link description for screen readers"
+  },
+  "_photo_credit_": {
+    "message": "Link to photo provider's Flickr page. Photo taken by:",
+    "description": "Extended link description for screen readers"
+  },
+  "_sort_by_": {
+    "message": "Sort event list by:",
+    "description": "Extended link description for screen readers"
+  },
+  "_find_event_": {
+    "message": "Find event",
+    "description": "Extended link description for screen readers"
+  },
+  "_event_found_": {
+    "message": "event found",
+    "description": "Single search result found"
+  },
+  "_events_found_": {
+    "message": "events found",
+    "description": "Number of search results found"
+  },
+  "_events_created_": {
+    "message": "Events Created",
+    "description": "Events created header on user view"
+  },
+  "_attendees_": {
+    "message": "Attendees",
+    "description": "Attendees next to head count"
+  },
+  "_my_events_": {
+    "message": "My Events",
+    "description": "My Events nav link"
+  },
+  "_events_single_word_": {
+    "message": "Events",
+    "description": "Single word: Events"
+  },
+  "_fetch_all_": {
+    "message": "Events CSV",
+    "decription": "Fetch all events data for admins"
+  },
+  "_i_am_not_sure_": {
+    "message": "I'm not sure",
+    "description": "Option for not sure about duration"
+  },
+  "_event_organizer_username_": {
+    "message": "Event organizer's username",
+    "description": "Label for form input"
+  },
+  "_oh_snap_": {
+    "message": "Oh, snap! A wild",
+    "description": "Error header first part"
+  },
+  "_appears_": {
+    "message": "appears!",
+    "description": "end of error message header"
+  },
+  "_404_": {
+    "message": "Page not found.",
+    "description": "404 error"
+  },
+  "_Language_Preference_": {
+    "message": "Language Preference",
+    "description": "Language preference in signup"
+  },
+  "_tags_label_": {
+    "message": "Tags",
+    "description": "Label for Tags in event form"
+  },
+  "_tags_example_": {
+    "message": "e.g. security, javascript, csp",
+    "description": "Examples of comma separated tags"
+  },
+  "_maker_party_header_": {
+    "message": "Maker Party",
+    "description": "Maker Party"
+  },
+  "_throw_event_": {
+    "message": "Throw an event!",
+    "description": "Maker party CTA header"
+  },
+  "_mp_subtitle_": {
+    "message": "From July 15 to September 15, 2014, host a Maker Party event to celebrate teaching, learning and making on the web.",
+    "description": "Maker party CTA subtitle"
+  },
+  "_mp_button_": {
+    "message": "Learn More",
+    "description": "Maker party CTA button text"
+  },
+  "Mentors": {
+    "message": "Mentors",
+    "description": "Title for details page section"
+  },
+  "Details": {
+    "message": "Details",
+    "description": "Title for details page section"
+  },
+  "People who can edit this event": {
+    "message": "People who can edit this event",
+    "description": "Event details page"
+  },
+  "_Who_": {
+    "message": "Who",
+    "description": "Section title for add event"
+  },
+  "valid_token_error": {
+    "message": "Sorry, this does not appear to be a valid token. Did you get here by mistake?",
+    "description": "Tokens for validating mentors"
+  },
+  "please_login_confirm_mentor": {
+    "message": "Please <a href=\"#\" ng-click=\"login()\">login</a> to confirm your attendance.",
+    "description": "Confirm page"
+  },
+  "Thanks for confirming": {
+    "message": "Thanks for confirming",
+    "description": "Thanks for confirming you will be a mentor"
+  },
+  "Thanks for letting us know": {
+    "message": "Thanks for letting us know",
+    "description": "Thanks for letting us know you will not be attending"
+  },
+  "visit_event_home_page": {
+    "message": "<a href=\"#!/events/{{ event.id }}\">Click here</a> if you want to visit the event home page.",
+    "description": ""
+  },
+  "edit_confirmation": {
+    "message": "<a href=\"#\" ng-click=\"reset()\"><span class=\"fa fa-pencil\"></span> Edit</a> your confirmation.",
+    "description": "Edit your confirmation as a mentor"
+  },
+  "hi_mentor": {
+    "message": "Hi {{ _user.username }}, you've been asked to mentor at  <strong>{{ event.title }}</strong>.</h1>",
+    "description": ""
+  },
+  "Are you sure you want to confirm you can mentor at this event?": {
+    "message": "Are you sure you want to confirm you can mentor at this event?",
+    "description": ""
+  },
+  "Are you sure you want to decline mentoring at this event?": {
+    "message": "Are you sure you want to decline mentoring at this event?",
+    "description": ""
+  },
+  "I can mentor": {
+    "message": "I can mentor",
+    "description": ""
+  },
+  "I can't mentor": {
+    "message": "I can't mentor",
+    "description": ""
+  },
+  "Sign in as another user": {
+    "message": "Sign in as another user",
+    "description": ""
+  },
+  "Organizer": {
+    "message": "Organizer",
+    "description": ""
+  },
+  "Description": {
+    "message": "Description",
+    "description": ""
+  },
+  "_yes_im_going_": {
+    "message": "Yes, I'm going",
+    "description": "RSVP Yes"
+  },
+  "_RSVP_": {
+    "message": "RSVP",
+    "description": "RSVP"
+  },
+  "_youneedto_": {
+    "message": "You need to",
+    "description": "You need to"
+  },
+  "_lowercaselogin_": {
+    "message": "log in",
+    "description": "log in lowercase"
+  },
+  "_beforeyoucan_": {
+    "message": "before you can RSVP.",
+    "description": "before you can RSVP."
+  },
+  "_nonotgoing_": {
+    "message": "No, I'm not going",
+    "description": "No, I'm not going (RSVP)"
+  },
+  "_areugoing_": {
+    "message": "Are you going?",
+    "description": "Are you going?"
+  },
+  "_Yes_": {
+    "message": "Yes",
+    "description": "Yes (initial cap)"
+  },
+  "_No_": {
+    "message": "No",
+    "description": "No (initial cap)"
+  },
+  "_awesome_seeya_": {
+    "message": "Awesome, see you there!",
+    "description": "Awesome, see you there!"
+  },
+  "_okay_thanks_": {
+    "message": "Okay, thanks for letting us know.",
+    "description": "Okay, thanks for letting us know."
+  },
+  "_rsvp_fail_": {
+    "message": "The RSVP didn't go through. Try again later?",
+    "description": "RSVP Error"
+  },
+  "_Edit_": {
+    "message": "Edit",
+    "description": "Edit (initial cap)"
+  },
+  "_your_RSVP_": {
+    "message": "your RSVP",
+    "description": "your RSVP"
+  },
+  "_show_a_public_": {
+    "message": "Show attendees publicly?",
+    "description": "Label for Show attendees publicly"
+  },
+  "_explain_publicbox_": {
+    "message": "By checking this box you allow anyone to see the usernames and avatars of people who attend your event.",
+    "description": "Explanation of public attendee checkbox"
+  },
+  "_Attending_": {
+    "message": "Attending",
+    "description": "Attending (initial cap)"
+  },
+  "_more_": {
+    "message": "more",
+    "description": "more (initial lower cap)"
+  },
+  "_coorganizer_": {
+    "message": "co-organizer",
+    "description": "Label for a co-organizer of events"
+  },
+  "_mentor_": {
+    "message": "mentor",
+    "description": "Label for a mentor at an event"
+  },
+  "_Attendees_": {
+    "message": "Attendees",
+    "description": "Header for Attendees section in add/update view"
+  },
+  "_no_one_rsvp_": {
+    "message": "No one has RSVP'd for your event yet. Make sure people know about it – share it with friends.",
+    "description": "Message presented to event creator when no one has RSVPd to their event"
+  },
+  "_number_of_rsvps_": {
+    "message": "people have RSVP'd to your event. Be sure to check them in <strong>on the day of the event</strong> so you can know who attended.",
+    "description": "Message describing number of people RSVPd. Preceded by a number."
+  },
+  "_check_in_att_": {
+    "message": "Check in your attendees",
+    "description": "Button to check in attendees"
+  }
 }
