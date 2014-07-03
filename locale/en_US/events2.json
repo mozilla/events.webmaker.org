@@ -770,5 +770,21 @@
   "_mentor_": {
     "message": "mentor",
     "description": "Label for a mentor at an event"
+  },
+  "_Attendees_": {
+    "message": "Attendees",
+    "description": "Header for Attendees section in add/update view"
+  },
+  "_no_one_rsvp_": {
+    "message": "No one has RSVP'd for your event yet. Make sure people know about it – share it with friends.",
+    "description": "Message presented to event creator when no one has RSVPd to their event"
+  },
+  "_number_of_rsvps_": {
+    "message": "people have RSVP'd to your event. Be sure to check them in <strong>on the day of the event</strong> so you can know who attended.",
+    "description": "Message describing number of people RSVPd. Preceded by a number."
+  },
+  "_check_in_att_": {
+    "message": "Check in your attendees",
+    "description": "Button to check in attendees"
   }
 }

@@ -58,6 +58,11 @@ config(['$routeProvider', '$locationProvider',
       controller: 'errorController'
     });
 
+    $routeProvider.when('/check-in/:id', {
+      templateUrl: 'views/check-in.html',
+      controller: 'checkInController'
+    });
+
     $routeProvider.when('/', {
       templateUrl: 'views/home.html',
       controller: 'homeController'

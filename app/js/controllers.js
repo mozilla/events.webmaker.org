@@ -40,10 +40,27 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'usernameService', 'analytics',
-    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, usernameService, analytics) {
+  .controller('checkInController', ['$scope', '$rootScope', '$routeParams', 'eventService',
+    function ($scope, $rootScope, $routeParams, eventService) {
+      eventService.get({
+        id: $routeParams.id
+      }, function (data) {
+        $scope.eventData = data;
+      }, function (err) {
+        console.error(err);
+
+        if (err.status === 404) {
+          document.location.hash = '#!/errors/404';
+        }
+      });
+    }
+  ])
+  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'rsvpListService',
+    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, usernameService, analytics, rsvpListService) {
 
       $scope.event = {};
+      $scope.eventID = $routeParams.id;
+      $scope.eventIsToday = false;
 
       // Update or add?
       if ($routeParams.id) {
@@ -89,6 +106,22 @@ angular.module('myApp.controllers', [])
               $scope.event.duration = duration;
             }
           }
+
+          // Determine if today is the event day:
+          var todayMoment = moment();
+          var eventMoment = moment(data.beginDate);
+
+          if (todayMoment.year() === eventMoment.year() &&
+              todayMoment.dayOfYear() === eventMoment.dayOfYear()) {
+            $scope.eventIsToday = true;
+          }
+
+          // Attendee list
+          rsvpListService.get({
+            eventid: $routeParams.id
+          }, function (data) {
+            $scope.attendees = data;
+          });
 
         }, function (err) {
           console.error(err);

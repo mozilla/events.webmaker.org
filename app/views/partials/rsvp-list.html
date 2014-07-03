@@ -1,5 +1,5 @@
 <div ng-show="rsvpList">
-  <h3 class="add-bottom-margin">{{ '_Attending_' | i18n }}</h3>
+  <h3 ng-if="showHeader" class="add-bottom-margin">{{ '_Attending_' | i18n }}</h3>
   <div class="rsvp-list">
     <div ng-repeat="attendee in rsvpList" class="clearfix">
       <a href="{{ webmakerUrl }}/user/{{ attendee.username }}" target="_blank">

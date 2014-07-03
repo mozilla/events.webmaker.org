@@ -238,15 +238,19 @@ angular.module('myApp.directives', [])
   })
   .directive('weRsvpList', function () {
     return {
-      scope: {},
-      controller: ['$scope', '$element', '$routeParams', 'rsvpListService',
-        function ($scope, $element, $routeParams, rsvpListService) {
+      scope: {
+        showHeader: '=',
+        attendeesToShow: '='
+      },
+      controller: ['$scope', '$element', '$routeParams', 'rsvpListService', 'config',
+        function ($scope, $element, $routeParams, rsvpListService, config) {
+          $scope.webmakerUrl = config.webmakerUrl;
+
           function buildRSVPList() {
             rsvpListService.get({
               eventid: $routeParams.id
             }, function (data) {
-              var rsvpdYes = [],
-                attendeesToShow = 10;
+              var rsvpdYes = [];
 
               // Filter out people who aren't coming
               data.forEach(function (attendee, index) {
@@ -255,9 +259,9 @@ angular.module('myApp.directives', [])
                 }
               });
 
-              if (rsvpdYes.length > attendeesToShow) {
-                $scope.overflowCount = rsvpdYes.length - attendeesToShow;
-                rsvpdYes = rsvpdYes.slice(0, attendeesToShow);
+              if (rsvpdYes.length > $scope.attendeesToShow) {
+                $scope.overflowCount = rsvpdYes.length - $scope.attendeesToShow;
+                rsvpdYes = rsvpdYes.slice(0, $scope.attendeesToShow);
               } else {
                 $scope.overflowCount = 0;
               }
@@ -272,7 +276,6 @@ angular.module('myApp.directives', [])
           $scope.$on('rsvpChanged', function (event, data) {
             buildRSVPList();
           });
-
         }
       ],
       restrict: 'E',

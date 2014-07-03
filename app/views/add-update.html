@@ -150,7 +150,7 @@
     </div>
 
     <header class="page-header">
-      <h3>{{ '_Who_' | i18n }}</h3>
+      <h3>Hosts and Mentors</h3>
     </header>
 
     <div class="form-group add-double-bottom-margin" ng-if="_user.isAdmin">
@@ -166,7 +166,7 @@
       </div>
     </div>
 
-    <div class="form-group add-double-bottom-margin">
+    <div ng-class="{'add-bottom-margin': isUpdate, 'add-double-bottom-margin': !isUpdate}" class="form-group">
 
       <div class="row">
         <div class="col-sm-6">
@@ -276,6 +276,23 @@
           </table>
 
         </div>
+      </div>
+    </div>
+
+    <div ng-show="isUpdate" class="add-double-bottom-margin">
+      <header class="page-header">
+        <h3>{{ '_Attendees_' | i18n }}</h3>
+      </header>
+
+      <div ng-if="!attendees.length" class="alert alert-info">{{ '_no_one_rsvp_' | i18n }}</div>
+
+      <div ng-show="attendees.length" class="row add-bottom-margin">
+        <div class="col-sm-6">
+          <p>{{ attendees.length }} <span ng-bind-html="'_number_of_rsvps_' | i18n "></span></p>
+          <a ng-class="{disabled: !eventIsToday}" class="btn btn-primary" href="#!/check-in/{{ eventID }}">{{ '_check_in_att_' | i18n }}</a>
+        </div>
+
+        <we-rsvp-list class="col-sm-6 hidden-xs" show-header="false" attendees-to-show="5"></we-rsvp-list>
       </div>
     </div>
 
