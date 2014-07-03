@@ -47,6 +47,9 @@
             </a>
           </div>
         </div>
+
+        <a ng-if="eventData.isEmailPublic" class="btn btn-xs btn-info add-bottom-margin" href="mailto:{{ eventData.organizer }}">{{ '_contact_org_' | i18n }}</a>
+
         <div ng-if="_user.username === eventData.organizerId || _user.isAdmin || isCoorganizer()" class="add-bottom-margin">
           <p>{{ 'People who can edit this event' | i18n }}</p>
           <table class="table table-striped table-middle">

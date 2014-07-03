@@ -786,5 +786,17 @@
   "_check_in_att_": {
     "message": "Check in your attendees",
     "description": "Button to check in attendees"
+  },
+  "_show_email_public_": {
+    "message": "Show your email publicly?",
+    "description": "Label"
+  },
+  "_describe_email_public_": {
+    "message": "By checking this box you allow your email to be seen on your public event page.",
+    "description": "Explanation of public email option"
+  },
+  "_contact_org_": {
+    "message": "Contact Organizer",
+    "description": "Button text"
   }
 }
