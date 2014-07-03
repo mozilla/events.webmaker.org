@@ -29,31 +29,38 @@ angular.module('myApp.services', ['ngResource'])
   ])
   .factory('eventService', ['$rootScope', '$resource', 'config',
     function ($rootScope, $resource, config) {
-      return $resource(config.eventsLocation + '/events/:id', {
-        organizerId: '@organizerId',
-        userId: '@userId',
-        after: '@after',
-        limit: '@limit',
-        dedupe: '@dedupe',
-        tag: '@tag'
-      }, {
-        get: {
-          method: 'GET',
-          withCredentials: true
-        },
-        save: {
-          method: 'POST',
-          withCredentials: true
-        },
-        'delete': {
-          method: 'DELETE',
-          withCredentials: true
-        },
-        update: {
-          method: 'PUT',
-          withCredentials: true
-        }
-      });
+      return function (customHeaders) {
+        return $resource(config.eventsLocation + '/events/:id', {
+          organizerId: '@organizerId',
+          userId: '@userId',
+          after: '@after',
+          dedupe: '@dedupe',
+          tag: '@tag'
+        }, {
+          get: {
+            method: 'GET',
+            withCredentials: true
+          },
+          query: {
+            method: 'GET',
+            isArray: true,
+            withCredentials: true,
+            headers: customHeaders || null
+          },
+          save: {
+            method: 'POST',
+            withCredentials: true
+          },
+          'delete': {
+            method: 'DELETE',
+            withCredentials: true
+          },
+          update: {
+            method: 'PUT',
+            withCredentials: true
+          }
+        });
+      };
     }
   ])
   .factory('rsvpService', ['$resource', 'config',
@@ -87,7 +94,7 @@ angular.module('myApp.services', ['ngResource'])
   .factory('usernameService', ['$resource', 'config',
     function ($resource, config) {
       return $resource('/check-username', {
-        username: "@username"
+        username: '@username'
       }, {
         post: {
           method: 'POST'

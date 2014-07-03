@@ -21,6 +21,19 @@ angular.module('myApp.directives', [])
       }
     };
   })
+  .directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+      element.bind('keydown keypress', function (event) {
+        if (event.which === 13) {
+          scope.$apply(function () {
+            scope.$eval(attrs.ngEnter);
+          });
+
+          event.preventDefault();
+        }
+      });
+    };
+  })
   .directive('autocompleteLocation', function () {
     return {
       restrict: 'A',
@@ -99,39 +112,26 @@ angular.module('myApp.directives', [])
       }
     };
   })
-  .directive('weListing', function () {
+  .directive('weListing', function (config) {
     return {
       restrict: 'E',
       link: function ($scope, $element) {
-        $scope.geoLocationEnabled = false;
+        $scope.geoLocationEnabled = false; // TODO : Re-enable Geolocation via server-side sorting
         $scope.sortName = 'date';
+        $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
 
-        var myLatitude, myLongitude;
+        $scope.searchEvents = function (term) {
+          var url = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
 
-        navigator.geolocation.getCurrentPosition(function (position) {
-          myLatitude = position.coords.latitude;
-          myLongitude = position.coords.longitude;
-
-          $scope.geoLocationEnabled = true;
-          $scope.$apply();
-        });
-
-        function distance(x1, y1, x2, y2) {
-          return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
-        }
-
-        $scope.orderByProximity = function (event) {
-          if (event.latitude && event.longitude) {
-            return distance(myLatitude, myLongitude, event.latitude, event.longitude);
+          if (term) {
+            url += '&search=' + term;
+            $scope.searchActive = true;
           } else {
-            // If no lat/long are available, assume event is very far away
-            return 999999999;
+            $scope.searchActive = false;
+            $scope.searchPhrase = '';
           }
-        };
 
-        $scope.orderByDate = function (event) {
-          var date = new Date(event.beginDate);
-          return date.valueOf();
+          $scope.serviceURL = url;
         };
       }
     };

@@ -7,37 +7,50 @@
     <div class="row add-bottom-margin">
       <div class="col-sm-8">
         <div class="btn-group" ng-show="geoLocationEnabled">
-          <button ng-class="{'active': sortName === 'date'}" ng-click="sortOrder = orderByDate; sortName = 'date';" type="button" class="btn btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_newest_' | i18n }}</button>
-          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortOrder = orderByProximity; sortName = 'proximity';" type="button" class="btn btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_closest_' | i18n }}</button>
+          <button ng-class="{'active': sortName === 'date'}" ng-click="sortName = 'date';" class="btn btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_newest_' | i18n }}</button>
+          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortName = 'proximity';" class="btn btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_closest_' | i18n }}</button>
         </div>
       </div>
 
       <div class="col-sm-4 search-block">
         <div class="col-xs-10 no-padding">
           <label for="event-filter" class="sr-only">{{ '_find_event_' | i18n }}</label>
-          <input id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="eventFilter" type="text" class="form-control col-sm-4">
+          <input ng-enter="searchEvents(searchPhrase)" id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="searchPhrase" type="text" class="form-control">
         </div>
-        <div class="col-xs-2 mag-glass">
-          <span class="fa fa-search"></span>
+        <div class="col-xs-2 no-padding">
+          <button ng-click="searchEvents(searchPhrase)" class="btn btn-info"><i class="fa fa-search"></i></button>
         </div>
       </div>
     </div>
 
-    <div class="row" ng-show="eventFilter">
+    <div class="row" ng-show="searchActive">
       <div class="col-xs-12">
-        {{ (events|filter: eventFilter).length }}
-        <span ng-show="(events|filter: eventFilter).length === 1"> {{ '_event_found_' | i18n }}</span>
-        <span ng-show="(events|filter: eventFilter).length > 1 || (events|filter: eventFilter).length === 0"> {{ '_events_found_' | i18n }}</span>
+        <p>
+          <strong>{{ searchResultCount }}</strong>
+          <span ng-show="searchResultCount === 1"> {{ '_event_found_' | i18n }}</span>
+          <span ng-show="searchResultCount > 1 || searchResultCount === 0"> {{ '_events_found_' | i18n }}</span>
+          <button ng-click="searchEvents()" class="btn btn-sm btn-primary pull-right">Clear Search</button>
+        </p>
       </div>
     </div>
 
     <table class="table table-striped">
-      <tr ng-repeat="event in events | orderBy: sortOrder | filter: eventFilter">
+      <tr ng-repeat="event in eventsData">
         <td class="event-date">{{ event.beginDate | date:'MMM d' }}</td>
-        <td><a href="#!/events/{{event.id}}" class="event-title">{{ event.title }}</a></td>
-        <td class="text-muted event-address">{{ event.address }}</td>  
+        <td><a href="#!/events/{{event.id}}" class="event-title">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
+        <td class="text-muted event-address">{{ event.address }}</td>
       </tr>
     </table>
+
+    <begriffs.pagination
+      collection="eventsData"
+      per-page="10"
+      url="serviceURL"
+      link-group-size="1"
+      num-items="searchResultCount"
+      template-url="/views/partials/paginater.html">
+    </begriffs.pagination>
+
   </we-listing>
 
   <a ng-show="_user.isAdmin" class="btn btn-info add-double-bottom-margin" href="{{ eventsLocation }}/events?csv=true" target="_blank">{{ '_fetch_all_' | i18n }}</a>
