@@ -84,7 +84,7 @@
     "description": "Footer message"
   },
   "_get_more_tips_": {
-    "message": "Get more tips in <a href=\"#!/event-guides\">event guides</a>",
+    "message": "Get more tips in <a href=\"#!/event-guides\">event kits</a>",
     "description": "Get more tips message"
   },
   "_editing_event_": {
@@ -272,7 +272,7 @@
     "description": "Header"
   },
   "_eg_lead_": {
-    "message": "We've got guides to help you plan. What are you in the mood to try?",
+    "message": "We've got kits to help you plan. What are you in the mood to try?",
     "description": "Lead paragraph"
   },
   "_kitchen_party_": {
@@ -312,8 +312,8 @@
     "description": "At home, in a cafe or at the library"
   },
   "_kp_guide_btn_": {
-    "message": "Kitchen Party Planning Guide",
-    "description": "Kitchen Party Planning Guide"
+    "message": "Kitchen Party Planning Kit",
+    "description": "Kitchen Party Planning Kit"
   },
   "_eg_hack_": {
     "message": "Hack Jam",
@@ -344,8 +344,8 @@
     "description": "At a school, library or flexible space"
   },
   "_eg_hj_plan_": {
-    "message": "Hack Jam Planning Guide",
-    "description": "Hack Jam Planning Guide"
+    "message": "Hack Jam Planning Kit",
+    "description": "Hack Jam Planning Kit"
   },
   "_eg_hivepop_": {
     "message": "Hive Pop-Up",
@@ -380,8 +380,8 @@
     "description": "In an open space like a community center, library or school"
   },
   "_eg_hpu_pg_": {
-    "message": "Hive Pop-Up Planning Guide",
-    "description": "Hive Pop-Up Planning Guide"
+    "message": "Hive Pop-Up Planning Kit",
+    "description": "Hive Pop-Up Planning Kit"
   },
   "_eg_peh_": {
     "message": "Planning an event? Let us help!",
@@ -452,8 +452,8 @@
     "description": "Contact with more questions"
   },
   "_event_guides_": {
-    "message": "Event Guides",
-    "description": "Event Guides primary nav"
+    "message": "Event Kits",
+    "description": "Event Kits primary nav"
   },
   "_level_": {
     "message": "Level",
