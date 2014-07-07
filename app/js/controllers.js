@@ -87,6 +87,7 @@ angular.module('myApp.controllers', [])
           $scope.event.mentors = data.mentors || [];
           $scope.event.coorganizers = data.coorganizers || [];
           $scope.event.areAttendeesPublic = data.areAttendeesPublic || false;
+          $scope.event.isEmailPublic = data.isEmailPublic || false;
 
           // TEMP : Need to convert back from city/country/lat/long/whatever
           $scope.event.address = data.address;
