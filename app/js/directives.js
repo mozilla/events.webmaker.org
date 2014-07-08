@@ -165,8 +165,8 @@ angular.module('myApp.directives', [])
         eventId: '=',
         userId: '='
       },
-      controller: ['$rootScope', '$scope', '$element', 'rsvpService', 'attendeeInfoService',
-        function ($rootScope, $scope, $element, rsvpService, attendeeInfoService) {
+      controller: ['$rootScope', '$scope', '$element', 'attendeeService', 'attendeeInfoService',
+        function ($rootScope, $scope, $element, attendeeService, attendeeInfoService) {
           $scope.isRSVPd = false;
           $scope.errorHappened = false;
 
@@ -205,18 +205,20 @@ angular.module('myApp.directives', [])
             $scope.errorHappened = false;
 
             if (isAttending) {
-              rsvpService.save({
+              attendeeService.save({
                 userid: $scope.userId,
-                eventid: $scope.eventId
+                eventid: $scope.eventId,
+                rsvp: true
               }, function () {
                 $scope.$emit('rsvpChange');
               }, function fail() {
                 $scope.errorHappened = true;
               });
             } else {
-              rsvpService.delete({
+              attendeeService.save({
                 userid: $scope.userId,
-                eventid: $scope.eventId
+                eventid: $scope.eventId,
+                rsvp: false
               }, function () {
                 $scope.$emit('rsvpChange');
               }, function fail() {
@@ -242,12 +244,12 @@ angular.module('myApp.directives', [])
         showHeader: '=',
         attendeesToShow: '='
       },
-      controller: ['$scope', '$element', '$routeParams', 'rsvpListService', 'config',
-        function ($scope, $element, $routeParams, rsvpListService, config) {
+      controller: ['$scope', '$element', '$routeParams', 'attendeeListService', 'config',
+        function ($scope, $element, $routeParams, attendeeListService, config) {
           $scope.webmakerUrl = config.webmakerUrl;
 
           function buildRSVPList() {
-            rsvpListService.get({
+            attendeeListService.get({
               eventid: $routeParams.id
             }, function (data) {
               var rsvpdYes = [];

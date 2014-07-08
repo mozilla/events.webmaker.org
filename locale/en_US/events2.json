@@ -802,5 +802,45 @@
   "_contact_org_": {
     "message": "Contact Organizer",
     "description": "Button text"
+  },
+  "_manage_att_": {
+    "message": "Manage your attendees",
+    "description": "Check In View: Header"
+  },
+  "_add_unreg_": {
+    "message": "Add unregistered participants",
+    "description": "Check In View: Header"
+  },
+  "_what_is_their_email_": {
+    "message": "What is their email address?",
+    "description": "Check In View: Label"
+  },
+  "_upper_add_": {
+    "message": "Add",
+    "description": "Check In View: Button (Add intial cap)"
+  },
+  "_plz_enter_valid_": {
+    "message": "Please enter a valid email address!",
+    "description": "Check In View: Error message"
+  },
+  "_sometimes_they_show_up_": {
+    "message": "Sometimes people just show up!",
+    "description": "Check In View: Explanatory text"
+  },
+  "_other_fun_stuff_": {
+    "message": "Add them here so they can create a Webmaker account to save their work and other fun stuff.",
+    "description": "Check In View: Explanatory text"
+  },
+  "_check_in_peeps_": {
+    "message": "Check in people who made it to your event",
+    "description": "Check In View: Label"
+  },
+  "_todays_the_day_": {
+    "message": "Today's the day!",
+    "description": "Event Detail: Banner text for attendee check in."
+  },
+  "_check_in_yr_attendees_": {
+    "message": "Check in your attendees",
+    "description": "Event Detail: Button text for attendee check in."
   }
 }

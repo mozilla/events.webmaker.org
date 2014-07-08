@@ -7,10 +7,49 @@
 </div>
 
 <div class="container">
-  <h2>Manage your attendees</h2>
+  <h2 class="add-bottom-margin">{{ '_manage_att_' | i18n }}</h2>
 
-  <br><br>
-  <p><strong>Pardon our dust.</strong> This functionality is coming very soon!</p>
+  <div class="row">
+    <div class="col-sm-6 add-double-bottom-margin">
+      <p><strong>{{ '_add_unreg_' | i18n }}</strong></p>
+
+      <form name="addParticipantForm" role="form" novalidate>
+        <div class="input-group add-bottom-margin">
+          <input ng-enter="addParticipant(unregisteredEmail)" ng-model="unregisteredEmail" type="email" name="participantEmail" class="form-control" placeholder="{{ '_what_is_their_email_' | i18n }}">
+          <span class="input-group-btn">
+            <button ng-click="addParticipant(unregisteredEmail)" class="btn btn-success" type="button">
+              <span class="fa fa-plus"></span><span class="sr-only">{{ '_upper_add_' | i18n }}Add</span>
+            </button>
+          </span>
+        </div>
+
+        <div class="alert alert-danger" ng-show="triedToAddInvalidEmail">{{ '_plz_enter_valid_' | i18n }}</div>
+      </form>
+
+      <p><strong>{{ '_sometimes_they_show_up_' | i18n }}</strong> {{ '_other_fun_stuff_' | i18n }}</p>
+    </div>
+    <div class="col-sm-6">
+      <p><strong>{{ '_check_in_peeps_' | i18n }}</strong></p>
+
+      <table class="check-ins table table-striped">
+        <tr ng-repeat="attendee in attendees">
+          <td>
+            <div ng-show="attendee.username">
+              <img class="img-circle" ng-src="{{ attendee.avatar }}">
+              <strong>{{ attendee.username }}</strong>
+            </div>
+            <div ng-show="attendee.email">
+              <strong>{{ attendee.email }}</strong>
+            </div>
+          </td>
+          <td class="buttons">
+            <button ng-click="setCheckinStatus({userID: attendee.userID, email: attendee.email}, !attendee.didAttend); attendee.didAttend = !attendee.didAttend;" class="btn" ng-class="{'btn-default': !attendee.didAttend, 'btn-primary': attendee.didAttend}"><i class="fa fa-check"></i></button>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
 
 </div>
 
