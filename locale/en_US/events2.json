@@ -343,7 +343,7 @@
     "message": "At a school, library or flexible space",
     "description": "At a school, library or flexible space"
   },
-  "eg_medium_event_plan_": {
+  "_eg_medium_event_plan_": {
     "message": "Medium Event Planning Guide",
     "description": "Medium Event Planning Guide"
   },
@@ -400,7 +400,7 @@
     "description": "Start here"
   },
   "_eg_beginbyread_": {
-    "message": "Begin by reading our <a target=\"_blank\" href=\"https://wiki.mozilla.org/Maker_Party/Get_involved\">Get Involved wiki</a>.",
+    "message": "Begin by reading our <a target=\"_blank\" href=\"http://party.webmaker.org/resources\">Maker party resources</a>.",
     "description": "Read the wiki"
   },
   "_eg_ordergear_": {
