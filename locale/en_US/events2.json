@@ -179,9 +179,13 @@
     "message": "Enter an address",
     "description": "Placeholder for entering address for the event"
   },
-  "_start_date_and_time_": {
-    "message": "Start Date and Time",
-    "description": "Field for start date and time for the event"
+  "_start_date_": {
+    "message": "Start Date",
+    "description": "Field for start date for the event"
+  },
+  "_start_time_": {
+    "message": "Start Time",
+    "description": "Field for start time for the event"
   },
   "_invalid_date_format_": {
     "message": "Invalid date format!",

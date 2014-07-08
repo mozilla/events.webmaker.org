@@ -121,20 +121,36 @@
 
       <div class="col-sm-6">
         <div class="form-group">
-          <label for="event-start-date">{{ '_start_date_and_time_' | i18n }} <span class="text-danger">*</span></label>
-          <input ng-model="event.beginDate" name="beginDate" required class="form-control" id="event-start-date" type="text" placeholder="e.g. March 20th at 2pm." />
-        </div>
-        <div class="add-bottom-margin">
-          <em ng-show="event.isValidStartDate">{{ event.humanParsedDate }}</em>
-          <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.beginDate.$invalid">{{ '_required_' | i18n }}</div>
-          <div class="alert alert-danger" ng-show="attemptedToSubmit && !event.isValidStartDate">{{ '_invalid_date_format_' | i18n }}</div>
+          <label for="event-start-date">{{ '_start_date_' | i18n }} <span class="text-danger">*</span></label>
+          <div ng-controller="DatepickerCtrl">
+            <div class="input-group">
+              <input type="text" name="beginDate" id="event-start-date" datepicker-popup="dd-MMMM-yyyy" ng-model="event.beginDate" is-open="opened" datepicker-options="dateOptions" ng-required="true" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open()"><i class="fa fa-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="col-sm-6">
         <div class="form-group">
+          <label for="event-start-date">{{ '_start_time_' | i18n }} <span class="text-danger">*</span></label>
+          <div ng-controller="TimepickerCtrl">
+            <timepicker ng-model="event.beginTime" name="beginTime" id="event-start-time"></timepicker>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="form-group">
           <label for="event-duration">{{ '_how_long_' | i18n }} <span class="text-danger">*</span></label>
           <select ng-model="event.duration" required class="form-control" id="event-duration" name="duration">
+
             <option value="unknown">{{ '_i_am_not_sure_' | i18n }}</option>
             <option value="0.5">{{ '_half_an_hour_' | i18n }}</option>
             <option value="1">{{ '_one_hour_' | i18n }}</option>
@@ -147,7 +163,6 @@
           </select>
         </div>
       </div>
-
     </div>
 
     <div class="row add-bottom-margin">

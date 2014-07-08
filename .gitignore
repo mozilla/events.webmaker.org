@@ -9,6 +9,6 @@ tmp
 app/compiled/
 TODO.txt
 npm-debug.log
-!locale/en_US/*
 locale/
+!locale/en_US/*
 comps/

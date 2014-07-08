@@ -2,7 +2,6 @@
 
 angular.module('myApp.services', ['ngResource'])
   .constant('config', window.eventsConfig)
-  .constant('chrono', window.chrono)
   .constant('analytics', window.analytics)
   .factory('loadGoogleMaps', ['$window',
     function ($window) {
@@ -124,8 +123,8 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
-  .factory('eventFormatter', ['$rootScope', 'moment', 'chrono',
-    function ($rootScope, moment, chrono) {
+  .factory('eventFormatter', ['$rootScope', 'moment',
+    function ($rootScope, moment) {
 
       return function (form, eventData) {
         if (!form || !eventData) {
@@ -143,14 +142,10 @@ angular.module('myApp.services', ['ngResource'])
         // Create a serialized event object to avoid modifying $scope
         var serializedEvent = angular.copy(eventData);
 
-        if (eventData.beginDate) {
-          serializedEvent.beginDate = eventData.parsedNaturalStartDate.toISOString();
-        }
-
         if (eventData.duration !== 'unknown') {
-          serializedEvent.endDate = moment(eventData.parsedNaturalStartDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
-        } else {
+          serializedEvent.endDate = moment(eventData.beginDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
           // Don't send an end date if duration is not specific
+        } else {
           delete serializedEvent.endDate;
         }
 
@@ -160,7 +155,6 @@ angular.module('myApp.services', ['ngResource'])
 
         // Remove nonexistant DB values from client event object
         delete serializedEvent.duration;
-        delete serializedEvent.parsedNaturalStartDate;
 
         // Convert CSV tags to array of Strings
 

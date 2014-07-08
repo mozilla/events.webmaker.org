@@ -13,6 +13,35 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
+  .controller('TimepickerCtrl', ['$scope', '$timeout', 'moment',
+    function ($scope, $timeout, moment) {
+      $scope.event.beginTime = moment().hour(12).minutes(0);
+    }
+  ])
+  .controller('DatepickerCtrl', ['$scope', '$timeout',
+    function ($scope, $timeout) {
+      $scope.today = function() {
+          $scope.event.beginDate = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function () {
+          $scope.event.beginDate = null;
+        };
+
+        $scope.open = function() {
+          $timeout(function() {
+            $scope.opened = true;
+          });
+        };
+
+        $scope.dateOptions = {
+          'year-format': "'yy'",
+          'starting-day': 1,
+          'show-weeks': false
+        };
+      }
+  ])
   .controller('userController', ['$scope', '$rootScope', '$routeParams', 'eventService',
     function ($scope, $rootScope, $routeParams, eventService) {
       $scope.username = $routeParams.id;
@@ -126,8 +155,8 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday',
-    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday) {
+  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday',
+    function ($scope, $location, $rootScope, $routeParams, moment, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday) {
 
       $scope.event = {};
       $scope.eventID = $routeParams.id;
@@ -166,7 +195,11 @@ angular.module('myApp.controllers', [])
             $scope.event.registerLink = data.registerLink;
           }
 
-          $scope.event.beginDate = moment(data.beginDate).format('MMMM Do YYYY [at] h:mma');
+          var momentBeginDate = moment(data.beginDate);
+          var hour = momentBeginDate.get('hour');
+          var minutes = momentBeginDate.get('minutes');
+          $scope.event.beginDate = momentBeginDate.hour(hour).minutes(minutes).format();
+          $scope.event.beginTime = $scope.event.beginDate;
           $scope.event.duration = 'unknown'; // default to unknown
 
           // Parse out duration from end date if it exists
@@ -206,7 +239,6 @@ angular.module('myApp.controllers', [])
         $scope.event.attendees = 5; // Under 10 by default
         $scope.event.duration = 1; // 1 hour default
 
-        $scope.event.parsedNaturalStartDate = undefined;
         // $scope.attemptedToSubmit = false;
       }
 
@@ -250,12 +282,24 @@ angular.module('myApp.controllers', [])
         $scope.event.organizerId = $scope._user.username;
       });
 
-      // Continuously translate natural language date to JS Date
-      $scope.$watch('event.beginDate', function (newValue) {
-        if (newValue) {
-          $scope.event.parsedNaturalStartDate = chrono.parseDate(newValue);
-          $scope.event.isValidStartDate = moment($scope.event.parsedNaturalStartDate).isValid();
-          $scope.event.humanParsedDate = moment($scope.event.parsedNaturalStartDate).format('MMMM Do YYYY [at] h:mma');
+      $scope.$watch('event.beginDate', function (newValue, oldValue) {
+        if(oldValue < newValue || oldValue > newValue) {
+          $scope.event.beginDate = new Date(newValue);
+        }
+      });
+
+      $scope.beginTimeObj = {};
+      $scope.$watch('event.beginTime', function (newValue, oldValue) {
+        if($scope.addEventForm.beginTime.$invalid) {
+          return;
+        }
+        if(oldValue < newValue || oldValue > newValue) {
+          var newMoment = moment(newValue);
+          $scope.beginTimeObj.hour = newMoment.get('hour');
+          $scope.beginTimeObj.minutes = newMoment.get('minutes');
+          $scope.event.beginDate = moment($scope.event.beginDate)
+                                      .set('hour', $scope.beginTimeObj.hour)
+                                      .set('minutes', $scope.beginTimeObj.minutes).format();
         }
       });
 
@@ -304,7 +348,7 @@ angular.module('myApp.controllers', [])
           }, eventData, function (data) {
             $location.path('/events/' + $routeParams.id);
           }, function (err) {
-            console.error(err.data);
+            console.error(err);
           });
         }
 
