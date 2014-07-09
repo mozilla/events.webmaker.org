@@ -182,6 +182,10 @@ angular.module('myApp.controllers', [])
         $scope.event.organizer = $scope._user.email;
       });
 
+      $scope.$watch('_user.username', function () {
+        $scope.event.organizerId = $scope._user.username;
+      });
+
       // Continuously translate natural language date to JS Date
       $scope.$watch('event.beginDate', function (newValue) {
         if (newValue) {
