@@ -386,8 +386,8 @@ angular.module('myApp.controllers', [])
       authService.verify();
     }
   ])
-  .controller('confirmController', ['$scope', '$routeParams', '$http', 'eventService', 'config',
-    function ($scope, $routeParams, $http, eventService, config) {
+  .controller('confirmController', ['$scope', '$routeParams', '$http', 'eventService', 'tokenService', 'config',
+    function ($scope, $routeParams, $http, eventService, tokenService, config) {
       var token = $routeParams.token;
       var eventId = $routeParams.eventId;
       var confirmNo = $routeParams.confirmation === 'no';
@@ -417,20 +417,28 @@ angular.module('myApp.controllers', [])
         delete $scope.isConfirmSuccessfull;
       };
 
-      // Get event
-      eventService().get({
-        id: eventId
-      }, function (event) {
-        event.mentorRequests.forEach(function (request) {
-          if (request.token === token) {
-            $scope.isValid = true;
-            $scope.event = event;
-          }
+      // verify token
+      tokenService.verifyToken({
+        token: token,
+        eventId: eventId
+      }, function(resp) {
+        if (!resp.valid) {
+          return;
+        }
+
+        $scope.isValid = true;
+
+        // Get event
+        eventService().get({
+          id: eventId
+        }, function (event) {
+          $scope.event = event;
+        }, function (err) {
+          console.log(err);
         });
       }, function (err) {
         console.log(err);
       });
-
     }
   ])
   .controller('tagListController', ['$scope', '$routeParams', 'eventService',

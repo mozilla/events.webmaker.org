@@ -63,6 +63,18 @@ angular.module('myApp.services', ['ngResource'])
       };
     }
   ])
+  .factory('tokenService',['$rootScope', '$resource', 'config',
+    function ($rootScope, $resource, config) {
+      return $resource(config.eventsLocation + '/verify/token/:token', {
+        eventId: '@eventId'
+      }, {
+        verifyToken: {
+          method: 'GET',
+          withCredentials: true
+        }
+      });
+    }
+  ])
   .factory('rsvpService', ['$resource', 'config',
     function ($resource, config) {
       return $resource(config.eventsLocation + '/rsvp', {
