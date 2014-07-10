@@ -411,6 +411,10 @@
     "message": "We're in the process of getting gear ready for Maker Party 2014. Check back soon!",
     "description": "Gear orders are not available now"
   },
+  "_eg_placeorder_": {
+    "message": "Ordering stickers and other materials is part of planning a great event.  Visit our <a href=\"http://party.webmaker.org/resources/planning-your-event#Gear\">Maker Party event guides</a> to find out how.",
+    "description": "Place order"
+  },
   "_eg_sharemake_": {
     "message": "Share what you make",
     "description": "Share what you make"
