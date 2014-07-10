@@ -1,6 +1,6 @@
 {
   "name": "webmaker-events",
-  "version": "0.7.1",
+  "version": "0.7.3",
   "ignore": [
     "**/.*",
     "node_modules",
