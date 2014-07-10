@@ -393,7 +393,7 @@ angular.module('myApp.controllers', [])
       var confirmNo = $routeParams.confirmation === 'no';
 
       $scope.event = {};
-      $scope.isValid = false;
+      $scope.isValid = true;
       $scope.confirmNo = confirmNo;
 
       $scope.sendConfirmation = function (confirmation) {
@@ -418,27 +418,34 @@ angular.module('myApp.controllers', [])
       };
 
       // verify token
-      tokenService.verifyToken({
-        token: token,
-        eventId: eventId
-      }, function(resp) {
-        if (!resp.valid) {
-          return;
-        }
+      function verifyToken() {
+        tokenService.verifyToken({
+          token: token,
+          eventId: eventId
+        }, function(resp) {
+          if (!resp.valid) {
+            $scope.isValid = false;
+            return;
+          }
 
-        $scope.isValid = true;
-
-        // Get event
-        eventService().get({
-          id: eventId
-        }, function (event) {
-          $scope.event = event;
+          // Get event
+          eventService().get({
+            id: eventId
+          }, function (event) {
+            $scope.event = event;
+          }, function (err) {
+            console.log(err);
+          });
         }, function (err) {
           console.log(err);
         });
-      }, function (err) {
-        console.log(err);
-      });
+      }
+
+      // if the user logs in, try to verify the token
+      $scope.$watch('_user.email', verifyToken );
+
+      // try to verify the token right away
+      verifyToken();
     }
   ])
   .controller('tagListController', ['$scope', '$routeParams', 'eventService',
