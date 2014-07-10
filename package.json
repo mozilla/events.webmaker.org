@@ -1,6 +1,6 @@
 {
   "name": "webmaker-events",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "Front end for Webmaker events",
   "main": "app/js/app.js",
   "scripts": {
