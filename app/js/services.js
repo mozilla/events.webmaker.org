@@ -75,18 +75,17 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
-  .factory('rsvpService', ['$resource', 'config',
+  .factory('attendeeService', ['$resource', 'config',
     function ($resource, config) {
-      return $resource(config.eventsLocation + '/rsvp', {
+      return $resource(config.eventsLocation + '/attendee', {
         userid: '@userid',
+        email: '@email',
         eventid: '@eventid',
+        checkin: '@checkin',
+        rsvp: '@rsvp'
       }, {
         save: {
           method: 'POST',
-          withCredentials: true
-        },
-        'delete': {
-          method: 'DELETE',
           withCredentials: true
         }
       });
@@ -94,7 +93,18 @@ angular.module('myApp.services', ['ngResource'])
   ])
   .factory('attendeeInfoService', ['$resource', 'config',
     function ($resource, config) {
-      return $resource(config.eventsLocation + '/rsvp/user/:userid', {}, {
+      return $resource(config.eventsLocation + '/attendee/user/:userid', {}, {
+        get: {
+          isArray: true,
+          method: 'GET',
+          withCredentials: true
+        }
+      });
+    }
+  ])
+  .factory('attendeeListService', ['$resource', 'config',
+    function ($resource, config) {
+      return $resource(config.eventsLocation + '/attendee/event/:eventid', {}, {
         get: {
           isArray: true,
           method: 'GET',
@@ -110,17 +120,6 @@ angular.module('myApp.services', ['ngResource'])
       }, {
         post: {
           method: 'POST'
-        }
-      });
-    }
-  ])
-  .factory('rsvpListService', ['$resource', 'config',
-    function ($resource, config) {
-      return $resource(config.eventsLocation + '/rsvp/event/:eventid', {}, {
-        get: {
-          isArray: true,
-          method: 'GET',
-          withCredentials: true
         }
       });
     }
@@ -186,6 +185,21 @@ angular.module('myApp.services', ['ngResource'])
       var moment = $window.moment;
       moment.lang(config.lang);
       return moment;
+    }
+  ])
+  .factory('dateIsToday', ['moment',
+    function (moment) {
+      return function (date) {
+        var todayMoment = moment();
+        var eventMoment = moment(date);
+
+        if (todayMoment.year() === eventMoment.year() &&
+            todayMoment.dayOfYear() === eventMoment.dayOfYear()) {
+          return true;
+        } else {
+          return false;
+        }
+      };
     }
   ])
   .factory('authService', ['$rootScope', 'config',

@@ -1,3 +1,9 @@
+<div class="check-in-banner" ng-if="eventIsToday && (_user.username === eventData.organizerId || _user.isAdmin)">
+  <div class="container">
+    <p><span>Today's the day!</span> <a class="btn btn-primary" href="#!/check-in/{{ eventID }}">Check in your attendees</a></p>
+  </div>
+</div>
+
 <div class="event-detail">
   <div class="multicolor-header color-{{ eventData.competencyID }}">
     <header class="container">
@@ -85,7 +91,7 @@
             </div>
           </div>
         </div>
-        <h2 class="page-header">{{ 'Details' | i18n }}</h3>
+        <h2 class="page-header">{{ 'Details' | i18n }}</h2>
         <p class="event-detail-description" ng-bind-html="eventData.description"></p>
       </div>
     </div>

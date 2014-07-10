@@ -41,9 +41,10 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('checkInController', ['$scope', '$rootScope', '$routeParams', 'eventService',
-    function ($scope, $rootScope, $routeParams, eventService) {
-      eventService.get({
+  .controller('checkInController', ['$scope', '$rootScope', '$routeParams', 'eventService', 'attendeeService', 'attendeeListService',
+    function ($scope, $rootScope, $routeParams, eventService, attendeeService, attendeeListService) {
+      // Get event data
+      eventService().get({
         id: $routeParams.id
       }, function (data) {
         $scope.eventData = data;
@@ -54,10 +55,78 @@ angular.module('myApp.controllers', [])
           document.location.hash = '#!/errors/404';
         }
       });
+
+      function getAttendees() {
+        attendeeListService.get({
+          eventid: $routeParams.id
+        }, function success (attendees) {
+          var rsvpdOrUnregistered = [];
+
+          attendees.forEach(function (attendee) {
+            if (attendee.didRSVP || attendee.email) {
+              rsvpdOrUnregistered.push(attendee);
+            }
+          });
+
+          $scope.attendees = rsvpdOrUnregistered.reverse();
+        }, function fail (error) {
+          console.error(error);
+        });
+      }
+
+      getAttendees();
+
+      /**
+       * Set checkin status to either true or false
+       * @param {object} With `userID` and/or `email` properties
+       * @param {boolean} status
+       */
+      $scope.setCheckinStatus = function (attendee, status) {
+        var options = {
+          eventid: $routeParams.id,
+          checkin: status
+        };
+
+        if (attendee.email) {
+          options.email = attendee.email;
+        } else if (attendee.userID) {
+          options.userid = attendee.userID;
+        } else {
+          console.error('Missing email or userid.');
+        }
+
+        attendeeService.save(options, function success () {
+          getAttendees();
+        }, function fail(error) {
+          alert(error);
+          console.error(error);
+        });
+      };
+
+      $scope.addParticipant = function (email) {
+        if ($scope.addParticipantForm.participantEmail.$invalid) {
+          $scope.triedToAddInvalidEmail = true;
+          return;
+        } else {
+          $scope.triedToAddInvalidEmail = false;
+        }
+
+        attendeeService.save({
+          email: email,
+          eventid: $routeParams.id,
+          checkin: true,
+          rsvp: false
+        }, function success () {
+          getAttendees();
+        }, function fail(error) {
+          alert(error);
+          console.error(error);
+        });
+      };
     }
   ])
-  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'rsvpListService',
-    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, usernameService, analytics, rsvpListService) {
+  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'chrono', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday',
+    function ($scope, $location, $rootScope, $routeParams, moment, chrono, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday) {
 
       $scope.event = {};
       $scope.eventID = $routeParams.id;
@@ -110,16 +179,10 @@ angular.module('myApp.controllers', [])
           }
 
           // Determine if today is the event day:
-          var todayMoment = moment();
-          var eventMoment = moment(data.beginDate);
-
-          if (todayMoment.year() === eventMoment.year() &&
-              todayMoment.dayOfYear() === eventMoment.dayOfYear()) {
-            $scope.eventIsToday = true;
-          }
+          $scope.eventIsToday = dateIsToday(data.beginDate);
 
           // Attendee list
-          rsvpListService.get({
+          attendeeListService.get({
             eventid: $routeParams.id
           }, function (data) {
             $scope.attendees = data;
@@ -262,12 +325,13 @@ angular.module('myApp.controllers', [])
   .controller('eventListController', ['$scope',
     function ($scope) {}
   ])
-  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config',
-    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config) {
+  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config', 'dateIsToday',
+    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config, dateIsToday) {
       eventService().get({
         id: $routeParams.id
       }, function (data) {
         $scope.webmakerUrl = config.webmakerUrl;
+        $scope.eventIsToday = dateIsToday(data.beginDate);
 
         data.description = $sanitize(data.description);
 
