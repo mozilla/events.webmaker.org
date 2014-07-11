@@ -117,6 +117,7 @@ angular.module('myApp.controllers', [])
           checkin: true,
           rsvp: false
         }, function success () {
+          $scope.unregisteredEmail = '';
           getAttendees();
         }, function fail(error) {
           alert(error);
