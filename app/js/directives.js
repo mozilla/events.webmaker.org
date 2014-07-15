@@ -165,10 +165,11 @@ angular.module('myApp.directives', [])
         eventId: '=',
         userId: '='
       },
-      controller: ['$rootScope', '$scope', '$element', 'attendeeService', 'attendeeInfoService',
-        function ($rootScope, $scope, $element, attendeeService, attendeeInfoService) {
+      controller: ['$rootScope', '$scope', '$element', 'attendeeService', 'attendeeInfoService', 'analytics',
+        function ($rootScope, $scope, $element, attendeeService, attendeeInfoService, analytics) {
           $scope.isRSVPd = false;
           $scope.errorHappened = false;
+          $scope.analytics = analytics;
 
           $scope.$watch('userId', function (value) {
             if (value) {
@@ -204,6 +205,11 @@ angular.module('myApp.directives', [])
             $scope.statusJustChanged = true;
             $scope.errorHappened = false;
 
+            function rsvpFail() {
+              analytics.event('RSVP change failed to persist.');
+              $scope.errorHappened = true;
+            }
+
             if (isAttending) {
               attendeeService.save({
                 userid: $scope.userId,
@@ -211,9 +217,7 @@ angular.module('myApp.directives', [])
                 rsvp: true
               }, function () {
                 $scope.$emit('rsvpChange');
-              }, function fail() {
-                $scope.errorHappened = true;
-              });
+              }, rsvpFail);
             } else {
               attendeeService.save({
                 userid: $scope.userId,
@@ -221,9 +225,7 @@ angular.module('myApp.directives', [])
                 rsvp: false
               }, function () {
                 $scope.$emit('rsvpChange');
-              }, function fail() {
-                $scope.errorHappened = true;
-              });
+              }, rsvpFail);
             }
 
             clearTimeout(messageTimer);

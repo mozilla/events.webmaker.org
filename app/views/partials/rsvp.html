@@ -1,4 +1,4 @@
-<button ng-hide="hasRSVPd && userId" ng-disabled="!userId" ng-click="rsvp(true)" class="btn btn-primary btn-lg">{{ '_RSVP_' | i18n }}</button>
+<button ng-hide="hasRSVPd && userId" ng-disabled="!userId" ng-click="rsvp(true); analytics.event('Attendee clicked to RSVP to Event');" class="btn btn-primary btn-lg">{{ '_RSVP_' | i18n }}</button>
 
 <div ng-if="!userId" class="alert alert-info">{{ '_youneedto_' | i18n }}
   <button class="link" ng-click="login()">{{ '_lowercaselogin_' | i18n }}</button> {{ '_beforeyoucan_' | i18n }}
@@ -12,15 +12,15 @@
 
   <div ng-show="confirmRSVP" class="prompt">
     <p>{{ '_areugoing_' | i18n }}</p>
-    <button ng-click="rsvp(true); confirmRSVP = false;">{{ '_Yes_' | i18n }}</button>
-    <button ng-click="rsvp(false); confirmRSVP = false;">{{ '_No_' | i18n }}</button>
+    <button ng-click="rsvp(true); confirmRSVP = false; analytics.event('Attendee clicked to change RSVP', {label: 'Yes'});">{{ '_Yes_' | i18n }}</button>
+    <button ng-click="rsvp(false); confirmRSVP = false; analytics.event('Attendee clicked to change RSVP', {label: 'No'});">{{ '_No_' | i18n }}</button>
   </div>
 
   <div ng-show="statusJustChanged && !confirmRSVP && isRSVPd" class="alert alert-info">{{ '_awesome_seeya_' | i18n }}</div>
   <div ng-show="statusJustChanged && !confirmRSVP && !isRSVPd" class="alert alert-info">{{ '_okay_thanks_' | i18n }}</div>
   <div ng-show="errorHappened" class="alert alert-danger">{{ '_rsvp_fail_' | i18n }}</div>
 
-  <div ng-show="hasRSVPd && !confirmRSVP" class="edit" ng-click="confirmRSVP = true">
+  <div ng-show="hasRSVPd && !confirmRSVP" class="edit" ng-click="confirmRSVP = true; analytics.event('Attendee clicked to edit RSVP');">
     <i class="fa fa-pencil"></i> <button class="link">{{ '_Edit_' | i18n }}</button> {{ '_your_RSVP_' | i18n }}
   </div>
 </div>
