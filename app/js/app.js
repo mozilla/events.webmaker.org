@@ -13,6 +13,11 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', '$locationProvider',
   function ($routeProvider, $locationProvider) {
+    // Prevent Angular from losing its mind
+    if (window.location.href !== decodeURI(window.location.href)) {
+      window.location.href = decodeURI(window.location.href);
+    }
+
     $locationProvider.hashPrefix('!');
 
     $routeProvider.when('/add', {
