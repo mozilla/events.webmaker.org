@@ -1,0 +1,6 @@
+<a wm-image-gallery-item class="wm-image-gallery-item" ng-repeat="photo in photos" target="_blank" href="https://www.flickr.com/photos/{{photo.owner}}/{{photo.id}}">
+  <img ng-src="{{photo.url}}" alt="{{photo.title}}">
+</a>
+
+<div wm-image-gallery-grid class="row wm-image-gallery-grid"></div>
+<p class="text-right">See more at <a href="https://www.flickr.com/search/?tags={{tags}}&sort=date-posted-desc">flickr.com</a></p>

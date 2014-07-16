@@ -309,6 +309,50 @@ angular.module('myApp.directives', [])
         }
       ]
     };
+  })
+  .directive('wmImageGallery', function () {
+    return {
+      restrict: 'A',
+      templateUrl: '/views/partials/image-gallery.html',
+      scope: {
+        cols: '@',
+        photos: '=',
+        tags: '@'
+      },
+      controller: ['$scope',
+        function ($scope) {
+          var self = this;
+          $scope.cols = parseInt($scope.cols, 10);
+          self.containers = [];
+          self.addItem = function (element, index) {
+            var col = index % $scope.cols;
+            if (!self.containers[col]) {
+              return;
+            }
+            self.containers[col].appendChild(element[0]);
+          };
+        }
+      ],
+      link: function (scope, el, attrs, ctrl) {
+        ctrl.containers = [];
+        var containerEl;
+        for (var i = 0; i < scope.cols; i++) {
+          containerEl = document.createElement('div');
+          containerEl.className = 'wm-image-gallery-column col-sm-' + (12 / scope.cols);
+          el.find('.wm-image-gallery-grid').append(containerEl);
+          ctrl.containers.push(containerEl);
+        }
+      }
+    };
+  })
+  .directive('wmImageGalleryItem', function () {
+    return {
+      restrict: 'A',
+      require: '^wmImageGallery',
+      link: function (scope, el, attrs, ctrl) {
+        ctrl.addItem(el, scope.$index);
+      }
+    };
   });
 
 // Override datepicker

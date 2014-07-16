@@ -78,7 +78,7 @@
 
       </div>
 
-      <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-1">
         <div ng-if="eventData.mentors.length">
           <h2 class="page-header">{{ 'Mentors' | i18n }}</h2>
           <div ng-repeat="mentorGroup in eventData.mentorsIn4" class="row">
@@ -90,6 +90,15 @@
               </a>
             </div>
           </div>
+        </div>
+        <div ng-if="isEventOver">
+          <h2 ng-if="photos" class="page-header text-muted">This event is over. Here's what happened!</h2>
+          <div ng-if="photos" wm-image-gallery photos="photos" cols="3" tags="{{flickrTags}}"></div>
+
+          <h2 ng-if="galleryTags" class="page-header">Things we made</h2>
+          <div make-gallery class="row"
+            container-class="col-md-6 col-lg-4"
+            ng-if="galleryTags" tags="galleryTags" limit="6"></div>
         </div>
         <h2 class="page-header">{{ 'Details' | i18n }}</h2>
         <p class="event-detail-description" ng-bind-html="eventData.description"></p>

@@ -324,6 +324,30 @@
       </div>
     </div>
 
+    <div id="after-event" class="add-double-bottom-margin">
+      <header class="page-header">
+        <h3>After an event</h3>
+      </header>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="flickr-tag">Flickr photo gallery</label>
+          <div class="input-group input-group-seamless">
+             <span class="input-group-addon"><span class="fa fa-flickr"></span></span>
+             <input name="flickr-tag" ng-model="event.flickrTag" class="form-control" type="text" placeholder="Enter your Flickr gallery tag">
+          </div>
+          <p class="help-block">After your event is over you can show a Flickr gallery of photos from your event on your page. Just create a tag on Flickr and enter it here.</p>
+        </div>
+        <div class="col-sm-6">
+          <label for="make-api-tag">Webmaker Makes</label>
+          <div class="input-group input-group-seamless">
+            <input name="make-api-tag" ng-model="event.makeApiTag" type="text" class="form-control" placeholder="Enter your event-specific Webmaker tag">
+            <span class="input-group-addon"><span class="fa fa-tag"></span></span>
+          </div>
+          <p class="help-block">Show what people have made at your event. Pick a tag that other people aren't likely to have such as <strong>Cassie's-baby-maker-event</strong></p>
+        </div>
+      </div>
+    </div>
+
     <!-- Submit Button -->
     <div class="form-group">
       <button ng-if="isAdd" ng-disabled="eventSaveInProgress" ng-click="addEvent()" class="btn btn-lg btn-primary btn-mobile-block" type="button">
