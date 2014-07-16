@@ -329,6 +329,7 @@
       <button ng-if="isUpdate" ng-disabled="eventSaveInProgress" ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block" type="button">
         {{ '_save_changes_' | i18n }}
       </button>
+      <span ng-show="eventSaveInProgress" class="save-spinner"><i class="fa fa-refresh fa-spin fa-3x"></i></span>
     </div>
 
   </form>
