@@ -323,12 +323,12 @@
 
     <!-- Submit Button -->
     <div class="form-group">
-      <a ng-if="isAdd" href="#" ng-click="addEvent()" class="btn btn-lg btn-primary btn-mobile-block">
+      <button ng-if="isAdd" ng-disabled="eventSaveInProgress" ng-click="addEvent()" class="btn btn-lg btn-primary btn-mobile-block" type="button">
         {{ '_add_events_' | i18n }}
-      </a>
-      <a ng-if="isUpdate" href="#" ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block ">
+      </button>
+      <button ng-if="isUpdate" ng-disabled="eventSaveInProgress" ng-click="saveChanges()" class="btn btn-lg btn-primary btn-mobile-block" type="button">
         {{ '_save_changes_' | i18n }}
-      </a>
+      </button>
     </div>
 
   </form>

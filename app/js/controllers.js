@@ -311,6 +311,7 @@ angular.module('myApp.controllers', [])
       });
 
       $scope.addEvent = function () {
+        $scope.eventSaveInProgress = true;
         $scope.attemptedToSubmit = true;
 
         var eventData = eventFormatter($scope.addEventForm, $scope.event);
@@ -323,21 +324,25 @@ angular.module('myApp.controllers', [])
 
         if (eventData) {
           eventService().save(eventData, function (data) {
+            $scope.eventSaveInProgress = false;
+
             // Switch to detail view on successful creation
             $location.path('/events/' + data.id);
 
             analytics.event('Add Event');
           }, function (err) {
+            $scope.eventSaveInProgress = false;
             // TODO : Show error to user
             console.error('addEvent save error: ' + err.data);
           });
         } else {
+          $scope.eventSaveInProgress = false;
           console.warn('Form is invalid.');
         }
       };
 
       $scope.saveChanges = function () {
-
+        $scope.eventSaveInProgress = true;
         $scope.attemptedToSubmit = true;
 
         var eventData = eventFormatter($scope.addEventForm, $scope.event);
@@ -346,10 +351,14 @@ angular.module('myApp.controllers', [])
           eventService().update({
             id: $routeParams.id
           }, eventData, function (data) {
+            $scope.eventSaveInProgress = false;
             $location.path('/events/' + $routeParams.id);
           }, function (err) {
+            $scope.eventSaveInProgress = false;
             console.error(err);
           });
+        } else {
+          $scope.eventSaveInProgress = false;
         }
 
       };
