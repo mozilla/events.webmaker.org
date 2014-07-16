@@ -20,27 +20,27 @@ angular.module('myApp.controllers', [])
   ])
   .controller('DatepickerCtrl', ['$scope', '$timeout',
     function ($scope, $timeout) {
-      $scope.today = function() {
-          $scope.event.beginDate = new Date();
-        };
-        $scope.today();
+      $scope.today = function () {
+        $scope.event.beginDate = new Date();
+      };
+      $scope.today();
 
-        $scope.clear = function () {
-          $scope.event.beginDate = null;
-        };
+      $scope.clear = function () {
+        $scope.event.beginDate = null;
+      };
 
-        $scope.open = function() {
-          $timeout(function() {
-            $scope.opened = true;
-          });
-        };
+      $scope.open = function () {
+        $timeout(function () {
+          $scope.opened = true;
+        });
+      };
 
-        $scope.dateOptions = {
-          'year-format': "'yy'",
-          'starting-day': 1,
-          'show-weeks': false
-        };
-      }
+      $scope.dateOptions = {
+        'year-format': '\'yy\'',
+        'starting-day': 1,
+        'show-weeks': false
+      };
+    }
   ])
   .controller('userController', ['$scope', '$rootScope', '$routeParams', 'eventService',
     function ($scope, $rootScope, $routeParams, eventService) {
@@ -88,7 +88,7 @@ angular.module('myApp.controllers', [])
       function getAttendees() {
         attendeeListService.get({
           eventid: $routeParams.id
-        }, function success (attendees) {
+        }, function success(attendees) {
           var rsvpdOrUnregistered = [];
 
           attendees.forEach(function (attendee) {
@@ -98,7 +98,7 @@ angular.module('myApp.controllers', [])
           });
 
           $scope.attendees = rsvpdOrUnregistered.reverse();
-        }, function fail (error) {
+        }, function fail(error) {
           console.error(error);
         });
       }
@@ -124,10 +124,9 @@ angular.module('myApp.controllers', [])
           console.error('Missing email or userid.');
         }
 
-        attendeeService.save(options, function success () {
+        attendeeService.save(options, function success() {
           getAttendees();
         }, function fail(error) {
-          alert(error);
           console.error(error);
         });
       };
@@ -145,11 +144,10 @@ angular.module('myApp.controllers', [])
           eventid: $routeParams.id,
           checkin: true,
           rsvp: false
-        }, function success () {
+        }, function success() {
           $scope.unregisteredEmail = '';
           getAttendees();
         }, function fail(error) {
-          alert(error);
           console.error(error);
         });
       };
@@ -283,23 +281,23 @@ angular.module('myApp.controllers', [])
       });
 
       $scope.$watch('event.beginDate', function (newValue, oldValue) {
-        if(oldValue < newValue || oldValue > newValue) {
+        if (oldValue < newValue || oldValue > newValue) {
           $scope.event.beginDate = new Date(newValue);
         }
       });
 
       $scope.beginTimeObj = {};
       $scope.$watch('event.beginTime', function (newValue, oldValue) {
-        if($scope.addEventForm.beginTime.$invalid) {
+        if ($scope.addEventForm.beginTime.$invalid) {
           return;
         }
-        if(oldValue < newValue || oldValue > newValue) {
+        if (oldValue < newValue || oldValue > newValue) {
           var newMoment = moment(newValue);
           $scope.beginTimeObj.hour = newMoment.get('hour');
           $scope.beginTimeObj.minutes = newMoment.get('minutes');
           $scope.event.beginDate = moment($scope.event.beginDate)
-                                      .set('hour', $scope.beginTimeObj.hour)
-                                      .set('minutes', $scope.beginTimeObj.minutes).format();
+            .set('hour', $scope.beginTimeObj.hour)
+            .set('minutes', $scope.beginTimeObj.minutes).format();
         }
       });
 
@@ -539,7 +537,7 @@ angular.module('myApp.controllers', [])
       tokenService.verifyToken({
         token: token,
         eventId: eventId
-      }, function(resp) {
+      }, function (resp) {
         if (!resp.valid) {
           return;
         }

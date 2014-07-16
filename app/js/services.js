@@ -62,7 +62,7 @@ angular.module('myApp.services', ['ngResource'])
       };
     }
   ])
-  .factory('tokenService',['$rootScope', '$resource', 'config',
+  .factory('tokenService', ['$rootScope', '$resource', 'config',
     function ($rootScope, $resource, config) {
       return $resource(config.eventsLocation + '/verify/token/:token', {
         eventId: '@eventId'
@@ -188,7 +188,7 @@ angular.module('myApp.services', ['ngResource'])
         var eventMoment = moment(date);
 
         if (todayMoment.year() === eventMoment.year() &&
-            todayMoment.dayOfYear() === eventMoment.dayOfYear()) {
+          todayMoment.dayOfYear() === eventMoment.dayOfYear()) {
           return true;
         } else {
           return false;

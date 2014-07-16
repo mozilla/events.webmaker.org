@@ -4,8 +4,9 @@
   "description": "Front end for Webmaker events",
   "main": "app/js/app.js",
   "scripts": {
+    "download-locales": "webmaker-download-locales events",
     "postinstall": "bower install; grunt build",
-    "download-locales": "webmaker-download-locales events"
+    "test": "grunt validate"
   },
   "keywords": [],
   "author": "author",
