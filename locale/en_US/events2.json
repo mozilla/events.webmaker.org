@@ -576,7 +576,7 @@
     "description": "Single word: Events"
   },
   "_fetch_all_": {
-    "message": "Events CSV",
+    "message": "Download Events CSV",
     "decription": "Fetch all events data for admins"
   },
   "_i_am_not_sure_": {
