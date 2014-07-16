@@ -121,10 +121,16 @@ angular.module('myApp.directives', [])
         $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
 
         $scope.searchEvents = function (term) {
-          var url = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
+          var url = config.eventsLocation + '/events';
+
+          if (!$scope.includePast) {
+            url += '?after=' + (new Date()).toISOString() + '&';
+          } else {
+            url += '?';
+          }
 
           if (term) {
-            url += '&search=' + term;
+            url += 'search=' + term;
             $scope.searchActive = true;
           } else {
             $scope.searchActive = false;

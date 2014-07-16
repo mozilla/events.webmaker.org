@@ -13,12 +13,19 @@
       </div>
 
       <div class="col-sm-4 search-block">
-        <div class="col-xs-10 no-padding">
-          <label for="event-filter" class="sr-only">{{ '_find_event_' | i18n }}</label>
-          <input ng-enter="searchEvents(searchPhrase)" id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="searchPhrase" type="text" class="form-control">
+        <div class="clearfix">
+          <div class="col-xs-10 no-padding">
+            <label for="event-filter" class="sr-only">{{ '_find_event_' | i18n }}</label>
+            <input ng-enter="searchEvents(searchPhrase)" id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="searchPhrase" type="text" class="form-control">
+          </div>
+          <div class="col-xs-2 no-padding">
+            <button ng-click="searchEvents(searchPhrase)" class="btn btn-info"><i class="fa fa-search"></i></button>
+          </div>
         </div>
-        <div class="col-xs-2 no-padding">
-          <button ng-click="searchEvents(searchPhrase)" class="btn btn-info"><i class="fa fa-search"></i></button>
+        <div class="checkbox checkbox-right">
+          <label>
+            <input ng-model="includePast" type="checkbox"> {{ '_include_past_' | i18n }}
+          </label>
         </div>
       </div>
     </div>
