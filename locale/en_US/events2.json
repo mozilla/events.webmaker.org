@@ -850,5 +850,9 @@
   "_check_in_yr_attendees_": {
     "message": "Check in your attendees",
     "description": "Event Detail: Button text for attendee check in."
+  },
+  "_explain_dates_": {
+    "message": "Start date and time should match the time zone of the event's location.",
+    "description": "Create Event View: Explain time zone"
   }
 }
