@@ -30,8 +30,7 @@ angular.module('myApp.services', ['ngResource'])
     function ($rootScope, $resource, config) {
       return function (customHeaders) {
         return $resource(config.eventsLocation + '/events/:id', {
-          organizerId: '@organizerId',
-          userId: '@userId',
+          username: '@username',
           after: '@after',
           dedupe: '@dedupe',
           tag: '@tag'

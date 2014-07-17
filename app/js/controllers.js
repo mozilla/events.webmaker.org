@@ -48,11 +48,10 @@ angular.module('myApp.controllers', [])
 
       $scope.canEdit = eventEditableService.canEdit;
       $scope.isMentor = eventEditableService.isMentor;
+      $scope.isCoorganizer = eventEditableService.isCoorganizer;
 
       eventService().query({
-        organizerId: $scope.username
-        // TODO: Put this back in once service is fixed
-        // userId: $rootScope._user.id
+        username: $scope.username
       }, function (data) {
         $scope.events = data;
       });
