@@ -47,6 +47,10 @@
     "message": "Closest",
     "description": "Button in list page act as filter"
   },
+  "_close_to_": {
+    "message": "Close to",
+    "description": "Button in list page, filters for events close to a given location"
+  },
   "_search_events_": {
     "message": "Search Events",
     "description": "Placeholder with Search Events text"
@@ -178,6 +182,10 @@
   "_enter_an_address_": {
     "message": "Enter an address",
     "description": "Placeholder for entering address for the event"
+  },
+  "_enter_a_location_": {
+    "message": "Enter a location",
+    "description": "Placeholder for entering a location for searching"
   },
   "_start_date_": {
     "message": "Start Date",

@@ -46,6 +46,10 @@ angular.module('myApp.directives', [])
             autocomplete.addListener('place_changed', function () {
               var placeData = autocomplete.getPlace();
 
+              if ( !placeData.address_components ) {
+                return;
+              }
+
               var city;
               var country;
 
@@ -120,13 +124,23 @@ angular.module('myApp.directives', [])
         $scope.sortName = 'date';
         $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
 
-        $scope.searchEvents = function (term) {
+        function getUrl() {
           var url = config.eventsLocation + '/events';
 
           if (!$scope.includePast) {
             url += '?after=' + (new Date()).toISOString() + '&';
           } else {
             url += '?';
+          }
+
+          return url;
+        }
+
+        $scope.searchEvents = function (term) {
+          var url = getUrl();
+
+          if ( $scope.locationSearch ) {
+            url += "lng=" + $scope.locationSearch.lng + "&lat=" + $scope.locationSearch.lat + "&radius=500&";
           }
 
           if (term) {
@@ -139,6 +153,16 @@ angular.module('myApp.directives', [])
 
           $scope.serviceURL = url;
         };
+
+        $scope.$on('locationAutocompleted', function (event, data) {
+          $scope.locationSearch = {
+            lng: data.longitude,
+            lat: data.latitude
+          };
+          var url = getUrl() + "lng=" + data.longitude + "&lat=" + data.latitude + "&radius=500&";
+          $scope.searchActive = true;
+          $scope.serviceURL = url;
+        });
       }
     };
   })
