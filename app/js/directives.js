@@ -176,6 +176,8 @@ angular.module('myApp.directives', [])
           $scope.isRSVPd = false;
           $scope.errorHappened = false;
           $scope.analytics = analytics;
+          $scope.privacyErrorHappened = false;
+          $scope.isPublic = false;
 
           $scope.$watch('userId', function (value) {
             if (value) {
@@ -195,6 +197,10 @@ angular.module('myApp.directives', [])
                   $scope.isRSVPd = currentEventInfo.didRSVP;
                   $scope.hasRSVPd = true;
                 }
+
+                if (currentEventInfo && typeof currentEventInfo.isPrivate === 'boolean') {
+                  $scope.isPublic = !currentEventInfo.isPrivate;
+                }
               }, function fail() {
                 console.error('Failed to fetch attendance data for user ' + $scope.userId);
               });
@@ -204,6 +210,29 @@ angular.module('myApp.directives', [])
           var messageTimer;
 
           $scope.login = $rootScope.login;
+
+          $scope.setPrivacy = function () {
+            $scope.privacyStatusJustChanged = true;
+            $scope.privacyErrorHappened = false;
+
+            attendeeService.save({
+              userid: $scope.userId,
+              eventid: $scope.eventId,
+              isPrivate: !$scope.isPublic
+            }, function success() {
+              $scope.$emit('privateChange');
+            }, function fail() {
+              analytics.event('Privacy change failed to persist.');
+              $scope.privacyErrorHappened = true;
+            });
+
+            clearTimeout(messageTimer);
+
+            messageTimer = setTimeout(function () {
+              $scope.privacyStatusJustChanged = false;
+              $scope.$apply();
+            }, 2000);
+          };
 
           $scope.rsvp = function (isAttending) {
             $scope.isRSVPd = isAttending;
@@ -264,7 +293,7 @@ angular.module('myApp.directives', [])
 
               // Filter out people who aren't coming
               data.forEach(function (attendee, index) {
-                if (attendee.didRSVP) {
+                if (attendee.didRSVP && !attendee.isPrivate) {
                   rsvpdYes.push(attendee);
                 }
               });
@@ -286,6 +315,12 @@ angular.module('myApp.directives', [])
           $scope.$on('rsvpChanged', function (event, data) {
             buildRSVPList();
           });
+
+          // Update RSVP list to hide private users
+          $scope.$on('privateChanged', function (event, data) {
+            buildRSVPList();
+          });
+
         }
       ],
       restrict: 'E',

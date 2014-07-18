@@ -20,7 +20,17 @@
   <div ng-show="statusJustChanged && !confirmRSVP && !isRSVPd" class="alert alert-info">{{ '_okay_thanks_' | i18n }}</div>
   <div ng-show="errorHappened" class="alert alert-danger">{{ '_rsvp_fail_' | i18n }}</div>
 
+  <div ng-show="privacyStatusJustChanged && isPublic" class="alert alert-info">{{ '_willbeshown_' | i18n }}</div>
+  <div ng-show="privacyStatusJustChanged && !isPublic" class="alert alert-info">{{ '_willnotbeshown_' | i18n }}</div>
+  <div ng-show="privacyErrorHappened" class="alert alert-danger">{{ '_privacy_fail_' | i18n }}</div>
+
   <div ng-show="hasRSVPd && !confirmRSVP" class="edit" ng-click="confirmRSVP = true; analytics.event('Attendee clicked to edit RSVP');">
     <i class="fa fa-pencil"></i> <button class="link">{{ '_Edit_' | i18n }}</button> {{ '_your_RSVP_' | i18n }}
+  </div>
+
+  <div class="checkbox" ng-show="isRSVPd">
+    <label>
+      <input type="checkbox" ng-model="isPublic" ng-change="setPrivacy()" /> {{ '_make_rsvp_public_' | i18n }}
+    </label>
   </div>
 </div>

@@ -446,6 +446,10 @@ angular.module('myApp.controllers', [])
           $scope.$broadcast('rsvpChanged', data);
         });
 
+        $scope.$on('privateChange', function (event, data) {
+          $scope.$broadcast('privateChanged', data);
+        });
+
       }, function (err) {
         console.error(err);
 
