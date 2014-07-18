@@ -70,8 +70,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('checkInController', ['$scope', '$rootScope', '$routeParams', 'eventService', 'attendeeService', 'attendeeListService',
-    function ($scope, $rootScope, $routeParams, eventService, attendeeService, attendeeListService) {
+  .controller('checkInController', ['$scope', '$rootScope', '$routeParams', 'eventService', 'attendeeService', 'attendeeListService', 'analytics',
+    function ($scope, $rootScope, $routeParams, eventService, attendeeService, attendeeListService, analytics) {
       // Get event data
       eventService().get({
         id: $routeParams.id
@@ -126,8 +126,19 @@ angular.module('myApp.controllers', [])
 
         attendeeService.save(options, function success() {
           getAttendees();
+
+          if (status) {
+            analytics.event('Event creator changed check in status of attendee', {
+              label: 'Yes'
+            });
+          } else {
+            analytics.event('Event creator changed check in status of attendee', {
+              label: 'No'
+            });
+          }
         }, function fail(error) {
           console.error(error);
+          analytics.event('Check in of attendee failed');
         });
       };
 
@@ -147,8 +158,10 @@ angular.module('myApp.controllers', [])
         }, function success() {
           $scope.unregisteredEmail = '';
           getAttendees();
+          analytics.event('Event creator checked in unregistered attendee');
         }, function fail(error) {
           console.error(error);
+          analytics.event('Check in of unregistered attendee failed');
         });
       };
     }
