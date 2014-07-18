@@ -6,7 +6,7 @@ module.exports = function(options) {
       'Content-Security-Policy'
     ],
     policy: {
-      'connect-src': ["'self'", options.eventsLocation],
+      'connect-src': ["'self'", options.eventsLocation, "https://makeapi.webmaker.org"],
       'default-src': ["'self'"],
       'img-src': ["*"],
       'script-src': ["'self'", "'unsafe-eval'", "https://maps.googleapis.com", "https://maps.gstatic.com", "https://login.persona.org", "https://ssl.google-analytics.com"],

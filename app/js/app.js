@@ -4,6 +4,7 @@ angular.module('myApp', [
   'ngAnimate',
   'ngSanitize',
   'ui.bootstrap',
+  'wmMakeApiAngular',
   'localization',
   'begriffs.paginate-anything',
   'myApp.filters',

@@ -185,6 +185,8 @@ angular.module('myApp.controllers', [])
           $scope.event.coorganizers = data.coorganizers || [];
           $scope.event.areAttendeesPublic = data.areAttendeesPublic || false;
           $scope.event.isEmailPublic = data.isEmailPublic || false;
+          $scope.event.makeApiTag = data.makeApiTag;
+          $scope.event.flickrTag = data.flickrTag;
 
           // TEMP : Need to convert back from city/country/lat/long/whatever
           $scope.event.address = data.address;
@@ -382,6 +384,9 @@ angular.module('myApp.controllers', [])
       eventService().get({
         id: $routeParams.id
       }, function (data) {
+
+        $scope.isEventOver = moment().diff(moment(data.beginDate)) > 0;
+
         $scope.webmakerUrl = config.webmakerUrl;
         $scope.eventIsToday = dateIsToday(data.beginDate);
 
@@ -390,6 +395,19 @@ angular.module('myApp.controllers', [])
         $scope.eventData = data;
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
+
+        //Gallery
+        $scope.galleryTags = data.makeApiTag && data.makeApiTag.split(',');
+        $scope.flickrTags = data.flickrTag && data.flickrTag.split(',').join('+');
+        if (data.flickrTag) {
+          $http({
+            method: 'GET',
+            url: config.eventsLocation + '/events/' + data.id + '/flickr?limit=9',
+            withCredentials: true
+          }).success(function (photos) {
+            $scope.photos = photos;
+          });
+        }
 
         // Split up mentors into 4 so we can do proper rows
         $scope.eventData.mentorsIn4 = [];
