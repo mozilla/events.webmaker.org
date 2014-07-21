@@ -188,7 +188,7 @@ angular.module('myApp.controllers', [])
           // Update all the values in the form with values from DB:
           $scope.event.title = data.title;
           $scope.event.description = data.description;
-          $scope.event.attendees = data.attendees || 5;
+          $scope.event.estimatedAttendees = data.estimatedAttendees || 5;
           $scope.event.organizer = data.organizer;
           $scope.event.organizerId = data.organizerId;
           $scope.event.ageGroup = data.ageGroup || '';
@@ -250,7 +250,7 @@ angular.module('myApp.controllers', [])
         $scope.event.mentors = [];
 
         // Set default values for form
-        $scope.event.attendees = 5; // Under 10 by default
+        $scope.event.estimatedAttendees = 5; // Under 10 by default
         $scope.event.duration = 1; // 1 hour default
 
         // $scope.attemptedToSubmit = false;
