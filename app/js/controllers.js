@@ -63,8 +63,9 @@ angular.module('myApp.controllers', [])
       };
 
       eventService().query({
-        organizerId: $scope.username,
-        userId: $rootScope._user.id
+        organizerId: $scope.username
+        // TODO: Put this back in once service is fixed
+        // userId: $rootScope._user.id
       }, function (data) {
         $scope.events = data;
       });
