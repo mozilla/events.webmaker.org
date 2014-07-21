@@ -854,5 +854,9 @@
   "_explain_dates_": {
     "message": "Start date and time should match the time zone of the event's location.",
     "description": "Create Event View: Explain time zone"
+  },
+  "_view_event_": {
+    "message": "Click here to view the event",
+    "description": "failed mentor request: click through to view the event"
   }
 }

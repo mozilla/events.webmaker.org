@@ -542,6 +542,7 @@ angular.module('myApp.controllers', [])
       $scope.event = {};
       $scope.isValid = false;
       $scope.confirmNo = confirmNo;
+      $scope.eventUrl = window.location.origin + '/#!/events/' + eventId;
 
       $scope.sendConfirmation = function (confirmation) {
         $http({
