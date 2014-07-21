@@ -73,7 +73,7 @@
         <we-rsvp-list show-header="true" attendees-to-show="10" class="add-bottom-margin" ng-if="eventData.areAttendeesPublic"></we-rsvp-list>
 
         <div class="label-group">
-          <a ng-repeat="tag in eventData.tags" href="#!/events/tag/{{ tag }}"><span class="label label-info">{{ tag }}</span></a>
+          <a ng-repeat="tag in eventData.tags" href="#!/events/tag/{{ tag | uriEncode }}"><span class="label label-info">{{ tag }}</span></a>
         </div>
 
       </div>
