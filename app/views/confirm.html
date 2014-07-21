@@ -1,6 +1,6 @@
 <div class="container">
   <div ng-hide="isValid" class="alert alert-info">
-    {{ 'valid_token_error' | i18n }}
+    {{ 'valid_token_error' | i18n }} <a href="{{eventUrl}}" class="event-title">{{ '_view_event_' | i18n }}</a>
   </div>
   <div ng-hide="_user.username" class="alert alert-info"
     bind-unsafe-html="'please_login_confirm_mentor' | i18n">
