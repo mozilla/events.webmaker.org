@@ -858,5 +858,21 @@
   "_view_event_": {
     "message": "Click here to view the event",
     "description": "failed mentor request: click through to view the event"
+  },
+  "_make_rsvp_public_": {
+    "message": "Make RSVP Public",
+    "description": "Make RSVP Public"
+  },
+  "_willbeshown_": {
+    "message": "Ok, you will now be shown in the attendees list.",
+    "description": "Ok, you will now be shown in the attendees list."
+  },
+  "_willnotbeshown_": {
+    "message": "Ok, you will now not be shown in the attendees list.",
+    "description": "Ok, you will now not be shown in the attendees list."
+  },
+  "_privacy_fail_": {
+    "message": "The status update didn't go through. Try again later?",
+    "description": "Privacy error"
   }
 }

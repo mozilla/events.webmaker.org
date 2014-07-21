@@ -81,7 +81,8 @@ angular.module('myApp.services', ['ngResource'])
         email: '@email',
         eventid: '@eventid',
         checkin: '@checkin',
-        rsvp: '@rsvp'
+        rsvp: '@rsvp',
+        isPrivate: '@isPrivate'
       }, {
         save: {
           method: 'POST',
