@@ -177,7 +177,7 @@ angular.module('myApp.directives', [])
           $scope.errorHappened = false;
           $scope.analytics = analytics;
           $scope.privacyErrorHappened = false;
-          $scope.isPublic = false;
+          $scope.isPublic = true;
 
           $scope.$watch('userId', function (value) {
             if (value) {
