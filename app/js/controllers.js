@@ -340,6 +340,8 @@ angular.module('myApp.controllers', [])
           eventService().save(eventData, function (data) {
             $scope.eventSaveInProgress = false;
 
+            $rootScope.justCreatedAnEvent = true;
+
             // Switch to detail view on successful creation
             $location.path('/events/' + data.id);
 
@@ -398,7 +400,12 @@ angular.module('myApp.controllers', [])
       eventService().get({
         id: $routeParams.id
       }, function (data) {
+        if ($rootScope.justCreatedAnEvent === true) {
+          $scope.freshEvent = true;
+          $rootScope.justCreatedAnEvent = false;
+        }
 
+        $scope.eventURL = window.location.href;
         $scope.isEventOver = moment().diff(moment(data.beginDate)) > 0;
 
         $scope.webmakerUrl = config.webmakerUrl;
