@@ -1,7 +1,4 @@
-<div class="container">
-  <header class="page-header">
-    <h1>{{ '_upcoming_events_' | i18n }}</h1>
-  </header>
+<div class="container page-header">
 
   <we-listing class="event-list">
     <div class="row add-bottom-margin">
@@ -46,6 +43,11 @@
         </p>
       </div>
     </div>
+
+    <tabset>
+      <tab heading="{{ '_upcoming_events_' | i18n }}" select="changeEventList('upcomingEvents')"></tab>
+      <tab heading="Past Events" select="changeEventList('pastEvents')"></tab>
+    </tabset>
 
     <table class="table table-striped">
       <tr ng-repeat="event in eventsData">

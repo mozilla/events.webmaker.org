@@ -120,9 +120,15 @@ angular.module('myApp.directives', [])
     return {
       restrict: 'E',
       link: function ($scope, $element) {
+        $scope.changeEventList = function (type) {
+          if (type === 'upcomingEvents') {
+            $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
+          } else {
+            $scope.serviceURL = config.eventsLocation + '/events?before=' + (new Date()).toISOString();
+          }
+        };
         $scope.geoLocationEnabled = false; // TODO : Re-enable Geolocation via server-side sorting
         $scope.sortName = 'date';
-        $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
 
         function getUrl() {
           var url = config.eventsLocation + '/events';
@@ -433,6 +439,13 @@ angular.module('template/timepicker/timepicker.html', []).run(['$http', '$templa
   function ($http, $templateCache) {
     $http.get('views/partials/timepicker/timepicker.html').success(function (data) {
       $templateCache.put('template/timepicker/timepicker.html', data);
+    });
+  }
+]);
+angular.module('template/tabs/tabset.html', []).run(['$http', '$templateCache',
+  function ($http, $templateCache) {
+    $http.get('views/partials/tabs/tabset.html').success(function (data) {
+      $templateCache.put('template/tabs/tabset.html', data);
     });
   }
 ]);
