@@ -1,14 +1,50 @@
-<div class="check-in-banner" ng-if="eventIsToday && (_user.username === eventData.organizerId || _user.isAdmin)">
+<div class="check-in-banner highlighted" ng-if="eventIsToday && (_user.username === eventData.organizerId || _user.isAdmin)">
   <div class="container">
-    <p><span>Today's the day!</span> <a class="btn btn-primary" href="#!/check-in/{{ eventID }}">Check in your attendees</a></p>
+    <p class="larger"><span>{{ '_today_the_day_' | i18n }}</span> <a class="btn btn-primary" href="#!/check-in/{{ eventID }}">{{ '_check_yo_attendees_' | i18n }}</a></p>
+  </div>
+</div>
+
+<div class="check-in-banner" ng-if="_user.username === eventData.organizerId || _user.isAdmin">
+  <div class="container add-vertical-padding">
+    <div ng-show="freshEvent">
+      <div class="clearfix">
+        <button class="btn btn-primary pull-right" ng-click="freshEvent = false;"><i class="fa fa-times"></i></button>
+      </div>
+
+      <h1>{{ '_thx_for_adding_' | i18n }}</h1>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <p>{{ '_yo_event_url_' | i18n }}</p>
+          <div class="event-url"><i class="fa fa-link"></i> {{ eventURL }}</div>
+        </div>
+        <div class="col-sm-6">
+          <p>{{ '_tell_peeps_' | i18n }}</p>
+
+          <div class="icon-button-group">
+            <a href="https://twitter.com/intent/tweet?text={{ '_check_it_' | i18n | uriEncode }}%20%22{{ eventData.title | uriEncode }}%22&url={{ eventURL | uriEncode }}&via=webmaker&related=mozilla,webmaker" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.facebook.com/sharer.php?u={{ eventURL | uriEncode }}" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://plus.google.com/share?url={{ eventURL | uriEncode }}" target="_blank"><i class="fa fa-google-plus"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="!freshEvent" class="pull-right">
+      <div class="icon-button-group pull-left">
+        <a href="https://twitter.com/intent/tweet?text={{ '_check_it_' | i18n | uriEncode }}%20%22{{ eventData.title | uriEncode }}%22&url={{ eventURL | uriEncode }}&via=webmaker&related=mozilla,webmaker" target="_blank"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.facebook.com/sharer.php?u={{ eventURL | uriEncode }}" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a href="https://plus.google.com/share?url={{ eventURL | uriEncode }}" target="_blank"><i class="fa fa-google-plus"></i></a>
+      </div>
+
+      <a ng-show="_user.username === eventData.organizerId || _user.isAdmin || isCoorganizer()" class="btn btn-primary" href="#!/edit/{{ eventID }}"><span class="fa fa-pencil"></span> &nbsp;{{ '_edit_them_details_' | i18n }}</a>
+    </div>
   </div>
 </div>
 
 <div class="event-detail">
   <div class="multicolor-header color-{{ eventData.competencyID }}">
     <header class="container">
-      <a ng-show="_user.username === eventData.organizerId || _user.isAdmin || isCoorganizer()" class="btn btn-secondary" href="#!/edit/{{ eventID }}"><span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span>
-      </a>
       <h1>{{ eventData.title }}</h1>
     </header>
   </div>

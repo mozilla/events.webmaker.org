@@ -138,12 +138,52 @@
 
 .check-in-banner {
   color: @white;
-  font-size: 1.33em;
-  font-weight: 100;
   background: @lightnavy;
-  padding-top: 10px;
+
+  p.larger {
+    font-size: 1.33em;
+    font-weight: 100;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
 
   p span {
     margin-right: 10px;
+  }
+
+  &.highlighted {
+    padding-top: 10px;
+    background: @literacy-color-open-practices;
+  }
+
+  .event-url {
+    background: @brand-secondary;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+
+    i {
+      font-weight: 900;
+      color: @literacy-color-privacy;
+      transform: scaleX(-1);
+      margin-right: 0.5em;
+    }
+
+    @media (min-width: @screen-sm-min) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.icon-button-group {
+  a {
+    font-size: 2.2rem;
+    margin-right: 1em;
+    color: @white;
+
+    &:hover, &:focus {
+      opacity: 0.7;
+    }
   }
 }

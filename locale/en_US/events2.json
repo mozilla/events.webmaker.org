@@ -882,5 +882,33 @@
   "_privacy_fail_": {
     "message": "The status update didn't go through. Try again later?",
     "description": "Privacy error"
+  },
+  "_today_the_day_": {
+    "message": "Today's the day!",
+    "description": "Header"
+  },
+  "_check_yo_attendees_": {
+    "message": "Check in your attendees",
+    "description": "Button"
+  },
+  "_thx_for_adding_": {
+    "message": "Thanks for adding your event!",
+    "description": "Header"
+  },
+  "_yo_event_url_": {
+    "message": "Your event URL",
+    "description": "Header"
+  },
+  "_tell_peeps_": {
+    "message": "Tell people about it.",
+    "description": "Header"
+  },
+  "_check_it_": {
+    "message": "Check out this event!",
+    "description": "Call to action for Twitter"
+  },
+  "_edit_them_details_": {
+    "message": "Edit Event Details",
+    "description": "button"
   }
 }
