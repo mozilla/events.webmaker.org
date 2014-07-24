@@ -545,8 +545,8 @@ angular.module('myApp.controllers', [])
       authService.verify();
     }
   ])
-  .controller('confirmController', ['$scope', '$routeParams', '$http', 'eventService', 'tokenService', 'config',
-    function ($scope, $routeParams, $http, eventService, tokenService, config) {
+  .controller('confirmController', ['$scope', '$routeParams', '$http', 'eventService', 'tokenService', 'config', 'analytics',
+    function ($scope, $routeParams, $http, eventService, tokenService, config, analytics) {
       var token = $routeParams.token;
       var eventId = $routeParams.eventId;
       var confirmNo = $routeParams.confirmation === 'no';
@@ -557,6 +557,11 @@ angular.module('myApp.controllers', [])
       $scope.eventUrl = window.location.origin + '/#!/events/' + eventId;
 
       $scope.sendConfirmation = function (confirmation) {
+        if (confirmation) {
+          analytics.event('Event Mentor Confirmed by Email');
+        } else {
+          analytics.event('Event Mentor Declined by Email');
+        }
         $http({
           method: 'POST',
           url: config.eventsLocation + '/confirm/mentor/' + token,
