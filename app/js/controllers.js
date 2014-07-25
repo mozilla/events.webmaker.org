@@ -42,25 +42,12 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('userController', ['$scope', '$rootScope', '$routeParams', 'eventService',
-    function ($scope, $rootScope, $routeParams, eventService) {
+  .controller('userController', ['$scope', '$rootScope', '$routeParams', 'eventService', 'eventEditableService',
+    function ($scope, $rootScope, $routeParams, eventService, eventEditableService) {
       $scope.username = $routeParams.id;
 
-      $scope.isCoorganizer = function (event) {
-        return event.coorganizers.some(function (c) {
-          return c.userId === $rootScope._user.id;
-        });
-      };
-
-      $scope.isMentor = function (event) {
-        return event.mentors.some(function (m) {
-          return m.userId === $rootScope._user.id;
-        });
-      };
-
-      $scope.isOrganizer = function (event) {
-        return event.organizerId === $rootScope._user.username;
-      };
+      $scope.canEdit = eventEditableService.canEdit;
+      $scope.isMentor = eventEditableService.isMentor;
 
       eventService().query({
         organizerId: $scope.username
@@ -167,8 +154,8 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday',
-    function ($scope, $location, $rootScope, $routeParams, moment, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday) {
+  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday', 'eventEditableService',
+    function ($scope, $location, $rootScope, $routeParams, moment, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday, eventEditableService) {
 
       $scope.event = {};
       $scope.eventID = $routeParams.id;
@@ -393,13 +380,15 @@ angular.module('myApp.controllers', [])
           });
         }
       };
+
+      $scope.canEdit = eventEditableService.canEdit;
     }
   ])
   .controller('eventListController', ['$scope',
     function ($scope) {}
   ])
-  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config', 'dateIsToday',
-    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config, dateIsToday) {
+  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config', 'dateIsToday', 'eventEditableService',
+    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config, dateIsToday, eventEditableService) {
       eventService().get({
         id: $routeParams.id
       }, function (data) {
@@ -447,11 +436,7 @@ angular.module('myApp.controllers', [])
         // Right now random IDs are created as a hook for varying detail view header colors.
         $scope.eventData.competencyID = Math.floor(Math.random() * 16);
 
-        $scope.isCoorganizer = function () {
-          return $scope.eventData.coorganizers.some(function (c) {
-            return c.userId === $rootScope._user.id;
-          });
-        };
+        $scope.canEdit = eventEditableService.canEdit;
 
         $scope.$on('rsvpChange', function (event, data) {
           $scope.$broadcast('rsvpChanged', data);

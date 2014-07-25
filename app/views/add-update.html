@@ -7,9 +7,11 @@
   <div ng-if="isAdd" class="alert alert-info" ng-hide="_user.email" data-ng-click="login()" ng-bind-html="'_need_to_login_to_add_' | i18n "></div>
   <div ng-if="isUpdate" class="alert alert-info" ng-hide="_user.email" data-ng-click="login()" ng-bind-html="'_need_to_login_to_edit_' | i18n "></div>
 
+  <div class="alert alert-info" ng-hide="!_user.email || (event && canEdit(event))" ng-bind-html="'_not_authorized_to_edit_' | i18n "></div>
+
   <div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">{{ '_some_errors_' | i18n }}</div>
 
-  <form name="addEventForm" role="form" novalidate ng-show="_user.username">
+  <form name="addEventForm" role="form" novalidate ng-show="_user.email && event && canEdit(event)">
 
     <header class="page-header">
       <h3>{{ '_basics_' | i18n }}</h3>
@@ -367,7 +369,7 @@
 
   </form>
 
-  <div ng-if="isUpdate" class="alert alert-danger">
+  <div ng-if="isUpdate" class="alert alert-danger" ng-show="_user.email && (event && canEdit(event))">
     <p ng-bind-html="'_careful_delete_message_' | i18n"></p>
     <a href="#" ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block">
       {{ '_delete_event_' | i18n }}

@@ -946,5 +946,9 @@
   "_no_events_found_": {
     "message": "No events found! Would you like to <a href=\"#!/add\">create one</a>?",
     "description": "If no events are found, suggest the user create one"
+  },
+  "_not_authorized_to_edit_": {
+    "message": "Your account does not have permission to edit this event",
+    "description": "The logged in user cannot edit the current event"
   }
 }

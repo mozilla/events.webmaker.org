@@ -250,4 +250,41 @@ angular.module('myApp.services', ['ngResource'])
 
       return auth;
     }
+  ])
+  .factory('eventEditableService', ['$rootScope',
+    function ($rootScope) {
+      function isCoorganizer(event) {
+        if (!event.coorganizers) {
+          return false;
+        }
+        return event.coorganizers.some(function (c) {
+          return c.userId === $rootScope._user.id;
+        });
+      }
+
+      function isOrganizer(event) {
+        return event.organizerId === $rootScope._user.username;
+      }
+
+      function isAdmin() {
+        return $rootScope._user.isAdmin;
+      }
+
+      return {
+        isMentor: function (event) {
+          if (!event.mentors) {
+            return false;
+          }
+          return event.mentors.some(function (m) {
+            return m.userId === $rootScope._user.id;
+          });
+        },
+        isCoorganizer: isCoorganizer,
+        isOrganizer: isOrganizer,
+        isAdmin: isAdmin,
+        canEdit: function (event) {
+          return isCoorganizer(event) || isOrganizer(event) || isAdmin();
+        }
+      };
+    }
   ]);
