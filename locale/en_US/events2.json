@@ -910,5 +910,9 @@
   "_edit_them_details_": {
     "message": "Edit Event Details",
     "description": "button"
+  },
+  "_cant_add_self_": {
+    "message": "You cannot add yourself as a coorganizer!",
+    "description": "You cannot add yourself as a coorganizer!"
   }
 }

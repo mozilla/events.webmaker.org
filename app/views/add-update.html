@@ -219,6 +219,11 @@
               class="help-block alert alert-info">
               We can't find a Webmaker with that username!
             </p>
+            <p ng-show="addEventForm.coorganizer_email_input.$error.cantAddSelf"
+              class="help-block alert alert-info">
+              {{ '_cant_add_self_' | i18n }}
+            </p>
+
             <p class="help-block"><strong>Co-organizers can help you edit your event page</strong>, including making changes to the date, time and location.</p>
           </div>
 

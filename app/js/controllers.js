@@ -264,11 +264,14 @@ angular.module('myApp.controllers', [])
             username: input
           }, function (data) {
             if (data.exists) {
-              user.username = input;
-              $scope.event.coorganizers.push(user);
-              $scope.coorganizerInput = '';
-              console.log($scope);
-              $scope.addEventForm.coorganizer_email_input.$error.invalidUsername = false;
+              if (data.username !== $rootScope._user.username) {
+                user.username = input;
+                $scope.event.coorganizers.push(user);
+                $scope.coorganizerInput = '';
+                $scope.addEventForm.coorganizer_email_input.$error.invalidUsername = false;
+              } else {
+                $scope.addEventForm.coorganizer_email_input.$error.cantAddSelf = true;
+              }
             } else {
               $scope.addEventForm.coorganizer_email_input.$error.invalidUsername = true;
             }
