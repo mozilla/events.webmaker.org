@@ -107,9 +107,13 @@
     "message": "Delete Event",
     "description": "Delete event button"
   },
-  "_need_to_login_": {
+  "_need_to_login_to_add_": {
     "message": "You need to <a href=\"#\">log in</a> to add an event.",
     "description": "Banner alert info tell user to login before they can add an event"
+  },
+  "_need_to_login_to_edit_": {
+    "message": "You need to <a href=\"#\">log in</a> to edit an event.",
+    "description": "Banner alert info tell user to login before they can edit an event"
   },
   "_attend_this_event_": {
     "message": "Attend this event",

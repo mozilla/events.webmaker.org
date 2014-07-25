@@ -4,7 +4,8 @@
     <h1 ng-if="isUpdate">{{ '_editing_event_' | i18n }}</h1>
   </header>
 
-  <div class="alert alert-info" ng-hide="_user.email" data-ng-click="login()" ng-bind-html="'_need_to_login_' | i18n "></div>
+  <div ng-if="isAdd" class="alert alert-info" ng-hide="_user.email" data-ng-click="login()" ng-bind-html="'_need_to_login_to_add_' | i18n "></div>
+  <div ng-if="isUpdate" class="alert alert-info" ng-hide="_user.email" data-ng-click="login()" ng-bind-html="'_need_to_login_to_edit_' | i18n "></div>
 
   <div class="alert alert-danger" ng-show="addEventForm.$invalid && attemptedToSubmit">{{ '_some_errors_' | i18n }}</div>
 
