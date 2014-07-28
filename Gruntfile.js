@@ -1,4 +1,6 @@
+/* global require */
 module.exports = function (grunt) {
+  require('jit-grunt')(grunt);
 
   grunt.initConfig({
     less: {
@@ -44,6 +46,15 @@ module.exports = function (grunt) {
         command: 'node server/server.js'
       }
     },
+    jsonlint: {
+      json: {
+        src: [
+          'bower.json',
+          'package.json',
+          'locale/**/*.json'
+        ]
+      }
+    },
     jshint: {
       all: ['Gruntfile.js', 'app/js/**/*.js'],
       options: {
@@ -75,21 +86,13 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-shell-spawn');
-  grunt.loadNpmTasks('grunt-angular-i18n-finder');
-  grunt.loadNpmTasks('grunt-jsbeautifier');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-cssjanus');
-
   grunt.registerTask('default', ['less:development', 'cssjanus', 'shell:runServer', 'watch']);
 
   // Clean code before a commit
-  grunt.registerTask('clean', ['jsbeautifier:modify', 'jshint', 'angular_i18n_finder']);
+  grunt.registerTask('clean', ['jsbeautifier:modify', 'jsonlint', 'jshint', 'angular_i18n_finder']);
 
   // Validate code (read only)
-  grunt.registerTask('validate', ['jsbeautifier:validate', 'jshint']);
+  grunt.registerTask('validate', ['jsbeautifier:validate', 'jsonlint', 'jshint']);
 
   // Heroku
   grunt.registerTask('build', ['less:production', 'cssjanus']);
