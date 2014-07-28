@@ -404,7 +404,7 @@
     "description": "Planning an event? Let us help!"
   },
   "_eg_overviewintro_": {
-    "message": "This section provides an overview of important links and to-dos for your event. Don't forget to order <strong>free</strong> Webmaker gear for your party.",
+    "message": "This section provides an overview of important links and to-dos for your event.",
     "description": "Section intro"
   },
   "_eg_overviewpo_": {
@@ -918,5 +918,29 @@
   "_cant_add_self_": {
     "message": "You cannot add yourself as a coorganizer!",
     "description": "You cannot add yourself as a coorganizer!"
+  },
+  "_event_gear_and_resources_title_": {
+    "message": "Event gear and resources",
+    "description": "Event gear and resources section title"
+  },
+  "_event_gear_and_resources_desc_": {
+    "message": "Download materials, order stickers and discover more resources for your event.",
+    "description": "Event gear and resources section description"
+  },
+  "_share_what_you_made_title_": {
+    "message": "Share what you made",
+    "description": "Share what you made section title"
+  },
+  "_share_what_you_made_desc_": {
+    "message": "You can edit your event page at any time to feature photos, fellow mentors, participants and Webmaker makes from your event.",
+    "description": "Share what you made section description"
+  },
+  "_get_help_title_": {
+    "message": "Get help!",
+    "description": "Get help section title"
+  },
+  "_get_help_desc_": {
+    "message": "Don't know where to start or seeking advice? Post a question in our community discussion forum or email us at at <a href='mailto:makerparty@mozilla.org'>makerparty@mozilla.org.</a>",
+    "description": "Get help section description"
   }
 }
