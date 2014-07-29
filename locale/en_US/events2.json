@@ -942,5 +942,9 @@
   "_get_help_desc_": {
     "message": "Don't know where to start or seeking advice? Post a question in our community discussion forum or email us at at <a href='mailto:makerparty@mozilla.org'>makerparty@mozilla.org.</a>",
     "description": "Get help section description"
+  },
+  "_no_events_found_": {
+    "message": "No events found! Would you like to <a href=\"#!/add\">create one</a>?",
+    "description": "If no events are found, suggest the user create one"
   }
 }

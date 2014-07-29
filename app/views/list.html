@@ -36,9 +36,10 @@
     <div class="row" ng-show="searchActive">
       <div class="col-xs-12">
         <p>
-          <strong>{{ searchResultCount }}</strong>
+          <strong ng-show="searchResultCount !== 0">{{ searchResultCount }}</strong>
           <span ng-show="searchResultCount === 1"> {{ '_event_found_' | i18n }}</span>
-          <span ng-show="searchResultCount > 1 || searchResultCount === 0"> {{ '_events_found_' | i18n }}</span>
+          <span ng-show="searchResultCount > 1"> {{ '_events_found_' | i18n }}</span>
+          <span ng-show="searchResultCount === 0" bind-unsafe-html="'_no_events_found_' | i18n"></span>
           <button ng-click="searchEvents()" class="btn btn-sm btn-primary pull-right">Clear Search</button>
         </p>
       </div>
