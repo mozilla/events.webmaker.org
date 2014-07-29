@@ -150,8 +150,9 @@ angular.module('myApp.services', ['ngResource'])
           delete serializedEvent.endDate;
         }
 
+        // Empty strings or whitespace shouldn't be considered URLs
         if (typeof serializedEvent.registerLink === 'string' && serializedEvent.registerLink.trim() === '') {
-          delete serializedEvent.registerLink;
+          serializedEvent.registerLink = null;
         }
 
         // Remove nonexistant DB values from client event object

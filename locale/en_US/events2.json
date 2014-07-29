@@ -156,12 +156,8 @@
     "description": "Placeholder field for event's description"
   },
   "_event_link_": {
-    "message": "Event Link",
+    "message": "Event URL",
     "description": "Event link field"
-  },
-  "_event_link_explain_": {
-    "message": "If your event is already listed with another event service (e.g. Eventbrite or Meetup) you can add the registration URL here.",
-    "description": "Explain about Event Link"
   },
   "_link_event_error_message_": {
     "message": "Must use format <strong>http://example.com</strong> or <strong>https://example.com</strong>",
@@ -950,5 +946,13 @@
   "_not_authorized_to_edit_": {
     "message": "Your account does not have permission to edit this event",
     "description": "The logged in user cannot edit the current event"
+  },
+  "_optional_url_": {
+    "message": "Optional link to an external event page.",
+    "description": "Input placeholder on edit event page"
+  },
+  "_for_more_info_": {
+    "message": "For more information please visit:",
+    "description": "Preface to an external URL in the event description"
   }
 }
