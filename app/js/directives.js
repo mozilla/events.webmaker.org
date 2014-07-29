@@ -127,6 +127,10 @@ angular.module('myApp.directives', [])
             $scope.serviceURL = config.eventsLocation + '/events?before=' + (new Date()).toISOString();
           }
         };
+
+        // default serviceURL value
+        $scope.changeEventList('upcomingEvents');
+
         $scope.geoLocationEnabled = false; // TODO : Re-enable Geolocation via server-side sorting
         $scope.sortName = 'date';
 
