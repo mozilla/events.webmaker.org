@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mozilla/webmaker-events-2.svg?branch=master)](https://travis-ci.org/mozilla/webmaker-events-2)
 [![Code Climate](https://codeclimate.com/github/mozilla/webmaker-events-2.png)](https://codeclimate.com/github/mozilla/webmaker-events-2)
 
 # Webmaker Events 2
