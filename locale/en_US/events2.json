@@ -954,5 +954,13 @@
   "_for_more_info_": {
     "message": "For more information please visit:",
     "description": "Preface to an external URL in the event description"
+  },
+  "_estimated_attendees_": {
+    "message": "Estimated Attendees",
+    "description": "My Events view: label"
+  },
+  "_events_created_etc_": {
+    "message": "Events Created, Co-organized, or Mentored",
+    "description": "My Events view: label"
   }
 }
