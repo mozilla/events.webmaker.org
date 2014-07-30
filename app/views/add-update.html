@@ -37,8 +37,7 @@
 
         <div class="form-group">
           <label for="event-registration-page">{{ '_event_link_' | i18n }}</label>
-          <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="Link to registration page." />
-          <p><small>{{ '_event_link_explain_' | i18n }}</small></p>
+          <input ng-model="event.registerLink" name="registerLink" class="form-control" id="event-registration-page" type="url" placeholder="{{ '_optional_url_' | i18n }}" />
         </div>
 
         <div class="alert alert-danger" ng-show="addEventForm.registerLink.$dirty && addEventForm.registerLink.$invalid" ng-bind-html="'_link_event_error_message_' | i18n "></div>

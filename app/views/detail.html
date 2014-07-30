@@ -137,7 +137,11 @@
             ng-if="galleryTags" tags="galleryTags" limit="6"></div>
         </div>
         <h2 class="page-header">{{ 'Details' | i18n }}</h2>
-        <p class="event-detail-description" ng-bind-html="eventData.description"></p>
+        <p class="event-detail-description add-bottom-margin" ng-bind-html="eventData.description"></p>
+
+        <p ng-if="eventData.registerLink">
+          {{ '_for_more_info_' | i18n }} <a target="_blank" href="{{ eventData.registerLink }}">{{ eventData.registerLink }}</a>
+        </p>
       </div>
     </div>
   </div>
