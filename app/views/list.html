@@ -2,16 +2,18 @@
 
   <we-listing class="event-list">
     <div class="row add-bottom-margin">
-      <div class="col-sm-8">
-        <div class="btn-group" ng-show="geoLocationEnabled">
-          <button ng-class="{'active': sortName === 'date'}" ng-click="sortName = 'date';" class="btn btn-no-border btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_newest_' | i18n }}</button>
-          <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortName = 'proximity';" class="btn btn-no-border btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_closest_' | i18n }}</button>
-        </div>
-        <div class="col-xs-4 no-padding input-group">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><span class="sr-only">{{ '_sort_by_' | i18n }}</span>{{ '_close_to_' | i18n }}</button>
-          </span>
-          <input autocomplete-location id="location" ng-model="closeToLocation" placeholder="{{ '_enter_a_location_' | i18n }}" autocomplete="off" class="form-control"></input>
+      <div class="col-sm-8 add-bottom-margin">
+        <div class="clearfix">
+          <div class="btn-group" ng-show="geoLocationEnabled">
+            <button ng-class="{'active': sortName === 'date'}" ng-click="sortName = 'date';" class="btn btn-no-border btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_newest_' | i18n }}</button>
+            <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortName = 'proximity';" class="btn btn-no-border btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_closest_' | i18n }}</button>
+          </div>
+          <div class="col-xs-12 no-padding input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="sr-only">{{ '_sort_by_' | i18n }}</span>{{ '_close_to_' | i18n }}</button>
+            </span>
+            <input autocomplete-location id="location" ng-model="closeToLocation" placeholder="{{ '_enter_a_location_' | i18n }}" autocomplete="off" class="form-control"></input>
+          </div>
         </div>
       </div>
 
