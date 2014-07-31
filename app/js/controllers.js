@@ -436,6 +436,8 @@ angular.module('myApp.controllers', [])
         $scope.eventData.competencyID = Math.floor(Math.random() * 16);
 
         $scope.canEdit = eventEditableService.canEdit;
+        $scope.isOrganizer = eventEditableService.isOrganizer;
+        $scope.isAdmin = eventEditableService.isAdmin;
 
         $scope.$on('rsvpChange', function (event, data) {
           $scope.$broadcast('rsvpChanged', data);
