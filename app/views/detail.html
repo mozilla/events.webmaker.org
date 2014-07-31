@@ -1,4 +1,4 @@
-<div class="check-in-banner highlighted" ng-if="eventIsToday && isOrganizer(eventData) || isAdmin()">
+<div class="check-in-banner highlighted" ng-if="eventIsToday && (isOrganizer(eventData) || isAdmin())">
   <div class="container">
     <p class="larger"><span>{{ '_today_the_day_' | i18n }}</span> <a class="btn btn-primary" href="#!/check-in/{{ eventID }}">{{ '_check_yo_attendees_' | i18n }}</a></p>
   </div>
