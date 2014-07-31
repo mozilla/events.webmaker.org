@@ -42,7 +42,7 @@
           <span ng-show="searchResultCount === 1"> {{ '_event_found_' | i18n }}</span>
           <span ng-show="searchResultCount > 1"> {{ '_events_found_' | i18n }}</span>
           <span ng-show="searchResultCount === 0" bind-unsafe-html="'_no_events_found_' | i18n"></span>
-          <button ng-click="searchEvents()" class="btn btn-sm btn-primary pull-right">Clear Search</button>
+          <button ng-click="clearSearch()" class="btn btn-sm btn-primary pull-right">{{ '_clear_search_' | i18n }}</button>
         </p>
       </div>
     </div>

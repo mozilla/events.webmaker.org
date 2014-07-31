@@ -962,5 +962,9 @@
   "_events_created_etc_": {
     "message": "Events Created, Co-organized, or Mentored",
     "description": "My Events view: label"
+  },
+  "_clear_search_":{
+    "message": "Clear Search",
+    "description": "Clear the event search input and results list"
   }
 }

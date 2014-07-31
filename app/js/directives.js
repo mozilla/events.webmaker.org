@@ -146,6 +146,14 @@ angular.module('myApp.directives', [])
           return url;
         }
 
+        $scope.clearSearch = function () {
+          $scope.searchActive = false;
+          $scope.searchPhrase = '';
+          $scope.closeToLocation = '';
+          $scope.locationSearch = null;
+          $scope.searchEvents();
+        };
+
         $scope.searchEvents = function (term) {
           var url = getUrl();
 
@@ -156,9 +164,6 @@ angular.module('myApp.directives', [])
           if (term) {
             url += 'search=' + term;
             $scope.searchActive = true;
-          } else {
-            $scope.searchActive = false;
-            $scope.searchPhrase = '';
           }
 
           $scope.serviceURL = url;
