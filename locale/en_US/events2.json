@@ -963,6 +963,30 @@
     "message": "Events Created, Co-organized, or Mentored",
     "description": "My Events view: label"
   },
+  "_whats_special_": {
+    "message": "Tell people what's special about your event and why they won't want to miss it.",
+    "description": "Event description prompt"
+  },
+  "_what_making_": {
+    "message": "What will everyone be making or doing? What will the key takeaway be?",
+    "description": "Event description prompt"
+  },
+  "_org_desc_": {
+    "message": "Include a brief description of you or your organization.",
+    "description": "Event description prompt"
+  },
+  "_desc_header_1_": {
+    "message": "Why this event will be great",
+    "description": "Event description header"
+  },
+  "_desc_header_2_": {
+    "message": "What we'll be making",
+    "description": "Event description header"
+  },
+  "_desc_header_3_": {
+    "message": "About the event host",
+    "description": "Event description header"
+  },
   "_clear_search_":{
     "message": "Clear Search",
     "description": "Clear the event search input and results list"
