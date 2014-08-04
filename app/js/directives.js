@@ -120,53 +120,38 @@ angular.module('myApp.directives', [])
     return {
       restrict: 'E',
       link: function ($scope, $element) {
-        $scope.changeEventList = function (type) {
-          if (type === 'upcomingEvents') {
-            $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
-          } else {
-            $scope.serviceURL = config.eventsLocation + '/events?before=' + (new Date()).toISOString();
-          }
-        };
+        $scope.showAdvanced = false;
 
-        // default serviceURL value
-        $scope.changeEventList('upcomingEvents');
+        // Intital search
+        $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
 
-        $scope.geoLocationEnabled = false; // TODO : Re-enable Geolocation via server-side sorting
-        $scope.sortName = 'date';
+        function buildURL() {
+          var serializedParams = window.$.param({
+            search: $scope.searchPhrase,
+            after: $scope.dateStart ? (new Date($scope.dateStart)).toISOString() : null,
+            before: $scope.dateEnd ? (new Date($scope.dateEnd)).toISOString() : null,
+            lat: $scope.locationSearch ? $scope.locationSearch.lat : null,
+            lng: $scope.locationSearch ? $scope.locationSearch.lng : null,
+            radius: $scope.locationSearch ? 500 : null
+          }, true);
 
-        function getUrl() {
-          var url = config.eventsLocation + '/events';
-
-          if (!$scope.includePast) {
-            url += '?after=' + (new Date()).toISOString() + '&';
-          } else {
-            url += '?';
-          }
+          var url = config.eventsLocation + '/events?' + serializedParams;
 
           return url;
         }
 
         $scope.clearSearch = function () {
-          $scope.searchActive = false;
-          $scope.searchPhrase = '';
-          $scope.closeToLocation = '';
+          $scope.searchPhrase = null;
+          $scope.closeToLocation = null;
           $scope.locationSearch = null;
-          $scope.searchEvents();
+          $scope.dateStart = new Date();
+          $scope.dateEnd = null;
+          $scope.searchActive = false;
         };
 
-        $scope.searchEvents = function (term) {
-          var url = getUrl();
-
-          if ($scope.locationSearch) {
-            url += 'lng=' + $scope.locationSearch.lng + '&lat=' + $scope.locationSearch.lat + '&radius=500&';
-          }
-
-          if (term) {
-            url += 'search=' + term;
-            $scope.searchActive = true;
-          }
-
-          $scope.serviceURL = url;
+        $scope.searchEvents = function () {
+          $scope.serviceURL = buildURL();
+          $scope.searchActive = true;
         };
 
         $scope.$on('locationAutocompleted', function (event, data) {
@@ -174,10 +159,24 @@ angular.module('myApp.directives', [])
             lng: data.longitude,
             lat: data.latitude
           };
-          var url = getUrl() + 'lng=' + data.longitude + '&lat=' + data.latitude + '&radius=500&';
-          $scope.searchActive = true;
-          $scope.serviceURL = url;
+
+          $scope.searchEvents();
         });
+
+        function conditionallySearch() {
+          conditionallySearch.changesFired++;
+
+          if (conditionallySearch.changesFired > 3) {
+            $scope.searchEvents();
+          }
+        }
+
+        // Memoize how many calls have been made
+        // This is done because the initial input setup fires some change events we need to ignore
+        conditionallySearch.changesFired = 0;
+
+        $scope.$watch('dateStart', conditionallySearch);
+        $scope.$watch('dateEnd', conditionallySearch);
       }
     };
   })
@@ -380,6 +379,44 @@ angular.module('myApp.directives', [])
           $rootScope.$on('$locationChangeSuccess', function (event) {
             $scope.isCollapsed = true;
           });
+        }
+      ]
+    };
+  })
+  .directive('weDatepicker', function () {
+    return {
+      templateUrl: '/views/partials/datepicker/datepicker-inline.html',
+      restrict: 'E',
+      scope: {
+        chosenDate: '=ngModel',
+        setToday: '@setToday'
+      },
+      controller: ['$scope', '$element',
+        function ($scope, $element) {
+          $scope.today = function () {
+            $scope.chosenDate = new Date();
+          };
+
+          if ($scope.setToday === 'true') {
+            $scope.today();
+          }
+
+          $scope.clear = function () {
+            $scope.chosenDate = null;
+          };
+
+          $scope.open = function ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+          };
+
+          $scope.dateOptions = {
+            'format-year': 'yy',
+            'starting-day': 1,
+            'show-weeks': false
+          };
         }
       ]
     };

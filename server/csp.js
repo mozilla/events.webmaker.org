@@ -11,7 +11,7 @@ module.exports = function(options) {
       'img-src': ["*"],
       'script-src': ["'self'", "'unsafe-eval'", "https://maps.googleapis.com", "https://maps.gstatic.com", "https://login.persona.org", "https://ssl.google-analytics.com"],
       'style-src': ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
-      'font-src': ["'self'", "https://themes.googleusercontent.com"],
+      'font-src': ["'self'", "https://themes.googleusercontent.com", "https://fonts.gstatic.com"],
       'frame-src': ["https://www.youtube.com"]
     }
   };

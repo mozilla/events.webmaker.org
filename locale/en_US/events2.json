@@ -990,5 +990,10 @@
   "_clear_search_":{
     "message": "Clear Search",
     "description": "Clear the event search input and results list"
+  },
+  "_advanced_search_":{
+    "message": "Advanced Search",
+    "description": "Search header text"
   }
+
 }
