@@ -123,8 +123,8 @@ angular.module('myApp.services', ['ngResource'])
       });
     }
   ])
-  .factory('eventFormatter', ['$rootScope', 'moment',
-    function ($rootScope, moment) {
+  .factory('eventFormatter', ['$rootScope', 'moment', 'localize',
+    function ($rootScope, moment, localize) {
 
       return function (form, eventData) {
         if (!form || !eventData) {
@@ -169,6 +169,21 @@ angular.module('myApp.services', ['ngResource'])
           serializedEvent.tags = tagArray;
         } else {
           serializedEvent.tags = [];
+        }
+
+        // Create unified description from 3 fields
+        if (serializedEvent.description1 && serializedEvent.description2 && serializedEvent.description3) {
+          serializedEvent.description =
+            '<h3>' + localize.getLocalizedString('_desc_header_1_') + '</h3>\n' +
+            '<p>' + serializedEvent.description1 + '</p>\n\n' +
+            '<h3>' + localize.getLocalizedString('_desc_header_2_') + '</h3>\n' +
+            '<p>' + serializedEvent.description2 + '</p>\n\n' +
+            '<h3>' + localize.getLocalizedString('_desc_header_3_') + '</h3>\n' +
+            '<p>' + serializedEvent.description3 + '</p>';
+
+          delete serializedEvent.description1;
+          delete serializedEvent.description2;
+          delete serializedEvent.description3;
         }
 
         return serializedEvent;
