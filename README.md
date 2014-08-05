@@ -49,7 +49,7 @@ This app takes four configuration parameters, all of which are optional.
 
 ## Grunt Tasks
 
-- **grunt** - Runs a server at [localhost:1134](http://localhost:1134).
+- **grunt** - Runs a server at [localhost:1981](http://localhost:1981).
 - **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md).
 - **grunt heroku** - For heroku
 
