@@ -80,7 +80,7 @@
             <img class="user-info-avatar" ng-src="{{ eventData.organizerAvatar }}">
           </a>
 
-          <div>
+          <div class="author">
             {{ '_organized_by_' | i18n }}
             <br>
             <a href="{{ webmakerUrl }}/user/{{ eventData.organizerId }}" target="_blank">
@@ -100,7 +100,7 @@
             </tr>
           </table>
         </div>
-        <div class="add-bottom-margin">
+        <div class="audience add-bottom-margin">
           <h3 class="add-bottom-margin">{{ '_who_is_this_for_' | i18n }}</h3>
           <h4 class="text-title-case"><span class="fa fa-star fa-fw text-muted"></span> {{ transformToLocalizationKeyStyle( eventData.skillLevel ) || '_any_skill_' | i18n }} {{ '_level_' | i18n }}</h4>
           <h4 class="text-title-case"><span class="fa fa-male fa-fw text-muted"></span> {{ transformToLocalizationKeyStyle( eventData.ageGroup ) || '_any_age_group_' | i18n }}</h4>
