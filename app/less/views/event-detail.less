@@ -54,20 +54,41 @@
 }
 
 .organized-by {
+  display: block;
   margin: 30px 0;
   p {
     line-height: 1.4;
   }
+  strong {
+    display: inline-block;
+    max-width: 17.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .author {
+    text-align: center;
+    margin: 1rem 0 0 0;
+    @media (min-width: @screen-lg-min){
+      text-align: left;
+      margin: 0;
+    }
+  }
   .user-info-avatar {
+    display: block;
+    margin: 0 auto;
     height: 70px;
     width: 70px;
     border-radius: 70px;
-    margin-right: 10px;
+    @media (min-width: @screen-lg-min) {
+      display: inline;
+      margin-right: 10px;
+    }
   }
-  .flex-display();
+  @media (min-width: @screen-lg-min) {
+    .flex-display();
+  }
   .align-items(center);
 }
-
 
 .event-detail-description {
   font-size: 18px;
