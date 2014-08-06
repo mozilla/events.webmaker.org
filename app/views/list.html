@@ -1,36 +1,39 @@
 <div class="container page-header">
 
   <we-listing class="event-list">
-    <div class="row add-bottom-margin">
-      <div class="col-sm-8 add-bottom-margin">
-        <div class="clearfix">
-          <div class="btn-group" ng-show="geoLocationEnabled">
-            <button ng-class="{'active': sortName === 'date'}" ng-click="sortName = 'date';" class="btn btn-no-border btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_newest_' | i18n }}</button>
-            <button ng-class="{'active': sortName === 'proximity'}" ng-click="sortName = 'proximity';" class="btn btn-no-border btn-default"><span class="sr-only">{{ '_sort_by_' | i18n }} </span>{{ '_closest_' | i18n }}</button>
-          </div>
-          <div class="col-xs-12 no-padding input-group">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><span class="sr-only">{{ '_sort_by_' | i18n }}</span>{{ '_close_to_' | i18n }}</button>
-            </span>
-            <input autocomplete-location id="location" ng-model="closeToLocation" placeholder="{{ '_enter_a_location_' | i18n }}" autocomplete="off" class="form-control"></input>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4 search-block">
+    <div class="row add-double-bottom-margin">
+      <div class="col-xs-12 col-sm-6 search-block pull-right">
         <div class="clearfix">
           <div class="col-xs-10 no-padding">
             <label for="event-filter" class="sr-only">{{ '_find_event_' | i18n }}</label>
-            <input ng-enter="searchEvents(searchPhrase)" id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="searchPhrase" type="text" class="form-control">
+            <input ng-enter="searchEvents()" id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="searchPhrase" type="text" class="form-control">
           </div>
           <div class="col-xs-2 no-padding">
-            <button ng-click="searchEvents(searchPhrase)" class="btn btn-info"><i class="fa fa-search"></i></button>
+            <button ng-click="searchEvents()" class="btn btn-info"><i class="fa fa-search"></i></button>
           </div>
         </div>
-        <div class="checkbox checkbox-right">
-          <label>
-            <input ng-model="includePast" type="checkbox"> {{ '_include_past_' | i18n }}
-          </label>
+      </div>
+    </div>
+
+    <div class="add-double-bottom-margin">
+      <h4 ng-click="showAdvanced = !showAdvanced" class="clickable-header">{{ '_advanced_search_' | i18n }} &nbsp;<button class="link"><i class="fa fa-caret-down" ng-show="showAdvanced"></i> <i class="fa fa-caret-right" ng-hide="showAdvanced"></i></button></h4>
+
+      <div ng-show="showAdvanced">
+        <div class="form-group">
+          <label><span class="sr-only">{{ '_sort_by_' | i18n }}</span>{{ '_close_to_' | i18n }}</label>
+          <input autocomplete-location id="location" ng-model="closeToLocation" placeholder="{{ '_enter_a_location_' | i18n }}" autocomplete="off" class="form-control"></input>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label>From</label>
+            <we-datepicker ng-model="dateStart" set-today="true"></we-datepicker>
+          </div>
+
+          <div class="col-sm-6 form-group">
+            <label>To</label>
+            <we-datepicker ng-model="dateEnd" set-today="false"></we-datepicker>
+          </div>
         </div>
       </div>
     </div>
@@ -47,15 +50,10 @@
       </div>
     </div>
 
-    <tabset>
-      <tab heading="{{ '_upcoming_events_' | i18n }}" select="changeEventList('upcomingEvents')"></tab>
-      <tab heading="Past Events" select="changeEventList('pastEvents')"></tab>
-    </tabset>
-
     <table class="table table-striped">
       <tr ng-repeat="event in eventsData">
         <td><img class="remo-badge" ng-if="event.externalSource === 'mozreps'" src="/img/remo_logo_medium.png" alt="Remo event"></td>
-        <td class="event-date">{{ event.beginDate | date:'MMM d' }}</td>
+        <td class="event-date">{{ event.beginDate | date:'MMM d yyyy' }}</td>
         <td><a href="{{event.url}}" class="event-title">{{ event.title }}</a></td>
         <td class="text-muted event-address">{{ event.address }}</td>
       </tr>

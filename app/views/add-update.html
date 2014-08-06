@@ -141,15 +141,7 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label for="event-start-date">{{ '_start_date_' | i18n }} <span class="text-danger">*</span></label>
-          <div ng-controller="DatepickerCtrl">
-            <div class="input-group">
-              <input type="text" name="beginDate" id="event-start-date" datepicker-popup="dd-MMMM-yyyy" ng-model="event.beginDate" is-open="opened" datepicker-options="dateOptions" ng-required="true" class="form-control">
-              <span class="input-group-btn">
-                <button class="btn btn-default" ng-click="open()"><i class="fa fa-calendar"></i></button>
-              </span>
-            </div>
-          </div>
-
+          <we-datepicker ng-model="event.beginDate" set-today="true"></we-datepicker>
         </div>
       </div>
 
