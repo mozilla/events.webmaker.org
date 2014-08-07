@@ -994,6 +994,13 @@
   "_advanced_search_":{
     "message": "Advanced Search",
     "description": "Search header text"
+  },
+  "_show_e_pub_":{
+    "message": "List event publicly?",
+    "description": "Checkbox Label"
+  },
+  "_explain_epub_":{
+    "message": "By checking this box your event will show up in the upcoming events list.",
+    "description": "Explanation of privacy option"
   }
-
 }

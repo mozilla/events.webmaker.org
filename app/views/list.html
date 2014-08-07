@@ -51,7 +51,7 @@
     </div>
 
     <table class="table table-striped">
-      <tr ng-repeat="event in eventsData">
+      <tr ng-repeat="event in eventsData" ng-if="event.isEventPublic">
         <td><img class="remo-badge" ng-if="event.externalSource === 'mozreps'" src="/img/remo_logo_medium.png" alt="Remo event"></td>
         <td class="event-date">{{ event.beginDate | date:'MMM d yyyy' }}</td>
         <td><a href="{{event.url}}" class="event-title">{{ event.title }}</a></td>

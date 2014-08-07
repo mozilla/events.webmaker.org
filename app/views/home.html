@@ -58,7 +58,7 @@
   </h2>
 
   <ul class="listing-home list-unstyled">
-    <li ng-repeat="event in events | limitTo: 10">
+    <li ng-repeat="event in events | limitTo: 10" ng-if="event.isEventPublic">
       <a href="{{event.url}}">
         <div class="circle-date">
           <span>{{event.beginDate | date:'MMM d'}}</span>
