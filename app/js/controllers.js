@@ -18,30 +18,6 @@ angular.module('myApp.controllers', [])
       $scope.event.beginTime = moment().hour(12).minutes(0);
     }
   ])
-  .controller('DatepickerCtrl', ['$scope', '$timeout',
-    function ($scope, $timeout) {
-      $scope.today = function () {
-        $scope.event.beginDate = new Date();
-      };
-      $scope.today();
-
-      $scope.clear = function () {
-        $scope.event.beginDate = null;
-      };
-
-      $scope.open = function () {
-        $timeout(function () {
-          $scope.opened = true;
-        });
-      };
-
-      $scope.dateOptions = {
-        'year-format': '\'yy\'',
-        'starting-day': 1,
-        'show-weeks': false
-      };
-    }
-  ])
   .controller('userController', ['$scope', '$rootScope', '$routeParams', 'eventService', 'eventEditableService',
     function ($scope, $rootScope, $routeParams, eventService, eventEditableService) {
       $scope.username = $routeParams.id;
