@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     less: {
       development: {
         files: {
-          'app/compiled/app.min.ltr.css': 'app/less/app.less'
+          'app/compiled/app.ltr.css': 'app/less/app.less'
         },
         options: {
           sourceMap: true,
@@ -16,7 +16,7 @@ module.exports = function (grunt) {
       },
       production: {
         files: {
-          'app/compiled/app.min.ltr.css': 'app/less/app.less'
+          'app/compiled/app.ltr.css': 'app/less/app.less'
         }
       }
     },
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
       }
     },
     cssjanus: {
-      'app/compiled/app.min.rtl.css': 'app/compiled/app.min.ltr.css',
+      'app/compiled/app.rtl.uncss.css': 'app/compiled/app.ltr.uncss.css',
       options: {
         swapLtrRtlInUrl: true,
         swapLeftRightInUrl: false,
@@ -83,18 +83,66 @@ module.exports = function (grunt) {
         pathToJSON: ['locale/en_US/*.json'],
         ignoreKeys: []
       }
+    },
+    cssmin: {
+      options: {
+        keepSpecialComments: 0
+      },
+      ltr: {
+        src: 'app/compiled/app.ltr.uncss.css',
+        dest: 'app/compiled/app.ltr.uncss.min.css'
+      },
+      rtl: {
+        src: 'app/compiled/app.rtl.uncss.css',
+        dest: 'app/compiled/app.rtl.uncss.min.css'
+      }
+    },
+    uncss: {
+      production: {
+        options: {
+          ignore: ['.pagination > .active > a', /\.multicolor-header\.color-[0-9]/, /we-rsvp.*/, /\.dropdown-menu/, /\.navbar/],
+          stylesheets: ['compiled/app.ltr.css'],
+          urls: ['http://localhost:1981/', 'http://localhost:1981/#/events'] // Deprecated
+        },
+        files: {
+          'app/compiled/app.ltr.uncss.css': ['app/index.html', 'app/views/**/*.html']
+        }
+      }
+    },
+    'string-replace': {
+      production: {
+        files: {
+          'app/index.html': 'app/index.template'
+        },
+        options: {
+          replacements: [{
+            pattern: '%_EXTENSIONS_%',
+            replacement: '.uncss.min'
+          }]
+        }
+      },
+      development: {
+        files: {
+          'app/index.html': 'app/index.template'
+        },
+        options: {
+          replacements: [{
+            pattern: '%_EXTENSIONS_%',
+            replacement: ''
+          }]
+        }
+      }
     }
   });
 
-  grunt.registerTask('default', ['less:development', 'cssjanus', 'shell:runServer', 'watch']);
+  grunt.loadNpmTasks('grunt-shell-spawn');
+
+  grunt.registerTask('default', ['string-replace:development', 'shell:runServer', 'less:development', 'watch']);
+  grunt.registerTask('build', ['string-replace:production', 'shell:runServer', 'less:production', 'uncss', 'cssjanus', 'cssmin']);
 
   // Clean code before a commit
   grunt.registerTask('clean', ['jsbeautifier:modify', 'jsonlint', 'jshint', 'angular_i18n_finder']);
 
   // Validate code (read only)
   grunt.registerTask('validate', ['jsbeautifier:validate', 'jsonlint', 'jshint']);
-
-  // Heroku
-  grunt.registerTask('build', ['less:production', 'cssjanus']);
-
 };
