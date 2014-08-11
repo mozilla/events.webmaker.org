@@ -96,7 +96,14 @@
           <p>{{ 'People who can edit this event' | i18n }}</p>
           <table class="table table-striped table-middle">
             <tr ng-repeat="coorganizer in eventData.coorganizers">
-              <td><img class="img-round img-coorganizer-avatar" ng-src="{{coorganizer.avatar}}"  alt="{{ coorganizer.username }}"> {{ coorganizer.username }}</td>
+              <td>
+
+                <a href="{{ webmakerUrl }}/user/{{ coorganizer.username }}" target="_blank">
+                  <img class="img-round img-coorganizer-avatar" ng-src="{{coorganizer.avatar}}"  alt="{{ coorganizer.username }}">
+                  <span class="sr-only">{{ '_link_to_profile_' | i18n }}</span>
+                  <strong>{{ coorganizer.username }}</strong>
+                </a>
+              </td>
             </tr>
           </table>
         </div>
