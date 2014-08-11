@@ -23,6 +23,10 @@
     "message": "Hi,",
     "description": "Hi, {{name}} message on navbar"
   },
+  "_my_profile_": {
+    "message": "My Profile",
+    "description": "My profile menu option in navbar dropdown"
+  },
   "_my_makes_": {
     "message": "My Makes",
     "description": "My makes menu option in navbar dropdown"
