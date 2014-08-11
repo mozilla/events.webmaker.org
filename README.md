@@ -85,7 +85,7 @@ To localize string in template file you have three options:
 
   This method is useful when you have some markup.
 
-3. `<span bind-unsafe-html"'_some_key_name' | i18n"></span>`
+3. `<span bind-unsafe-html="'_some_key_name' | i18n"></span>`
 
   This method is useful when you have some variable inside your string for instance: "My name is {{name}}."
 
