@@ -163,6 +163,7 @@ angular.module('myApp.controllers', [])
           $scope.event.isEmailPublic = data.isEmailPublic || false;
           $scope.event.makeApiTag = data.makeApiTag;
           $scope.event.flickrTag = data.flickrTag;
+          $scope.event.isEventPublic = data.isEventPublic;
 
           // TEMP : Need to convert back from city/country/lat/long/whatever
           $scope.event.address = data.address;
@@ -216,6 +217,8 @@ angular.module('myApp.controllers', [])
         $scope.event.duration = 1; // 1 hour default
 
         // $scope.attemptedToSubmit = false;
+
+        $scope.event.isEventPublic = true;
       }
 
       $scope.addUser = function (input, type) {

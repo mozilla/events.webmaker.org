@@ -102,6 +102,16 @@
         </div>
 
         <div class="form-group">
+          <label>{{ '_show_e_pub_' | i18n }}</label>
+          <div class="checkbox">
+            <label>
+              <input ng-model="event.isEventPublic" type="checkbox" />
+              <small>{{ '_explain_epub_' | i18n }}</small>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label>{{ '_show_a_public_' | i18n }}</label>
           <div class="checkbox">
             <label>
