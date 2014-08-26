@@ -19,7 +19,7 @@
       display: none;
     }
   </style>
-  <link rel="stylesheet" ng-href="compiled/app.min.{{direction}}.css">
+  <link rel="stylesheet" ng-href="compiled/app.{{direction}}%_EXTENSIONS_%.css">
 </head>
 <body>
 
