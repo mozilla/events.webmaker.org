@@ -138,7 +138,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-shell-spawn');
 
   grunt.registerTask('default', ['string-replace:development', 'shell:runServer', 'less:development', 'watch']);
-  grunt.registerTask('build', ['string-replace:production', 'shell:runServer', 'less:production', 'uncss', 'cssjanus', 'cssmin']);
+  grunt.registerTask('build', ['string-replace:production', 'shell:runServer', 'less:production', 'uncss', 'cssjanus', 'cssmin', 'shell:runServer:kill']);
 
   // Clean code before a commit
   grunt.registerTask('clean', ['jsbeautifier:modify', 'jsonlint', 'jshint', 'angular_i18n_finder']);
