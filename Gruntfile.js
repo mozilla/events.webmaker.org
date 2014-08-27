@@ -2,6 +2,41 @@
 module.exports = function (grunt) {
   require('jit-grunt')(grunt);
 
+  // Scripts to be concatenated and minified (in load order)
+  var scripts = [
+    'app/bower_components/webmaker-analytics/analytics.js',
+    'app/bower_components/eventEmitter/EventEmitter.min.js',
+    'app/bower_components/webmaker-auth-client/dist/webmaker-auth-client.min.js',
+    'app/bower_components/momentjs/min/moment-with-langs.min.js',
+    'app/bower_components/jquery/dist/jquery.min.js',
+    'app/bower_components/selectize/dist/js/standalone/selectize.min.js',
+    'app/bower_components/makeapi-client/src/make-api.js',
+    'app/bower_components/angular/angular.min.js',
+    'app/bower_components/angular-paginate-anything/src/paginate-anything.js',
+    'app/bower_components/angular-sanitize/angular-sanitize.min.js',
+    'app/bower_components/angular-resource/angular-resource.min.js',
+    'app/bower_components/angular-route/angular-route.min.js',
+    'app/bower_components/angular-animate/angular-animate.min.js',
+    'app/bower_components/angular-bootstrap/ui-bootstrap.min.js',
+    'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+    'app/bower_components/makeapi-angular/dist/makeapi-angular.templates.js',
+    'app/bower_components/makeapi-angular/dist/makeapi-angular.js',
+    'app/js/app.js',
+    'app/js/services.js',
+    'app/js/controllers.js',
+    'app/js/filters.js',
+    'app/js/directives.js',
+    'app/js/i18n.js'
+  ];
+
+  // Generate HTML to include individual scripts for local development
+  var scriptIncludes = '';
+
+  scripts.forEach(function (script) {
+    script = script.replace('app/', '');
+    scriptIncludes += '<script src="' + script + '"></script>';
+  });
+
   grunt.initConfig({
     less: {
       development: {
@@ -129,7 +164,25 @@ module.exports = function (grunt) {
           replacements: [{
             pattern: '%_EXTENSIONS_%',
             replacement: ''
+          }, {
+            pattern: '<script src="compiled/app.min.js"></script>',
+            replacement: scriptIncludes
           }]
+        }
+      }
+    },
+    uglify: {
+      options: {
+        sourceMap: true,
+        preserveComments: false,
+        compress: {
+          drop_console: true,
+          join_vars: true
+        }
+      },
+      production: {
+        files: {
+          'app/compiled/app.min.js': scripts
         }
       }
     }
@@ -137,12 +190,38 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-shell-spawn');
 
-  grunt.registerTask('default', ['string-replace:development', 'shell:runServer', 'less:development', 'watch']);
-  grunt.registerTask('build', ['string-replace:production', 'shell:runServer', 'less:production', 'uncss', 'cssjanus', 'cssmin', 'shell:runServer:kill']);
+  // Run in "dev mode"
+  grunt.registerTask('default', [
+    'string-replace:development',
+    'shell:runServer',
+    'less:development',
+    'watch'
+  ]);
+
+  // Build project for deployment to production
+  grunt.registerTask('build', [
+    'string-replace:production',
+    'shell:runServer',
+    'less:production',
+    'uncss',
+    'cssjanus',
+    'cssmin',
+    'uglify',
+    'shell:runServer:kill'
+  ]);
 
   // Clean code before a commit
-  grunt.registerTask('clean', ['jsbeautifier:modify', 'jsonlint', 'jshint', 'angular_i18n_finder']);
+  grunt.registerTask('clean', [
+    'jsbeautifier:modify',
+    'jsonlint',
+    'jshint',
+    'angular_i18n_finder'
+  ]);
 
-  // Validate code (read only)
-  grunt.registerTask('validate', ['jsbeautifier:validate', 'jsonlint', 'jshint']);
+  // Validate code before commit (read only)
+  grunt.registerTask('validate', [
+    'jsbeautifier:validate',
+    'jsonlint',
+    'jshint'
+  ]);
 };
