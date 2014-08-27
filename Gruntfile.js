@@ -58,7 +58,18 @@ module.exports = function (grunt) {
     watch: {
       less: {
         files: ['app/less/**/*.less', 'bower.json'],
-        tasks: ['less:development']
+        tasks: ['less:development'],
+        options: {
+          livereload: true,
+          spawn: false
+        }
+      },
+      assets: {
+        files: ['app/img/**/*', 'app/js/**/*.js', 'app/views/**/*.html'],
+        options: {
+          livereload: true,
+          spawn: false
+        }
       },
       server: {
         files: ['server/**/*', 'package.json'],
@@ -153,6 +164,9 @@ module.exports = function (grunt) {
           replacements: [{
             pattern: '%_EXTENSIONS_%',
             replacement: '.uncss.min'
+          }, {
+            pattern: '%_LIVE_RELOAD_%',
+            replacement: ''
           }]
         }
       },
@@ -167,6 +181,9 @@ module.exports = function (grunt) {
           }, {
             pattern: '<script src="compiled/app.min.js"></script>',
             replacement: scriptIncludes
+          }, {
+            pattern: '%_LIVE_RELOAD_%',
+            replacement: '<script src="//localhost:35729/livereload.js"></script>'
           }]
         }
       }

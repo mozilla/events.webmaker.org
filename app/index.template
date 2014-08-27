@@ -93,5 +93,7 @@
           async>
   </script>
 
+  %_LIVE_RELOAD_%
+
 </body>
 </html>
