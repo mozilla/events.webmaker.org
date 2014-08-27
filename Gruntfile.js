@@ -190,12 +190,38 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-shell-spawn');
 
-  grunt.registerTask('default', ['string-replace:development', 'shell:runServer', 'less:development', 'watch']);
-  grunt.registerTask('build', ['string-replace:production', 'shell:runServer', 'less:production', 'uncss', 'cssjanus', 'cssmin', 'uglify', 'shell:runServer:kill']);
+  // Run in "dev mode"
+  grunt.registerTask('default', [
+    'string-replace:development',
+    'shell:runServer',
+    'less:development',
+    'watch'
+  ]);
+
+  // Build project for deployment to production
+  grunt.registerTask('build', [
+    'string-replace:production',
+    'shell:runServer',
+    'less:production',
+    'uncss',
+    'cssjanus',
+    'cssmin',
+    'uglify',
+    'shell:runServer:kill'
+  ]);
 
   // Clean code before a commit
-  grunt.registerTask('clean', ['jsbeautifier:modify', 'jsonlint', 'jshint', 'angular_i18n_finder']);
+  grunt.registerTask('clean', [
+    'jsbeautifier:modify',
+    'jsonlint',
+    'jshint',
+    'angular_i18n_finder'
+  ]);
 
-  // Validate code (read only)
-  grunt.registerTask('validate', ['jsbeautifier:validate', 'jsonlint', 'jshint']);
+  // Validate code before commit (read only)
+  grunt.registerTask('validate', [
+    'jsbeautifier:validate',
+    'jsonlint',
+    'jshint'
+  ]);
 };
