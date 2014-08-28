@@ -7,12 +7,12 @@
   "bugs": "https://github.com/mozilla/webmaker-events-2/issues",
   "license": "MPL",
   "homepage": "https://events.webmaker.org",
-  "version": "0.10.5",
+  "version": "0.10.6",
   "description": "Front end for Webmaker events",
   "main": "app/js/app.js",
   "scripts": {
     "download-locales": "webmaker-download-locales events",
-    "preinstall": "./preinstall.sh",
+    "preinstall": "if [ ! -f .env ]; then cp .env-dist .env; fi;",
     "postinstall": "bower install; grunt build",
     "test": "grunt validate"
   },
