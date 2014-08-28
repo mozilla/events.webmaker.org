@@ -92,94 +92,98 @@ angular.module('myApp.directives', [])
       }
     };
   })
-  .directive('selectize', function (config) {
-    return {
-      restrict: 'A',
-      link: function ($scope, $element) {
-        var options = [];
+  .directive('selectize', ['config',
+    function (config) {
+      return {
+        restrict: 'A',
+        link: function ($scope, $element) {
+          var options = [];
 
-        for (var i = 0; i <= config.supported_languages.length; i++) {
-          var title = config.langmap[config.supported_languages[i]] ? config.langmap[config.supported_languages[i]].nativeName : 'unknown';
-          options.push({
-            id: config.supported_languages[i],
-            title: title
+          for (var i = 0; i <= config.supported_languages.length; i++) {
+            var title = config.langmap[config.supported_languages[i]] ? config.langmap[config.supported_languages[i]].nativeName : 'unknown';
+            options.push({
+              id: config.supported_languages[i],
+              title: title
+            });
+          }
+
+          $element.selectize({
+            options: options,
+            labelField: 'title',
+            valueField: 'id'
           });
+          var selectize = $element[0].selectize;
+          selectize.setValue(config.lang);
         }
+      };
+    }
+  ])
+  .directive('weListing', ['config',
+    function (config) {
+      return {
+        restrict: 'E',
+        link: function ($scope, $element) {
+          $scope.showAdvanced = false;
 
-        $element.selectize({
-          options: options,
-          labelField: 'title',
-          valueField: 'id'
-        });
-        var selectize = $element[0].selectize;
-        selectize.setValue(config.lang);
-      }
-    };
-  })
-  .directive('weListing', function (config) {
-    return {
-      restrict: 'E',
-      link: function ($scope, $element) {
-        $scope.showAdvanced = false;
+          // Intital search
+          $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
 
-        // Intital search
-        $scope.serviceURL = config.eventsLocation + '/events?after=' + (new Date()).toISOString();
+          function buildURL() {
+            var serializedParams = window.$.param({
+              search: $scope.searchPhrase,
+              after: $scope.dateStart ? (new Date($scope.dateStart)).toISOString() : null,
+              before: $scope.dateEnd ? (new Date($scope.dateEnd)).toISOString() : null,
+              lat: $scope.locationSearch ? $scope.locationSearch.lat : null,
+              lng: $scope.locationSearch ? $scope.locationSearch.lng : null,
+              radius: $scope.locationSearch ? 500 : null
+            }, true);
 
-        function buildURL() {
-          var serializedParams = window.$.param({
-            search: $scope.searchPhrase,
-            after: $scope.dateStart ? (new Date($scope.dateStart)).toISOString() : null,
-            before: $scope.dateEnd ? (new Date($scope.dateEnd)).toISOString() : null,
-            lat: $scope.locationSearch ? $scope.locationSearch.lat : null,
-            lng: $scope.locationSearch ? $scope.locationSearch.lng : null,
-            radius: $scope.locationSearch ? 500 : null
-          }, true);
+            var url = config.eventsLocation + '/events?' + serializedParams;
 
-          var url = config.eventsLocation + '/events?' + serializedParams;
+            return url;
+          }
 
-          return url;
-        }
-
-        $scope.clearSearch = function () {
-          $scope.searchPhrase = null;
-          $scope.closeToLocation = null;
-          $scope.locationSearch = null;
-          $scope.dateStart = new Date();
-          $scope.dateEnd = null;
-          $scope.searchActive = false;
-        };
-
-        $scope.searchEvents = function () {
-          $scope.serviceURL = buildURL();
-          $scope.searchActive = true;
-        };
-
-        $scope.$on('locationAutocompleted', function (event, data) {
-          $scope.locationSearch = {
-            lng: data.longitude,
-            lat: data.latitude
+          $scope.clearSearch = function () {
+            $scope.searchPhrase = null;
+            $scope.closeToLocation = null;
+            $scope.locationSearch = null;
+            $scope.dateStart = new Date();
+            $scope.dateEnd = null;
+            $scope.searchActive = false;
           };
 
-          $scope.searchEvents();
-        });
+          $scope.searchEvents = function () {
+            $scope.serviceURL = buildURL();
+            $scope.searchActive = true;
+          };
 
-        function conditionallySearch() {
-          conditionallySearch.changesFired++;
+          $scope.$on('locationAutocompleted', function (event, data) {
+            $scope.locationSearch = {
+              lng: data.longitude,
+              lat: data.latitude
+            };
 
-          if (conditionallySearch.changesFired > 3) {
             $scope.searchEvents();
+          });
+
+          function conditionallySearch() {
+            conditionallySearch.changesFired++;
+
+            if (conditionallySearch.changesFired > 3) {
+              $scope.searchEvents();
+            }
           }
+
+          // Memoize how many calls have been made
+          // This is done because the initial input setup fires some change events we need to ignore
+          conditionallySearch.changesFired = 0;
+
+          $scope.$watch('dateStart', conditionallySearch);
+          $scope.$watch('dateEnd', conditionallySearch);
         }
-
-        // Memoize how many calls have been made
-        // This is done because the initial input setup fires some change events we need to ignore
-        conditionallySearch.changesFired = 0;
-
-        $scope.$watch('dateStart', conditionallySearch);
-        $scope.$watch('dateEnd', conditionallySearch);
-      }
-    };
-  })
+      };
+    }
+  ])
   .directive('usernameInput', function () {
     return {
       restrict: 'A',
