@@ -3,24 +3,28 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt);
 
   // Scripts to be concatenated and minified (in load order)
+  // Use un-minified scripts if possible for more meaningful stack traces in development
   var scripts = [
     'app/bower_components/webmaker-analytics/analytics.js',
-    'app/bower_components/eventEmitter/EventEmitter.min.js',
+    'app/bower_components/eventEmitter/EventEmitter.js',
     'app/bower_components/webmaker-auth-client/dist/webmaker-auth-client.min.js',
-    'app/bower_components/momentjs/min/moment-with-langs.min.js',
-    'app/bower_components/jquery/dist/jquery.min.js',
-    'app/bower_components/selectize/dist/js/standalone/selectize.min.js',
+    'app/bower_components/momentjs/min/moment-with-langs.js',
+    'app/bower_components/jquery/dist/jquery.js',
+    'app/bower_components/selectize/dist/js/standalone/selectize.js',
     'app/bower_components/makeapi-client/src/make-api.js',
-    'app/bower_components/angular/angular.min.js',
+    'app/bower_components/angular/angular.js',
     'app/bower_components/angular-paginate-anything/src/paginate-anything.js',
-    'app/bower_components/angular-sanitize/angular-sanitize.min.js',
-    'app/bower_components/angular-resource/angular-resource.min.js',
-    'app/bower_components/angular-route/angular-route.min.js',
-    'app/bower_components/angular-animate/angular-animate.min.js',
-    'app/bower_components/angular-bootstrap/ui-bootstrap.min.js',
-    'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+    'app/bower_components/angular-sanitize/angular-sanitize.js',
+    'app/bower_components/angular-resource/angular-resource.js',
+    'app/bower_components/angular-route/angular-route.js',
+    'app/bower_components/angular-animate/angular-animate.js',
+    'app/bower_components/angular-bootstrap/ui-bootstrap.js',
+    'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
     'app/bower_components/makeapi-angular/dist/makeapi-angular.templates.js',
     'app/bower_components/makeapi-angular/dist/makeapi-angular.js',
+
+    // Be sure to use proper array style dependency injection for these Angular scripts
+    // Improper dep injection will result in broken code post-compression
     'app/js/app.js',
     'app/js/services.js',
     'app/js/controllers.js',
@@ -190,12 +194,7 @@ module.exports = function (grunt) {
     },
     uglify: {
       options: {
-        sourceMap: true,
-        preserveComments: false,
-        compress: {
-          drop_console: true,
-          join_vars: true
-        }
+        sourceMap: true
       },
       production: {
         files: {
