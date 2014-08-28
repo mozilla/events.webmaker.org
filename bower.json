@@ -1,6 +1,6 @@
 {
   "name": "webmaker-events",
-  "version": "0.10.4",
+  "version": "0.10.5",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -29,7 +29,6 @@
   },
   "resolutions": {
     "angular": "1.2.15",
-    "webmaker-analytics": "0.1.0",
     "selectize": "0.10.1"
   }
 }
