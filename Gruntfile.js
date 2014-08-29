@@ -94,6 +94,9 @@ module.exports = function (grunt) {
           async: true
         },
         command: 'node server/server.js'
+      },
+      runTests: {
+        command: './test/test.sh'
       }
     },
     jsonlint: {
@@ -240,4 +243,10 @@ module.exports = function (grunt) {
     'jsonlint',
     'jshint'
   ]);
+
+  // Testing
+  grunt.registerTask('test', [
+    'shell:runTests'
+  ]);
+
 };

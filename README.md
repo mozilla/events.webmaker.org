@@ -9,6 +9,10 @@
 - grunt CLI `npm install -g grunt-cli`
 - bower `npm install -g bower`
 
+## Testing Dependencies
+
+- protractor `npm install -g protractor`
+
 ## Setup
 
 ### Application Setup
@@ -51,7 +55,8 @@ This app takes four configuration parameters, all of which are optional.
 
 - **grunt** - Runs a server at [localhost:1981](http://localhost:1981).
 - **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md).
-- **grunt heroku** - For heroku
+- **grunt validate** - Run JSHint and verify that JS passes our JSBeautifier config
+- **grunt test** - Run automated tests
 
 ### Localization
 

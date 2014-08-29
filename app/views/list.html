@@ -6,10 +6,10 @@
         <div class="clearfix">
           <div class="col-xs-10 no-padding">
             <label for="event-filter" class="sr-only">{{ '_find_event_' | i18n }}</label>
-            <input ng-enter="searchEvents()" id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="searchPhrase" type="text" class="form-control">
+            <input test-id="search-box" ng-enter="searchEvents()" id="event-filter" placeholder="{{ '_search_events_' | i18n }}" ng-model="searchPhrase" type="text" class="form-control">
           </div>
           <div class="col-xs-2 no-padding">
-            <button ng-click="searchEvents()" class="btn btn-info"><i class="fa fa-search"></i></button>
+            <button test-id="submit-search-btn" ng-click="searchEvents()" class="btn btn-info"><i class="fa fa-search"></i></button>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
           <span ng-show="searchResultCount === 1"> {{ '_event_found_' | i18n }}</span>
           <span ng-show="searchResultCount > 1"> {{ '_events_found_' | i18n }}</span>
           <span ng-show="searchResultCount === 0" bind-unsafe-html="'_no_events_found_' | i18n"></span>
-          <button ng-click="clearSearch()" class="btn btn-sm btn-primary pull-right">{{ '_clear_search_' | i18n }}</button>
+          <button test-id="clear-btn" ng-click="clearSearch()" class="btn btn-sm btn-primary pull-right">{{ '_clear_search_' | i18n }}</button>
         </p>
       </div>
     </div>
