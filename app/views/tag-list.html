@@ -6,7 +6,7 @@
   <table class="table table-striped">
     <tr ng-repeat="event in events">
       <td><time>{{ event.beginDate | date:'MMM d' }}</time></td>
-      <td><a href="#!/events/{{event.id}}" class="event-title">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
+      <td><a href="/events/{{event.id}}" class="event-title">{{ event.title }}</a> <span class="text-muted">({{ event.address }})</span></td>
     </tr>
   </table>
 </div>

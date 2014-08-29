@@ -38,7 +38,7 @@ module.exports = function (grunt) {
 
   scripts.forEach(function (script) {
     script = script.replace('app/', '');
-    scriptIncludes += '<script src="' + script + '"></script>';
+    scriptIncludes += '<script src="/' + script + '"></script>';
   });
 
   grunt.initConfig({
@@ -94,6 +94,9 @@ module.exports = function (grunt) {
           async: true
         },
         command: 'node server/server.js'
+      },
+      runTests: {
+        command: './test/test.sh'
       }
     },
     jsonlint: {
@@ -183,7 +186,7 @@ module.exports = function (grunt) {
             pattern: '%_EXTENSIONS_%',
             replacement: ''
           }, {
-            pattern: '<script src="compiled/app.min.js"></script>',
+            pattern: '<script src="/compiled/app.min.js"></script>',
             replacement: scriptIncludes
           }, {
             pattern: '%_LIVE_RELOAD_%',
@@ -240,4 +243,10 @@ module.exports = function (grunt) {
     'jsonlint',
     'jshint'
   ]);
+
+  // Testing
+  grunt.registerTask('test', [
+    'shell:runTests'
+  ]);
+
 };

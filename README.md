@@ -9,6 +9,10 @@
 - grunt CLI `npm install -g grunt-cli`
 - bower `npm install -g bower`
 
+## Testing Dependencies
+
+- protractor `npm install -g protractor`
+
 ## Setup
 
 ### Application Setup
@@ -53,6 +57,7 @@ This app takes four configuration parameters, all of which are optional.
 - **grunt validate** - Checks to see if JS is beautified and passes JSHint. Checks to see if JSON is valid.
 - **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md). Checks to see if JSON is valid.
 - **grunt build** - Used for building a production ready version of the app with minified and concatenated assets.
+- **grunt test** - Run automated tests.
 
 ### A note on index.template
 
@@ -99,4 +104,3 @@ To localize string in template file you have three options:
 3. `<span bind-unsafe-html="'_some_key_name' | i18n"></span>`
 
   This method is useful when you have some variable inside your string for instance: "My name is {{name}}."
-

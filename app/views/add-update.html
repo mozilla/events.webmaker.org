@@ -343,7 +343,7 @@
       <div ng-show="attendees.length" class="row add-bottom-margin">
         <div class="col-sm-6">
           <p>{{ attendees.length }} <span ng-bind-html="'_number_of_rsvps_' | i18n "></span></p>
-          <a ng-class="{disabled: !eventIsToday}" class="btn btn-primary" href="#!/check-in/{{ eventID }}">{{ '_check_in_att_' | i18n }}</a>
+          <a ng-class="{disabled: !eventIsToday}" class="btn btn-primary" href="/check-in/{{ eventID }}">{{ '_check_in_att_' | i18n }}</a>
         </div>
 
         <we-rsvp-list class="col-sm-6 hidden-xs" show-header="false" attendees-to-show="5"></we-rsvp-list>
