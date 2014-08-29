@@ -92,8 +92,13 @@ module.exports = function (env) {
     res.send('window.eventsConfig = ' + JSON.stringify(config));
   });
 
- // Localized Strings
- app.get('/strings/:lang?', i18n.stringsRoute('en-US'));
+  app.get(/^\/(?!_)/, function (req, res) {
+    res.sendfile(path.resolve(__dirname, '../app/index.html'));
+  })
+
+
+  // Localized Strings
+  app.get('/strings/:lang?', i18n.stringsRoute('en-US'));
 
   return app;
 };

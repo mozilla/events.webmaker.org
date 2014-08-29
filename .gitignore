@@ -2,11 +2,13 @@ logs/*
 !.gitkeep
 node_modules/
 bower_components/
+_bower_components/
 tmp
 .DS_Store
 .idea
 .env
 app/compiled/
+app/_compiled/
 TODO.txt
 npm-debug.log
 locale/

@@ -207,7 +207,7 @@ angular.module('myApp.directives', [])
 
     return {
       restrict: 'E',
-      templateUrl: '/views/partials/rsvp.html',
+      templateUrl: '/_views/partials/rsvp.html',
       transclude: true,
       scope: {
         eventId: '=',
@@ -366,7 +366,7 @@ angular.module('myApp.directives', [])
         }
       ],
       restrict: 'E',
-      templateUrl: '/views/partials/rsvp-list.html',
+      templateUrl: '/_views/partials/rsvp-list.html',
       transclude: true
     };
   })
@@ -389,7 +389,7 @@ angular.module('myApp.directives', [])
   })
   .directive('weDatepicker', function () {
     return {
-      templateUrl: '/views/partials/datepicker/datepicker-inline.html',
+      templateUrl: '/_views/partials/datepicker/datepicker-inline.html',
       restrict: 'E',
       scope: {
         chosenDate: '=ngModel',
@@ -428,7 +428,7 @@ angular.module('myApp.directives', [])
   .directive('wmImageGallery', function () {
     return {
       restrict: 'A',
-      templateUrl: '/views/partials/image-gallery.html',
+      templateUrl: '/_views/partials/image-gallery.html',
       scope: {
         cols: '@',
         photos: '=',
@@ -473,28 +473,28 @@ angular.module('myApp.directives', [])
 // Override datepicker
 angular.module('template/datepicker/datepicker.html', []).run(['$http', '$templateCache',
   function ($http, $templateCache) {
-    $http.get('views/partials/datepicker/datepicker.html').success(function (data) {
+    $http.get('_views/partials/datepicker/datepicker.html').success(function (data) {
       $templateCache.put('template/datepicker/datepicker.html', data);
     });
   }
 ]);
 angular.module('template/datepicker/popup.html', []).run(['$http', '$templateCache',
   function ($http, $templateCache) {
-    $http.get('views/partials/datepicker/popup.html').success(function (data) {
+    $http.get('_views/partials/datepicker/popup.html').success(function (data) {
       $templateCache.put('template/datepicker/popup.html', data);
     });
   }
 ]);
 angular.module('template/timepicker/timepicker.html', []).run(['$http', '$templateCache',
   function ($http, $templateCache) {
-    $http.get('views/partials/timepicker/timepicker.html').success(function (data) {
+    $http.get('_views/partials/timepicker/timepicker.html').success(function (data) {
       $templateCache.put('template/timepicker/timepicker.html', data);
     });
   }
 ]);
 angular.module('template/tabs/tabset.html', []).run(['$http', '$templateCache',
   function ($http, $templateCache) {
-    $http.get('views/partials/tabs/tabset.html').success(function (data) {
+    $http.get('_views/partials/tabs/tabset.html').success(function (data) {
       $templateCache.put('template/tabs/tabset.html', data);
     });
   }

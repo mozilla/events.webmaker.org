@@ -5,32 +5,32 @@ module.exports = function (grunt) {
   // Scripts to be concatenated and minified (in load order)
   // Use un-minified scripts if possible for more meaningful stack traces in development
   var scripts = [
-    'app/bower_components/webmaker-analytics/analytics.js',
-    'app/bower_components/eventEmitter/EventEmitter.js',
-    'app/bower_components/webmaker-auth-client/dist/webmaker-auth-client.min.js',
-    'app/bower_components/momentjs/min/moment-with-langs.js',
-    'app/bower_components/jquery/dist/jquery.js',
-    'app/bower_components/selectize/dist/js/standalone/selectize.js',
-    'app/bower_components/makeapi-client/src/make-api.js',
-    'app/bower_components/angular/angular.js',
-    'app/bower_components/angular-paginate-anything/src/paginate-anything.js',
-    'app/bower_components/angular-sanitize/angular-sanitize.js',
-    'app/bower_components/angular-resource/angular-resource.js',
-    'app/bower_components/angular-route/angular-route.js',
-    'app/bower_components/angular-animate/angular-animate.js',
-    'app/bower_components/angular-bootstrap/ui-bootstrap.js',
-    'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-    'app/bower_components/makeapi-angular/dist/makeapi-angular.templates.js',
-    'app/bower_components/makeapi-angular/dist/makeapi-angular.js',
+    'app/_bower_components/webmaker-analytics/analytics.js',
+    'app/_bower_components/eventEmitter/EventEmitter.js',
+    'app/_bower_components/webmaker-auth-client/dist/webmaker-auth-client.min.js',
+    'app/_bower_components/momentjs/min/moment-with-langs.js',
+    'app/_bower_components/jquery/dist/jquery.js',
+    'app/_bower_components/selectize/dist/js/standalone/selectize.js',
+    'app/_bower_components/makeapi-client/src/make-api.js',
+    'app/_bower_components/angular/angular.js',
+    'app/_bower_components/angular-paginate-anything/src/paginate-anything.js',
+    'app/_bower_components/angular-sanitize/angular-sanitize.js',
+    'app/_bower_components/angular-resource/angular-resource.js',
+    'app/_bower_components/angular-route/angular-route.js',
+    'app/_bower_components/angular-animate/angular-animate.js',
+    'app/_bower_components/angular-bootstrap/ui-bootstrap.js',
+    'app/_bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+    'app/_bower_components/makeapi-angular/dist/makeapi-angular.templates.js',
+    'app/_bower_components/makeapi-angular/dist/makeapi-angular.js',
 
     // Be sure to use proper array style dependency injection for these Angular scripts
     // Improper dep injection will result in broken code post-compression
-    'app/js/app.js',
-    'app/js/services.js',
-    'app/js/controllers.js',
-    'app/js/filters.js',
-    'app/js/directives.js',
-    'app/js/i18n.js'
+    'app/_js/app.js',
+    'app/_js/services.js',
+    'app/_js/controllers.js',
+    'app/_js/filters.js',
+    'app/_js/directives.js',
+    'app/_js/i18n.js'
   ];
 
   // Generate HTML to include individual scripts for local development
@@ -38,14 +38,14 @@ module.exports = function (grunt) {
 
   scripts.forEach(function (script) {
     script = script.replace('app/', '');
-    scriptIncludes += '<script src="' + script + '"></script>';
+    scriptIncludes += '<script src="/' + script + '"></script>';
   });
 
   grunt.initConfig({
     less: {
       development: {
         files: {
-          'app/compiled/app.ltr.css': 'app/less/app.less'
+          'app/_compiled/app.ltr.css': 'app/_less/app.less'
         },
         options: {
           sourceMap: true,
@@ -55,13 +55,13 @@ module.exports = function (grunt) {
       },
       production: {
         files: {
-          'app/compiled/app.ltr.css': 'app/less/app.less'
+          'app/_compiled/app.ltr.css': 'app/_less/app.less'
         }
       }
     },
     watch: {
       less: {
-        files: ['app/less/**/*.less', 'bower.json'],
+        files: ['app/_less/**/*.less', 'bower.json'],
         tasks: ['less:development'],
         options: {
           livereload: true,
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
         }
       },
       assets: {
-        files: ['app/img/**/*', 'app/js/**/*.js', 'app/views/**/*.html'],
+        files: ['app/_img/**/*', 'app/_js/**/*.js', 'app/_views/**/*.html'],
         options: {
           livereload: true,
           spawn: false
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
       }
     },
     cssjanus: {
-      'app/compiled/app.rtl.uncss.css': 'app/compiled/app.ltr.uncss.css',
+      'app/_compiled/app.rtl.uncss.css': 'app/_compiled/app.ltr.uncss.css',
       options: {
         swapLtrRtlInUrl: true,
         swapLeftRightInUrl: false,
@@ -106,21 +106,21 @@ module.exports = function (grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'app/js/**/*.js'],
+      all: ['Gruntfile.js', 'app/_js/**/*.js'],
       options: {
-        ignores: ['app/js/lib/**/*.js'],
+        ignores: ['app/_js/lib/**/*.js'],
         jshintrc: '.jshintrc'
       }
     },
     jsbeautifier: {
-      modify: {
-        src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
+      nmodify: {
+        src: ['Gruntfile.js', 'app/_js/**/*.js', '!app/_js/lib/**/*.js'],
         options: {
           config: '.jsbeautifyrc'
         }
       },
       validate: {
-        src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
+        src: ['Gruntfile.js', 'app/_js/**/*.js', '!app/_js/lib/**/*.js'],
         options: {
           mode: 'VERIFY_ONLY',
           config: '.jsbeautifyrc'
@@ -128,7 +128,7 @@ module.exports = function (grunt) {
       }
     },
     angular_i18n_finder: {
-      files: ['app/index.html', 'app/views/*.html', 'app/views/**/*.html'],
+      files: ['app/index.html', 'app/_views/*.html', 'app/_views/**/*.html'],
       options: {
         pathToJSON: ['locale/en_US/*.json'],
         ignoreKeys: []
@@ -139,23 +139,23 @@ module.exports = function (grunt) {
         keepSpecialComments: 0
       },
       ltr: {
-        src: 'app/compiled/app.ltr.uncss.css',
-        dest: 'app/compiled/app.ltr.uncss.min.css'
+        src: 'app/_compiled/app.ltr.uncss.css',
+        dest: 'app/_compiled/app.ltr.uncss.min.css'
       },
       rtl: {
-        src: 'app/compiled/app.rtl.uncss.css',
-        dest: 'app/compiled/app.rtl.uncss.min.css'
+        src: 'app/_compiled/app.rtl.uncss.css',
+        dest: 'app/_compiled/app.rtl.uncss.min.css'
       }
     },
     uncss: {
       production: {
         options: {
           ignore: ['.pagination > .active > a', /\.multicolor-header\.color-[0-9]/, /we-rsvp.*/, /\.dropdown-menu/, /\.navbar/],
-          stylesheets: ['compiled/app.ltr.css'],
+          stylesheets: ['_compiled/app.ltr.css'],
           urls: ['http://localhost:1981/', 'http://localhost:1981/#/events'] // Deprecated
         },
         files: {
-          'app/compiled/app.ltr.uncss.css': ['app/index.html', 'app/views/**/*.html']
+          'app/_compiled/app.ltr.uncss.css': ['app/index.html', 'app/_views/**/*.html']
         }
       }
     },
@@ -183,7 +183,7 @@ module.exports = function (grunt) {
             pattern: '%_EXTENSIONS_%',
             replacement: ''
           }, {
-            pattern: '<script src="compiled/app.min.js"></script>',
+            pattern: '<script src="/_compiled/app.min.js"></script>',
             replacement: scriptIncludes
           }, {
             pattern: '%_LIVE_RELOAD_%',
@@ -198,7 +198,7 @@ module.exports = function (grunt) {
       },
       production: {
         files: {
-          'app/compiled/app.min.js': scripts
+          'app/_compiled/app.min.js': scripts
         }
       }
     }
