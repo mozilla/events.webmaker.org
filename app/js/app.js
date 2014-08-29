@@ -19,59 +19,59 @@ config(['$routeProvider', '$locationProvider',
       window.location.href = decodeURI(window.location.href);
     }
 
-    $locationProvider.hashPrefix('!');
+    $locationProvider.html5Mode(true).hashPrefix('!');
 
     $routeProvider.when('/add', {
-      templateUrl: 'views/add-update.html',
+      templateUrl: '/views/add-update.html',
       controller: 'addUpdateController'
     });
 
     $routeProvider.when('/events', {
-      templateUrl: 'views/list.html',
+      templateUrl: '/views/list.html',
       controller: 'eventListController'
     });
 
     $routeProvider.when('/events/tag/:id', {
-      templateUrl: 'views/tag-list.html',
+      templateUrl: '/views/tag-list.html',
       controller: 'tagListController'
     });
 
     $routeProvider.when('/events/:id', {
-      templateUrl: 'views/detail.html',
+      templateUrl: '/views/detail.html',
       controller: 'eventDetailController'
     });
 
     $routeProvider.when('/edit/:id', {
-      templateUrl: 'views/add-update.html',
+      templateUrl: '/views/add-update.html',
       controller: 'addUpdateController'
     });
 
     $routeProvider.when('/event-guides', {
-      templateUrl: 'views/event-guides.html'
+      templateUrl: '/views/event-guides.html'
     });
 
     $routeProvider.when('/user/:id', {
-      templateUrl: 'views/user.html',
+      templateUrl: '/views/user.html',
       controller: 'userController'
     });
 
     $routeProvider.when('/confirm/:type/:token', {
-      templateUrl: 'views/confirm.html',
+      templateUrl: '/views/confirm.html',
       controller: 'confirmController'
     });
 
     $routeProvider.when('/error/:code', {
-      templateUrl: 'views/error.html',
+      templateUrl: '/views/error.html',
       controller: 'errorController'
     });
 
     $routeProvider.when('/check-in/:id', {
-      templateUrl: 'views/check-in.html',
+      templateUrl: '/views/check-in.html',
       controller: 'checkInController'
     });
 
     $routeProvider.when('/', {
-      templateUrl: 'views/home.html',
+      templateUrl: '/views/home.html',
       controller: 'homeController'
     });
 

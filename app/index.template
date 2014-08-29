@@ -12,14 +12,14 @@
 
   <title ng-bind="'_webmaker_events_' | i18n"></title>
 
-  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700">
   <style>
     html, body {
       display: none;
     }
   </style>
-  <link rel="stylesheet" ng-href="compiled/app.{{direction}}%_EXTENSIONS_%.css">
+  <link rel="stylesheet" ng-href="/compiled/app.{{direction}}%_EXTENSIONS_%.css">
 </head>
 <body>
 
@@ -43,17 +43,17 @@
           </form>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" ng-cloak ng-show="_user.email">
-              <a href="#" class="navbar-user-info dropdown-toggle">
+              <a href="/" class="navbar-user-info dropdown-toggle">
                 <span class="sr-only">{{ '_user_links_drop_' | i18n }}</span>
                 <img class="user-info-avatar" ng-src="{{_user.avatar}}"> {{ '_hi_' | i18n }} <strong>{{_user.username}}</strong> <span class="label label-primary" ng-show="_user.isAdmin">{{ '_admin_' | i18n }}</span> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="{{webmakerUrl}}/user/{{_user.username}}"><span class="fa fa-user"></span> {{ '_my_profile_' | i18n }}</a></li>
-                <li><a href="#!/user/{{_user.username}}"><span class="fa fa-flag"></span> {{ '_my_events_' | i18n }}</a></li>
+                <li><a href="/user/{{_user.username}}"><span class="fa fa-flag"></span> {{ '_my_events_' | i18n }}</a></li>
                 <li><a href="{{myMakesUrl}}" target="_blank"><span class="fa fa-th-large"></span> {{ '_my_makes_' | i18n }}</a></li>
                 <li><a href="{{accountSettingsUrl}}" target="_blank"><span class="fa fa-cog"></span> {{ '_settings_' | i18n }}</a></li>
                 <li class="divider"></li>
-                <li><a href="#" ng-click="logout()"><span class="fa fa-sign-out"></span> {{ '_log_out_' | i18n }}</a></li>
+                <li><a href="/" ng-click="logout()"><span class="fa fa-sign-out"></span> {{ '_log_out_' | i18n }}</a></li>
               </ul>
             </li>
           </ul>
@@ -70,10 +70,10 @@
         </div>
         <div class="navbar-collapse" collapse="isCollapsed">
           <ul class="nav navbar-nav">
-            <li ng-class="{ active : isActive('/') }"><a href="#!" ng-cloak>{{ '_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/events') }"><a href="#!/events" ng-cloak>{{ '_upcoming_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/add') }"><a href="#!/add" ng-cloak>{{ '_add_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/event-guides') }"><a href="#!/event-guides" ng-cloak>{{ '_event_guides_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/') }"><a href="/" ng-cloak>{{ '_events_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/events') }"><a href="/events" ng-cloak>{{ '_upcoming_events_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/add') }"><a href="/add" ng-cloak>{{ '_add_events_' | i18n }}</a></li>
+            <li ng-class="{ active : isActive('/event-guides') }"><a href="/event-guides" ng-cloak>{{ '_event_guides_' | i18n }}</a></li>
           </ul>
         </div>
 
@@ -83,11 +83,11 @@
 
   <div class="view-animate" role="main" ng-view></div>
 
-  <script src="config.js"></script>
+  <script src="/config.js"></script>
   <script src="https://login.persona.org/include.js"></script>
-  <script src="compiled/app.min.js"></script>
+  <script src="/compiled/app.min.js"></script>
 
-  <script id="google-analytics-js" src="js/lib/google-analytics.js"
+  <script id="google-analytics-js" src="/js/lib/google-analytics.js"
           data-ga-account="{{ ga_account }}"
           data-ga-domain="{{ ga_domain }}"
           async>
