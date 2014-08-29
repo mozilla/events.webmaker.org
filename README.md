@@ -49,9 +49,20 @@ This app takes four configuration parameters, all of which are optional.
 
 ## Grunt Tasks
 
-- **grunt** - Runs a server at [localhost:1981](http://localhost:1981).
-- **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md).
-- **grunt heroku** - For heroku
+- **grunt** - Run this for local development. It will spawn a server at [localhost:1981](http://localhost:1981), compile `index.template`, and recompile your LESS files as they are modified. It will also enable live reload.
+- **grunt validate** - Checks to see if JS is beautified and passes JSHint. Checks to see if JSON is valid.
+- **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md). Checks to see if JSON is valid.
+- **grunt build** - Used for building a production ready version of the app with minified and concatenated assets.
+
+### A note on index.template
+
+The file `index.template` has several tokens, which are replaced when `grunt` or `grunt build` are run.
+
+When `grunt` is run for local development, the generated `index.html` will contain individual, non-minified JS files and CSS with source maps. It will also contain a live reload script.
+
+When `grunt build` is run for a production ready build, `index.html` will only reference a few 3rd party JS libraries and `compiled/app.min.js`, which includes the scripts listed in the `scripts` array in `Gruntfile.js`. *Note that `grunt build` shouldn't be used for local development aside from testing.*
+
+**Never modify index.html directly! It's machine generated and not meant to be modified by hand.**
 
 ### Localization
 
