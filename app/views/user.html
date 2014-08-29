@@ -17,7 +17,7 @@
         <span class="label label-primary" ng-show="isMentor(event)">{{ '_mentor_' | i18n }}</span>
       </td>
       <td>
-        <a ng-if="!event.externalSource" ng-show="canEdit(event)" href="#!/edit/{{ event.id }}">
+        <a ng-if="!event.externalSource" ng-show="canEdit(event)" href="/edit/{{ event.id }}">
           <span class="fa fa-pencil"></span><span class="sr-only">{{ '_edit_event_' | i18n }}</span>
         </a>
       </td>

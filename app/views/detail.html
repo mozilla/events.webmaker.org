@@ -1,6 +1,6 @@
 <div class="check-in-banner highlighted" ng-if="eventIsToday && (isOrganizer(eventData) || isAdmin())">
   <div class="container">
-    <p class="larger"><span>{{ '_today_the_day_' | i18n }}</span> <a class="btn btn-primary" href="#!/check-in/{{ eventID }}">{{ '_check_yo_attendees_' | i18n }}</a></p>
+    <p class="larger"><span>{{ '_today_the_day_' | i18n }}</span> <a class="btn btn-primary" href="/check-in/{{ eventID }}">{{ '_check_yo_attendees_' | i18n }}</a></p>
   </div>
 </div>
 
@@ -37,7 +37,7 @@
         <a href="https://plus.google.com/share?url={{ eventURL | uriEncode }}" target="_blank"><i class="fa fa-google-plus"></i></a>
       </div>
 
-      <a ng-show="canEdit(eventData)" class="btn btn-primary" href="#!/edit/{{ eventID }}"><span class="fa fa-pencil"></span> &nbsp;{{ '_edit_them_details_' | i18n }}</a>
+      <a ng-show="canEdit(eventData)" class="btn btn-primary" href="/edit/{{ eventID }}"><span class="fa fa-pencil"></span> &nbsp;{{ '_edit_them_details_' | i18n }}</a>
     </div>
   </div>
 </div>
@@ -116,7 +116,7 @@
         <we-rsvp-list show-header="true" attendees-to-show="10" class="add-bottom-margin" ng-if="eventData.areAttendeesPublic"></we-rsvp-list>
 
         <div class="label-group">
-          <a ng-repeat="tag in eventData.tags" href="#!/events/tag/{{ tag | uriEncode }}"><span class="label label-info">{{ tag }}</span></a>
+          <a ng-repeat="tag in eventData.tags" href="/events/tag/{{ tag | uriEncode }}"><span class="label label-info">{{ tag }}</span></a>
         </div>
 
       </div>

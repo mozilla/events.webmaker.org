@@ -458,7 +458,7 @@ angular.module('myApp.controllers', [])
 
       authService.on('newuser', function (assertion) {
         $modal.open({
-          templateUrl: 'views/partials/create-user-form.html',
+          templateUrl: '/views/partials/create-user-form.html',
           controller: createUserCtrl,
           resolve: {
             assertion: function () {
