@@ -153,9 +153,16 @@ module.exports = function (grunt) {
     uncss: {
       production: {
         options: {
-          ignore: ['.pagination > .active > a', /\.multicolor-header\.color-[0-9]/, /we-rsvp.*/, /\.dropdown-menu/, /\.navbar/],
-          stylesheets: ['compiled/app.ltr.css'],
-          urls: ['http://localhost:1981/', 'http://localhost:1981/#/events'] // Deprecated
+          ignore: [
+            '.pagination > .active > a',
+            /\.multicolor-header\.color-[0-9]/,
+            /we-rsvp.*/,
+            /\.dropdown-menu/,
+            /\.navbar/,
+            /(\[ng|\[data-ng|\[x-ng|\.ng|\.x).*/, // Angular bizness
+            /\.listing-home.*/
+          ],
+          stylesheets: ['compiled/app.ltr.css']
         },
         files: {
           'app/compiled/app.ltr.uncss.css': ['app/index.html', 'app/views/**/*.html']
