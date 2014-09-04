@@ -13,3 +13,4 @@ locale/
 !locale/en_US/*
 comps/
 index.html
+test/conf-sauce.js
