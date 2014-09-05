@@ -160,7 +160,8 @@ module.exports = function (grunt) {
             /\.dropdown-menu/,
             /\.navbar/,
             /(\[ng|\[data-ng|\[x-ng|\.ng|\.x).*/, // Angular bizness
-            /\.listing-home.*/
+            /\.listing-home.*/,
+            /we-related-events.*/
           ],
           stylesheets: ['compiled/app.ltr.css']
         },

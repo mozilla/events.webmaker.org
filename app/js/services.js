@@ -61,6 +61,17 @@ angular.module('myApp.services', ['ngResource'])
       };
     }
   ])
+  .factory('relatedEventService', ['$rootScope', '$resource', 'config',
+    function ($rootScope, $resource, config) {
+      return $resource(config.eventsLocation + '/events/:id/related', {}, {
+        query: {
+          method: 'GET',
+          isArray: true,
+          withCredentials: false
+        }
+      });
+    }
+  ])
   .factory('tokenService', ['$rootScope', '$resource', 'config',
     function ($rootScope, $resource, config) {
       return $resource(config.eventsLocation + '/verify/token/:token', {

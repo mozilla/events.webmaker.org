@@ -1,0 +1,21 @@
+<div class="container" ng-show="relatedEvents">
+
+  <div class="row">
+    <header class="col-sm-12">
+      <h3 class="pull-left">{{ '_related_events_' | i18n}}</h3>
+      <a class="pull-right" href="/events">{{ '_re_find_an_event_' | i18n }} <i class="fa fa-angle-right"></i></a>
+    </header>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6" ng-repeat="relatedEvent in relatedEvents | limitTo: 2">
+      <p class="event-title"><a href="{{ relatedEvent.url }}">{{ relatedEvent.title }}</a></p>
+
+      <div class="label-group">
+        <p>{{ relatedEvent.beginDate | date:'MMM d' }}</p>
+        <p>{{ relatedEvent.city }}<span ng-show="relatedEvent.city && relatedEvent.country">,</span> {{ relatedEvent.country }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
