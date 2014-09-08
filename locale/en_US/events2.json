@@ -1006,5 +1006,13 @@
   "_explain_epub_":{
     "message": "By checking this box your event will show up in the upcoming events list.",
     "description": "Explanation of privacy option"
+  },
+  "_re_find_an_event_":{
+    "message": "Find an event",
+    "description": "Related events - link title"
+  },
+  "_related_events_":{
+    "message": "Related events",
+    "description": "Related events header"
   }
 }

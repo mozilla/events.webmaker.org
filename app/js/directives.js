@@ -460,6 +460,28 @@ angular.module('myApp.directives', [])
       }
     };
   })
+  .directive('weRelatedEvents', function () {
+    return {
+      scope: {
+        relatedTo: '='
+      },
+      restrict: 'E',
+      templateUrl: '/views/partials/related-events.html',
+      controller: ['$scope', '$element', '$attrs', 'relatedEventService',
+        function ($scope, $element, $attrs, relatedEventService) {
+          $scope.$watch('relatedTo', function () {
+            if ($scope.relatedTo) {
+              relatedEventService.query({
+                id: $scope.relatedTo
+              }, function (data) {
+                $scope.relatedEvents = data;
+              });
+            }
+          });
+        }
+      ]
+    };
+  })
   .directive('wmImageGalleryItem', function () {
     return {
       restrict: 'A',
