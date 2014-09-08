@@ -940,7 +940,7 @@
     "description": "Get help section title"
   },
   "_get_help_desc_": {
-    "message": "Don't know where to start or seeking advice? Post a question in our community discussion forum or email us at at <a href='mailto:makerparty@mozilla.org'>makerparty@mozilla.org.</a>",
+    "message": "Don't know where to start or seeking advice? Post a question in our community discussion forum or email us at <a href='mailto:makerparty@mozilla.org'>makerparty@mozilla.org.</a>",
     "description": "Get help section description"
   },
   "_no_events_found_": {
