@@ -643,10 +643,6 @@
     "message": "Mentors",
     "description": "Title for details page section"
   },
-  "Details": {
-    "message": "Details",
-    "description": "Title for details page section"
-  },
   "People who can edit this event": {
     "message": "People who can edit this event",
     "description": "Event details page"
