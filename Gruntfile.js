@@ -153,6 +153,8 @@ module.exports = function (grunt) {
     uncss: {
       production: {
         options: {
+          // Add patterns for any selectors that target dynamically added HTML or attributes
+          // Uncss won't include these selectors otherwise because it parses static templates
           ignore: [
             '.pagination > .active > a',
             /\.multicolor-header\.color-[0-9]/,
@@ -161,7 +163,8 @@ module.exports = function (grunt) {
             /\.navbar/,
             /(\[ng|\[data-ng|\[x-ng|\.ng|\.x).*/, // Angular bizness
             /\.listing-home.*/,
-            /we-related-events.*/
+            /we-related-events.*/,
+            /\.tooltip*/
           ],
           stylesheets: ['compiled/app.ltr.css']
         },
