@@ -13,7 +13,11 @@
 
       <div class="label-group">
         <p>{{ relatedEvent.beginDate | date:'MMM d' }}</p>
-        <p>{{ relatedEvent.city }}<span ng-show="relatedEvent.city && relatedEvent.country">,</span> {{ relatedEvent.country }}</p>
+        <p ng-show="relatedEvent.city || relatedEvent.country">
+          <span ng-if="relatedEvent.city">{{ relatedEvent.city }}</span>
+          <span ng-if="relatedEvent.city && relatedEvent.country">, </span>
+          <span ng-if="relatedEvent.country">{{ relatedEvent.country }}</span>
+        </p>
       </div>
     </div>
   </div>
