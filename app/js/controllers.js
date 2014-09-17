@@ -256,12 +256,16 @@ angular.module('myApp.controllers', [])
       };
 
       // Keep email and login status up to date
-      $scope.$watch('_user.email', function () {
-        $scope.event.organizer = $scope._user.email;
+      $scope.$watch('_user.email', function (newVal, oldVal) {
+        if ($scope.event.organizer === oldVal) {
+          $scope.event.organizer = newVal;
+        }
       });
 
-      $scope.$watch('_user.username', function () {
-        $scope.event.organizerId = $scope._user.username;
+      $scope.$watch('_user.username', function (newVal, oldVal) {
+        if ($scope.event.organizerId === oldVal) {
+          $scope.event.organizerId = newVal;
+        }
       });
 
       $scope.$watch('event.beginDate', function (newValue, oldValue) {
