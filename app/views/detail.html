@@ -62,7 +62,7 @@
         <div class="col-xs-12 col-sm-6">
           <div class="icon-left">
             <span class="fa fa-map-marker"></span>
-            <h4>{{ eventData.address }} <a href="https://maps.google.com/?q={{ eventData.address | uriEncode }}" target="_blank">({{ '_map_' | i18n }})<span class="sr-only">{{ '_link_to_map_' | i18n }}</span></a></h4>
+            <h4>{{ eventData.address }} <a ng-href="https://maps.google.com/?q={{ eventData.address | uriEncode }}" ng-show="eventData.address" target="_blank">({{ '_map_' | i18n }})<span class="sr-only">{{ '_link_to_map_' | i18n }}</span></a></h4>
           </div>
         </div>
       </div>
