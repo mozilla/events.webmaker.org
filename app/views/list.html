@@ -50,6 +50,14 @@
       </div>
     </div>
 
+    <rad-spinner
+      rad-spinner-template="/views/partials/spinner.html"
+      rad-spinner-timeout="5000"
+      rad-spinner-data="eventsData"
+      rad-spinner-data-loading="isDataLoading"
+      rad-spinner-data-failed="didDataFail">
+    </rad-spinner>
+
     <table class="table table-striped">
       <tr ng-repeat="event in eventsData" ng-if="event.isEventPublic">
         <td><img class="remo-badge" ng-if="event.externalSource === 'mozreps'" src="/img/remo_logo_medium.png" alt="Remo event"></td>

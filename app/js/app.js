@@ -10,7 +10,8 @@ angular.module('myApp', [
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
-  'myApp.controllers'
+  'myApp.controllers',
+  'rad.spiiin'
 ]).
 config(['$routeProvider', '$locationProvider',
   function ($routeProvider, $locationProvider) {

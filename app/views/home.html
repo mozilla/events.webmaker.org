@@ -38,6 +38,14 @@
     </span>
   </h2>
 
+  <rad-spinner
+    rad-spinner-template="/views/partials/spinner.html"
+    rad-spinner-timeout="5000"
+    rad-spinner-data="events"
+    rad-spinner-data-loading="isDataLoading"
+    rad-spinner-data-failed="didDataFail">
+  </rad-spinner>
+
   <ul class="listing-home list-unstyled">
     <li ng-repeat="event in events | limitTo: 10" ng-if="event.isEventPublic">
       <a href="{{event.url}}">

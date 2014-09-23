@@ -1,0 +1,9 @@
+<i ng-show="dataLoading" class="fa fa-cog fa-spin fa-3x"></i>
+
+<div ng-show="isTimedOut && !dataFailed" class="alert alert-warning margin-top" role="alert">
+  <i class="fa fa-exclamation-triangle"></i> {{ '_load_slow_' | i18n }}
+</div>
+
+<div ng-show="dataFailed" class="alert alert-danger margin-top" role="alert">
+  <i class="fa fa-exclamation-triangle"></i> {{ '_load_fail_' | i18n }}
+</div>

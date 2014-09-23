@@ -122,6 +122,14 @@
       </div>
 
       <div class="col-xs-12 col-sm-8 col-sm-offset-1">
+        <rad-spinner
+          rad-spinner-template="/views/partials/spinner.html"
+          rad-spinner-timeout="5000"
+          rad-spinner-data="eventData"
+          rad-spinner-data-loading="isDataLoading"
+          rad-spinner-data-failed="didDataFail">
+        </rad-spinner>
+
         <div ng-if="eventData.mentors.length">
           <h2 class="page-header">{{ 'Mentors' | i18n }}</h2>
           <div ng-repeat="mentorGroup in eventData.mentorsIn4" class="row">
