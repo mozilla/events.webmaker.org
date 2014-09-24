@@ -3,13 +3,20 @@
 angular.module('myApp.controllers', [])
   .controller('homeController', ['$scope', '$timeout', 'eventService',
     function ($scope, $timeout, eventService) {
+      $scope.isDataLoading = true;
+      $scope.didDataFail = false;
+
       eventService({
         'Range': '0-9'
       }).query({
         after: (new Date()).toISOString(),
         dedupe: true
-      }, function (data) {
+      }, function success(data) {
         $scope.events = data;
+        $scope.isDataLoading = false;
+      }, function fail() {
+        $scope.isDataLoading = false;
+        $scope.didDataFail = true;
       });
     }
   ])
@@ -367,13 +374,31 @@ angular.module('myApp.controllers', [])
     }
   ])
   .controller('eventListController', ['$scope',
-    function ($scope) {}
+    function ($scope) {
+      // TODO - This will only show a spinner on the first page of events
+      // Library needs to add support for a `loadStart` event to facilitate this
+      // https://github.com/begriffs/angular-paginate-anything/issues/45k
+
+      $scope.isDataLoading = true;
+      $scope.didDataFail = false;
+
+      $scope.$watch('eventsData', function (newValue, oldValue) {
+        if (typeof newValue === 'object' && typeof oldValue === 'undefined') {
+          $scope.isDataLoading = false;
+        }
+      });
+    }
   ])
   .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config', 'dateIsToday', 'eventEditableService',
     function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config, dateIsToday, eventEditableService) {
+      $scope.isDataLoading = true;
+      $scope.didDataFail = false;
+
       eventService().get({
         id: $routeParams.id
       }, function (data) {
+        $scope.isDataLoading = false;
+
         if ($rootScope.justCreatedAnEvent === true) {
           $scope.freshEvent = true;
           $rootScope.justCreatedAnEvent = false;
@@ -431,6 +456,9 @@ angular.module('myApp.controllers', [])
         });
 
       }, function (err) {
+        $scope.didDataFail = true;
+        $scope.isDataLoading = false;
+
         console.error(err);
 
         if (err.status === 404) {

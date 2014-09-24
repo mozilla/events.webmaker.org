@@ -1010,5 +1010,13 @@
   "_related_events_":{
     "message": "Related events",
     "description": "Related events header"
+  },
+  "_load_slow_":{
+    "message": "Our server is under heavy load. Please continue waiting or try again later!",
+    "description": "Error message"
+  },
+  "_load_fail_":{
+    "message": "Service connection failed! Please retry later.",
+    "description": "Error message"
   }
 }
