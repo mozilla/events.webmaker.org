@@ -65,14 +65,14 @@ module.exports = function (grunt) {
         files: ['app/less/**/*.less', 'bower.json'],
         tasks: ['less:development'],
         options: {
-          livereload: true,
+          livereload: 35728,
           spawn: false
         }
       },
       assets: {
         files: ['app/img/**/*', 'app/js/**/*.js', 'app/views/**/*.html'],
         options: {
-          livereload: true,
+          livereload: 35728,
           spawn: false
         }
       },
@@ -202,7 +202,7 @@ module.exports = function (grunt) {
             replacement: scriptIncludes
           }, {
             pattern: '%_LIVE_RELOAD_%',
-            replacement: '<script src="//localhost:35729/livereload.js"></script>'
+            replacement: '<script src="//localhost:35728/livereload.js"></script>'
           }]
         }
       }

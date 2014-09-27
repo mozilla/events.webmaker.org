@@ -6,10 +6,10 @@ module.exports = function(options) {
       'Content-Security-Policy'
     ],
     policy: {
-      'connect-src': ["'self'", options.eventsLocation, "https://makeapi.webmaker.org", "ws://localhost:35729"],
+      'connect-src': ["'self'", options.eventsLocation, "https://makeapi.webmaker.org", "ws://localhost:35728"],
       'default-src': ["'self'"],
       'img-src': ["*"],
-      'script-src': ["'self'", "'unsafe-eval'", "https://maps.googleapis.com", "https://maps.gstatic.com", "https://login.persona.org", "https://ssl.google-analytics.com", "http://localhost:35729"],
+      'script-src': ["'self'", "'unsafe-eval'", "https://maps.googleapis.com", "https://maps.gstatic.com", "https://login.persona.org", "https://ssl.google-analytics.com", "http://localhost:35728"],
       'style-src': ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
       'font-src': ["'self'", "https://themes.googleusercontent.com", "https://fonts.gstatic.com"],
       'frame-src': ["https://www.youtube.com"]
