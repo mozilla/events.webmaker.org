@@ -23,7 +23,7 @@
 
         <div class="form-group" ng-class="{'has-error': addEventForm.title.$dirty && addEventForm.title.$invalid}">
           <label for="event-title">{{ '_name_your_event_' | i18n }} <span class="text-danger">*</span></label>
-          <input ng-model="event.title" name="title" required id="event-title" class="form-control" placeholder="{{ '_great_title_name_' | i18n }}" id="event-title">
+          <input ng-model="event.title" name="title" required id="event-title" class="form-control" placeholder="{{ '_great_title_name_' | i18n }}">
         </div>
 
         <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.title.$invalid">{{ '_required_' | i18n }}</div>
