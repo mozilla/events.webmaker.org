@@ -23,7 +23,7 @@
 
         <div class="form-group" ng-class="{'has-error': addEventForm.title.$dirty && addEventForm.title.$invalid}">
           <label for="event-title">{{ '_name_your_event_' | i18n }} <span class="text-danger">*</span></label>
-          <input ng-model="event.title" name="title" required id="event-title" class="form-control" placeholder="{{ '_great_title_name_' | i18n }}">
+          <input ng-model="event.title" name="title" required id="event-title" class="form-control" placeholder="{{ '_great_title_name_' | i18n }}" id="event-title">
         </div>
 
         <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.title.$invalid">{{ '_required_' | i18n }}</div>
@@ -206,11 +206,11 @@
       <div class="row">
         <div class="col-sm-6">
           <label for="event_organizer_id">Primary organizer username</label>
-          <input name="event_organizer_id" ng-model="event.organizerId" class="form-control"></input>
+          <input name="event_organizer_id" ng-model="event.organizerId" class="form-control" id="event_organizer_id"></input>
         </div>
         <div class="col-sm-6">
           <label for="event_organizer">Primary organizer email</label>
-          <input name="event_organizer" ng-model="event.organizer" class="form-control"></input>
+          <input name="event_organizer" ng-model="event.organizer" class="form-control" id="event_organizer"></input>
         </div>
       </div>
     </div>
@@ -222,7 +222,7 @@
           <div class="form-group add-bottom-margin">
             <label for="organizer-email">Co-organizers</label>
             <div class="input-group">
-              <input ng-model="coorganizerInput" type="text" name="coorganizer_email_input" username-input class="form-control" placeholder="Add co-organizers by username">
+              <input ng-model="coorganizerInput" type="text" name="coorganizer_email_input" username-input class="form-control" placeholder="Add co-organizers by username" id="organizer-email">
               <span class="input-group-btn">
                 <button
                   ng-click="addUser(coorganizerInput, 'coorganizer')"
@@ -275,7 +275,7 @@
           <div class="form-group add-bottom-margin">
             <label for="mentor_request_input">Mentors</label>
             <div class="input-group">
-              <input ng-model="MentorRequestInput" type="email" class="form-control" placeholder="Add mentors by email" name="mentor_request_input">
+              <input ng-model="MentorRequestInput" type="email" class="form-control" placeholder="Add mentors by email" name="mentor_request_input" id="mentor_request_input">
               <span class="input-group-btn">
                 <button
                   ng-click="addUser(MentorRequestInput, 'mentorRequest')"
@@ -359,14 +359,14 @@
           <label for="flickr-tag">Flickr photo gallery</label>
           <div class="input-group input-group-seamless">
              <span class="input-group-addon"><span class="fa fa-flickr"></span></span>
-             <input name="flickr-tag" ng-model="event.flickrTag" class="form-control" type="text" placeholder="Enter your Flickr gallery tag">
+             <input name="flickr-tag" ng-model="event.flickrTag" class="form-control" type="text" placeholder="Enter your Flickr gallery tag" id="flickr-tag">
           </div>
           <p class="help-block">After your event is over you can show a Flickr gallery of photos from your event on your page. Just create a tag on Flickr and enter it here.</p>
         </div>
         <div class="col-sm-6">
           <label for="make-api-tag">Webmaker Makes</label>
           <div class="input-group input-group-seamless">
-            <input name="make-api-tag" ng-model="event.makeApiTag" type="text" class="form-control" placeholder="Enter your event-specific Webmaker tag">
+            <input name="make-api-tag" ng-model="event.makeApiTag" type="text" class="form-control" placeholder="Enter your event-specific Webmaker tag" id="make-api-tag">
             <span class="input-group-addon"><span class="fa fa-tag"></span></span>
           </div>
           <p class="help-block">Show what people have made at your event. Pick a tag that other people aren't likely to have such as <strong>Cassie's-baby-maker-event</strong></p>
