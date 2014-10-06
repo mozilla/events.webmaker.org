@@ -375,7 +375,7 @@
     </div>
 
     <!-- Submit Button -->
-    <div class="form-group">
+    <div class="form-group add-double-bottom-margin">
       <button ng-if="isAdd" ng-disabled="eventSaveInProgress" ng-click="addEvent()" class="btn btn-lg btn-primary btn-mobile-block" type="button">
         {{ '_add_events_' | i18n }}
       </button>
@@ -387,11 +387,8 @@
 
   </form>
 
-  <div ng-if="isUpdate" class="alert alert-danger" ng-show="_user.email && (event && canEdit(event))">
-    <p ng-bind-html="'_careful_delete_message_' | i18n"></p>
-    <a href="#" ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block">
-      {{ '_delete_event_' | i18n }}
-    </a>
+  <div ng-if="isUpdate" class="add-double-bottom-margin" ng-show="_user.email && (event && canEdit(event))">
+    <button ng-click="deleteEvent()" class="btn btn-danger btn-mobile-block add-bottom-margin"><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;{{ '_delete_event_' | i18n }}</button>
   </div>
 
 </div>
