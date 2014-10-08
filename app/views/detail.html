@@ -153,6 +153,10 @@
         </div>
         <p class="event-detail-description add-bottom-margin" ng-bind-html="eventData.description"></p>
 
+        <div ng-if="eventData.language" class="add-bottom-margin">
+          {{ '_language_' | i18n }}: {{ eventData.language }}
+        </div>
+
         <p ng-if="eventData.registerLink">
           {{ '_for_more_info_' | i18n }} <a target="_blank" href="{{ eventData.registerLink }}">{{ eventData.registerLink }}</a>
         </p>

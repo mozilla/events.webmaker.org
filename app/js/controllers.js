@@ -136,9 +136,8 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday', 'eventEditableService',
-    function ($scope, $location, $rootScope, $routeParams, moment, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday, eventEditableService) {
-
+  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday', 'eventEditableService', 'langmap', 'processLangMap',
+    function ($scope, $location, $rootScope, $routeParams, moment, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday, eventEditableService, langmap, processLangMap) {
       $scope.event = {};
       $scope.eventID = $routeParams.id;
       $scope.eventIsToday = false;
@@ -149,6 +148,8 @@ angular.module('myApp.controllers', [])
       } else {
         $scope.isAdd = true;
       }
+
+      $scope.languages = processLangMap(langmap);
 
       if ($scope.isUpdate) {
         eventService().get({
@@ -171,6 +172,8 @@ angular.module('myApp.controllers', [])
           $scope.event.makeApiTag = data.makeApiTag;
           $scope.event.flickrTag = data.flickrTag;
           $scope.event.isEventPublic = data.isEventPublic;
+
+          $scope.event.locale = data.locale;
 
           // TEMP : Need to convert back from city/country/lat/long/whatever
           $scope.event.address = data.address;
@@ -226,6 +229,8 @@ angular.module('myApp.controllers', [])
         // $scope.attemptedToSubmit = false;
 
         $scope.event.isEventPublic = true;
+        //TODO: use user's selected language
+        $scope.event.locale = 'en-US';
       }
 
       $scope.addUser = function (input, type) {
@@ -389,8 +394,8 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config', 'dateIsToday', 'eventEditableService',
-    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config, dateIsToday, eventEditableService) {
+  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config', 'dateIsToday', 'eventEditableService', 'langmap', 'processLangMap',
+    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config, dateIsToday, eventEditableService, langmap, processLangMap) {
       $scope.isDataLoading = true;
       $scope.didDataFail = false;
 
@@ -442,6 +447,9 @@ angular.module('myApp.controllers', [])
         // TODO: Eventually competency IDs will be added during event creation.
         // Right now random IDs are created as a hook for varying detail view header colors.
         $scope.eventData.competencyID = Math.floor(Math.random() * 16);
+
+        var languages = processLangMap(langmap);
+        $scope.eventData.language = languages[data.locale];
 
         $scope.canEdit = eventEditableService.canEdit;
         $scope.isOrganizer = eventEditableService.isOrganizer;
