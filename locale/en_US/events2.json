@@ -1015,6 +1015,10 @@
     "message": "Our server is under heavy load. Please continue waiting or try again later!",
     "description": "Error message"
   },
+  "_remo_event_":{
+    "message": "Remo event",
+    "description": "Alt tag for badge icon"
+  },
   "_load_fail_":{
     "message": "Service connection failed! Please retry later.",
     "description": "Error message"

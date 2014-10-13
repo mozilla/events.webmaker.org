@@ -13,15 +13,36 @@
   }
 
   .event-title {
-    font-size: 16px;
+    font-size: 1.3rem;
+
+    @media (min-width: @screen-sm-min) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .event-title-badge {
+    .wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    span:nth-child(1) {
+      flex-shrink: 0;
+      padding-right: 1rem;
+    }
   }
 
   .event-address {
     width: 33%;
+    font-size: 1.2rem;
   }
 
   .event-date {
-    font-size: 0.9em;
+    font-size: 1.2rem;
+
+    @media (min-width: @screen-sm-min) {
+      font-size: 1.4rem;
+    }
   }
 
   .search-block {
@@ -33,6 +54,6 @@
   }
 
   .remo-badge {
-    width: 30px;
+    width: 17px;
   }
 }
