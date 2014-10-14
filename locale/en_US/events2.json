@@ -1026,5 +1026,9 @@
   "_language_": {
     "message": "Language",
     "description": ""
+  },
+  "_select_language_": {
+    "message": "Select a language",
+    "description": ""
   }
 }

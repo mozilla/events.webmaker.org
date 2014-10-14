@@ -135,7 +135,8 @@ angular.module('myApp.directives', [])
               before: $scope.dateEnd ? (new Date($scope.dateEnd)).toISOString() : null,
               lat: $scope.locationSearch ? $scope.locationSearch.lat : null,
               lng: $scope.locationSearch ? $scope.locationSearch.lng : null,
-              radius: $scope.locationSearch ? 500 : null
+              radius: $scope.locationSearch ? 500 : null,
+              locale: $scope.locale ? $scope.locale : null
             }, true);
 
             var url = config.eventsLocation + '/events?' + serializedParams;
@@ -150,6 +151,7 @@ angular.module('myApp.directives', [])
             $scope.dateStart = new Date();
             $scope.dateEnd = null;
             $scope.searchActive = false;
+            $scope.locale = '';
           };
 
           $scope.searchEvents = function () {
