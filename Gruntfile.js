@@ -83,7 +83,7 @@ module.exports = function (grunt) {
       }
     },
     cssjanus: {
-      'app/compiled/app.rtl.uncss.css': 'app/compiled/app.ltr.uncss.css',
+      'app/compiled/app.rtl.uncss.autoprefixed.css': 'app/compiled/app.ltr.uncss.autoprefixed.css',
       options: {
         swapLtrRtlInUrl: true,
         swapLeftRightInUrl: false,
@@ -144,12 +144,12 @@ module.exports = function (grunt) {
         keepSpecialComments: 0
       },
       ltr: {
-        src: 'app/compiled/app.ltr.uncss.css',
-        dest: 'app/compiled/app.ltr.uncss.min.css'
+        src: 'app/compiled/app.ltr.uncss.autoprefixed.css',
+        dest: 'app/compiled/app.ltr.uncss.autoprefixed.min.css'
       },
       rtl: {
-        src: 'app/compiled/app.rtl.uncss.css',
-        dest: 'app/compiled/app.rtl.uncss.min.css'
+        src: 'app/compiled/app.rtl.uncss.autoprefixed.css',
+        dest: 'app/compiled/app.rtl.uncss.autoprefixed.min.css'
       }
     },
     uncss: {
@@ -175,6 +175,15 @@ module.exports = function (grunt) {
         }
       }
     },
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions']
+      },
+      production: {
+        src: 'app/compiled/app.ltr.uncss.css',
+        dest: 'app/compiled/app.ltr.uncss.autoprefixed.css'
+      }
+    },
     'string-replace': {
       production: {
         files: {
@@ -183,7 +192,7 @@ module.exports = function (grunt) {
         options: {
           replacements: [{
             pattern: '%_EXTENSIONS_%',
-            replacement: '.uncss.min'
+            replacement: '.uncss.autoprefixed.min'
           }, {
             pattern: '%_LIVE_RELOAD_%',
             replacement: ''
@@ -236,6 +245,7 @@ module.exports = function (grunt) {
     'shell:runServer',
     'less:production',
     'uncss',
+    'autoprefixer',
     'cssjanus',
     'cssmin',
     'uglify',

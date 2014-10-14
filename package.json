@@ -23,6 +23,7 @@
     "express": "3.4.8",
     "grunt": "0.4.5",
     "grunt-angular-i18n-finder": "0.0.3",
+    "grunt-autoprefixer": "1.0.1",
     "grunt-cli": "0.1.13",
     "grunt-contrib-cssmin": "0.10.0",
     "grunt-contrib-jshint": "0.7.2",
