@@ -7,7 +7,6 @@ module.exports = function (grunt) {
   var scripts = [
     'app/bower_components/webmaker-analytics/analytics.js',
     'app/bower_components/eventEmitter/EventEmitter.js',
-    'app/bower_components/webmaker-auth-client/dist/webmaker-auth-client.min.js',
     'app/bower_components/momentjs/min/moment-with-langs.js',
     'app/bower_components/jquery/dist/jquery.js',
     'app/bower_components/selectize/dist/js/standalone/selectize.js',
@@ -24,6 +23,8 @@ module.exports = function (grunt) {
     'app/bower_components/makeapi-angular/dist/makeapi-angular.js',
     'app/bower_components/spiiin/src/spiiin.js',
     'app/bower_components/langmap/language-mapping-list.js',
+    'app/bower_components/webmaker-login-ux/dist/min/ngWebmakerLogin.templates.min.js',
+    'app/bower_components/webmaker-login-ux/dist/min/ngWebmakerLogin.min.js',
 
     // Be sure to use proper array style dependency injection for these Angular scripts
     // Improper dep injection will result in broken code post-compression

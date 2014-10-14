@@ -223,60 +223,6 @@ angular.module('myApp.services', ['ngResource'])
       };
     }
   ])
-  .factory('authService', ['$rootScope', 'config',
-    function authService($rootScope, config) {
-
-      // This is needed to apply scope changes for events that happen in
-      // async callbacks.
-      function apply() {
-        if (!$rootScope.$$phase) {
-          $rootScope.$apply();
-        }
-      }
-
-      var auth = new WebmakerAuthClient({
-        handleNewUserUI: false
-      });
-
-      // Set up login/logout functions
-      $rootScope.login = auth.login;
-      $rootScope.logout = auth.logout;
-
-      // Set up user data
-      $rootScope._user = {};
-
-      // Set locale information
-      if (config.supported_languages.indexOf(config.lang) > 0) {
-        $rootScope.lang = config.lang;
-      } else {
-        $rootScope.lang = config.defaultLang;
-      }
-      $rootScope.direction = config.direction;
-      $rootScope.arrowDir = config.direction === 'rtl' ? 'left' : 'right';
-
-      $rootScope.ga_account = config.ga_account;
-      $rootScope.ga_domain = config.ga_domain;
-
-      $rootScope.eventsLocation = config.eventsLocation;
-
-      auth.on('login', function (user) {
-        $rootScope._user = user;
-        apply();
-
-      });
-
-      auth.on('logout', function (why) {
-        $rootScope._user = {};
-        apply();
-      });
-
-      auth.on('error', function (message, xhr) {
-        console.log('error', message, xhr);
-      });
-
-      return auth;
-    }
-  ])
   .factory('eventEditableService', ['$rootScope',
     function ($rootScope) {
       function isCoorganizer(event) {

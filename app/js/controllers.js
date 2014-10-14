@@ -495,66 +495,6 @@ angular.module('myApp.controllers', [])
       $scope.errorCode = $routeParams.code;
     }
   ])
-  .controller('createUserController', ['$scope', '$http', '$modal', 'authService',
-    function ($scope, $http, $modal, authService) {
-
-      authService.on('newuser', function (assertion) {
-        $modal.open({
-          templateUrl: '/views/partials/create-user-form.html',
-          controller: createUserCtrl,
-          resolve: {
-            assertion: function () {
-              return assertion;
-            }
-          }
-        });
-      });
-
-      var createUserCtrl = function ($scope, $modalInstance, authService, assertion, config) {
-
-        $scope.form = {};
-        $scope.user = {};
-        $scope.supported_languages = config.supported_languages;
-        $scope.currentLang = config.lang;
-        $scope.langmap = config.langmap;
-
-        $scope.checkUsername = function () {
-          if (!$scope.form.user.username) {
-            return;
-          }
-          $http
-            .post(authService.urls.checkUsername, {
-              username: $scope.form.user.username.$viewValue
-            })
-            .success(function (username) {
-              $scope.form.user.username.$setValidity('taken', !username.exists);
-            })
-            .error(function (err) {
-              console.log(err);
-              $scope.form.user.username.$setValidity('taken', true);
-            });
-        };
-
-        $scope.createUser = function () {
-          $scope.submit = true;
-          if ($scope.form.user.$valid && $scope.form.agree) {
-            authService.createUser({
-              assertion: assertion,
-              user: $scope.user
-            });
-            $modalInstance.close();
-          }
-        };
-
-        $scope.cancel = function () {
-          authService.analytics.webmakerNewUserCancelled();
-          $modalInstance.dismiss('cancel');
-        };
-      };
-
-      authService.verify();
-    }
-  ])
   .controller('confirmController', ['$scope', '$routeParams', '$http', 'eventService', 'tokenService', 'config', 'analytics',
     function ($scope, $routeParams, $http, eventService, tokenService, config, analytics) {
       var token = $routeParams.token;
@@ -573,13 +513,13 @@ angular.module('myApp.controllers', [])
           analytics.event('Event Mentor Declined by Email');
         }
         $http({
-            method: 'POST',
-            url: config.eventsLocation + '/confirm/mentor/' + token,
-            data: {
-              confirmation: confirmation
-            },
-            withCredentials: true
-          })
+          method: 'POST',
+          url: config.eventsLocation + '/confirm/mentor/' + token,
+          data: {
+            confirmation: confirmation
+          },
+          withCredentials: true
+        })
           .success(function (mentor) {
             $scope.isConfirmSuccessfull = 'confirm-' + confirmation;
           })

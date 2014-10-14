@@ -23,7 +23,6 @@
 </head>
 <body>
 
-  <div ng-controller="createUserController"></div>
   <div ng-controller="navController">
 
     <nav class="navbar navbar-default navbar-webmaker">
@@ -40,7 +39,8 @@
         <div class="navbar-collapse collapse" collapse="isCollapsed">
           <div class="container" ng-show="!_user.email">
             <form class="navbar-form navbar-right navbar-last-item" logged-out-only>
-              <button ng-cloak class="btn btn-primary" ng-click="login()">{{ '_log_in_' | i18n}}</button>
+              <button wm-join-webmaker wm-password-reset ng-cloak ng-show="!_user.email" class="btn btn-primary navbar-btn">{{ '_join_webmaker_' | i18n }}</button>
+              <button wm-signin ng-cloak ng-show="!_user.email" class="btn btn-secondary-nav navbar-btn">{{ '_log_in_' | i18n}}</button>
             </form>
           </div>
           <ul class="nav navbar-nav navbar-right">
@@ -55,7 +55,7 @@
                 <li><a ng-href="{{myMakesUrl}}" target="_blank"><span class="fa fa-th-large"></span> {{ '_my_makes_' | i18n }}</a></li>
                 <li><a ng-href="{{accountSettingsUrl}}" target="_blank"><span class="fa fa-cog"></span> {{ '_settings_' | i18n }}</a></li>
                 <li class="divider"></li>
-                <li><a href="/" ng-click="logout()"><span class="fa fa-sign-out"></span> {{ '_log_out_' | i18n }}</a></li>
+                <li><a wm-logout href="/"><span class="fa fa-sign-out"></span> {{ '_log_out_' | i18n }}</a></li>
               </ul>
             </li>
           </ul>

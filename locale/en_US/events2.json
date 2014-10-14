@@ -15,8 +15,12 @@
     "message": "Add Event",
     "description": "Message add events in navbar"
   },
+  "_join_webmaker_": {
+    "message": "Join Webmaker",
+    "description": "Join button message"
+  },
   "_log_in_": {
-    "message": "Log In",
+    "message": "Sign In",
     "description": "Login button message"
   },
   "_hi_": {

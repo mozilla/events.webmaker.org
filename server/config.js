@@ -12,6 +12,7 @@ module.exports = function (env) {
   var auth = new WebmakerAuth({
     loginURL: env.get('LOGIN_URL'),
     authLoginURL: env.get('LOGIN_URL_WITH_AUTH'),
+    loginHost: env.get('LOGIN_EMAIL_URL'),
     secretKey: env.get('SESSION_SECRET'),
     forceSSL: env.get('FORCE_SSL'),
     domain: env.get('COOKIE_DOMAIN')
@@ -71,6 +72,14 @@ module.exports = function (env) {
   app.post('/logout', auth.handlers.logout);
   app.post('/check-username', auth.handlers.exists);
 
+  app.post('/auth/v2/create', auth.handlers.createUser);
+  app.post('/auth/v2/uid-exists', auth.handlers.uidExists);
+  app.post('/auth/v2/request', auth.handlers.request);
+  app.post('/auth/v2/authenticateToken', auth.handlers.authenticateToken);
+  app.post('/auth/v2/verify-password', auth.handlers.verifyPassword);
+  app.post('/auth/v2/request-reset-code', auth.handlers.requestResetCode);
+  app.post('/auth/v2/reset-password', auth.handlers.resetPassword);
+
   // Serve up virtual configuration "file"
   var config = {
     version: require('../package').version,
@@ -92,12 +101,22 @@ module.exports = function (env) {
     res.send('window.eventsConfig = ' + JSON.stringify(config));
   });
 
+  var webmakerLoginJSON = require("../app/bower_components/webmaker-login-ux/locale/en_US/webmaker-login.json");
+
+  i18n.addLocaleObject({
+    "en-US": webmakerLoginJSON
+  }, function (err, res) {
+    if (err) {
+      console.error(err);
+    }
+  });
+
   // Localized Strings
   app.get('/strings/:lang?', i18n.stringsRoute('en-US'));
 
   app.get(/^\/(?!bower_components|compiled|img|js|less|views).*/, function (req, res) {
     res.sendfile(path.resolve(__dirname, '../app/index.html'));
-  })
+  });
 
   return app;
 };

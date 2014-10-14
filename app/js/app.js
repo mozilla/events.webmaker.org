@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngSanitize',
   'ui.bootstrap',
   'wmMakeApiAngular',
+  'ngWebmakerLogin',
   'localization',
   'begriffs.paginate-anything',
   'myApp.filters',
@@ -81,12 +82,29 @@ config(['$routeProvider', '$locationProvider',
     });
   }
 ]).
-run(['$http', '$rootScope',
-  function ($http, $rootScope) {
+run(['$http', '$rootScope', 'config',
+  function ($http, $rootScope, config) {
     // Jump to top of viewport when new views load
     $rootScope.$on('$locationChangeSuccess', function (event) {
       window.scrollTo(0, 0);
     });
+
+    // Set up user data
+    $rootScope._user = {};
+
+    // Set locale information
+    if (config.supported_languages.indexOf(config.lang) > 0) {
+      $rootScope.lang = config.lang;
+    } else {
+      $rootScope.lang = config.defaultLang;
+    }
+    $rootScope.direction = config.direction;
+    $rootScope.arrowDir = config.direction === 'rtl' ? 'left' : 'right';
+
+    $rootScope.ga_account = config.ga_account;
+    $rootScope.ga_domain = config.ga_domain;
+
+    $rootScope.eventsLocation = config.eventsLocation;
 
     // Forward old non-hash-bang URLS to hash-bang equivalents
     // eg:
