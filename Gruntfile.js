@@ -23,6 +23,7 @@ module.exports = function (grunt) {
     'app/bower_components/makeapi-angular/dist/makeapi-angular.templates.js',
     'app/bower_components/makeapi-angular/dist/makeapi-angular.js',
     'app/bower_components/spiiin/src/spiiin.js',
+    'app/bower_components/langmap/language-mapping-list.js',
 
     // Be sure to use proper array style dependency injection for these Angular scripts
     // Improper dep injection will result in broken code post-compression

@@ -3,6 +3,7 @@
 angular.module('myApp.services', ['ngResource'])
   .constant('config', window.eventsConfig)
   .constant('analytics', window.analytics)
+  .constant('langmap', window.languageMappingList)
   .factory('loadGoogleMaps', ['$window',
     function ($window) {
 
@@ -313,4 +314,16 @@ angular.module('myApp.services', ['ngResource'])
         }
       };
     }
-  ]);
+  ])
+  .factory('processLangMap', function () {
+    return function (langMap) {
+      var processed = {};
+
+      Object.keys(langMap).forEach(function (locale, idx, keys) {
+        var lang = langMap[locale];
+        processed[locale] = lang.englishName + ' (' + lang.nativeName + ')';
+      });
+
+      return processed;
+    };
+  });

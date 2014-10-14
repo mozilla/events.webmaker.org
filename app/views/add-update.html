@@ -26,6 +26,12 @@
           <input ng-model="event.title" name="title" required id="event-title" class="form-control" placeholder="{{ '_great_title_name_' | i18n }}">
         </div>
 
+        <div class="form-group">
+          <label for="event-language">{{ '_language_' | i18n }}:</label>
+          <select  name="language" ng-model="event.locale" id="event-language" class="form-control" ng-options="locale as lang for (locale, lang) in languages">
+          </select>
+        </div>
+
         <div class="alert alert-danger" ng-show="attemptedToSubmit && addEventForm.title.$invalid">{{ '_required_' | i18n }}</div>
 
         <div ng-if="isAdd">
