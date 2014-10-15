@@ -38,9 +38,11 @@
         </div>
 
         <div class="navbar-collapse collapse" collapse="isCollapsed">
-          <form class="navbar-form navbar-right navbar-last-item" logged-out-only>
-            <button ng-cloak ng-show="!_user.email" class="btn btn-primary" ng-click="login()">{{ '_log_in_' | i18n}}</button>
-          </form>
+          <div class="container" ng-show="!_user.email">
+            <form class="navbar-form navbar-right navbar-last-item" logged-out-only>
+              <button ng-cloak class="btn btn-primary" ng-click="login()">{{ '_log_in_' | i18n}}</button>
+            </form>
+          </div>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" ng-cloak ng-show="_user.email">
               <a href="/" class="navbar-user-info dropdown-toggle">
