@@ -92,7 +92,7 @@
     "description": "Footer message"
   },
   "_get_more_tips_": {
-    "message": "Get more tips in <a href=\"#!/event-guides\">event guides</a>",
+    "message": "Get more tips in <a href=\"/event-guides\">event guides</a>",
     "description": "Get more tips message"
   },
   "_editing_event_": {
@@ -668,7 +668,7 @@
     "description": "Thanks for letting us know you will not be attending"
   },
   "visit_event_home_page": {
-    "message": "<a href=\"#!/events/{{ event.id }}\">Click here</a> if you want to visit the event home page.",
+    "message": "<a href=\"/events/{{ event.id }}\">Click here</a> if you want to visit the event home page.",
     "description": ""
   },
   "edit_confirmation": {
@@ -940,7 +940,7 @@
     "description": "Get help section description"
   },
   "_no_events_found_": {
-    "message": "No events found! Would you like to <a href=\"#!/add\">create one</a>?",
+    "message": "No events found! Would you like to <a href=\"/add\">create one</a>?",
     "description": "If no events are found, suggest the user create one"
   },
   "_not_authorized_to_edit_": {
