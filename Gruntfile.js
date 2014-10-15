@@ -166,7 +166,9 @@ module.exports = function (grunt) {
             /(\[ng|\[data-ng|\[x-ng|\.ng|\.x).*/, // Angular bizness
             /\.listing-home.*/,
             /we-related-events.*/,
-            /\.tooltip*/
+            /\.tooltip*/,
+            /\.collapse\.in/,
+            /\.collapsing/
           ],
           stylesheets: ['compiled/app.ltr.css']
         },
