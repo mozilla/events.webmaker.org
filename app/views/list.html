@@ -34,6 +34,14 @@
             <label>To</label>
             <we-datepicker ng-model="dateEnd" set-today="false"></we-datepicker>
           </div>
+
+          <div class="col-sm-6 form-group">
+            <label for="event-language">{{ '_language_' | i18n }}</label>
+            <select ng-change="searchEvents()" name="locale" ng-model="locale" id="locale" class="form-control" ng-options="locale as lang for (locale, lang) in languages">
+              <option value="">{{ '_select_language_' | i18n }}</option>
+            </select>
+          </div>
+
         </div>
       </div>
     </div>

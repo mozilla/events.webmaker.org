@@ -378,14 +378,16 @@ angular.module('myApp.controllers', [])
       $scope.canEdit = eventEditableService.canEdit;
     }
   ])
-  .controller('eventListController', ['$scope',
-    function ($scope) {
+  .controller('eventListController', ['$scope', 'langmap', 'processLangMap',
+    function ($scope, langmap, processLangMap) {
       // TODO - This will only show a spinner on the first page of events
       // Library needs to add support for a `loadStart` event to facilitate this
       // https://github.com/begriffs/angular-paginate-anything/issues/45k
 
       $scope.isDataLoading = true;
       $scope.didDataFail = false;
+
+      $scope.languages = processLangMap(langmap);
 
       $scope.$watch('eventsData', function (newValue, oldValue) {
         if (typeof newValue === 'object' && typeof oldValue === 'undefined') {
