@@ -316,13 +316,48 @@ angular.module('myApp.services', ['ngResource'])
     }
   ])
   .factory('processLangMap', function () {
-    return function (langMap) {
-      var processed = {};
+    function baseLangPresent(locale, delim, langMap) {
+      var parts = locale.split(delim);
+
+      if (parts.length > 1) {
+        var base = parts[0];
+        if (langMap[base]) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    return function (langMap, wantArray) {
+      var processed = wantArray ? [] : {};
 
       Object.keys(langMap).forEach(function (locale, idx, keys) {
+        //Let's only show each language once,
+        //for example en-US, en-GB and 'en'
+        //should only keep 'en'.
+
+        //For each 'locale-country' string, ignore it if
+        //just 'locale' is also on the list.
+
+        if (baseLangPresent(locale, '-', langMap) || baseLangPresent(locale, '@', langMap)) {
+          return;
+        }
+
         var lang = langMap[locale];
-        processed[locale] = lang.englishName + ' (' + lang.nativeName + ')';
+
+        if (wantArray) {
+          processed.push([locale, lang.englishName + ' (' + lang.nativeName + ')']);
+        } else {
+          processed[locale] = lang.englishName + ' (' + lang.nativeName + ')';
+        }
       });
+
+      if (wantArray) {
+        processed.sort(function (first, second) {
+          return first[1].localeCompare(second[1]);
+        });
+      }
 
       return processed;
     };
