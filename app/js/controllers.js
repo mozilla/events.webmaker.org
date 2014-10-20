@@ -149,7 +149,7 @@ angular.module('myApp.controllers', [])
         $scope.isAdd = true;
       }
 
-      $scope.languages = processLangMap(langmap);
+      $scope.languages = processLangMap(langmap, true);
 
       if ($scope.isUpdate) {
         eventService().get({
@@ -230,7 +230,7 @@ angular.module('myApp.controllers', [])
 
         $scope.event.isEventPublic = true;
         //TODO: use user's selected language
-        $scope.event.locale = 'en-US';
+        $scope.event.locale = 'en';
       }
 
       $scope.addUser = function (input, type) {
@@ -387,7 +387,7 @@ angular.module('myApp.controllers', [])
       $scope.isDataLoading = true;
       $scope.didDataFail = false;
 
-      $scope.languages = processLangMap(langmap);
+      $scope.languages = processLangMap(langmap, true);
 
       $scope.$watch('eventsData', function (newValue, oldValue) {
         if (typeof newValue === 'object' && typeof oldValue === 'undefined') {
