@@ -170,8 +170,9 @@ angular.module('myApp.services', ['ngResource'])
         delete serializedEvent.duration;
 
         // Convert CSV tags to array of Strings
-
-        if (serializedEvent.tags && typeof serializedEvent.tags === 'string') {
+        if (!serializedEvent.tags) {
+          serializedEvent.tags = [];
+        } else if (typeof serializedEvent.tags === 'string') {
           var tagArray = serializedEvent.tags.split(',');
 
           tagArray.forEach(function (tag, index) {
@@ -179,8 +180,6 @@ angular.module('myApp.services', ['ngResource'])
           });
 
           serializedEvent.tags = tagArray;
-        } else {
-          serializedEvent.tags = [];
         }
 
         // Create unified description from 3 fields

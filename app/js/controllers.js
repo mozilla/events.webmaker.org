@@ -163,7 +163,7 @@ angular.module('myApp.controllers', [])
           $scope.event.organizerId = data.organizerId;
           $scope.event.ageGroup = data.ageGroup || '';
           $scope.event.skillLevel = data.skillLevel || '';
-          $scope.event.tags = data.tags;
+          $scope.event.tags = data.tags.join(', ');
           $scope.event.mentorRequests = data.mentorRequests || [];
           $scope.event.mentors = data.mentors || [];
           $scope.event.coorganizers = data.coorganizers || [];
