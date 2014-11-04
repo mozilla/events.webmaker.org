@@ -513,13 +513,13 @@ angular.module('myApp.controllers', [])
           analytics.event('Event Mentor Declined by Email');
         }
         $http({
-          method: 'POST',
-          url: config.eventsLocation + '/confirm/mentor/' + token,
-          data: {
-            confirmation: confirmation
-          },
-          withCredentials: true
-        })
+            method: 'POST',
+            url: config.eventsLocation + '/confirm/mentor/' + token,
+            data: {
+              confirmation: confirmation
+            },
+            withCredentials: true
+          })
           .success(function (mentor) {
             $scope.isConfirmSuccessfull = 'confirm-' + confirmation;
           })
