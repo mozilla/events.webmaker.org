@@ -472,7 +472,7 @@ angular.module('myApp.controllers', [])
         console.error(err);
 
         if (err.status === 404) {
-          document.location.hash = '#!/errors/404';
+          document.location.href = '/#!/errors/404';
         }
       });
     }
