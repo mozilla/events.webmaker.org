@@ -39,8 +39,8 @@
         <div class="navbar-collapse collapse" collapse="isCollapsed">
           <div class="container" ng-show="!_user.email">
             <form class="navbar-form navbar-right navbar-last-item" logged-out-only>
-              <button wm-join-webmaker wm-password-reset ng-cloak ng-show="!_user.email" class="btn btn-primary navbar-btn">{{ '_join_webmaker_' | i18n }}</button>
-              <button wm-signin ng-cloak ng-show="!_user.email" class="btn btn-secondary-nav navbar-btn">{{ '_log_in_' | i18n}}</button>
+              <button wm-join-webmaker wm-password-reset ng-cloak ng-show="!_user.email" class="btn btn-primary">{{ '_join_webmaker_' | i18n }}</button>
+              <button wm-signin ng-cloak ng-show="!_user.email" class="btn btn-secondary-nav">{{ '_log_in_' | i18n}}</button>
             </form>
           </div>
           <ul class="nav navbar-nav navbar-right">
