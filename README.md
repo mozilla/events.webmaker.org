@@ -95,7 +95,7 @@ The format is slightly different than how we do it in Webmaker apps and this is 
 To localize string in template file you have three options:
 
 1. `{{ '_some_key_name_' | i18n }}`
-  This will check the translation file and look for that specific key name and return the message. If key name not found it will return **unkown key: "_some_key_name_"**.
+  This will check the translation file and look for that specific key name and return the message. If key name not found it will return **unknown key: "_some_key_name_"**.
 
 2. `<span ng-bind-html="'_some_key_name' | i18n"></span>`
 
