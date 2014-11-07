@@ -169,7 +169,10 @@ module.exports = function (grunt) {
             /we-related-events.*/,
             /\.tooltip*/,
             /\.collapse\.in/,
-            /\.collapsing/
+            /\.collapsing/,
+            /\.modal*/,
+            /hr/,
+            /\.visible-xs/
           ],
           stylesheets: ['compiled/app.ltr.css']
         },
