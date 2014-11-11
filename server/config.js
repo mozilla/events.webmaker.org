@@ -68,9 +68,7 @@ module.exports = function (env) {
   // Login
   app.post('/verify', auth.handlers.verify);
   app.post('/authenticate', auth.handlers.authenticate);
-  app.post('/create', auth.handlers.create);
   app.post('/logout', auth.handlers.logout);
-  app.post('/check-username', auth.handlers.exists);
 
   app.post('/auth/v2/create', auth.handlers.createUser);
   app.post('/auth/v2/uid-exists', auth.handlers.uidExists);
