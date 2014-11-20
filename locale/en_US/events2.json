@@ -3,6 +3,14 @@
     "message": "admin",
     "description": "Label for admin users"
   },
+  "_supermentor_": {
+    "message": "supermentor",
+    "description": "Label for supermentor users"
+  },
+  "_mentor_": {
+    "message": "mentor",
+    "description": "Label for mentor users"
+  },
   "_webmaker_events_": {
     "message": "Webmaker Events",
     "description": "Header h1"
