@@ -28,7 +28,7 @@ Profile uses a REST service for its backend.
 
 To run the service locally:
 
-1. Clone [webmaker-events-service](https://github.com/mozilla/webmaker-events-service) into a new location (most likely parallel to **webmaker-profile**)
+1. Clone [webmaker-events-service](https://github.com/mozilla/webmaker-events-service) into a new location (most likely parallel to **webmaker-profile-2**)
 2. `cd` into the `webmaker-events-service` directory
 3. Run `node server.js`
 
