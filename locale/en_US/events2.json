@@ -72,7 +72,7 @@
     "description": "Placeholder with Search Events text"
   },
   "_join_webmakers_home_": {
-    "message": "Join Webmakers in hosting events around the world.",
+    "message": "Join others at events around the world.",
     "description": "Heading message CTA"
   },
   "_find_an_event_": {
@@ -87,9 +87,21 @@
     "message": "People",
     "description": "Banner on homepage"
   },
+  "_explore_": {
+    "message": "Explore",
+    "description": "Navigation item on homepage"
+  },
+  "_tools_": {
+    "message": "Tools",
+    "description": "Navigation item on homepage"
+  },
   "_events_": {
-    "message": "Events Home",
-    "description": "Banner on homepage"
+    "message": "Events",
+    "description": "Navigation item on homepage"
+  },
+  "_teach_": {
+    "message": "Teach",
+    "description": "Navigation item on homepage"
   },
   "_cities_": {
     "message": "Cities",
