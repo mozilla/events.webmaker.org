@@ -69,23 +69,36 @@
 
     <nav class="navbar navbar-inverse navbar-no-header-xs">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" ng-href="{{webmakerUrl}}/{{lang}}" tooltip="{{ '_back_to_webmaker_' | i18n }}" tooltip-placement="bottom">
-            <span class="fa fa-reply"></span><span class="sr-only">{{ '_go_to_wm_' | i18n }}</span>
-          </a>
-        </div>
-        <div class="navbar-collapse" collapse="isCollapsed">
+        <div class="navbar-collapse" collapse="secondaryCollapse">
           <ul class="nav navbar-nav">
-            <li ng-class="{ active : isActive('/') }"><a href="/" ng-cloak>{{ '_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/events') }"><a href="/events" ng-cloak>{{ '_upcoming_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/add') }"><a href="/add" ng-cloak>{{ '_add_events_' | i18n }}</a></li>
-            <li ng-class="{ active : isActive('/event-guides') }"><a href="/event-guides" ng-cloak>{{ '_event_guides_' | i18n }}</a></li>
+            <li class="nav-icon">
+              <a href="{{webmakerURL}}/explore" ng-cloak>
+                <span class="fa fa-random"></span>
+                {{ '_explore_' | i18n }}
+              </a>
+            </li>
+            <li class="nav-icon">
+              <a href="{{webmakerURL}}/tools" ng-cloak>
+                <span class="fa fa-hand-o-up"></span>
+                {{ '_tools_' | i18n }}
+              </a>
+            </li>
+            <li class="nav-icon active">
+              <a href="/" ng-cloak>
+                <span class="fa fa-map-marker"></span>
+                {{ '_events_' | i18n }}
+              </a>
+            </li>
+            <li class="nav-icon">
+              <a href="{{webmakerURL}}/mentor" ng-cloak>
+                <span class="fa fa-book"></span>
+                {{ '_teach_' | i18n }}
+              </a>
+            </li>
           </ul>
         </div>
-
       </div>
     </nav>
-  </div>
 
   <div class="view-animate" role="main" ng-view></div>
 
