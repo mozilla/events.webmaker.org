@@ -12,3 +12,4 @@ npm-debug.log
 locale/
 !locale/en_US/*
 comps/
+index.html
