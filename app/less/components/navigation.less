@@ -53,6 +53,15 @@
     }
   }
 
+  .fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   .moz-logo {
     text-align: left;
     margin: 0 0 -1rem 0;
@@ -85,13 +94,22 @@
   @media screen and (min-width: @screen-sm-min) {
     float: none;
   }
+  @media screen and (min-width: @screen-sm-min) {
+    margin-left: -12px;
+  }
   .col-3 {
     width: 33%;
+    @media screen and (min-width: @screen-lg-min) {
+      width: 15%;
+    }
   }
   > li {
     @media screen and (min-width: @screen-sm-min) {
       text-align: center;
       width: 100%
+    }
+    @media screen and (min-width: @screen-lg-min) {
+      text-align: left;
     }
     > a {
       font-size: 1.4rem;
@@ -103,6 +121,9 @@
     &.nav-icon {
       @media screen and (min-width: @screen-sm-min) {
         width: 25%
+      }
+      @media screen and (min-width: @screen-lg-min) {
+        width: 14%
       }
       > a {
         height: auto;
