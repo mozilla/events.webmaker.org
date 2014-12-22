@@ -72,13 +72,13 @@
         <div class="navbar-collapse" collapse="secondaryCollapse">
           <ul class="nav navbar-nav">
             <li class="nav-icon">
-              <a href="{{webmakerURL}}/explore" ng-cloak>
+              <a href="{{ webmakerUrl }}/explore" ng-cloak>
                 <span class="fa fa-random"></span>
                 {{ '_explore_' | i18n }}
               </a>
             </li>
             <li class="nav-icon">
-              <a href="{{webmakerURL}}/tools" ng-cloak>
+              <a href="{{ webmakerUrl }}/tools" ng-cloak>
                 <span class="fa fa-hand-o-up"></span>
                 {{ '_tools_' | i18n }}
               </a>
@@ -90,7 +90,7 @@
               </a>
             </li>
             <li class="nav-icon">
-              <a href="{{webmakerURL}}/mentor" ng-cloak>
+              <a href="{{ webmakerUrl }}/mentor" ng-cloak>
                 <span class="fa fa-book"></span>
                 {{ '_teach_' | i18n }}
               </a>
