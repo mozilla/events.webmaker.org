@@ -69,7 +69,7 @@
 
     <nav class="navbar navbar-inverse navbar-no-header-xs">
       <div class="container">
-        <div class="navbar-collapse" collapse="secondaryCollapse">
+        <div class="navbar-collapse collapse" collapse="isCollapsed">
           <ul class="nav navbar-nav">
             <li class="nav-icon">
               <a href="{{ webmakerUrl }}/explore" ng-cloak>
