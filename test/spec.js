@@ -2,7 +2,7 @@ describe('Webmaker Events – Home', function() {
   var upcomingEvents = element.all(by.css('.listing-home li'));
 
   beforeEach(function() {
-    browser.get('http://localhost:1981/#!/');
+    browser.get('http://localhost:1981/');
   });
 
   it('should feature some events', function() {
@@ -22,7 +22,7 @@ describe('Webmaker Events – Upcoming Events', function() {
   var searchResultCount = element(by.binding('searchResultCount'));
 
   beforeEach(function() {
-    browser.get('http://localhost:1981/#!/events');
+    browser.get('http://localhost:1981/events');
   });
 
   it('should empty searchbox when clear button is clicked', function () {
