@@ -1,0 +1,19 @@
+/* global exports */
+
+exports.config = {
+  sauceUser: '_USERNAME_',
+  sauceKey: '_KEY_',
+  specs: ['spec.js'],
+  multiCapabilities: [{
+    browserName: 'internet explorer',
+    platform: 'Windows 7',
+    version: '10'
+  }, {
+    browserName: 'firefox',
+    platform: 'Windows 7',
+    version: '31'
+  }, {
+    browserName: 'chrome',
+    platform: 'Windows 8.1',
+  }]
+};

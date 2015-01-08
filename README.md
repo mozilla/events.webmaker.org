@@ -9,10 +9,6 @@
 - grunt CLI `npm install -g grunt-cli`
 - bower `npm install -g bower`
 
-## Testing Dependencies
-
-- protractor `npm install -g protractor`
-
 ## Setup
 
 ### Application Setup
@@ -69,7 +65,7 @@ When `grunt build` is run for a production ready build, `index.html` will only r
 
 **Never modify index.html directly! It's machine generated and not meant to be modified by hand.**
 
-### Localization
+## Localization
 
 Some of the code was taken from [Angularjs LocalizationServer](https://github.com/lavinjj/angularjs-localizationservice/) by Jim Lavin.
 
@@ -104,3 +100,26 @@ To localize string in template file you have three options:
 3. `<span bind-unsafe-html="'_some_key_name' | i18n"></span>`
 
   This method is useful when you have some variable inside your string for instance: "My name is {{name}}."
+
+## Automated Testing
+
+**The following require a local installation of Protractor via `npm install -g protractor`**
+
+### Local Testing
+
+This will test locally in Chrome using the tests outlined in `/test/spec.js`.
+
+1. Run `grunt test`.
+
+### Hosted Testing
+
+Hosted testing with a [variety of browsers and devices](https://saucelabs.com/platforms) can be accomplished using a Sauce Labs account.
+
+1. Sign up for a Sauce Labs account using the [free OSS project plan](https://saucelabs.com/opensauce).
+2. Install Protractor with `npm install -g protractor`.
+3. Install and run Sauce Connect by following [these instructions](https://docs.saucelabs.com/reference/sauce-connect/).
+4. Copy `test/conf-sauce.js-dist` to `test/conf-sauce.js`.
+5. Add your `sauceUser` and `sauceKey` credentials to `conf-sauce.js`.
+6. Run `grunt build`.
+7. Run `node server/server.js` to spawn a local web server.
+8. Run `protractor test/conf-sauce.js`. If your tunnel is running properly you should see activity on your local server and the tests executing.
