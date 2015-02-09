@@ -41,6 +41,7 @@
     "jit-grunt": "0.7.0",
     "messina": "0.1.2",
     "newrelic": "1.8.0",
+    "nunjucks": "1.0.5",
     "prerender-node": "0.1.18",
     "protractor": "1.0.0",
     "webmaker-auth": "1.0.2",

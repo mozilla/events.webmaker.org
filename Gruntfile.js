@@ -6,7 +6,7 @@ module.exports = function (grunt) {
   // Use un-minified scripts if possible for more meaningful stack traces in development
   var scripts = [
     'app/bower_components/webmaker-analytics/analytics.js',
-    'app/bower_components/eventEmitter/EventEmitter.js',
+    'app/bower_components/EventEmitter.js/EventEmitter.js',
     'app/bower_components/momentjs/min/moment-with-langs.js',
     'app/bower_components/jquery/dist/jquery.js',
     'app/bower_components/selectize/dist/js/standalone/selectize.js',
@@ -134,7 +134,7 @@ module.exports = function (grunt) {
       }
     },
     angular_i18n_finder: {
-      files: ['app/index.html', 'app/views/*.html', 'app/views/**/*.html'],
+      files: ['app/index-angular.html', 'app/views/*.html', 'app/views/**/*.html'],
       options: {
         pathToJSON: ['locale/en_US/*.json'],
         ignoreKeys: []
@@ -177,7 +177,7 @@ module.exports = function (grunt) {
           stylesheets: ['compiled/app.ltr.css']
         },
         files: {
-          'app/compiled/app.ltr.uncss.css': ['app/index.html', 'app/views/**/*.html']
+          'app/compiled/app.ltr.uncss.css': ['app/index-angular.html', 'app/views/**/*.html']
         }
       }
     },
@@ -193,7 +193,7 @@ module.exports = function (grunt) {
     'string-replace': {
       production: {
         files: {
-          'app/index.html': 'app/index.template'
+          'app/index-angular.html': 'app/index.template'
         },
         options: {
           replacements: [{
@@ -207,7 +207,7 @@ module.exports = function (grunt) {
       },
       development: {
         files: {
-          'app/index.html': 'app/index.template'
+          'app/index-angular.html': 'app/index.template'
         },
         options: {
           replacements: [{
