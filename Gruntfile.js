@@ -1,3 +1,13 @@
+var fs = require('fs');
+var jshintrc = JSON.parse(fs.readFileSync('./node_modules/mofo-style/linters/.jshintrc', {
+  encoding: 'utf8'
+}));
+
+jshintrc.globals = {
+  angular: false,
+  google: false
+};
+
 /* global require */
 module.exports = function (grunt) {
   require('jit-grunt')(grunt);
@@ -113,23 +123,20 @@ module.exports = function (grunt) {
     },
     jshint: {
       all: ['Gruntfile.js', 'app/js/**/*.js'],
-      options: {
-        ignores: ['app/js/lib/**/*.js'],
-        jshintrc: '.jshintrc'
-      }
+      options: jshintrc
     },
     jsbeautifier: {
       modify: {
         src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
         options: {
-          config: '.jsbeautifyrc'
+          config: 'node_modules/mofo-style/linters/.jsbeautifyrc'
         }
       },
       validate: {
         src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
         options: {
           mode: 'VERIFY_ONLY',
-          config: '.jsbeautifyrc'
+          config: 'node_modules/mofo-style/linters/.jsbeautifyrc'
         }
       }
     },
