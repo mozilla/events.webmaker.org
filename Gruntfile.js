@@ -131,7 +131,7 @@ module.exports = function (grunt) {
     jscs: {
       src: jsFilesToLint,
       options: {
-        config: "node_modules/mofo-style/linters/.jscsrc"
+        config: 'node_modules/mofo-style/linters/.jscsrc'
       }
     },
     jsbeautifier: {
@@ -295,5 +295,4 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'shell:runTests'
   ]);
-
 };
