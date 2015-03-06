@@ -40,8 +40,22 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('checkInController', ['$scope', '$rootScope', '$routeParams', 'eventService', 'attendeeService', 'attendeeListService', 'analytics',
-    function ($scope, $rootScope, $routeParams, eventService, attendeeService, attendeeListService, analytics) {
+  .controller('checkInController', [
+    '$scope',
+    '$rootScope',
+    '$routeParams',
+    'eventService',
+    'attendeeService',
+    'attendeeListService',
+    'analytics',
+    function (
+      $scope,
+      $rootScope,
+      $routeParams,
+      eventService,
+      attendeeService,
+      attendeeListService,
+      analytics) {
       // Get event data
       eventService().get({
         id: $routeParams.id
@@ -136,8 +150,36 @@ angular.module('myApp.controllers', [])
       };
     }
   ])
-  .controller('addUpdateController', ['$scope', '$location', '$rootScope', '$routeParams', 'moment', 'eventService', 'eventFormatter', 'usernameService', 'analytics', 'attendeeListService', 'dateIsToday', 'eventEditableService', 'langmap', 'processLangMap',
-    function ($scope, $location, $rootScope, $routeParams, moment, eventService, eventFormatter, usernameService, analytics, attendeeListService, dateIsToday, eventEditableService, langmap, processLangMap) {
+  .controller('addUpdateController', [
+    '$scope',
+    '$location',
+    '$rootScope',
+    '$routeParams',
+    'moment',
+    'eventService',
+    'eventFormatter',
+    'usernameService',
+    'analytics',
+    'attendeeListService',
+    'dateIsToday',
+    'eventEditableService',
+    'langmap',
+    'processLangMap',
+    function (
+      $scope,
+      $location,
+      $rootScope,
+      $routeParams,
+      moment,
+      eventService,
+      eventFormatter,
+      usernameService,
+      analytics,
+      attendeeListService,
+      dateIsToday,
+      eventEditableService,
+      langmap,
+      processLangMap) {
       $scope.event = {};
       $scope.eventID = $routeParams.id;
       $scope.eventIsToday = false;
@@ -208,7 +250,6 @@ angular.module('myApp.controllers', [])
           }, function (data) {
             $scope.attendees = data;
           });
-
         }, function (err) {
           console.error(err);
         });
@@ -229,7 +270,7 @@ angular.module('myApp.controllers', [])
         // $scope.attemptedToSubmit = false;
 
         $scope.event.isEventPublic = true;
-        //TODO: use user's selected language
+        // TODO: use user's selected language
         $scope.event.locale = 'en';
       }
 
@@ -360,7 +401,6 @@ angular.module('myApp.controllers', [])
         } else {
           $scope.eventSaveInProgress = false;
         }
-
       };
 
       $scope.deleteEvent = function () {
@@ -396,8 +436,32 @@ angular.module('myApp.controllers', [])
       });
     }
   ])
-  .controller('eventDetailController', ['$scope', '$rootScope', '$http', '$routeParams', '$sanitize', 'eventService', 'moment', 'config', 'dateIsToday', 'eventEditableService', 'langmap', 'processLangMap',
-    function ($scope, $rootScope, $http, $routeParams, $sanitize, eventService, moment, config, dateIsToday, eventEditableService, langmap, processLangMap) {
+  .controller('eventDetailController', [
+    '$scope',
+    '$rootScope',
+    '$http',
+    '$routeParams',
+    '$sanitize',
+    'eventService',
+    'moment',
+    'config',
+    'dateIsToday',
+    'eventEditableService',
+    'langmap',
+    'processLangMap',
+    function (
+      $scope,
+      $rootScope,
+      $http,
+      $routeParams,
+      $sanitize,
+      eventService,
+      moment,
+      config,
+      dateIsToday,
+      eventEditableService,
+      langmap,
+      processLangMap) {
       $scope.isDataLoading = true;
       $scope.didDataFail = false;
 
@@ -423,7 +487,7 @@ angular.module('myApp.controllers', [])
         $scope.eventData.friendlyStartDate = moment(data.beginDate).format('dddd, MMMM Do, h:mma');
         $scope.eventID = $routeParams.id;
 
-        //Gallery
+        // Gallery
         $scope.galleryTags = data.makeApiTag && data.makeApiTag.split(',');
         $scope.flickrTags = data.flickrTag && data.flickrTag.split(',').join('+');
         if (data.flickrTag) {
@@ -464,7 +528,6 @@ angular.module('myApp.controllers', [])
         $scope.$on('privateChange', function (event, data) {
           $scope.$broadcast('privateChanged', data);
         });
-
       }, function (err) {
         $scope.didDataFail = true;
         $scope.isDataLoading = false;
@@ -479,7 +542,6 @@ angular.module('myApp.controllers', [])
   ])
   .controller('navController', ['$scope', '$location', 'config',
     function ($scope, $location, config) {
-
       $scope.isActive = function (location) {
         return location === $location.path();
       };
@@ -487,7 +549,6 @@ angular.module('myApp.controllers', [])
       $scope.webmakerUrl = config.webmakerUrl;
       $scope.accountSettingsUrl = config.accountSettingsUrl;
       $scope.myMakesUrl = config.myMakesUrl;
-
     }
   ])
   .controller('errorController', ['$scope', '$routeParams',
@@ -495,8 +556,22 @@ angular.module('myApp.controllers', [])
       $scope.errorCode = $routeParams.code;
     }
   ])
-  .controller('confirmController', ['$scope', '$routeParams', '$http', 'eventService', 'tokenService', 'config', 'analytics',
-    function ($scope, $routeParams, $http, eventService, tokenService, config, analytics) {
+  .controller('confirmController', [
+    '$scope',
+    '$routeParams',
+    '$http',
+    'eventService',
+    'tokenService',
+    'config',
+    'analytics',
+    function (
+      $scope,
+      $routeParams,
+      $http,
+      eventService,
+      tokenService,
+      config,
+      analytics) {
       var token = $routeParams.token;
       var eventId = $routeParams.eventId;
       var confirmNo = $routeParams.confirmation === 'no';

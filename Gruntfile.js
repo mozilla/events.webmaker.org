@@ -1,3 +1,16 @@
+var fs = require('fs');
+
+var jshintrc = JSON.parse(fs.readFileSync('./node_modules/mofo-style/linters/.jshintrc', {
+  encoding: 'utf8'
+}));
+
+jshintrc.globals = {
+  angular: false,
+  google: false
+};
+
+var jsFilesToLint = ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'];
+
 /* global require */
 module.exports = function (grunt) {
   require('jit-grunt')(grunt);
@@ -112,24 +125,27 @@ module.exports = function (grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'app/js/**/*.js'],
+      all: jsFilesToLint,
+      options: jshintrc
+    },
+    jscs: {
+      src: jsFilesToLint,
       options: {
-        ignores: ['app/js/lib/**/*.js'],
-        jshintrc: '.jshintrc'
+        config: 'node_modules/mofo-style/linters/.jscsrc'
       }
     },
     jsbeautifier: {
       modify: {
-        src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
+        src: jsFilesToLint,
         options: {
-          config: '.jsbeautifyrc'
+          config: 'node_modules/mofo-style/linters/.jsbeautifyrc'
         }
       },
       validate: {
-        src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/lib/**/*.js'],
+        src: jsFilesToLint,
         options: {
           mode: 'VERIFY_ONLY',
-          config: '.jsbeautifyrc'
+          config: 'node_modules/mofo-style/linters/.jsbeautifyrc'
         }
       }
     },
@@ -263,6 +279,7 @@ module.exports = function (grunt) {
     'jsbeautifier:modify',
     'jsonlint',
     'jshint',
+    'jscs',
     'angular_i18n_finder'
   ]);
 
@@ -270,12 +287,12 @@ module.exports = function (grunt) {
   grunt.registerTask('validate', [
     'jsbeautifier:validate',
     'jsonlint',
-    'jshint'
+    'jshint',
+    'jscs'
   ]);
 
   // Testing
   grunt.registerTask('test', [
     'shell:runTests'
   ]);
-
 };

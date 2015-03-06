@@ -7,7 +7,6 @@ angular.module('localization', ['ngSanitize'])
   // managing the translation dictionary
   .factory('localize', ['$http', '$rootScope', 'config',
     function ($http, $rootScope, config) {
-
       // Utility method to transform thisStyle to _this_style_
       $rootScope.transformToLocalizationKeyStyle = function (stringToFormat) {
         function camelToUnderscoreCase(str) {

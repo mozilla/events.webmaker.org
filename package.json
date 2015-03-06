@@ -44,10 +44,12 @@
     "prerender-node": "0.1.18",
     "protractor": "1.0.0",
     "webmaker-auth": "1.0.2",
-    "webmaker-download-locales": "0.1.2",
+    "webmaker-download-locales": "0.2.5",
     "webmaker-i18n": "0.3.20",
     "webmaker-locale-mapping": "0.0.5",
-    "webmaker-translation-stats": "0.0.1"
+    "webmaker-translation-stats": "0.0.1",
+    "mofo-style": "1.0.1",
+    "grunt-jscs": "1.5.0"
   },
   "engines": {
     "node": ">=0.10"

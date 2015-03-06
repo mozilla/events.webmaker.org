@@ -6,7 +6,6 @@ angular.module('myApp.services', ['ngResource'])
   .constant('langmap', window.languageMappingList)
   .factory('loadGoogleMaps', ['$window',
     function ($window) {
-
       function initialize(callback) {
         $window.onInit = callback;
         var script = document.createElement('script');
@@ -137,7 +136,6 @@ angular.module('myApp.services', ['ngResource'])
   ])
   .factory('eventFormatter', ['$rootScope', 'moment', 'localize',
     function ($rootScope, moment, localize) {
-
       return function (form, eventData) {
         if (!form || !eventData) {
           console.warn('You must provide a form instance and event data on a $scope');
@@ -155,7 +153,8 @@ angular.module('myApp.services', ['ngResource'])
         var serializedEvent = angular.copy(eventData);
 
         if (eventData.duration !== 'unknown') {
-          serializedEvent.endDate = moment(eventData.beginDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
+          serializedEvent.endDate =
+            moment(eventData.beginDate).add('hours', parseFloat(eventData.duration, 10)).toISOString();
           // Don't send an end date if duration is not specific
         } else {
           delete serializedEvent.endDate;
@@ -278,12 +277,12 @@ angular.module('myApp.services', ['ngResource'])
       var processed = wantArray ? [] : {};
 
       Object.keys(langMap).forEach(function (locale, idx, keys) {
-        //Let's only show each language once,
-        //for example en-US, en-GB and 'en'
-        //should only keep 'en'.
+        // Let's only show each language once,
+        // for example en-US, en-GB and 'en'
+        // should only keep 'en'.
 
-        //For each 'locale-country' string, ignore it if
-        //just 'locale' is also on the list.
+        // For each 'locale-country' string, ignore it if
+        // just 'locale' is also on the list.
 
         if (baseLangPresent(locale, '-', langMap) || baseLangPresent(locale, '@', langMap)) {
           return;

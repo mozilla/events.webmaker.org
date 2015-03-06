@@ -39,7 +39,6 @@ angular.module('myApp.directives', [])
       restrict: 'A',
       controller: ['$element', '$scope', 'loadGoogleMaps',
         function ($element, $scope, loadGoogleMaps) {
-
           loadGoogleMaps.ready(function () {
             var autocomplete = new google.maps.places.Autocomplete($element[0], {});
 
@@ -73,7 +72,6 @@ angular.module('myApp.directives', [])
               $element.trigger('input');
             });
           });
-
         }
       ]
     };
@@ -100,7 +98,9 @@ angular.module('myApp.directives', [])
           var options = [];
 
           for (var i = 0; i <= config.supported_languages.length; i++) {
-            var title = config.langmap[config.supported_languages[i]] ? config.langmap[config.supported_languages[i]].nativeName : 'unknown';
+            var title = config.langmap[config.supported_languages[i]] ?
+              config.langmap[config.supported_languages[i]].nativeName : 'unknown';
+
             options.push({
               id: config.supported_languages[i],
               title: title
@@ -229,8 +229,10 @@ angular.module('myApp.directives', [])
                 userid: $scope.userId
               }, function (attendanceData) {
                 var currentEventInfo;
+                var i;
+                var ii;
 
-                for (var i = 0, ii = attendanceData.length; i < ii; i++) {
+                for (i = 0, ii = attendanceData.length; i < ii; i++) {
                   if (attendanceData[i].eventID === $scope.eventId) {
                     currentEventInfo = attendanceData[i];
                     break;
@@ -314,7 +316,6 @@ angular.module('myApp.directives', [])
               $scope.$apply();
             }, 2000);
           };
-
         }
       ]
     };
@@ -364,7 +365,6 @@ angular.module('myApp.directives', [])
           $scope.$on('privateChanged', function (event, data) {
             buildRSVPList();
           });
-
         }
       ],
       restrict: 'E',
