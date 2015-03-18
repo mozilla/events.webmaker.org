@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/mozilla/webmaker-events-2.svg?branch=master)](https://travis-ci.org/mozilla/webmaker-events-2)
-[![Code Climate](https://codeclimate.com/github/mozilla/webmaker-events-2.png)](https://codeclimate.com/github/mozilla/webmaker-events-2)
+[![Build Status](https://travis-ci.org/mozilla/events.webmaker.org.svg?branch=master)](https://travis-ci.org/mozilla/webmaker-events-2)
 
-# Webmaker Events 2
+# Webmaker Events
 
 ## Build Dependencies
 
@@ -18,8 +17,8 @@
 ### Application Setup
 
 ```bash
-git clone https://github.com/mozilla/webmaker-events-2.git
-cd webmaker-events-2 && npm install
+git clone https://github.com/mozilla/events.webmaker.org.git
+cd events.webmaker.org && npm install
 ```
 
 ### Service Setup
