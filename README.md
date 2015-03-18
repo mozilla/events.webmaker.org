@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mozilla/events.webmaker.org.svg?branch=master)](https://travis-ci.org/mozilla/webmaker-events-2)
+[![Build Status](https://travis-ci.org/mozilla/events.webmaker.org.svg?branch=master)](https://travis-ci.org/mozilla/events.webmaker.org)
 
 # Webmaker Events
 
