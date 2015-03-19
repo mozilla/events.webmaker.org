@@ -27,7 +27,7 @@ Profile uses a REST service for its backend.
 
 To run the service locally:
 
-1. Clone [webmaker-events-service](https://github.com/mozilla/webmaker-events-service) into a new location (most likely parallel to **webmaker-profile-2**)
+1. Clone [webmaker-events-service](https://github.com/mozilla/webmaker-events-service) into a new location (most likely parallel to **events.webmaker.org**)
 2. `cd` into the `webmaker-events-service` directory
 3. Run `node server.js`
 
@@ -54,7 +54,7 @@ This app takes four configuration parameters, all of which are optional.
 
 - **grunt** - Run this for local development. It will spawn a server at [localhost:1981](http://localhost:1981), compile `index.template`, and recompile your LESS files as they are modified. It will also enable live reload.
 - **grunt validate** - Checks to see if JS is beautified and passes JSHint. Checks to see if JSON is valid.
-- **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/webmaker-events-2/blob/master/CONTRIBUTING.md). Checks to see if JSON is valid.
+- **grunt clean** - Runs JSHint and beautifies JS to comply with our [contribution guidelines](https://github.com/mozilla/events.webmaker.org/blob/master/CONTRIBUTING.md). Checks to see if JSON is valid.
 - **grunt build** - Used for building a production ready version of the app with minified and concatenated assets.
 - **grunt test** - Run automated tests.
 
