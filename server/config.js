@@ -5,6 +5,7 @@ module.exports = function (env) {
   var app = express();
   var defaultLang = 'en-US';
   var csp = require('./csp');
+  var frameguard = require('frameguard');
   var messina = require('messina')('webmaker-events-2-' + env.get('NODE_ENV'));
   var wts = require('webmaker-translation-stats');
   var WebmakerAuth = require('webmaker-auth');
@@ -44,6 +45,8 @@ module.exports = function (env) {
     reportToHost: env.get('CSP_LOGGER'),
     eventsLocation: env.get('eventsLocation') || 'http://localhost:1989'
   }));
+
+  app.use(frameguard('deny'));
 
   // Static files
   app.use(express.static(path.join(__dirname, '../app')));
