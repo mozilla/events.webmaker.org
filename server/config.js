@@ -9,6 +9,13 @@ module.exports = function (env) {
   var messina = require('messina')('webmaker-events-2-' + env.get('NODE_ENV'));
   var wts = require('webmaker-translation-stats');
   var WebmakerAuth = require('webmaker-auth');
+  var nunjucks = require('nunjucks');
+
+  var nunjucksEnv = nunjucks.configure(path.join(__dirname, '../app'), {
+    autoescape: true,
+    watch: false
+  });
+  nunjucksEnv.express(app);
 
   var auth = new WebmakerAuth({
     loginURL: env.get('LOGIN_URL'),
@@ -67,7 +74,9 @@ module.exports = function (env) {
       res.json(healthcheck);
     });
   });
-
+  app.use("/", function (req, res) {
+    res.render('index-angular.html');
+  });
   // Login
   app.post('/verify', auth.handlers.verify);
   app.post('/authenticate', auth.handlers.authenticate);
@@ -102,6 +111,8 @@ module.exports = function (env) {
     res.send('window.eventsConfig = ' + JSON.stringify(config));
   });
 
+
+
   var webmakerLoginJSON = require("../app/bower_components/webmaker-login-ux/locale/en_US/webmaker-login.json");
 
   i18n.addLocaleObject({
@@ -114,10 +125,6 @@ module.exports = function (env) {
 
   // Localized Strings
   app.get('/strings/:lang?', i18n.stringsRoute('en-US'));
-
-  app.get(/^\/(?!bower_components|compiled|img|js|less|views).*/, function (req, res) {
-    res.sendfile(path.resolve(__dirname, '../app/index.html'));
-  });
 
   return app;
 };
